@@ -46,7 +46,7 @@ export function Footer() {
             <div className="md:col-span-2 flex flex-col gap-2">
                 <h3 className="font-headline font-semibold text-primary-dark text-lg">Legal</h3>
                 <Link href="/terms" className="text-base text-muted-foreground hover:text-primary font-body">Terms & Conditions</Link>
-                <Link href="#" className="text-base text-muted-foreground hover:text-primary font-body">Privacy Policy</Link>
+                <Link href="/privacy" className="text-base text-muted-foreground hover:text-primary font-body">Privacy Policy</Link>
             </div>
         </div>
         <div className="mt-12 border-t pt-8">

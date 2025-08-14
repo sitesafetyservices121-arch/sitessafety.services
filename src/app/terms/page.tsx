@@ -12,14 +12,14 @@ export default function TermsPage() {
   },[]);
 
   return (
-    <div className="bg-white">
+    <div className="bg-background text-foreground">
       <div className="container max-w-4xl mx-auto py-24 md:py-32 px-4">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-extrabold text-primary-dark font-headline tracking-tight">Terms and Conditions</h1>
           {currentDate && <p className="mt-4 text-lg text-muted-foreground font-body">Last updated: {currentDate}</p>}
         </div>
 
-        <div className="prose prose-lg max-w-none font-body text-foreground/80 prose-h2:font-headline prose-h2:text-primary-dark prose-h2:text-2xl prose-h2:border-b-2 prose-h2:border-secondary prose-h2:pb-3 prose-headings:font-headline prose-a:text-accent hover:prose-a:text-accent/80 prose-strong:text-foreground">
+        <div className="prose prose-lg max-w-none font-body text-muted-foreground prose-h2:font-headline prose-h2:text-primary-dark prose-h2:text-2xl prose-h2:border-b-2 prose-h2:border-secondary prose-h2:pb-3 prose-headings:font-headline prose-a:text-primary hover:prose-a:text-primary/80 prose-strong:text-foreground">
           <p>Please read these terms and conditions carefully before using Our Service.</p>
 
           <h2>1. Interpretation and Definitions</h2>
