@@ -23,11 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" style={{colorScheme: 'dark'}} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={cn("min-h-screen bg-background font-body antialiased", inter.variable, lexend.variable)}>
-        <div className="relative flex min-h-dvh flex-col animated-grid">
+        <div className="relative flex min-h-dvh flex-col">
           <Header />
-          <main className="flex-1 z-10">{children}</main>
+          <main className="flex-1">{children}</main>
           <Footer />
         </div>
         <Toaster />

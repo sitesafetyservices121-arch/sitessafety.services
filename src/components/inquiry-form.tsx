@@ -56,7 +56,7 @@ export function InquiryForm() {
             toast({
                 title: "Inquiry Sent!",
                 description: result.message,
-                className: 'bg-primary text-primary-foreground border-accent',
+                className: 'bg-primary text-primary-foreground',
             });
             form.reset();
         } else {
@@ -139,7 +139,7 @@ export function InquiryForm() {
                   className="grid grid-cols-2 gap-4"
                 >
                   <FormItem className="flex items-center space-x-3 space-y-0">
-                     <Label className="flex items-center gap-4 cursor-pointer rounded-lg border border-border/80 p-4 has-[:checked]:bg-accent/10 has-[:checked]:border-accent w-full transition-colors">
+                     <Label className="flex items-center gap-4 cursor-pointer rounded-lg border p-4 has-[:checked]:bg-primary/10 has-[:checked]:border-primary w-full transition-colors">
                         <FormControl>
                         <RadioGroupItem value="smb" />
                         </FormControl>
@@ -149,7 +149,7 @@ export function InquiryForm() {
                      </Label>
                   </FormItem>
                   <FormItem className="flex items-center space-x-3 space-y-0">
-                     <Label className="flex items-center gap-4 cursor-pointer rounded-lg border border-border/80 p-4 has-[:checked]:bg-accent/10 has-[:checked]:border-accent w-full transition-colors">
+                     <Label className="flex items-center gap-4 cursor-pointer rounded-lg border p-4 has-[:checked]:bg-primary/10 has-[:checked]:border-primary w-full transition-colors">
                         <FormControl>
                         <RadioGroupItem value="large" />
                         </FormControl>

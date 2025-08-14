@@ -65,7 +65,7 @@ export function BookingForm() {
             toast({
                 title: "Booking Request Sent!",
                 description: result.message,
-                className: 'bg-primary text-primary-foreground border-accent',
+                className: 'bg-primary text-primary-foreground',
             });
             form.reset();
         } else {

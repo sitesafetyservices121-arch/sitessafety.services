@@ -4,13 +4,13 @@ import { Logo } from "./logo";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/50 bg-secondary mt-auto z-10">
+    <footer className="border-t bg-white mt-auto">
       <div className="container mx-auto max-w-7xl px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             <div className="flex flex-col md:col-span-5">
                 <Link href="/" className="flex items-center gap-2.5 mb-4">
-                  <Logo className="h-8 w-8 text-accent" />
-                  <span className="font-headline text-2xl font-semibold text-primary">RAK-Safety</span>
+                  <Logo className="h-8 w-8 text-primary" />
+                  <span className="font-headline text-2xl font-semibold text-primary-dark">RAK-Safety</span>
                 </Link>
                 <p className="text-base text-muted-foreground font-body max-w-sm">
                   Engineering a Safer Tomorrow. Precision safety solutions for complex industries.
@@ -29,7 +29,7 @@ export function Footer() {
             </div>
           
             <div className="md:col-span-2 flex flex-col gap-2">
-                <h3 className="font-headline font-semibold text-primary text-lg">Company</h3>
+                <h3 className="font-headline font-semibold text-primary-dark text-lg">Company</h3>
                 <Link href="/" className="text-base text-muted-foreground hover:text-accent font-body">Home</Link>
                 <Link href="/about" className="text-base text-muted-foreground hover:text-accent font-body">About Us</Link>
                 <Link href="/experience" className="text-base text-muted-foreground hover:text-accent font-body">Experience</Link>
@@ -37,19 +37,19 @@ export function Footer() {
             </div>
 
             <div className="md:col-span-3 flex flex-col gap-2">
-                <h3 className="font-headline font-semibold text-primary text-lg">Services</h3>
+                <h3 className="font-headline font-semibold text-primary-dark text-lg">Services</h3>
                 <Link href="/rent-a-safety-officer" className="text-base text-muted-foreground hover:text-accent font-body">Rent a Safety Officer</Link>
                 <Link href="/e-safety-file" className="text-base text-muted-foreground hover:text-accent font-body">E-Safety File</Link>
                 <Link href="/safety-management-system" className="text-base text-muted-foreground hover:text-accent font-body">Safety Management System</Link>
             </div>
 
             <div className="md:col-span-2 flex flex-col gap-2">
-                <h3 className="font-headline font-semibold text-primary text-lg">Legal</h3>
+                <h3 className="font-headline font-semibold text-primary-dark text-lg">Legal</h3>
                 <Link href="/terms" className="text-base text-muted-foreground hover:text-accent font-body">Terms & Conditions</Link>
                 <Link href="#" className="text-base text-muted-foreground hover:text-accent font-body">Privacy Policy</Link>
             </div>
         </div>
-        <div className="mt-12 border-t border-border/80 pt-8">
+        <div className="mt-12 border-t pt-8">
             <p className="text-center text-sm text-muted-foreground font-body">
                 © {new Date().getFullYear()} RAK-Site Safety Services (Pty) Ltd. All rights reserved.
             </p>
