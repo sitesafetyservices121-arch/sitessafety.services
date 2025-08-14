@@ -6,19 +6,16 @@ import Image from "next/image";
 
 const services = [
   {
-    icon: <UserCheck className="h-8 w-8 text-primary" />,
     title: "Rent a Safety Officer",
     description: "Deploy certified safety professionals to your site, ensuring full compliance and risk mitigation from day one.",
     link: "/rent-a-safety-officer",
   },
   {
-    icon: <FileText className="h-8 w-8 text-primary" />,
     title: "E-Safety File",
     description: "Digitize your compliance with our audit-proof, cloud-based safety file management system.",
     link: "/e-safety-file",
   },
   {
-    icon: <Settings className="h-8 w-8 text-primary" />,
     title: "Safety Management System",
     description: "Implement a bespoke, scalable system to proactively manage safety and cultivate a zero-incident culture.",
     link: "/safety-management-system",
@@ -29,18 +26,18 @@ export default function Home() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="py-24 md:py-40 bg-card">
+      <section className="py-24 md:py-40 bg-white">
         <div className="container px-4 md:px-6">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
             <div className="space-y-6">
-              <h1 className="text-4xl font-headline font-bold tracking-tight sm:text-5xl md:text-6xl text-primary-dark">
+              <h1 className="text-4xl font-headline font-bold tracking-tight sm:text-5xl md:text-7xl text-primary-dark">
                 Engineering a Safer Tomorrow
               </h1>
               <p className="max-w-xl text-lg md:text-xl text-muted-foreground font-body">
                 RAK-Site Safety delivers precision-engineered safety solutions, ensuring your projects are compliant, efficient, and fundamentally secure.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button asChild size="lg" variant="cta">
+                <Button asChild size="lg" variant="default">
                   <Link href="/e-safety-file">
                     Request Consultation <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
@@ -52,7 +49,7 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <div className="relative h-96 w-full lg:h-[500px] rounded-md overflow-hidden shadow-sm border">
+            <div className="relative h-96 w-full lg:h-[500px] overflow-hidden">
               <Image 
                 src="https://placehold.co/800x600.png"
                 alt="Engineer reviewing blueprints on a construction site"
@@ -60,6 +57,7 @@ export default function Home() {
                 objectFit="cover"
                 data-ai-hint="engineer blueprints construction"
                 priority
+                className="grayscale"
               />
             </div>
           </div>
@@ -75,18 +73,15 @@ export default function Home() {
               Specialized services designed to integrate seamlessly with your operations, delivering unparalleled safety and compliance.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {services.map((service) => (
-              <Card key={service.title} className="bg-card border shadow-sm transition-all duration-300 transform hover:-translate-y-2 flex flex-col group hover:shadow-md hover:border-primary">
+              <Card key={service.title} className="bg-card border-l-4 border-primary flex flex-col group">
                 <CardHeader>
-                  <div className="bg-primary/10 rounded-md w-16 h-16 flex items-center justify-center mb-4 border border-primary/20 group-hover:border-primary/40 transition-colors">
-                    {service.icon}
-                  </div>
                   <CardTitle className="text-2xl font-headline font-semibold text-primary-dark">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-grow flex flex-col">
                   <p className="text-muted-foreground font-body mb-6 flex-grow">{service.description}</p>
-                  <Link href={service.link} className="font-body font-semibold text-accent hover:text-accent/80 flex items-center group">
+                  <Link href={service.link} className="font-body font-semibold text-primary hover:text-primary-dark flex items-center group">
                     Learn More <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </CardContent>
@@ -97,19 +92,20 @@ export default function Home() {
       </section>
       
       {/* Why Choose Us Section */}
-      <section className="w-full py-24 md:py-32 bg-card">
+      <section className="w-full py-24 md:py-32 bg-white">
         <div className="container grid items-center justify-center gap-12 px-4 text-center md:px-6 lg:grid-cols-2 lg:text-left lg:gap-20">
-          <div className="relative h-96 lg:h-[500px] w-full rounded-md overflow-hidden shadow-sm border">
+          <div className="relative h-96 lg:h-[500px] w-full overflow-hidden">
             <Image 
               src="https://placehold.co/800x600.png"
               alt="Team of safety professionals in a meeting"
               layout="fill"
               objectFit="cover"
               data-ai-hint="industrial safety meeting"
+              className="grayscale"
             />
           </div>
           <div className="space-y-6">
-            <div className="inline-block rounded-full bg-primary/10 px-4 py-2 font-body text-sm font-semibold text-primary border border-primary/30">
+            <div className="inline-block rounded-none bg-primary/10 px-4 py-2 font-body text-sm font-semibold text-primary-dark border-l-2 border-primary">
               The RAK-Safety Advantage
             </div>
             <h2 className="text-3xl md:text-4xl font-bold font-headline tracking-tight text-primary-dark">Precision in Practice</h2>
