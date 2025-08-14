@@ -37,9 +37,9 @@ export function Header() {
     <Link
       href={href}
       className={cn(
-        "font-body font-medium transition-colors",
-        pathname === href ? "text-accent" : "text-foreground hover:text-accent",
-        isMobile ? "block py-2 text-lg" : "text-sm"
+        "font-body font-medium transition-colors text-sm",
+        pathname === href ? "text-primary font-semibold" : "text-foreground/80 hover:text-foreground",
+        isMobile && "py-2 text-base w-full",
       )}
     >
       {label}
@@ -54,9 +54,9 @@ export function Header() {
         <Button
           variant="ghost"
           className={cn(
-            "flex items-center gap-1 font-body font-medium",
-            isMobile ? "w-full justify-start p-0 h-auto text-lg" : "text-sm",
-            isServicePage ? "text-accent" : "text-foreground hover:text-accent"
+            "flex items-center gap-1 font-body font-medium text-sm px-3",
+            isMobile ? "w-full justify-start p-0 h-auto text-base" : "text-sm",
+            isServicePage ? "text-primary font-semibold" : "text-foreground/80 hover:text-foreground"
           )}
         >
           Services
@@ -74,14 +74,14 @@ export function Header() {
   )};
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-20 max-w-7xl items-center justify-between">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm">
+      <div className="container flex h-16 max-w-7xl items-center justify-between">
         <Link href="/" className="flex items-center gap-2 mr-6">
-          <ShieldCheck className="h-8 w-8 text-accent" />
-          <span className="font-headline text-xl font-bold text-foreground">RAK-Safety</span>
+          <ShieldCheck className="h-7 w-7 text-primary" />
+          <span className="font-headline text-lg font-bold text-foreground">RAK-Safety</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6">
           <NavLink href="/" label="Home" />
           <NavLink href="/about" label="About Us" />
           <NavMenu />
@@ -89,7 +89,7 @@ export function Header() {
         </nav>
         
         <div className="flex items-center gap-2 md:ml-auto">
-          <Button asChild className="hidden md:flex bg-accent hover:bg-accent/80 text-accent-foreground font-body font-bold rounded-full">
+          <Button asChild className="hidden md:flex">
             <Link href="/e-safety-file">Get a Quote</Link>
           </Button>
 
@@ -103,8 +103,8 @@ export function Header() {
               </SheetTrigger>
               <SheetContent side="right">
                 <Link href="/" className="flex items-center gap-2 mb-8">
-                  <ShieldCheck className="h-7 w-7 text-accent" />
-                  <span className="font-headline text-xl font-bold text-foreground">RAK-Safety</span>
+                  <ShieldCheck className="h-7 w-7 text-primary" />
+                  <span className="font-headline text-lg font-bold text-foreground">RAK-Safety</span>
                 </Link>
                 <nav className="flex flex-col gap-4">
                   <NavLink href="/" label="Home" isMobile />
@@ -113,7 +113,7 @@ export function Header() {
                   <NavLink href="/experience" label="Experience" isMobile />
                   <NavLink href="/terms" label="T&Cs" isMobile />
                 </nav>
-                 <Button asChild className="w-full mt-8 bg-accent hover:bg-accent/80 text-accent-foreground font-body font-bold rounded-full">
+                 <Button asChild className="w-full mt-8">
                   <Link href="/e-safety-file">Get a Quote</Link>
                 </Button>
               </SheetContent>

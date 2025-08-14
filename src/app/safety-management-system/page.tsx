@@ -10,30 +10,30 @@ export const metadata: Metadata = {
 };
 
 const systemFeatures = [
-    { title: "Centralized Dashboard", icon: <Zap className="h-5 w-5 text-accent"/>, description: "Get a real-time overview of your safety performance." },
-    { title: "Incident Tracking", icon: <Zap className="h-5 w-5 text-accent"/>, description: "Log, track, and manage incidents from discovery to resolution." },
-    { title: "Risk Assessments", icon: <Zap className="h-5 w-5 text-accent"/>, description: "Easily conduct and store risk assessments for all your projects." },
-    { title: "Compliance Management", icon: <Zap className="h-5 w-5 text-accent"/>, description: "Stay up-to-date with the latest safety regulations and standards." },
-    { title: "Training Records", icon: <Zap className="h-5 w-5 text-accent"/>, description: "Manage employee certifications and training schedules effortlessly." },
-    { title: "Mobile Access", icon: <Zap className="h-5 w-5 text-accent"/>, description: "Access safety data and report incidents from anywhere on-site." },
+    { title: "Centralized Dashboard", icon: <Zap className="h-5 w-5 text-primary"/>, description: "Get a real-time overview of your safety performance." },
+    { title: "Incident Tracking", icon: <Zap className="h-5 w-5 text-primary"/>, description: "Log, track, and manage incidents from discovery to resolution." },
+    { title: "Risk Assessments", icon: <Zap className="h-5 w-5 text-primary"/>, description: "Easily conduct and store risk assessments for all your projects." },
+    { title: "Compliance Management", icon: <Zap className="h-5 w-5 text-primary"/>, description: "Stay up-to-date with the latest safety regulations and standards." },
+    { title: "Training Records", icon: <Zap className="h-5 w-5 text-primary"/>, description: "Manage employee certifications and training schedules effortlessly." },
+    { title: "Mobile Access", icon: <Zap className="h-5 w-5 text-primary"/>, description: "Access safety data and report incidents from anywhere on-site." },
 ];
 
 export default function SafetyManagementSystemPage() {
   return (
     <div className="container max-w-6xl mx-auto py-16 px-4">
       <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-foreground font-headline">Your All-in-One Safety Management System</h1>
+        <h1 className="text-4xl md:text-5xl font-extrabold text-foreground font-headline tracking-tighter">Your All-in-One Safety Management System</h1>
         <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto font-body">
           A powerful, intuitive platform to streamline your safety protocols, ensure compliance, and build a proactive safety culture.
         </p>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
-        <div className="relative h-[450px] w-full rounded-xl overflow-hidden">
+        <div className="relative h-[450px] w-full rounded-lg overflow-hidden border">
             <Image src="https://placehold.co/600x400.png" alt="SMS Dashboard" layout="fill" objectFit="cover" data-ai-hint="dashboard analytics" />
         </div>
         <div className="space-y-8">
-            <Card className="border-2 border-border bg-card">
+            <Card className="border bg-card">
               <CardHeader className="flex-row items-center gap-4">
                   <div className="p-3 bg-primary/10 rounded-lg">
                     <TrendingUp className="h-8 w-8 text-primary"/>
@@ -48,7 +48,7 @@ export default function SafetyManagementSystemPage() {
                 <p className="text-muted-foreground font-body">Includes up to 12 users. Need more? Add users for just <span className="font-bold text-foreground">R350/month</span> each.</p>
               </CardContent>
               <CardFooter>
-                 <Button asChild className="w-full bg-accent hover:bg-accent/80 text-accent-foreground font-body font-bold rounded-full text-base">
+                 <Button asChild className="w-full" size="lg">
                     <Link href="#">
                         Proceed to Payment <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
@@ -62,12 +62,14 @@ export default function SafetyManagementSystemPage() {
         <h2 className="text-3xl font-bold text-center text-foreground font-headline mb-12">Core Features</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {systemFeatures.map((feature) => (
-                <Card key={feature.title} className="bg-card border-2 border-border p-2">
-                    <CardHeader className="flex-row items-center gap-4">
-                        {feature.icon}
+                <Card key={feature.title} className="bg-card border p-4">
+                    <CardHeader className="flex-row items-center gap-4 p-2">
+                        <div className="p-3 bg-primary/10 rounded-md">
+                          {feature.icon}
+                        </div>
                         <CardTitle className="text-lg text-foreground font-headline">{feature.title}</CardTitle>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="p-2">
                         <p className="text-muted-foreground font-body">{feature.description}</p>
                     </CardContent>
                 </Card>
@@ -75,14 +77,16 @@ export default function SafetyManagementSystemPage() {
         </div>
       </div>
 
-       <Card className="bg-secondary/30 border-primary border-2 text-center p-10">
+       <Card className="bg-secondary/50 border text-center p-10">
             <CardHeader>
-                <Calendar className="h-12 w-12 text-primary mx-auto mb-4" />
+                <div className="mx-auto w-fit p-4 bg-background rounded-full border shadow-sm mb-4">
+                  <Calendar className="h-10 w-10 text-primary" />
+                </div>
                 <CardTitle className="text-foreground font-headline">Not Sure Where to Start?</CardTitle>
                 <CardDescription className="max-w-xl mx-auto font-body">Every business is unique. Let our experts help you find the perfect safety solution for your needs. Schedule a free, no-obligation consultation today.</CardDescription>
             </CardHeader>
             <CardFooter className="justify-center">
-                <Button asChild className="font-body font-bold rounded-full" variant="outline">
+                <Button asChild variant="outline">
                     <Link href="/e-safety-file">Book a Free Consultation</Link>
                 </Button>
             </CardFooter>

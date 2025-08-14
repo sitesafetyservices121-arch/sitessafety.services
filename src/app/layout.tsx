@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
+import { Manrope, Space_Grotesk } from 'next/font/google';
 
 export const metadata: Metadata = {
   title: {
@@ -13,6 +14,9 @@ export const metadata: Metadata = {
   description: "Your Partner in Occupational Health and Safety.",
 };
 
+const manrope = Manrope({ subsets: ['latin'], variable: '--font-body' });
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-headline' });
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,24 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className={cn("min-h-screen bg-background font-body antialiased")}>
-        <div className="fixed inset-0 -z-20 h-full w-full bg-background" />
-         <div 
-          className="fixed inset-0 -z-10 h-full w-full"
-          style={{
-            backgroundImage: "linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-          }}
-        />
-
+      <body className={cn("min-h-screen bg-background font-body antialiased", manrope.variable, spaceGrotesk.variable)}>
         <div className="relative flex min-h-dvh flex-col">
           <Header />
           <main className="flex-1">{children}</main>

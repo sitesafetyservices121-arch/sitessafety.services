@@ -174,7 +174,7 @@ export function InquiryForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full bg-primary hover:bg-primary/90 rounded-full font-bold text-base py-6" disabled={isPending}>
+        <Button type="submit" className="w-full" size="lg" disabled={isPending}>
             {isPending ? "Submitting..." : "Submit Inquiry"}
         </Button>
       </form>

@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Building, Target, Users, Award } from "lucide-react";
+import { ShieldCheck, Award, Users } from "lucide-react";
 import type { Metadata } from 'next';
 import Image from "next/image";
 
@@ -15,23 +15,23 @@ const teamMembers = [
 ];
 
 const values = [
-    { icon: <ShieldCheck className="h-8 w-8 text-accent" />, title: "Integrity", description: "Upholding the highest standards of honesty and ethical behavior in all our operations." },
-    { icon: <Award className="h-8 w-8 text-accent" />, title: "Excellence", description: "Consistently delivering superior service and exceeding client expectations." },
-    { icon: <Users className="h-8 w-8 text-accent" />, title: "Commitment", description: "Dedicated to the safety and well-being of our clients, their employees, and the public." },
+    { icon: <ShieldCheck className="h-8 w-8 text-primary" />, title: "Integrity", description: "Upholding the highest standards of honesty and ethical behavior in all our operations." },
+    { icon: <Award className="h-8 w-8 text-primary" />, title: "Excellence", description: "Consistently delivering superior service and exceeding client expectations." },
+    { icon: <Users className="h-8 w-8 text-primary" />, title: "Commitment", description: "Dedicated to the safety and well-being of our clients, their employees, and the public." },
 ];
 
 export default function AboutPage() {
   return (
     <div className="container max-w-6xl mx-auto py-16 px-4">
       <div className="text-center mb-20">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-foreground font-headline">About <span className="text-primary">RAK-Site Safety</span></h1>
+        <h1 className="text-4xl md:text-5xl font-extrabold text-foreground font-headline tracking-tighter">About <span className="text-primary">RAK-Site Safety</span></h1>
         <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto font-body">
           Dedicated to fostering secure, compliant, and productive work environments through expert safety solutions.
         </p>
       </div>
       
       <div className="grid lg:grid-cols-2 gap-12 items-center mb-24">
-        <div className="relative h-96 w-full rounded-xl overflow-hidden">
+        <div className="relative h-96 w-full rounded-lg overflow-hidden border">
             <Image src="https://placehold.co/600x400.png" alt="Company history collage" layout="fill" objectFit="cover" data-ai-hint="office building modern" />
         </div>
         <div className="space-y-4">
@@ -47,7 +47,7 @@ export default function AboutPage() {
             <p className="text-muted-foreground font-body">Our mission is to protect people, property, and the environment by delivering the highest quality safety services, training, and systems. We strive to empower our clients with the knowledge and tools to create a zero-incident workplace.</p>
             <p className="text-muted-foreground font-body">Our vision is to be the most trusted name in workplace safety, setting new standards for excellence and innovation in the industry, ultimately creating a future where every worker returns home safe, every day.</p>
         </div>
-        <div className="relative h-96 w-full rounded-xl overflow-hidden">
+        <div className="relative h-96 w-full rounded-lg overflow-hidden border">
             <Image src="https://placehold.co/600x400.png" alt="Team discussing a project" layout="fill" objectFit="cover" data-ai-hint="team meeting" />
         </div>
       </div>
@@ -57,9 +57,11 @@ export default function AboutPage() {
         <h2 className="text-3xl font-bold text-foreground font-headline">Our Core Values</h2>
         <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
             {values.map(v => (
-                 <Card key={v.title} className="text-center bg-secondary/30 border-2 border-transparent hover:border-accent transition-colors">
+                 <Card key={v.title} className="text-center bg-card border">
                     <CardHeader className="items-center">
-                        {v.icon}
+                        <div className="bg-primary/10 rounded-md w-14 h-14 flex items-center justify-center mb-4">
+                          {v.icon}
+                        </div>
                         <CardTitle className="mt-4 font-headline text-foreground">{v.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -74,9 +76,9 @@ export default function AboutPage() {
         <h2 className="text-3xl font-bold text-center text-foreground font-headline mb-12">Meet Our Leadership</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member) => (
-            <Card key={member.name} className="text-center bg-card border-2 border-border group hover:bg-secondary/40 transition-colors">
+            <Card key={member.name} className="text-center bg-card border group transition-colors">
               <CardContent className="pt-8">
-                <Avatar className="w-28 h-28 mx-auto mb-4 border-4 border-primary group-hover:border-accent transition-colors">
+                <Avatar className="w-28 h-28 mx-auto mb-4 border-4 border-primary/20 group-hover:border-primary transition-colors">
                   <AvatarImage data-ai-hint={member.hint} src={member.avatar} />
                   <AvatarFallback className="font-headline">{member.initials}</AvatarFallback>
                 </Avatar>

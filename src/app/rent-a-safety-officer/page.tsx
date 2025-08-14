@@ -21,7 +21,7 @@ export default function RentASafetyOfficerPage() {
     <div className="container max-w-7xl mx-auto py-16 px-4">
       <div className="grid lg:grid-cols-2 gap-16 items-start">
         <div className="space-y-6">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-foreground font-headline">Rent a Safety Officer</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-foreground font-headline tracking-tighter">Rent a Safety Officer</h1>
           <p className="text-lg text-muted-foreground font-body">
             Ensure your project meets all safety regulations with our flexible and reliable safety officer rental service. Get qualified professionals on-site when you need them, without the overhead of a full-time hire.
           </p>
@@ -37,7 +37,7 @@ export default function RentASafetyOfficerPage() {
           </div>
         </div>
 
-        <Card className="shadow-2xl border-2 border-border bg-card sticky top-24">
+        <Card className="shadow-lg border bg-card sticky top-24">
           <CardHeader>
             <CardTitle className="text-center text-2xl text-foreground font-headline">Book Your Safety Officer</CardTitle>
              <CardDescription className="text-center font-body">Complete the form to get started.</CardDescription>

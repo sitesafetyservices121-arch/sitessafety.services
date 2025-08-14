@@ -5,14 +5,22 @@ export const metadata: Metadata = {
 };
 
 export default function TermsPage() {
+  // This is a temporary fix to avoid hydration errors since the date is generated on the server and client.
+  // In a real app, this should be handled properly, e.g. passing the date as a prop from a server component.
+  const [currentDate, setCurrentDate] = React.useState('');
+  React.useEffect(() => {
+    setCurrentDate(new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' }));
+  },[]);
+
+
   return (
     <div className="container max-w-4xl mx-auto py-16 px-4">
       <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-foreground font-headline">Terms and Conditions</h1>
-        <p className="mt-4 text-lg text-muted-foreground font-body">Last updated: {new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+        <h1 className="text-4xl md:text-5xl font-extrabold text-foreground font-headline tracking-tighter">Terms and Conditions</h1>
+        {currentDate && <p className="mt-4 text-lg text-muted-foreground font-body">Last updated: {currentDate}</p>}
       </div>
 
-      <div className="prose dark:prose-invert max-w-none font-body text-foreground prose-h2:font-headline prose-h2:text-primary prose-h2:border-b-2 prose-h2:border-accent prose-h2:pb-2 prose-headings:font-headline">
+      <div className="prose dark:prose-invert max-w-none font-body text-foreground/80 prose-h2:font-headline prose-h2:text-foreground prose-h2:border-b-2 prose-h2:border-primary prose-h2:pb-2 prose-headings:font-headline prose-a:text-primary hover:prose-a:text-accent">
         <p>Please read these terms and conditions carefully before using Our Service.</p>
 
         <h2>1. Interpretation and Definitions</h2>

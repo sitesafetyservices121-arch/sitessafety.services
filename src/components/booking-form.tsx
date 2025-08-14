@@ -211,7 +211,7 @@ export function BookingForm() {
             </FormItem>
             )}
         />
-        <Button type="submit" className="w-full bg-accent hover:bg-accent/80 text-accent-foreground rounded-full font-bold text-base py-6" disabled={isPending}>
+        <Button type="submit" className="w-full" size="lg" disabled={isPending}>
           {isPending ? "Submitting..." : "Request Booking"}
         </Button>
       </form>
