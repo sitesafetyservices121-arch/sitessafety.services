@@ -30,7 +30,7 @@ export default function RootLayout({
       </head>
       <body className={cn("min-h-screen bg-background font-body antialiased")}>
         <div className="fixed inset-0 -z-20 h-full w-full bg-background" />
-        <div className="fixed inset-0 -z-10 h-full w-full bg-gradient-to-br from-background via-blue-900/10 to-background bg-[length:200%_200%] animate-gradient-move" />
+        <div className="fixed inset-0 -z-10 h-full w-full bg-gradient-to-br from-background via-primary/10 to-background bg-[length:200%_200%] animate-gradient-move" />
 
         <div className="relative flex min-h-dvh flex-col">
           <Header />
