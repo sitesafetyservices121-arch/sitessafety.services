@@ -1,51 +1,58 @@
 import Link from "next/link";
-import { ShieldCheck, Twitter, Facebook, Linkedin } from "lucide-react";
+import { Twitter, Facebook, Linkedin } from "lucide-react";
+import { Logo } from "./logo";
 
 export function Footer() {
   return (
-    <footer className="border-t bg-secondary/30 mt-auto">
-      <div className="container mx-auto max-w-7xl px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
-            <div className="flex flex-col items-center md:items-start md:col-span-2">
-                <Link href="/" className="flex items-center gap-2 mb-3">
-                <ShieldCheck className="h-7 w-7 text-primary" />
-                <span className="font-headline text-lg font-bold text-foreground">RAK-Safety</span>
+    <footer className="border-t bg-card mt-auto">
+      <div className="container mx-auto max-w-7xl px-4 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+            <div className="flex flex-col md:col-span-5">
+                <Link href="/" className="flex items-center gap-2.5 mb-4">
+                  <Logo className="h-8 w-8 text-accent" />
+                  <span className="font-headline text-2xl font-bold text-primary">RAK-Safety</span>
                 </Link>
-                <p className="text-sm text-muted-foreground font-body max-w-sm">
-                Your trusted partner in occupational health and safety, ensuring secure and compliant work environments.
+                <p className="text-base text-muted-foreground font-body max-w-sm">
+                  Pioneering safety solutions for the modern workplace.
                 </p>
+                <div className="flex gap-4 mt-6">
+                  <Link href="#" aria-label="Twitter" className="text-muted-foreground hover:text-primary transition-colors">
+                    <Twitter className="h-5 w-5" />
+                  </Link>
+                  <Link href="#" aria-label="Facebook" className="text-muted-foreground hover:text-primary transition-colors">
+                    <Facebook className="h-5 w-5" />
+                  </Link>
+                  <Link href="#" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors">
+                    <Linkedin className="h-5 w-5" />
+                  </Link>
+                </div>
             </div>
           
-            <div className="flex flex-col items-center md:items-start gap-2">
-                <h3 className="font-headline font-semibold text-foreground">Quick Links</h3>
-                <Link href="/" className="text-sm text-muted-foreground hover:text-primary font-body">Home</Link>
-                <Link href="/about" className="text-sm text-muted-foreground hover:text-primary font-body">About Us</Link>
-                <Link href="/experience" className="text-sm text-muted-foreground hover:text-primary font-body">Experience</Link>
-                <Link href="/terms" className="text-sm text-muted-foreground hover:text-primary font-body">Terms & Conditions</Link>
+            <div className="md:col-span-2 flex flex-col gap-2">
+                <h3 className="font-headline font-semibold text-primary text-lg">Company</h3>
+                <Link href="/" className="text-base text-muted-foreground hover:text-accent font-body">Home</Link>
+                <Link href="/about" className="text-base text-muted-foreground hover:text-accent font-body">About Us</Link>
+                <Link href="/experience" className="text-base text-muted-foreground hover:text-accent font-body">Experience</Link>
+                <Link href="/e-safety-file" className="text-base text-muted-foreground hover:text-accent font-body">Contact</Link>
             </div>
 
-            <div className="flex flex-col items-center md:items-start gap-2">
-                <h3 className="font-headline font-semibold text-foreground">Services</h3>
-                <Link href="/rent-a-safety-officer" className="text-sm text-muted-foreground hover:text-primary font-body">Rent a Safety Officer</Link>
-                <Link href="/e-safety-file" className="text-sm text-muted-foreground hover:text-primary font-body">E Safety File</Link>
-                <Link href="/safety-management-system" className="text-sm text-muted-foreground hover:text-primary font-body">Safety Management System</Link>
+            <div className="md:col-span-3 flex flex-col gap-2">
+                <h3 className="font-headline font-semibold text-primary text-lg">Services</h3>
+                <Link href="/rent-a-safety-officer" className="text-base text-muted-foreground hover:text-accent font-body">Rent a Safety Officer</Link>
+                <Link href="/e-safety-file" className="text-base text-muted-foreground hover:text-accent font-body">E-Safety File</Link>
+                <Link href="/safety-management-system" className="text-base text-muted-foreground hover:text-accent font-body">Safety Management System</Link>
+            </div>
+
+            <div className="md:col-span-2 flex flex-col gap-2">
+                <h3 className="font-headline font-semibold text-primary text-lg">Legal</h3>
+                <Link href="/terms" className="text-base text-muted-foreground hover:text-accent font-body">Terms & Conditions</Link>
+                <Link href="#" className="text-base text-muted-foreground hover:text-accent font-body">Privacy Policy</Link>
             </div>
         </div>
-        <div className="mt-10 border-t pt-8 flex flex-col md:flex-row items-center justify-between">
-            <p className="text-sm text-muted-foreground font-body">
-                © {new Date().getFullYear()} RAK-Site Safety Services. All rights reserved.
+        <div className="mt-12 border-t pt-8">
+            <p className="text-center text-sm text-muted-foreground font-body">
+                © {new Date().getFullYear()} RAK-Site Safety Services (Pty) Ltd. All rights reserved.
             </p>
-            <div className="flex gap-4 mt-4 md:mt-0">
-              <Link href="#" aria-label="Twitter">
-                <Twitter className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
-              </Link>
-              <Link href="#" aria-label="Facebook">
-                <Facebook className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
-              </Link>
-              <Link href="#" aria-label="LinkedIn">
-                <Linkedin className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
-              </Link>
-            </div>
         </div>
       </div>
     </footer>

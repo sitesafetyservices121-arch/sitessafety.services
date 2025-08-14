@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
+import { CalendarIcon, Loader2 } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
@@ -28,6 +28,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 
 const bookingFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -37,6 +38,7 @@ const bookingFormSchema = z.object({
   officers: z.string().min(1, { message: "Please select the number of officers." }),
   startDate: z.date({ required_error: "A start date is required." }),
   duration: z.string().min(1, { message: "Please specify the service duration." }),
+  details: z.string().optional(),
 });
 
 type BookingFormValues = z.infer<typeof bookingFormSchema>;
@@ -52,6 +54,7 @@ export function BookingForm() {
       company: "",
       email: "",
       phone: "",
+      details: "",
     },
   });
 
@@ -60,10 +63,9 @@ export function BookingForm() {
         const result = await submitBooking(data);
         if (result.success) {
             toast({
-                title: "Success!",
+                title: "Booking Request Sent!",
                 description: result.message,
-                variant: 'default',
-                className: 'bg-primary text-primary-foreground border-primary',
+                className: 'bg-primary text-primary-foreground border-accent',
             });
             form.reset();
         } else {
@@ -79,32 +81,34 @@ export function BookingForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 font-body">
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Full Name</FormLabel>
-              <FormControl>
-                <Input placeholder="John Doe" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="company"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Company Name</FormLabel>
-              <FormControl>
-                <Input placeholder="Your Company Inc." {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Full Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="John Doe" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="company"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Company Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Your Company Inc." {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FormField
             control={form.control}
@@ -113,7 +117,7 @@ export function BookingForm() {
                 <FormItem>
                 <FormLabel>Email Address</FormLabel>
                 <FormControl>
-                    <Input placeholder="you@company.com" {...field} />
+                    <Input placeholder="you@company.com" {...field} type="email" />
                 </FormControl>
                 <FormMessage />
                 </FormItem>
@@ -126,7 +130,7 @@ export function BookingForm() {
                 <FormItem>
                 <FormLabel>Phone Number</FormLabel>
                 <FormControl>
-                    <Input placeholder="082 123 4567" {...field} />
+                    <Input placeholder="082 123 4567" {...field} type="tel"/>
                 </FormControl>
                 <FormMessage />
                 </FormItem>
@@ -147,11 +151,11 @@ export function BookingForm() {
                     </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                    <SelectItem value="1">1</SelectItem>
-                    <SelectItem value="2">2</SelectItem>
-                    <SelectItem value="3">3</SelectItem>
-                    <SelectItem value="4">4</SelectItem>
-                    <SelectItem value="5+">5+</SelectItem>
+                    <SelectItem value="1">1 Officer</SelectItem>
+                    <SelectItem value="2">2 Officers</SelectItem>
+                    <SelectItem value="3">3 Officers</SelectItem>
+                    <SelectItem value="4">4 Officers</SelectItem>
+                    <SelectItem value="5+">5+ Officers</SelectItem>
                     </SelectContent>
                 </Select>
                 <FormMessage />
@@ -170,16 +174,16 @@ export function BookingForm() {
                         <Button
                         variant={"outline"}
                         className={cn(
-                            "pl-3 text-left font-normal",
+                            "w-full justify-start text-left font-normal",
                             !field.value && "text-muted-foreground"
                         )}
                         >
+                        <CalendarIcon className="mr-2 h-4 w-4" />
                         {field.value ? (
                             format(field.value, "PPP")
                         ) : (
                             <span>Pick a date</span>
                         )}
-                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                         </Button>
                     </FormControl>
                     </PopoverTrigger>
@@ -188,7 +192,7 @@ export function BookingForm() {
                         mode="single"
                         selected={field.value}
                         onSelect={field.onChange}
-                        disabled={(date) => date < new Date() || date < new Date("1900-01-01")}
+                        disabled={(date) => date < new Date(new Date().setDate(new Date().getDate() - 1))}
                         initialFocus
                     />
                     </PopoverContent>
@@ -205,13 +209,31 @@ export function BookingForm() {
             <FormItem>
                 <FormLabel>Service Duration</FormLabel>
                 <FormControl>
-                <Input placeholder="e.g., 2 weeks, 1 month" {...field} />
+                <Input placeholder="e.g., 2 weeks, 1 month, full project" {...field} />
                 </FormControl>
                 <FormMessage />
             </FormItem>
             )}
         />
+        <FormField
+          control={form.control}
+          name="details"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Project Details (Optional)</FormLabel>
+              <FormControl>
+                <Textarea
+                  placeholder="Tell us a little about your project (e.g., location, type of work)"
+                  className="resize-none"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <Button type="submit" className="w-full" size="lg" disabled={isPending}>
+          {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           {isPending ? "Submitting..." : "Request Booking"}
         </Button>
       </form>

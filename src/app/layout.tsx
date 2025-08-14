@@ -4,18 +4,18 @@ import { cn } from "@/lib/utils";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
-import { Manrope, Space_Grotesk } from 'next/font/google';
+import { Inter, Lexend } from 'next/font/google';
 
 export const metadata: Metadata = {
   title: {
-    default: "RAK-Site Safety Services",
-    template: "%s | RAK-Site Safety Services",
+    default: "RAK-Site Safety",
+    template: "%s | RAK-Site Safety",
   },
-  description: "Your Partner in Occupational Health and Safety.",
+  description: "Pioneering safety solutions for the modern workplace.",
 };
 
-const manrope = Manrope({ subsets: ['latin'], variable: '--font-body' });
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-headline' });
+const inter = Inter({ subsets: ['latin'], variable: '--font-body' });
+const lexend = Lexend({ subsets: ['latin'], weight: ['400', '700'], variable: '--font-headline' });
 
 export default function RootLayout({
   children,
@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn("min-h-screen bg-background font-body antialiased", manrope.variable, spaceGrotesk.variable)}>
+      <body className={cn("min-h-screen bg-background font-body antialiased", inter.variable, lexend.variable)}>
         <div className="relative flex min-h-dvh flex-col">
           <Header />
           <main className="flex-1">{children}</main>
