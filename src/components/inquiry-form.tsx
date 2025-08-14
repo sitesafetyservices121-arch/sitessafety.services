@@ -19,6 +19,7 @@ import { useToast } from "@/hooks/use-toast";
 import { submitInquiry } from "@/lib/actions";
 import { useTransition } from "react";
 import { Loader2 } from "lucide-react";
+import { Label } from "@/components/ui/label";
 
 const inquiryFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
