@@ -28,7 +28,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 
 const bookingFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -63,6 +62,8 @@ export function BookingForm() {
             toast({
                 title: "Success!",
                 description: result.message,
+                variant: 'default',
+                className: 'bg-primary text-primary-foreground border-primary',
             });
             form.reset();
         } else {
@@ -77,7 +78,7 @@ export function BookingForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 font-body">
         <FormField
           control={form.control}
           name="name"
@@ -210,7 +211,7 @@ export function BookingForm() {
             </FormItem>
             )}
         />
-        <Button type="submit" className="w-full bg-accent hover:bg-accent/90" disabled={isPending}>
+        <Button type="submit" className="w-full bg-accent hover:bg-accent/80 text-accent-foreground rounded-full font-bold text-base py-6" disabled={isPending}>
           {isPending ? "Submitting..." : "Request Booking"}
         </Button>
       </form>

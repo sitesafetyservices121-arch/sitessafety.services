@@ -1,98 +1,92 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
-import { CheckCircle, Users, Calendar, CreditCard, ArrowRight } from "lucide-react";
+import { CheckCircle, Users, Calendar, CreditCard, ArrowRight, Zap, TrendingUp } from "lucide-react";
 import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: 'Safety Management System',
 };
 
 const systemFeatures = [
-    "Centralized dashboard",
-    "Incident tracking and reporting",
-    "Risk assessment tools",
-    "Compliance management",
-    "Employee training records",
-    "Mobile access for on-site teams",
-    "Customizable reporting"
+    { title: "Centralized Dashboard", icon: <Zap className="h-5 w-5 text-accent"/>, description: "Get a real-time overview of your safety performance." },
+    { title: "Incident Tracking", icon: <Zap className="h-5 w-5 text-accent"/>, description: "Log, track, and manage incidents from discovery to resolution." },
+    { title: "Risk Assessments", icon: <Zap className="h-5 w-5 text-accent"/>, description: "Easily conduct and store risk assessments for all your projects." },
+    { title: "Compliance Management", icon: <Zap className="h-5 w-5 text-accent"/>, description: "Stay up-to-date with the latest safety regulations and standards." },
+    { title: "Training Records", icon: <Zap className="h-5 w-5 text-accent"/>, description: "Manage employee certifications and training schedules effortlessly." },
+    { title: "Mobile Access", icon: <Zap className="h-5 w-5 text-accent"/>, description: "Access safety data and report incidents from anywhere on-site." },
 ];
 
 export default function SafetyManagementSystemPage() {
   return (
-    <div className="container max-w-6xl mx-auto py-12 px-4">
+    <div className="container max-w-6xl mx-auto py-16 px-4">
       <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-primary font-headline">Safety Management System</h1>
-        <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-foreground font-headline">Your All-in-One Safety Management System</h1>
+        <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto font-body">
           A powerful, intuitive platform to streamline your safety protocols, ensure compliance, and build a proactive safety culture.
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-12 items-center">
-        <Card className="shadow-lg h-full border-l-4 border-primary">
-            <CardHeader>
-                <CardTitle className="text-primary">System Features</CardTitle>
-                <CardDescription>Everything you need for comprehensive safety management.</CardDescription>
-            </CardHeader>
-            <CardContent>
-                <ul className="space-y-3 grid sm:grid-cols-2 gap-x-4 gap-y-3">
-                    {systemFeatures.map((feature, index) => (
-                        <li key={index} className="flex items-start">
-                            <CheckCircle className="h-5 w-5 text-accent mr-2 mt-0.5 flex-shrink-0" />
-                            <span className="text-muted-foreground">{feature}</span>
-                        </li>
-                    ))}
-                </ul>
-            </CardContent>
-        </Card>
-        
+      <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+        <div className="relative h-[450px] w-full rounded-xl overflow-hidden">
+            <Image src="https://placehold.co/600x400.png" alt="SMS Dashboard" layout="fill" objectFit="cover" data-ai-hint="dashboard analytics" />
+        </div>
         <div className="space-y-8">
-            <Card className="border-t-4 border-accent">
-              <CardHeader>
-                <div className="flex items-center gap-3">
-                  <Users className="h-8 w-8 text-accent"/>
-                  <CardTitle className="text-primary">Pricing</CardTitle>
-                </div>
+            <Card className="border-2 border-border bg-card">
+              <CardHeader className="flex-row items-center gap-4">
+                  <div className="p-3 bg-primary/10 rounded-lg">
+                    <TrendingUp className="h-8 w-8 text-primary"/>
+                  </div>
+                  <div>
+                    <CardTitle className="text-foreground font-headline">Simple, Powerful Pricing</CardTitle>
+                    <CardDescription className="font-body">One plan, everything you need.</CardDescription>
+                  </div>
               </CardHeader>
-              <CardContent className="space-y-2">
-                <p className="text-3xl font-bold text-primary">R2400 / month</p>
-                <p className="text-muted-foreground">Includes up to 12 users.</p>
-                <p className="text-lg font-semibold text-primary pt-2">+ R350 / month</p>
-                <p className="text-muted-foreground">For each additional user.</p>
+              <CardContent className="space-y-4">
+                <p className="text-4xl font-bold text-foreground font-headline">R2400 <span className="text-lg font-normal text-muted-foreground font-body">/ month</span></p>
+                <p className="text-muted-foreground font-body">Includes up to 12 users. Need more? Add users for just <span className="font-bold text-foreground">R350/month</span> each.</p>
               </CardContent>
+              <CardFooter>
+                 <Button asChild className="w-full bg-accent hover:bg-accent/80 text-accent-foreground font-body font-bold rounded-full text-base">
+                    <Link href="#">
+                        Proceed to Payment <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                </Button>
+              </CardFooter>
             </Card>
-
-            <div className="grid md:grid-cols-2 gap-4">
-                <Card className="text-center hover:bg-primary/5 transition-colors border-b-4 border-primary/50">
-                    <CardHeader>
-                        <Calendar className="h-10 w-10 text-primary mx-auto mb-2" />
-                        <CardTitle className="text-primary">Not Sure?</CardTitle>
-                        <CardDescription>Let's discuss your specific needs.</CardDescription>
-                    </CardHeader>
-                    <CardFooter>
-                        <Button asChild className="w-full" variant="outline">
-                            <Link href="/e-safety-file">Book a Free Consultation</Link>
-                        </Button>
-                    </CardFooter>
-                </Card>
-                <Card className="text-center hover:bg-accent/5 transition-colors border-b-4 border-accent/50">
-                    <CardHeader>
-                        <CreditCard className="h-10 w-10 text-accent mx-auto mb-2" />
-                        <CardTitle className="text-primary">Ready to Start?</CardTitle>
-                        <CardDescription>Proceed to our secure payment gateway.</CardDescription>
-                    </CardHeader>
-                    <CardFooter>
-                        {/* This would link to a Payfast URL in a real application */}
-                        <Button asChild className="w-full bg-accent hover:bg-accent/90">
-                            <Link href="#">
-                                Proceed to Payment <ArrowRight className="ml-2 h-4 w-4" />
-                            </Link>
-                        </Button>
-                    </CardFooter>
-                </Card>
-            </div>
         </div>
       </div>
+      
+       <div className="mb-20">
+        <h2 className="text-3xl font-bold text-center text-foreground font-headline mb-12">Core Features</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {systemFeatures.map((feature) => (
+                <Card key={feature.title} className="bg-card border-2 border-border p-2">
+                    <CardHeader className="flex-row items-center gap-4">
+                        {feature.icon}
+                        <CardTitle className="text-lg text-foreground font-headline">{feature.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-muted-foreground font-body">{feature.description}</p>
+                    </CardContent>
+                </Card>
+            ))}
+        </div>
+      </div>
+
+       <Card className="bg-secondary/30 border-primary border-2 text-center p-10">
+            <CardHeader>
+                <Calendar className="h-12 w-12 text-primary mx-auto mb-4" />
+                <CardTitle className="text-foreground font-headline">Not Sure Where to Start?</CardTitle>
+                <CardDescription className="max-w-xl mx-auto font-body">Every business is unique. Let our experts help you find the perfect safety solution for your needs. Schedule a free, no-obligation consultation today.</CardDescription>
+            </CardHeader>
+            <CardFooter className="justify-center">
+                <Button asChild className="font-body font-bold rounded-full" variant="outline">
+                    <Link href="/e-safety-file">Book a Free Consultation</Link>
+                </Button>
+            </CardFooter>
+        </Card>
     </div>
   );
 }

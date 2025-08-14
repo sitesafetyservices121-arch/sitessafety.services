@@ -6,13 +6,13 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <div className="container max-w-4xl mx-auto py-12 px-4">
+    <div className="container max-w-4xl mx-auto py-16 px-4">
       <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-primary font-headline">Terms and Conditions</h1>
-        <p className="mt-4 text-lg text-muted-foreground">Last updated: {new Date().toLocaleDateString()}</p>
+        <h1 className="text-4xl md:text-5xl font-extrabold text-foreground font-headline">Terms and Conditions</h1>
+        <p className="mt-4 text-lg text-muted-foreground font-body">Last updated: {new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
       </div>
 
-      <div className="prose dark:prose-invert max-w-none text-foreground prose-h2:text-primary prose-h2:border-b-2 prose-h2:border-accent prose-h2:pb-2">
+      <div className="prose dark:prose-invert max-w-none font-body text-foreground prose-h2:font-headline prose-h2:text-primary prose-h2:border-b-2 prose-h2:border-accent prose-h2:pb-2 prose-headings:font-headline">
         <p>Please read these terms and conditions carefully before using Our Service.</p>
 
         <h2>1. Interpretation and Definitions</h2>
@@ -26,13 +26,13 @@ export default function TermsPage() {
         <p>Our services, including "Rent a Safety Officer," "E Safety File," and "Safety Management System," are provided as described on their respective pages. Specific terms, deliverables, and pricing for engaged services will be outlined in a separate Service Agreement.</p>
         
         <h2>4. Payments</h2>
-        <p>Fees for services are due as specified in the service description or Service Agreement. We utilize Payfast as our third-party payment processor. By making a payment, you agree to Payfast's terms and conditions.</p>
+        <p>Fees for services are due as specified in the service description or Service Agreement. We utilize third-party payment processors. By making a payment, you agree to their terms and conditions.</p>
 
         <h2>5. Limitation of Liability</h2>
         <p>Notwithstanding any damages that You might incur, the entire liability of the Company and any of its suppliers under any provision of this Terms and Your exclusive remedy for all of the foregoing shall be limited to the amount actually paid by You through the Service.</p>
 
         <h2>6. Governing Law</h2>
-        <p>The laws of the Country, excluding its conflicts of law rules, shall govern this Terms and Your use of the Service. Your use of the Application may also be subject to other local, state, national, or international laws.</p>
+        <p>The laws of South Africa, excluding its conflicts of law rules, shall govern this Terms and Your use of the Service. Your use of the Application may also be subject to other local, state, national, or international laws.</p>
         
         <h2>7. Changes to These Terms and Conditions</h2>
         <p>We reserve the right, at Our sole discretion, to modify or replace these Terms at any time. If a revision is material We will make reasonable efforts to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at Our sole discretion.</p>

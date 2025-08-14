@@ -54,6 +54,8 @@ export function InquiryForm() {
             toast({
                 title: "Success!",
                 description: result.message,
+                variant: 'default',
+                className: 'bg-primary text-primary-foreground border-primary',
             });
             form.reset();
         } else {
@@ -68,7 +70,7 @@ export function InquiryForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 font-body">
         <FormField
           control={form.control}
           name="name"
@@ -126,19 +128,19 @@ export function InquiryForm() {
           name="businessSize"
           render={({ field }) => (
             <FormItem className="space-y-3">
-              <FormLabel>Select Business Size</FormLabel>
+              <FormLabel>Select Plan</FormLabel>
               <FormControl>
                 <RadioGroup
                   onValueChange={field.onChange}
                   defaultValue={field.value}
-                  className="flex flex-col space-y-1"
+                  className="flex flex-col space-y-2"
                 >
                   <FormItem className="flex items-center space-x-3 space-y-0">
                     <FormControl>
                       <RadioGroupItem value="smb" />
                     </FormControl>
                     <FormLabel className="font-normal">
-                      Small to Medium (R119K)
+                      SMB Plan (R119K)
                     </FormLabel>
                   </FormItem>
                   <FormItem className="flex items-center space-x-3 space-y-0">
@@ -146,7 +148,7 @@ export function InquiryForm() {
                       <RadioGroupItem value="large" />
                     </FormControl>
                     <FormLabel className="font-normal">
-                      Large & Enterprise (R250K)
+                      Enterprise Plan (R250K)
                     </FormLabel>
                   </FormItem>
                 </RadioGroup>
@@ -163,7 +165,7 @@ export function InquiryForm() {
               <FormLabel>Message (Optional)</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Tell us a little bit about your needs"
+                  placeholder="Tell us a little bit about your project needs"
                   className="resize-none"
                   {...field}
                 />
@@ -172,7 +174,7 @@ export function InquiryForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full" disabled={isPending}>
+        <Button type="submit" className="w-full bg-primary hover:bg-primary/90 rounded-full font-bold text-base py-6" disabled={isPending}>
             {isPending ? "Submitting..." : "Submit Inquiry"}
         </Button>
       </form>

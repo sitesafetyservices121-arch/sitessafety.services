@@ -37,33 +37,33 @@ export function Header() {
     <Link
       href={href}
       className={cn(
-        "text-sm font-medium transition-colors hover:text-primary",
-        pathname === href ? "text-primary" : "text-muted-foreground",
-        isMobile ? "block py-2 text-base" : ""
+        "font-body font-medium transition-colors",
+        pathname === href ? "text-accent" : "text-foreground hover:text-accent",
+        isMobile ? "block py-2 text-lg" : "text-sm"
       )}
     >
       {label}
     </Link>
   );
 
-  const NavMenu = ({ isMobile = false }) => (
+  const NavMenu = ({ isMobile = false }) => {
+    const isServicePage = navLinks.find(l => l.isMenu)?.items?.some(item => pathname.startsWith(item.href));
+    return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
           className={cn(
-            "flex items-center gap-1 text-sm font-medium",
-            isMobile ? "w-full justify-start p-0 h-auto text-base" : "",
-             navLinks.find(l => l.isMenu)?.items?.some(item => pathname.startsWith(item.href))
-              ? "text-primary"
-              : "text-muted-foreground"
+            "flex items-center gap-1 font-body font-medium",
+            isMobile ? "w-full justify-start p-0 h-auto text-lg" : "text-sm",
+            isServicePage ? "text-accent" : "text-foreground hover:text-accent"
           )}
         >
           Services
           <ChevronDown className="h-4 w-4 transition-transform duration-200" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className="font-body">
         {navLinks.find(l => l.isMenu)?.items?.map((item) => (
           <DropdownMenuItem key={item.href} asChild>
             <Link href={item.href}>{item.label}</Link>
@@ -71,26 +71,25 @@ export function Header() {
         ))}
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )};
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 max-w-7xl items-center justify-between">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-20 max-w-7xl items-center justify-between">
         <Link href="/" className="flex items-center gap-2 mr-6">
-          <ShieldCheck className="h-7 w-7 text-primary" />
-          <span className="text-lg font-bold text-primary">RAK-Safety</span>
+          <ShieldCheck className="h-8 w-8 text-accent" />
+          <span className="font-headline text-xl font-bold text-foreground">RAK-Safety</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-8">
           <NavLink href="/" label="Home" />
           <NavLink href="/about" label="About Us" />
           <NavMenu />
           <NavLink href="/experience" label="Experience" />
-          <NavLink href="/terms" label="T&Cs" />
         </nav>
         
         <div className="flex items-center gap-2 md:ml-auto">
-          <Button asChild className="hidden md:flex bg-accent hover:bg-accent/90 text-accent-foreground">
+          <Button asChild className="hidden md:flex bg-accent hover:bg-accent/80 text-accent-foreground font-body font-bold rounded-full">
             <Link href="/e-safety-file">Get a Quote</Link>
           </Button>
 
@@ -104,8 +103,8 @@ export function Header() {
               </SheetTrigger>
               <SheetContent side="right">
                 <Link href="/" className="flex items-center gap-2 mb-8">
-                  <ShieldCheck className="h-7 w-7 text-primary" />
-                  <span className="text-lg font-bold text-primary">RAK-Safety</span>
+                  <ShieldCheck className="h-7 w-7 text-accent" />
+                  <span className="font-headline text-xl font-bold text-foreground">RAK-Safety</span>
                 </Link>
                 <nav className="flex flex-col gap-4">
                   <NavLink href="/" label="Home" isMobile />
@@ -114,7 +113,7 @@ export function Header() {
                   <NavLink href="/experience" label="Experience" isMobile />
                   <NavLink href="/terms" label="T&Cs" isMobile />
                 </nav>
-                 <Button asChild className="w-full mt-6 bg-accent hover:bg-accent/90 text-accent-foreground">
+                 <Button asChild className="w-full mt-8 bg-accent hover:bg-accent/80 text-accent-foreground font-body font-bold rounded-full">
                   <Link href="/e-safety-file">Get a Quote</Link>
                 </Button>
               </SheetContent>
