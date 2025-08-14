@@ -65,7 +65,7 @@ export function Header() {
           <ChevronDown className={cn("h-4 w-4 transition-transform duration-200", isMobile && "ml-auto")} />
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="font-body bg-secondary border-border mt-2">
+      <DropdownMenuContent className="font-body bg-secondary border-border/80 mt-2">
         {navLinks.find(l => l.isMenu)?.items?.map((item) => (
           <DropdownMenuItem key={item.href} asChild>
             <Link href={item.href} className={cn("text-base py-2", pathname.startsWith(item.href) && "bg-accent/10 text-accent")}>{item.label}</Link>
@@ -76,7 +76,7 @@ export function Header() {
   )};
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-lg">
+    <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-lg">
       <div className="container flex h-20 max-w-7xl items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 mr-6">
           <Logo className="h-7 w-7 text-accent" />
@@ -91,7 +91,7 @@ export function Header() {
         </nav>
         
         <div className="flex items-center gap-2 md:ml-auto">
-          <Button asChild>
+          <Button asChild variant="cta">
             <Link href="/e-safety-file">Request a Quote</Link>
           </Button>
 
@@ -103,7 +103,7 @@ export function Header() {
                   <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="bg-secondary border-border">
+              <SheetContent side="right" className="bg-secondary border-l-border/80">
                 <Link href="/" className="flex items-center gap-2.5 mb-10">
                   <Logo className="h-8 w-8 text-accent" />
                   <span className="font-headline text-2xl font-semibold text-primary">RAK-Safety</span>
@@ -115,7 +115,7 @@ export function Header() {
                   <NavLink href="/experience" label="Experience" isMobile />
                   <NavLink href="/terms" label="T&Cs" isMobile />
                 </nav>
-                 <Button asChild className="w-full mt-8" size="lg">
+                 <Button asChild className="w-full mt-8" size="lg" variant="cta">
                   <Link href="/e-safety-file">Request a Quote</Link>
                 </Button>
               </SheetContent>

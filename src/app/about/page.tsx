@@ -5,7 +5,8 @@ import type { Metadata } from 'next';
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: 'About Us',
+  title: 'About Our Mission',
+  description: 'Learn about the story, mission, and values that drive RAK-Site Safety to be a leader in occupational safety services.',
 };
 
 const teamMembers = [
@@ -22,11 +23,11 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <div className="bg-background text-foreground">
+    <div className="bg-transparent text-foreground">
       {/* Hero Section */}
       <section className="py-20 md:py-32">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-semibold font-headline tracking-tight text-primary">
+          <h1 className="text-4xl md:text-6xl font-bold font-headline tracking-tight text-primary">
             Pioneering Safety, Building Trust
           </h1>
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto font-body">
@@ -36,11 +37,11 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story Section */}
-      <section className="py-24 bg-card">
+      <section className="py-24 bg-card/50 border-y border-border/50">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
-            <div className="relative h-[450px] w-full rounded-lg overflow-hidden border border-border">
-                <Image src="https://placehold.co/800x600.png" alt="Company history collage" layout="fill" objectFit="cover" data-ai-hint="modern office architecture" className="opacity-70" />
+            <div className="relative h-[450px] w-full rounded-lg overflow-hidden border border-border/50 shadow-xl">
+                <Image src="https://placehold.co/800x600.png" alt="Company history collage" layout="fill" objectFit="cover" data-ai-hint="modern office architecture" className="opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <div className="space-y-4">
                 <h2 className="text-3xl md:text-4xl font-semibold text-primary font-headline">Our Story</h2>
@@ -60,23 +61,23 @@ export default function AboutPage() {
                 <p className="text-muted-foreground font-body text-lg">Our mission is to protect people, property, and the environment by delivering the highest quality safety services. We strive to empower our clients with the knowledge and tools to create a zero-incident workplace.</p>
                 <p className="text-muted-foreground font-body">Our vision is to be the most trusted name in workplace safety, setting new standards for excellence and innovation in the industry, ultimately creating a future where every worker returns home safe, every day.</p>
             </div>
-            <div className="relative h-[450px] w-full rounded-lg overflow-hidden border border-border">
-                <Image src="https://placehold.co/800x600.png" alt="Team discussing a project" layout="fill" objectFit="cover" data-ai-hint="diverse team meeting" className="opacity-70" />
+            <div className="relative h-[450px] w-full rounded-lg overflow-hidden border border-border/50 shadow-xl">
+                <Image src="https://placehold.co/800x600.png" alt="Team discussing a project" layout="fill" objectFit="cover" data-ai-hint="diverse team meeting" className="opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             </div>
         </div>
       </section>
 
       {/* Core Values Section */}
-      <section className="py-24 bg-card">
+      <section className="py-24 bg-card/50 border-y border-border/50">
         <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-semibold text-primary font-headline">Our Core Values</h2>
             <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto font-body">The principles that guide our every action.</p>
             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
                 {values.map(v => (
-                    <Card key={v.title} className="text-center bg-secondary border-border transform hover:-translate-y-2 transition-transform duration-300 hover:border-accent">
+                    <Card key={v.title} className="text-center bg-secondary border-border/80 transform hover:-translate-y-2 transition-transform duration-300 hover:border-accent shadow-lg hover:shadow-accent/10">
                         <CardHeader className="items-center">
-                            <div className="bg-background rounded-lg w-16 h-16 flex items-center justify-center mb-4 border border-border">
+                            <div className="bg-background rounded-lg w-16 h-16 flex items-center justify-center mb-4 border border-border/80">
                             {v.icon}
                             </div>
                             <CardTitle className="mt-4 font-headline text-2xl text-primary">{v.title}</CardTitle>
@@ -96,7 +97,7 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-4xl font-semibold text-center text-primary font-headline mb-16">Meet Our Leadership</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member) => (
-                <Card key={member.name} className="text-center bg-card border-border pt-8 pb-4 transition-all duration-300 hover:shadow-2xl hover:border-accent hover:shadow-accent/10">
+                <Card key={member.name} className="text-center bg-card border-border/80 pt-8 pb-4 transition-all duration-300 hover:shadow-2xl hover:border-accent hover:shadow-accent/10 hover:-translate-y-2 transform">
                 <CardContent>
                     <Avatar className="w-32 h-32 mx-auto mb-6 border-4 border-accent/20">
                     <AvatarImage data-ai-hint={member.hint} src={member.avatar} />

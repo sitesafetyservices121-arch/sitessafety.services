@@ -7,7 +7,8 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Our Experience',
+  title: 'Proven Experience & Client Success',
+  description: 'Explore our portfolio of successful projects and read testimonials from satisfied clients across various industries.',
 };
 
 const testimonials = [
@@ -25,7 +26,7 @@ const portfolio = [
 
 export default function ExperiencePage() {
   return (
-    <div className="bg-background text-foreground">
+    <div className="bg-transparent text-foreground">
       {/* Hero Section */}
       <section className="py-20 md:py-32">
         <div className="container mx-auto px-4 text-center">
@@ -39,15 +40,15 @@ export default function ExperiencePage() {
       </section>
 
       {/* Project Portfolio Section */}
-      <section className="py-24 bg-card">
+      <section className="py-24 bg-card/50 border-y border-border/50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-semibold text-center text-primary font-headline mb-16">Project Portfolio</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {portfolio.map((item) => (
-                  <Card key={item.title} className="overflow-hidden group border-border shadow-lg rounded-lg transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                  <Card key={item.title} className="overflow-hidden group border-border/80 shadow-lg rounded-lg transform transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-2">
                       <CardContent className="p-0">
                           <div className="relative h-80 w-full">
-                              <Image src={item.image} alt={item.title} layout="fill" objectFit="cover" className="transition-transform duration-500 group-hover:scale-105 opacity-70" data-ai-hint={item.hint}/>
+                              <Image src={item.image} alt={item.title} layout="fill" objectFit="cover" className="transition-transform duration-500 group-hover:scale-105 opacity-70 group-hover:opacity-100" data-ai-hint={item.hint}/>
                               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                               <div className="absolute bottom-0 left-0 p-6">
                                   <h3 className="text-2xl font-headline font-semibold text-white">{item.title}</h3>
@@ -75,10 +76,10 @@ export default function ExperiencePage() {
       {/* CTA Section */}
       <section className="py-24">
         <div className="container mx-auto px-4">
-            <div className="bg-card rounded-lg p-10 md:p-16 text-center border border-border shadow-xl shadow-primary/5">
+            <div className="bg-card rounded-lg p-10 md:p-16 text-center border border-border/80 shadow-xl shadow-primary/5">
                 <h2 className="text-3xl md:text-4xl font-semibold font-headline text-primary">Ready to Elevate Your Site's Safety?</h2>
                 <p className="mt-4 max-w-2xl mx-auto text-muted-foreground font-body text-lg">Let's collaborate to build a safer, more compliant, and more productive work environment. Contact us today for a complimentary consultation.</p>
-                <Button asChild size="lg" className="mt-8">
+                <Button asChild size="lg" className="mt-8" variant="cta">
                 <Link href="/e-safety-file">
                     Request a Free Quote <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>

@@ -232,7 +232,7 @@ export function BookingForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full" size="lg" disabled={isPending}>
+        <Button type="submit" className="w-full" size="lg" disabled={isPending} variant="cta">
           {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           {isPending ? "Submitting..." : "Request Booking"}
         </Button>

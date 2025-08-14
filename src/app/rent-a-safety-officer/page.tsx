@@ -4,7 +4,8 @@ import { CheckCircle, Shield, Briefcase, Calendar } from "lucide-react";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Rent a Safety Officer',
+  title: 'Rent a Certified Safety Officer',
+  description: 'Ensure project compliance with our flexible safety officer rental service. Get qualified, on-demand professionals on-site when you need them.',
 };
 
 const serviceFeatures = [
@@ -32,9 +33,9 @@ const serviceFeatures = [
 
 export default function RentASafetyOfficerPage() {
   return (
-    <div className="bg-background text-foreground">
+    <div className="bg-transparent text-foreground">
        {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-card border-b border-border">
+      <section className="py-20 md:py-32 bg-card/50 border-b border-border/50">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-semibold font-headline tracking-tight text-primary">
             On-Demand Safety Expertise
@@ -58,7 +59,7 @@ export default function RentASafetyOfficerPage() {
               <div className="space-y-8">
                   {serviceFeatures.map((feature) => (
                       <div key={feature.title} className="flex items-start gap-4">
-                          <div className="flex-shrink-0 bg-secondary text-accent rounded-lg p-3 border border-border">
+                          <div className="flex-shrink-0 bg-secondary text-accent rounded-lg p-3 border border-border/80">
                             {feature.icon}
                           </div>
                           <div>
@@ -71,7 +72,7 @@ export default function RentASafetyOfficerPage() {
             </div>
 
             {/* Booking Form */}
-            <Card className="shadow-2xl border-border bg-card sticky top-24 p-2">
+            <Card className="shadow-2xl border-border/80 bg-card sticky top-24 p-2">
               <CardHeader>
                 <CardTitle className="text-center text-3xl text-primary font-headline">Book Your Safety Officer</CardTitle>
                 <CardDescription className="text-center font-body text-base">Complete the form to get a fast, no-obligation quote.</CardDescription>

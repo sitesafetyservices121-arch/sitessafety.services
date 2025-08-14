@@ -27,27 +27,27 @@ const services = [
 
 export default function Home() {
   return (
-    <div className="bg-background text-foreground">
+    <div className="bg-transparent text-foreground">
       {/* Hero Section */}
       <section className="py-24 md:py-40">
         <div className="container px-4 md:px-6">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
             <div className="space-y-6">
-              <h1 className="text-4xl font-headline font-semibold tracking-tight sm:text-5xl md:text-6xl text-primary">
+              <h1 className="text-4xl font-headline font-bold tracking-tight sm:text-5xl md:text-6xl text-primary">
                 Engineering a Safer Tomorrow
               </h1>
               <p className="max-w-xl text-lg md:text-xl text-muted-foreground font-body">
                 RAK-Site Safety delivers precision-engineered safety solutions, ensuring your projects are compliant, efficient, and fundamentally secure.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button asChild size="lg">
+                <Button asChild size="lg" variant="cta">
                   <Link href="/e-safety-file">
                     Request Consultation <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <Link href="#services">
-                    Our Services
+                    Explore Our Services
                   </Link>
                 </Button>
               </div>
@@ -58,7 +58,7 @@ export default function Home() {
                 alt="Engineer reviewing blueprints on a construction site"
                 layout="fill"
                 objectFit="cover"
-                className="opacity-70"
+                className="opacity-70 group-hover:opacity-100 transition-opacity duration-300"
                 data-ai-hint="engineer blueprints construction"
                 priority
               />
@@ -69,19 +69,19 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="w-full py-24 md:py-32 bg-card border-y">
+      <section id="services" className="w-full py-24 md:py-32 bg-card border-y border-border/50">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-headline font-semibold tracking-tight text-primary">Core Safety Solutions</h2>
+            <h2 className="text-3xl font-headline font-bold tracking-tight text-primary">Core Safety Solutions</h2>
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground font-body text-lg">
               Specialized services designed to integrate seamlessly with your operations, delivering unparalleled safety and compliance.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service) => (
-              <Card key={service.title} className="bg-secondary border-border hover:border-accent/80 shadow-lg transition-all duration-300 transform hover:-translate-y-2 flex flex-col">
+              <Card key={service.title} className="bg-secondary border-border/50 hover:border-accent shadow-lg transition-all duration-300 transform hover:-translate-y-2 flex flex-col group">
                 <CardHeader>
-                  <div className="bg-background rounded-lg w-14 h-14 flex items-center justify-center mb-4 border border-border">
+                  <div className="bg-background rounded-lg w-14 h-14 flex items-center justify-center mb-4 border border-border/50 group-hover:border-accent transition-colors">
                     {service.icon}
                   </div>
                   <CardTitle className="text-2xl font-headline font-semibold text-primary">{service.title}</CardTitle>
@@ -107,7 +107,7 @@ export default function Home() {
               alt="Team of safety professionals in a meeting"
               layout="fill"
               objectFit="cover"
-              className="opacity-70"
+              className="opacity-70 group-hover:opacity-100 transition-opacity duration-300"
               data-ai-hint="industrial safety meeting"
             />
              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent"></div>
@@ -121,7 +121,7 @@ export default function Home() {
               With over a decade of experience, we deliver safety solutions that protect your people, assets, and reputation. Our team of certified professionals is dedicated to creating safer work environments across all industries through technology and expertise.
             </p>
             <div className="flex justify-center lg:justify-start pt-4">
-              <Button asChild size="lg">
+              <Button asChild size="lg" variant="cta">
                 <Link href="/about">About Our Company</Link>
               </Button>
             </div>

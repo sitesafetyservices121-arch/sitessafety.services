@@ -6,7 +6,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: 'Safety Management System',
+  title: 'All-in-One Safety Management System',
+  description: 'A powerful, intuitive platform to streamline protocols, ensure compliance, and build a proactive safety culture.',
 };
 
 const systemFeatures = [
@@ -20,9 +21,9 @@ const systemFeatures = [
 
 export default function SafetyManagementSystemPage() {
   return (
-    <div className="bg-background text-foreground">
+    <div className="bg-transparent text-foreground">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-card border-b border-border">
+      <section className="py-20 md:py-32 bg-card/50 border-b border-border/50">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-semibold font-headline tracking-tight text-primary">
             Your All-in-One Safety Platform
@@ -38,15 +39,15 @@ export default function SafetyManagementSystemPage() {
         <div className="container max-w-6xl mx-auto px-4">
           <div className="grid lg:grid-cols-5 gap-12 md:gap-16 items-center">
             {/* Image */}
-            <div className="lg:col-span-3 relative h-[500px] w-full rounded-lg overflow-hidden border border-border shadow-2xl shadow-primary/5">
+            <div className="lg:col-span-3 relative h-[500px] w-full rounded-lg overflow-hidden border border-border/50 shadow-2xl shadow-primary/5">
                 <Image src="https://placehold.co/800x600.png" alt="SMS Dashboard on a laptop" layout="fill" objectFit="cover" data-ai-hint="saas dashboard laptop" className="opacity-70" />
             </div>
 
             {/* Pricing Card */}
             <div className="lg:col-span-2 space-y-8">
-                <Card className="border-border bg-card shadow-2xl shadow-primary/5">
+                <Card className="border-border/80 bg-card shadow-2xl shadow-primary/5">
                   <CardHeader className="items-center text-center">
-                      <div className="p-4 bg-secondary rounded-lg border border-border">
+                      <div className="p-4 bg-secondary rounded-lg border border-border/80">
                         <TrendingUp className="h-10 w-10 text-accent"/>
                       </div>
                       <CardTitle className="text-primary font-headline text-3xl pt-2">Simple, Powerful Pricing</CardTitle>
@@ -58,7 +59,7 @@ export default function SafetyManagementSystemPage() {
                     <p className="text-muted-foreground font-body pt-4">Includes up to 12 users. Need more? Add users for just <span className="font-bold text-primary">R350/month</span> each.</p>
                   </CardContent>
                   <CardFooter>
-                    <Button asChild className="w-full" size="lg">
+                    <Button asChild className="w-full" size="lg" variant="cta">
                         <Link href="#">
                             Get Started Now <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
@@ -71,7 +72,7 @@ export default function SafetyManagementSystemPage() {
       </section>
       
       {/* Features Section */}
-      <section className="py-24 bg-card border-y border-border">
+      <section className="py-24 bg-card/50 border-y border-border/50">
         <div className="container max-w-6xl mx-auto px-4">
             <div className="text-center">
                 <h2 className="text-3xl md:text-4xl font-semibold text-primary font-headline">Core Platform Features</h2>

@@ -4,7 +4,7 @@ import { Logo } from "./logo";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-secondary mt-auto">
+    <footer className="border-t border-border/50 bg-secondary mt-auto z-10">
       <div className="container mx-auto max-w-7xl px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             <div className="flex flex-col md:col-span-5">
@@ -49,7 +49,7 @@ export function Footer() {
                 <Link href="#" className="text-base text-muted-foreground hover:text-accent font-body">Privacy Policy</Link>
             </div>
         </div>
-        <div className="mt-12 border-t border-border pt-8">
+        <div className="mt-12 border-t border-border/80 pt-8">
             <p className="text-center text-sm text-muted-foreground font-body">
                 © {new Date().getFullYear()} RAK-Site Safety Services (Pty) Ltd. All rights reserved.
             </p>

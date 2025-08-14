@@ -139,7 +139,7 @@ export function InquiryForm() {
                   className="grid grid-cols-2 gap-4"
                 >
                   <FormItem className="flex items-center space-x-3 space-y-0">
-                     <Label className="flex items-center gap-4 cursor-pointer rounded-lg border p-4 has-[:checked]:bg-accent/10 has-[:checked]:border-accent w-full">
+                     <Label className="flex items-center gap-4 cursor-pointer rounded-lg border border-border/80 p-4 has-[:checked]:bg-accent/10 has-[:checked]:border-accent w-full transition-colors">
                         <FormControl>
                         <RadioGroupItem value="smb" />
                         </FormControl>
@@ -149,7 +149,7 @@ export function InquiryForm() {
                      </Label>
                   </FormItem>
                   <FormItem className="flex items-center space-x-3 space-y-0">
-                     <Label className="flex items-center gap-4 cursor-pointer rounded-lg border p-4 has-[:checked]:bg-accent/10 has-[:checked]:border-accent w-full">
+                     <Label className="flex items-center gap-4 cursor-pointer rounded-lg border border-border/80 p-4 has-[:checked]:bg-accent/10 has-[:checked]:border-accent w-full transition-colors">
                         <FormControl>
                         <RadioGroupItem value="large" />
                         </FormControl>
@@ -182,7 +182,7 @@ export function InquiryForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full" size="lg" disabled={isPending}>
+        <Button type="submit" className="w-full" size="lg" disabled={isPending} variant="cta">
             {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             {isPending ? "Submitting..." : "Submit Inquiry"}
         </Button>
