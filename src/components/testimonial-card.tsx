@@ -13,7 +13,7 @@ type TestimonialCardProps = {
   accentColor?: 'primary' | 'accent';
 };
 
-export function TestimonialCard({ name, title, company, testimonial, rating, accentColor = 'accent' }: TestimonialCardProps) {
+export function TestimonialCard({ name, title, company, image, testimonial, rating, accentColor = 'accent' }: TestimonialCardProps) {
   return (
     <Card className={cn(
       "h-full flex flex-col bg-card border-t-4",
@@ -22,7 +22,7 @@ export function TestimonialCard({ name, title, company, testimonial, rating, acc
       <CardHeader>
         <div className="flex items-center gap-4">
           <Avatar>
-            <AvatarImage src={`https://placehold.co/40x40.png`} alt={name} data-ai-hint="person" />
+            <AvatarImage src={image} alt={name} data-ai-hint="person" />
             <AvatarFallback>{name.charAt(0)}</AvatarFallback>
           </Avatar>
           <div>
@@ -34,7 +34,7 @@ export function TestimonialCard({ name, title, company, testimonial, rating, acc
       <CardContent className="flex flex-col flex-grow">
         <div className="flex mb-4">
           {Array.from({ length: 5 }).map((_, i) => (
-            <Star key={i} className={`h-5 w-5 ${i < rating ? 'text-orange-400 fill-orange-400' : 'text-gray-300'}`} />
+            <Star key={i} className={cn("h-5 w-5", i < rating ? 'text-orange-400 fill-orange-400' : 'text-gray-300')} />
           ))}
         </div>
         <p className="text-muted-foreground italic flex-grow">"{testimonial}"</p>

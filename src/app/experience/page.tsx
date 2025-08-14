@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 };
 
 const testimonials = [
-  { name: "Sarah Williams", title: "Project Manager", company: "ConstructCo", testimonial: "RAK's safety officers were professional, knowledgeable, and integrated seamlessly with our team. Highly recommended!", rating: 5 },
-  { name: "David Chen", title: "CEO", company: "BuildRight Inc.", testimonial: "The E-Safety File service saved us countless hours and ensured we were fully compliant. The process was smooth and efficient.", rating: 5 },
-  { name: "Emily Rodriguez", title: "Operations Director", company: "InfraGroup", testimonial: "Implementing their Safety Management System has transformed our safety culture for the better. We've seen a measurable reduction in incidents.", rating: 4 },
+  { name: "Sarah Williams", title: "Project Manager", company: "ConstructCo", testimonial: "RAK's safety officers were professional, knowledgeable, and integrated seamlessly with our team. Highly recommended!", rating: 5, image: "https://placehold.co/100x100.png" },
+  { name: "David Chen", title: "CEO", company: "BuildRight Inc.", testimonial: "The E-Safety File service saved us countless hours and ensured we were fully compliant. The process was smooth and efficient.", rating: 5, image: "https://placehold.co/100x100.png" },
+  { name: "Emily Rodriguez", title: "Operations Director", company: "InfraGroup", testimonial: "Implementing their Safety Management System has transformed our safety culture for the better. We've seen a measurable reduction in incidents.", rating: 4, image: "https://placehold.co/100x100.png" },
 ];
 
 const portfolio = [

@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 };
 
 const teamMembers = [
-  { name: "John Doe", role: "Founder & Lead Safety Consultant", avatar: "/avatars/01.png", initials: "JD" },
-  { name: "Jane Smith", role: "Operations Manager", avatar: "/avatars/02.png", initials: "JS" },
-  { name: "Mike Johnson", role: "Senior Safety Officer", avatar: "/avatars/03.png", initials: "MJ" },
+  { name: "John Doe", role: "Founder & Lead Safety Consultant", avatar: "https://placehold.co/100x100.png", initials: "JD" },
+  { name: "Jane Smith", role: "Operations Manager", avatar: "https://placehold.co/100x100.png", initials: "JS" },
+  { name: "Mike Johnson", role: "Senior Safety Officer", avatar: "https://placehold.co/100x100.png", initials: "MJ" },
 ];
 
 export default function AboutPage() {
@@ -66,7 +66,7 @@ export default function AboutPage() {
             <Card key={member.name} className="text-center hover:shadow-lg transition-shadow border-b-4 border-accent">
               <CardContent className="pt-6">
                 <Avatar className="w-24 h-24 mx-auto mb-4 border-4 border-primary/20">
-                  <AvatarImage data-ai-hint="person professional" src={`https://placehold.co/100x100.png`} />
+                  <AvatarImage data-ai-hint="person professional" src={member.avatar} />
                   <AvatarFallback>{member.initials}</AvatarFallback>
                 </Avatar>
                 <h3 className="text-lg font-semibold text-primary">{member.name}</h3>

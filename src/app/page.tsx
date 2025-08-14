@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { ArrowRight, UserCheck, FileText, Settings } from "lucide-react";
+import Image from "next/image";
 
 const services = [
   {
@@ -72,7 +73,7 @@ export default function Home() {
                 </CardHeader>
                 <CardContent className="flex-grow flex flex-col items-center text-center">
                   <CardDescription className="mb-6 flex-grow">{service.description}</CardDescription>
-                  <Button asChild variant="secondary" className={`${service.color === 'accent' ? 'bg-accent/10 hover:bg-accent/20' : 'bg-primary/10 hover:bg-primary/20'}`}>
+                  <Button asChild variant="secondary" className={`${service.color === 'accent' ? 'bg-accent/10 hover:bg-accent/20 text-accent-foreground' : 'bg-primary/10 hover:bg-primary/20 text-primary-foreground'}`}>
                     <Link href={service.link}>Learn More <ArrowRight className="ml-2 h-4 w-4" /></Link>
                   </Button>
                 </CardContent>
@@ -83,20 +84,30 @@ export default function Home() {
       </section>
       
       <section className="w-full py-16 md:py-24">
-        <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10">
-          <div className="space-y-3">
+        <div className="container grid items-center justify-center gap-8 px-4 text-center md:px-6 lg:grid-cols-2 lg:text-left lg:gap-16">
+          <div className="space-y-4">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">Why Choose Us?</h2>
-            <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed">
-              With years of experience and a commitment to excellence, we deliver safety solutions that protect your people, your assets, and your reputation.
+            <p className="text-muted-foreground md:text-xl/relaxed">
+              With years of experience and a commitment to excellence, we deliver safety solutions that protect your people, your assets, and your reputation. Our team of certified professionals is dedicated to creating safer work environments across all industries.
             </p>
+            <div className="flex justify-center lg:justify-start space-x-4">
+              <Button asChild>
+                <Link href="/about">About Our Company</Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/experience">View Our Work</Link>
+              </Button>
+            </div>
           </div>
-          <div className="flex justify-center space-x-4">
-            <Button asChild>
-              <Link href="/about">About Our Company</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/experience">View Our Work</Link>
-            </Button>
+          <div className="relative h-64 lg:h-80 w-full rounded-lg overflow-hidden shadow-lg">
+            <Image 
+              src="https://placehold.co/600x400.png"
+              alt="Team of safety professionals"
+              layout="fill"
+              objectFit="cover"
+              data-ai-hint="safety team"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
           </div>
         </div>
       </section>
