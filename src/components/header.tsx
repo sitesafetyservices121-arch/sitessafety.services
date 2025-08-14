@@ -39,7 +39,7 @@ export function Header() {
       className={cn(
         "font-body font-medium transition-colors text-base",
         "hover:text-primary",
-        pathname === href ? "text-primary" : "text-foreground/80",
+        pathname === href ? "text-primary font-semibold" : "text-foreground/80",
         isMobile && "py-2 text-lg w-full",
         isMobile && pathname === href && "text-accent font-semibold"
       )}
@@ -57,7 +57,7 @@ export function Header() {
           className={cn(
             "flex items-center gap-1 font-body font-medium transition-colors",
             isMobile ? "w-full justify-between py-2 text-lg" : "text-base",
-            isServicePage ? "text-primary" : "text-foreground/80 hover:text-primary"
+            isServicePage ? "text-primary font-semibold" : "text-foreground/80 hover:text-primary"
           )}
         >
           Services
@@ -75,7 +75,7 @@ export function Header() {
   )};
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-lg">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm">
       <div className="container flex h-20 max-w-7xl items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 mr-6">
           <Logo className="h-7 w-7 text-primary" />

@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="py-24 md:py-40 bg-white">
+      <section className="py-24 md:py-40 bg-card">
         <div className="container px-4 md:px-6">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
             <div className="space-y-6">
@@ -52,7 +52,7 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <div className="relative h-96 w-full lg:h-[500px] rounded-lg overflow-hidden shadow-xl border">
+            <div className="relative h-96 w-full lg:h-[500px] rounded-md overflow-hidden shadow-sm border">
               <Image 
                 src="https://placehold.co/800x600.png"
                 alt="Engineer reviewing blueprints on a construction site"
@@ -77,9 +77,9 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service) => (
-              <Card key={service.title} className="bg-card border shadow-sm transition-all duration-300 transform hover:-translate-y-2 flex flex-col group hover:shadow-lg hover:border-primary">
+              <Card key={service.title} className="bg-card border shadow-sm transition-all duration-300 transform hover:-translate-y-2 flex flex-col group hover:shadow-md hover:border-primary">
                 <CardHeader>
-                  <div className="bg-primary/10 rounded-lg w-16 h-16 flex items-center justify-center mb-4 border-2 border-primary/20 group-hover:border-primary/40 transition-colors">
+                  <div className="bg-primary/10 rounded-md w-16 h-16 flex items-center justify-center mb-4 border border-primary/20 group-hover:border-primary/40 transition-colors">
                     {service.icon}
                   </div>
                   <CardTitle className="text-2xl font-headline font-semibold text-primary-dark">{service.title}</CardTitle>
@@ -97,9 +97,9 @@ export default function Home() {
       </section>
       
       {/* Why Choose Us Section */}
-      <section className="w-full py-24 md:py-32 bg-white">
+      <section className="w-full py-24 md:py-32 bg-card">
         <div className="container grid items-center justify-center gap-12 px-4 text-center md:px-6 lg:grid-cols-2 lg:text-left lg:gap-20">
-          <div className="relative h-96 lg:h-[500px] w-full rounded-lg overflow-hidden shadow-xl border">
+          <div className="relative h-96 lg:h-[500px] w-full rounded-md overflow-hidden shadow-sm border">
             <Image 
               src="https://placehold.co/800x600.png"
               alt="Team of safety professionals in a meeting"

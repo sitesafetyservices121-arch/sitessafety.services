@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-body' });
-const lexend = Lexend({ subsets: ['latin'], weight: ['300', '400', '600', '700'], variable: '--font-headline' });
+const lexend = Lexend({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-headline' });
 
 export default function RootLayout({
   children,

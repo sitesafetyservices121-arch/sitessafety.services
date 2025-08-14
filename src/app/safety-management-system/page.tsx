@@ -23,7 +23,7 @@ export default function SafetyManagementSystemPage() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-white border-b">
+      <section className="py-20 md:py-32 bg-card border-b">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-semibold font-headline tracking-tight text-primary-dark">
             Your All-in-One Safety Platform
@@ -39,13 +39,13 @@ export default function SafetyManagementSystemPage() {
         <div className="container max-w-6xl mx-auto px-4">
           <div className="grid lg:grid-cols-5 gap-12 md:gap-16 items-center">
             {/* Image */}
-            <div className="lg:col-span-3 relative h-[500px] w-full rounded-lg overflow-hidden border shadow-lg">
+            <div className="lg:col-span-3 relative h-[500px] w-full rounded-md overflow-hidden border shadow-sm">
                 <Image src="https://placehold.co/800x600.png" alt="SMS Dashboard on a laptop" layout="fill" objectFit="cover" data-ai-hint="saas dashboard laptop" />
             </div>
 
             {/* Pricing Card */}
             <div className="lg:col-span-2 space-y-8">
-                <Card className="border bg-card shadow-lg">
+                <Card className="border bg-card shadow-md">
                   <CardHeader className="items-center text-center">
                       <div className="p-4 bg-primary/10 rounded-full">
                         <TrendingUp className="h-10 w-10 text-primary"/>
@@ -72,7 +72,7 @@ export default function SafetyManagementSystemPage() {
       </section>
       
       {/* Features Section */}
-      <section className="py-24 bg-white border-y">
+      <section className="py-24 bg-card border-y">
         <div className="container max-w-6xl mx-auto px-4">
             <div className="text-center">
                 <h2 className="text-3xl md:text-4xl font-semibold text-primary-dark font-headline">Core Platform Features</h2>
@@ -80,7 +80,7 @@ export default function SafetyManagementSystemPage() {
             </div>
             <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {systemFeatures.map((feature) => (
-                    <div key={feature.title} className="flex items-start gap-4 p-4 rounded-lg transition-colors hover:bg-secondary">
+                    <div key={feature.title} className="flex items-start gap-4 p-4 rounded-md transition-colors hover:bg-secondary">
                         <div className="flex-shrink-0 mt-1">
                           <Zap className="h-6 w-6 text-accent"/>
                         </div>
@@ -97,7 +97,7 @@ export default function SafetyManagementSystemPage() {
       {/* CTA Section */}
       <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4">
-            <Card className="bg-primary text-primary-foreground border-none text-center p-10 md:p-16 rounded-lg">
+            <Card className="bg-primary text-primary-foreground border-none text-center p-10 md:p-16 rounded-md">
                 <CardHeader>
                     <div className="mx-auto w-fit p-4 bg-white/20 rounded-full shadow-sm mb-6">
                     <DownloadCloud className="h-10 w-10 text-white" />
@@ -106,7 +106,7 @@ export default function SafetyManagementSystemPage() {
                     <CardDescription className="max-w-xl mx-auto font-body text-primary-foreground/80 text-lg">Schedule a free, no-obligation demo to see our platform in action and learn how it can be tailored to your business.</CardDescription>
                 </CardHeader>
                 <CardFooter className="justify-center">
-                    <Button asChild variant="default" size="lg" className="bg-white text-primary hover:bg-white/90">
+                    <Button asChild variant="default" size="lg" className="bg-card text-primary hover:bg-card/90">
                         <Link href="/e-safety-file">Book a Free Demo</Link>
                     </Button>
                 </CardFooter>

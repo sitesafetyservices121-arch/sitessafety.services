@@ -27,7 +27,7 @@ export default function ESafetyFilePage() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-white">
+      <section className="py-20 md:py-32 bg-card">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-semibold font-headline tracking-tight text-primary-dark">
             Digitize Your Compliance
@@ -45,10 +45,10 @@ export default function ESafetyFilePage() {
             
             {/* Pricing Tiers */}
             <div className="lg:col-span-3 space-y-8">
-              <Card className="flex flex-col border bg-card shadow-sm transform hover:-translate-y-2 transition-transform duration-300 hover:shadow-lg hover:border-primary">
+              <Card className="flex flex-col border bg-card shadow-sm">
                 <CardHeader>
                   <div className="flex items-center gap-4">
-                    <div className="p-3 bg-primary/10 rounded-lg">
+                    <div className="p-3 bg-primary/10 rounded-md">
                       <Briefcase className="h-7 w-7 text-primary"/>
                     </div>
                     <div>
@@ -65,14 +65,14 @@ export default function ESafetyFilePage() {
                 </CardContent>
               </Card>
 
-              <Card className="flex flex-col border-2 border-accent shadow-lg shadow-accent/20 relative overflow-hidden bg-card">
+              <Card className="flex flex-col border-2 border-accent shadow-md shadow-accent/20 relative overflow-hidden bg-card">
                   <div className="absolute top-4 right-4 bg-accent text-accent-foreground px-4 py-1 text-sm font-bold font-body rounded-full flex items-center gap-2">
                       <Star className="h-4 w-4" />
                       Most Popular
                   </div>
                 <CardHeader>
                   <div className="flex items-center gap-4">
-                    <div className="p-3 bg-primary/10 rounded-lg">
+                    <div className="p-3 bg-primary/10 rounded-md">
                       <Building className="h-7 w-7 text-primary"/>
                     </div>
                     <div>

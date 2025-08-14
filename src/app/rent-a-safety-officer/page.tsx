@@ -35,7 +35,7 @@ export default function RentASafetyOfficerPage() {
   return (
     <div className="bg-background text-foreground">
        {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-white border-b">
+      <section className="py-20 md:py-32 bg-card border-b">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-semibold font-headline tracking-tight text-primary-dark">
             On-Demand Safety Expertise
@@ -59,7 +59,7 @@ export default function RentASafetyOfficerPage() {
               <div className="space-y-8">
                   {serviceFeatures.map((feature) => (
                       <div key={feature.title} className="flex items-start gap-4">
-                          <div className="flex-shrink-0 bg-white text-accent rounded-lg p-3 shadow border">
+                          <div className="flex-shrink-0 bg-card text-accent rounded-md p-3 shadow-sm border">
                             {feature.icon}
                           </div>
                           <div>

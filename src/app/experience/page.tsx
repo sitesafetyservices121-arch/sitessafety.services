@@ -28,7 +28,7 @@ export default function ExperiencePage() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-white">
+      <section className="py-20 md:py-32 bg-card">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-semibold font-headline tracking-tight text-primary-dark">
             Proven Expertise, Trusted Results
@@ -45,7 +45,7 @@ export default function ExperiencePage() {
           <h2 className="text-3xl md:text-4xl font-semibold text-center text-primary-dark font-headline mb-16">Project Portfolio</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {portfolio.map((item) => (
-                  <Card key={item.title} className="overflow-hidden group border shadow-sm rounded-lg transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-card">
+                  <Card key={item.title} className="overflow-hidden group border shadow-sm rounded-md bg-card">
                       <CardContent className="p-0">
                           <div className="relative h-80 w-full">
                               <Image src={item.image} alt={item.title} layout="fill" objectFit="cover" className="transition-transform duration-500 group-hover:scale-105" data-ai-hint={item.hint}/>
@@ -62,7 +62,7 @@ export default function ExperiencePage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-card">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-semibold text-center text-primary-dark font-headline mb-16">What Our Clients Say</h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -76,10 +76,10 @@ export default function ExperiencePage() {
       {/* CTA Section */}
       <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4">
-            <div className="bg-primary rounded-lg p-10 md:p-16 text-center shadow-lg">
+            <div className="bg-primary rounded-md p-10 md:p-16 text-center shadow-md">
                 <h2 className="text-3xl md:text-4xl font-semibold font-headline text-primary-foreground">Ready to Elevate Your Site's Safety?</h2>
                 <p className="mt-4 max-w-2xl mx-auto text-primary-foreground/90 font-body text-lg">Let's collaborate to build a safer, more compliant, and more productive work environment. Contact us today for a complimentary consultation.</p>
-                <Button asChild size="lg" className="mt-8 bg-white text-primary hover:bg-white/90">
+                <Button asChild size="lg" className="mt-8 bg-card text-primary-dark hover:bg-card/90">
                   <Link href="/e-safety-file">
                       Request a Free Quote <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>

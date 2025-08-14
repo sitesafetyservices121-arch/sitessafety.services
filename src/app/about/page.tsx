@@ -25,7 +25,7 @@ export default function AboutPage() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-white">
+      <section className="py-20 md:py-32 bg-card">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold font-headline tracking-tight text-primary-dark">
             Pioneering Safety, Building Trust
@@ -40,7 +40,7 @@ export default function AboutPage() {
       <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
-            <div className="relative h-[450px] w-full rounded-lg overflow-hidden shadow-lg border">
+            <div className="relative h-[450px] w-full rounded-md overflow-hidden shadow-sm border">
                 <Image src="https://placehold.co/800x600.png" alt="Company history collage" layout="fill" objectFit="cover" data-ai-hint="modern office architecture" />
             </div>
             <div className="space-y-4">
@@ -53,7 +53,7 @@ export default function AboutPage() {
       </section>
       
       {/* Mission & Vision Section */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-card">
         <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
             <div className="space-y-4 lg:order-last">
@@ -61,7 +61,7 @@ export default function AboutPage() {
                 <p className="text-muted-foreground font-body text-lg">Our mission is to protect people, property, and the environment by delivering the highest quality safety services. We strive to empower our clients with the knowledge and tools to create a zero-incident workplace.</p>
                 <p className="text-muted-foreground font-body">Our vision is to be the most trusted name in workplace safety, setting new standards for excellence and innovation in the industry, ultimately creating a future where every worker returns home safe, every day.</p>
             </div>
-            <div className="relative h-[450px] w-full rounded-lg overflow-hidden shadow-lg border">
+            <div className="relative h-[450px] w-full rounded-md overflow-hidden shadow-sm border">
                 <Image src="https://placehold.co/800x600.png" alt="Team discussing a project" layout="fill" objectFit="cover" data-ai-hint="diverse team meeting" />
             </div>
             </div>
@@ -75,9 +75,9 @@ export default function AboutPage() {
             <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto font-body">The principles that guide our every action.</p>
             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
                 {values.map(v => (
-                    <Card key={v.title} className="text-center bg-card border transform hover:-translate-y-2 transition-transform duration-300 hover:border-primary shadow-sm hover:shadow-lg">
+                    <Card key={v.title} className="text-center bg-card border-t-4 border-t-primary pt-6 shadow-sm">
                         <CardHeader className="items-center">
-                            <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-4 border-2 border-primary/20">
+                            <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-4 border border-primary/20">
                             {v.icon}
                             </div>
                             <CardTitle className="mt-4 font-headline text-2xl text-primary-dark">{v.title}</CardTitle>
@@ -92,12 +92,12 @@ export default function AboutPage() {
       </section>
 
       {/* Leadership Section */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-card">
         <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-semibold text-center text-primary-dark font-headline mb-16">Meet Our Leadership</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member) => (
-                <Card key={member.name} className="text-center bg-card border pt-8 pb-4 transition-all duration-300 hover:shadow-xl hover:border-primary/50 hover:-translate-y-2 transform">
+                <Card key={member.name} className="text-center bg-card border pt-8 pb-4 shadow-sm">
                 <CardContent>
                     <Avatar className="w-32 h-32 mx-auto mb-6 border-4 border-primary/20">
                     <AvatarImage data-ai-hint={member.hint} src={member.avatar} />
