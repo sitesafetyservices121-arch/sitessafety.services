@@ -25,7 +25,7 @@ export default function RentASafetyOfficerPage() {
           <p className="text-lg text-muted-foreground">
             Ensure your project meets all safety regulations with our flexible and reliable safety officer rental service. Get qualified professionals on-site when you need them, without the overhead of a full-time hire.
           </p>
-          <Card className="bg-white dark:bg-card">
+          <Card className="bg-card border-l-4 border-accent">
               <CardHeader>
                   <CardTitle className="text-primary">Service Highlights</CardTitle>
               </CardHeader>
@@ -33,7 +33,7 @@ export default function RentASafetyOfficerPage() {
                   <ul className="space-y-3">
                       {serviceFeatures.map((feature, index) => (
                           <li key={index} className="flex items-start">
-                              <CheckCircle className="h-5 w-5 text-accent mr-3 mt-1 flex-shrink-0" />
+                              <CheckCircle className="h-5 w-5 text-primary mr-3 mt-1 flex-shrink-0" />
                               <span className="text-muted-foreground">{feature}</span>
                           </li>
                       ))}
@@ -42,7 +42,7 @@ export default function RentASafetyOfficerPage() {
           </Card>
         </div>
 
-        <Card className="shadow-lg">
+        <Card className="shadow-lg border-t-4 border-primary">
           <CardHeader>
             <CardTitle className="text-center text-2xl text-primary">Book Your Safety Officer</CardTitle>
           </CardHeader>

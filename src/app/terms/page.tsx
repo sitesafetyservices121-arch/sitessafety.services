@@ -12,7 +12,7 @@ export default function TermsPage() {
         <p className="mt-4 text-lg text-muted-foreground">Last updated: {new Date().toLocaleDateString()}</p>
       </div>
 
-      <div className="prose dark:prose-invert max-w-none text-foreground">
+      <div className="prose dark:prose-invert max-w-none text-foreground prose-h2:text-primary prose-h2:border-b-2 prose-h2:border-accent prose-h2:pb-2">
         <p>Please read these terms and conditions carefully before using Our Service.</p>
 
         <h2>1. Interpretation and Definitions</h2>

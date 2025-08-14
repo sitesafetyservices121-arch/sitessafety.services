@@ -33,7 +33,7 @@ export default function ESafetyFilePage() {
             Go digital with our comprehensive E Safety File solutions. We create, manage, and maintain legally compliant safety files, so you can focus on your business. Say goodbye to paperwork and ensure you're always audit-ready.
           </p>
           <div className="grid md:grid-cols-2 gap-8">
-            <Card className="flex flex-col">
+            <Card className="flex flex-col border-t-4 border-primary/50">
               <CardHeader>
                 <div className="flex items-center gap-3">
                   <Briefcase className="h-8 w-8 text-accent"/>
@@ -44,11 +44,11 @@ export default function ESafetyFilePage() {
               </CardHeader>
               <CardContent className="flex-grow">
                 <ul className="space-y-2">
-                    {smbFeatures.map(f => <li key={f} className="flex items-start"><CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" /> <span className="text-muted-foreground">{f}</span></li>)}
+                    {smbFeatures.map(f => <li key={f} className="flex items-start"><CheckCircle className="h-5 w-5 text-accent mr-2 mt-0.5 flex-shrink-0" /> <span className="text-muted-foreground">{f}</span></li>)}
                 </ul>
               </CardContent>
             </Card>
-            <Card className="flex flex-col border-2 border-primary shadow-lg">
+            <Card className="flex flex-col border-2 border-accent shadow-lg scale-105">
               <CardHeader>
                 <div className="flex items-center gap-3">
                   <Building className="h-8 w-8 text-accent"/>
@@ -59,7 +59,7 @@ export default function ESafetyFilePage() {
               </CardHeader>
               <CardContent className="flex-grow">
                 <ul className="space-y-2">
-                    {largeFeatures.map(f => <li key={f} className="flex items-start"><CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" /> <span className="text-muted-foreground">{f}</span></li>)}
+                    {largeFeatures.map(f => <li key={f} className="flex items-start"><CheckCircle className="h-5 w-5 text-accent mr-2 mt-0.5 flex-shrink-0" /> <span className="text-muted-foreground">{f}</span></li>)}
                 </ul>
               </CardContent>
             </Card>
@@ -67,7 +67,7 @@ export default function ESafetyFilePage() {
         </div>
 
         <div className="lg:col-span-2">
-            <Card className="shadow-lg sticky top-24">
+            <Card className="shadow-lg sticky top-24 border-t-4 border-primary">
             <CardHeader>
                 <CardTitle className="text-center text-2xl text-primary">Request a Quote or Consultation</CardTitle>
                 <CardDescription className="text-center">Fill out the form below and we'll contact you.</CardDescription>

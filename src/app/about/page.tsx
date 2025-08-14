@@ -24,10 +24,10 @@ export default function AboutPage() {
       </div>
 
       <div className="grid md:grid-cols-3 gap-8 mb-16 text-center">
-        <Card>
+        <Card className="border-t-4 border-primary">
           <CardHeader>
-            <div className="mx-auto bg-accent/10 p-3 rounded-full w-fit">
-              <Building className="h-8 w-8 text-accent" />
+            <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
+              <Building className="h-8 w-8 text-primary" />
             </div>
             <CardTitle className="mt-4 text-primary">Our History</CardTitle>
           </CardHeader>
@@ -35,9 +35,9 @@ export default function AboutPage() {
             <p className="text-muted-foreground">Founded in 2010, RAK-Site Safety has grown from a small consultancy to a leading provider of occupational health and safety services across the region.</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="border-t-4 border-accent">
           <CardHeader>
-            <div className="mx-auto bg-accent/10 p-3 rounded-full w-fit">
+            <div className="mx-auto bg-accent/10 p-4 rounded-full w-fit">
               <Target className="h-8 w-8 text-accent" />
             </div>
             <CardTitle className="mt-4 text-primary">Our Mission</CardTitle>
@@ -46,10 +46,10 @@ export default function AboutPage() {
             <p className="text-muted-foreground">To protect people, property, and the environment by delivering the highest quality safety services, training, and systems to our clients.</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="border-t-4 border-primary">
           <CardHeader>
-            <div className="mx-auto bg-accent/10 p-3 rounded-full w-fit">
-              <Users className="h-8 w-8 text-accent" />
+            <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
+              <Users className="h-8 w-8 text-primary" />
             </div>
             <CardTitle className="mt-4 text-primary">Our Vision</CardTitle>
           </CardHeader>
@@ -63,14 +63,14 @@ export default function AboutPage() {
         <h2 className="text-3xl font-bold text-center text-primary mb-10">Meet Our Team</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member) => (
-            <Card key={member.name} className="text-center hover:shadow-lg transition-shadow">
+            <Card key={member.name} className="text-center hover:shadow-lg transition-shadow border-b-4 border-accent">
               <CardContent className="pt-6">
-                <Avatar className="w-24 h-24 mx-auto mb-4">
+                <Avatar className="w-24 h-24 mx-auto mb-4 border-4 border-primary/20">
                   <AvatarImage data-ai-hint="person professional" src={`https://placehold.co/100x100.png`} />
                   <AvatarFallback>{member.initials}</AvatarFallback>
                 </Avatar>
                 <h3 className="text-lg font-semibold text-primary">{member.name}</h3>
-                <p className="text-accent">{member.role}</p>
+                <p className="text-accent font-medium">{member.role}</p>
               </CardContent>
             </Card>
           ))}

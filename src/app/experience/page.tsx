@@ -33,8 +33,8 @@ export default function ExperiencePage() {
       <section className="mb-20">
         <h2 className="text-3xl font-bold text-center text-primary mb-10">Client Testimonials</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((t) => (
-            <TestimonialCard key={t.name} {...t} />
+          {testimonials.map((t, i) => (
+            <TestimonialCard key={t.name} {...t} accentColor={i === 1 ? 'primary' : 'accent'} />
           ))}
         </div>
       </section>
@@ -43,13 +43,13 @@ export default function ExperiencePage() {
         <h2 className="text-3xl font-bold text-center text-primary mb-10">Project Portfolio</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
             {portfolio.map((item) => (
-                <Card key={item.title} className="overflow-hidden group">
+                <Card key={item.title} className="overflow-hidden group border-2 border-transparent hover:border-primary transition-colors">
                     <CardContent className="p-0">
                         <div className="relative h-64 w-full">
                             <Image src={item.image} alt={item.title} layout="fill" objectFit="cover" className="transition-transform duration-300 group-hover:scale-105" data-ai-hint={item.hint}/>
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                             <div className="absolute bottom-0 left-0 p-4">
-                                <h3 className="text-xl font-semibold text-white">{item.title}</h3>
+                                <h3 className="text-xl font-semibold text-white group-hover:text-accent transition-colors">{item.title}</h3>
                             </div>
                         </div>
                     </CardContent>

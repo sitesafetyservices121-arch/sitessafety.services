@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Star } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 type TestimonialCardProps = {
   name: string;
@@ -9,11 +10,15 @@ type TestimonialCardProps = {
   image?: string;
   testimonial: string;
   rating: number;
+  accentColor?: 'primary' | 'accent';
 };
 
-export function TestimonialCard({ name, title, company, testimonial, rating }: TestimonialCardProps) {
+export function TestimonialCard({ name, title, company, testimonial, rating, accentColor = 'accent' }: TestimonialCardProps) {
   return (
-    <Card className="h-full flex flex-col bg-white dark:bg-card">
+    <Card className={cn(
+      "h-full flex flex-col bg-card border-t-4",
+      accentColor === 'primary' ? 'border-primary' : 'border-accent'
+    )}>
       <CardHeader>
         <div className="flex items-center gap-4">
           <Avatar>
@@ -29,7 +34,7 @@ export function TestimonialCard({ name, title, company, testimonial, rating }: T
       <CardContent className="flex flex-col flex-grow">
         <div className="flex mb-4">
           {Array.from({ length: 5 }).map((_, i) => (
-            <Star key={i} className={`h-5 w-5 ${i < rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`} />
+            <Star key={i} className={`h-5 w-5 ${i < rating ? 'text-orange-400 fill-orange-400' : 'text-gray-300'}`} />
           ))}
         </div>
         <p className="text-muted-foreground italic flex-grow">"{testimonial}"</p>

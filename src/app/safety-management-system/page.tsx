@@ -29,7 +29,7 @@ export default function SafetyManagementSystemPage() {
       </div>
 
       <div className="grid lg:grid-cols-2 gap-12 items-center">
-        <Card className="shadow-lg h-full">
+        <Card className="shadow-lg h-full border-l-4 border-primary">
             <CardHeader>
                 <CardTitle className="text-primary">System Features</CardTitle>
                 <CardDescription>Everything you need for comprehensive safety management.</CardDescription>
@@ -47,7 +47,7 @@ export default function SafetyManagementSystemPage() {
         </Card>
         
         <div className="space-y-8">
-            <Card className="bg-white dark:bg-card">
+            <Card className="border-t-4 border-accent">
               <CardHeader>
                 <div className="flex items-center gap-3">
                   <Users className="h-8 w-8 text-accent"/>
@@ -63,9 +63,9 @@ export default function SafetyManagementSystemPage() {
             </Card>
 
             <div className="grid md:grid-cols-2 gap-4">
-                <Card className="text-center hover:bg-accent/5 transition-colors">
+                <Card className="text-center hover:bg-primary/5 transition-colors border-b-4 border-primary/50">
                     <CardHeader>
-                        <Calendar className="h-10 w-10 text-accent mx-auto mb-2" />
+                        <Calendar className="h-10 w-10 text-primary mx-auto mb-2" />
                         <CardTitle className="text-primary">Not Sure?</CardTitle>
                         <CardDescription>Let's discuss your specific needs.</CardDescription>
                     </CardHeader>
@@ -75,7 +75,7 @@ export default function SafetyManagementSystemPage() {
                         </Button>
                     </CardFooter>
                 </Card>
-                <Card className="text-center hover:bg-accent/5 transition-colors">
+                <Card className="text-center hover:bg-accent/5 transition-colors border-b-4 border-accent/50">
                     <CardHeader>
                         <CreditCard className="h-10 w-10 text-accent mx-auto mb-2" />
                         <CardTitle className="text-primary">Ready to Start?</CardTitle>
