@@ -37,11 +37,10 @@ export function Header() {
     <Link
       href={href}
       className={cn(
-        "font-body font-medium transition-colors text-base relative",
-        "after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:bg-accent after:scale-x-0 after:origin-left after:transition-transform",
-        "hover:text-primary-dark hover:after:scale-x-100",
-        pathname === href ? "text-primary-dark after:scale-x-100" : "text-foreground/80",
-        isMobile && "py-2 text-lg w-full after:hidden",
+        "font-body font-medium transition-colors text-base",
+        "hover:text-primary",
+        pathname === href ? "text-primary" : "text-foreground/80",
+        isMobile && "py-2 text-lg w-full",
         isMobile && pathname === href && "text-accent font-semibold"
       )}
     >
@@ -57,12 +56,12 @@ export function Header() {
         <button
           className={cn(
             "flex items-center gap-1 font-body font-medium transition-colors",
-            isMobile ? "w-full justify-start py-2 text-lg" : "text-base",
-            isServicePage ? "text-primary-dark" : "text-foreground/80 hover:text-primary-dark"
+            isMobile ? "w-full justify-between py-2 text-lg" : "text-base",
+            isServicePage ? "text-primary" : "text-foreground/80 hover:text-primary"
           )}
         >
           Services
-          <ChevronDown className={cn("h-4 w-4 transition-transform duration-200", isMobile && "ml-auto")} />
+          <ChevronDown className={cn("h-4 w-4 transition-transform duration-200")} />
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="font-body mt-2">

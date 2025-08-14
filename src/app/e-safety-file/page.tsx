@@ -45,7 +45,7 @@ export default function ESafetyFilePage() {
             
             {/* Pricing Tiers */}
             <div className="lg:col-span-3 space-y-8">
-              <Card className="flex flex-col border bg-card shadow-sm transform hover:-translate-y-2 transition-transform duration-300 hover:shadow-lg">
+              <Card className="flex flex-col border bg-card shadow-sm transform hover:-translate-y-2 transition-transform duration-300 hover:shadow-lg hover:border-primary">
                 <CardHeader>
                   <div className="flex items-center gap-4">
                     <div className="p-3 bg-primary/10 rounded-lg">

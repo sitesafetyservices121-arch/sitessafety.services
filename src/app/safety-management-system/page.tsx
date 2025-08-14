@@ -60,7 +60,7 @@ export default function SafetyManagementSystemPage() {
                   </CardContent>
                   <CardFooter>
                     <Button asChild className="w-full" size="lg" variant="cta">
-                        <Link href="#">
+                        <Link href="/e-safety-file">
                             Get Started Now <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
                     </Button>
@@ -99,14 +99,14 @@ export default function SafetyManagementSystemPage() {
         <div className="container mx-auto px-4">
             <Card className="bg-primary text-primary-foreground border-none text-center p-10 md:p-16 rounded-lg">
                 <CardHeader>
-                    <div className="mx-auto w-fit p-4 bg-white/10 rounded-full shadow-sm mb-6">
+                    <div className="mx-auto w-fit p-4 bg-white/20 rounded-full shadow-sm mb-6">
                     <DownloadCloud className="h-10 w-10 text-white" />
                     </div>
                     <CardTitle className="text-white font-headline text-3xl md:text-4xl">Ready to Transform Your Safety Management?</CardTitle>
                     <CardDescription className="max-w-xl mx-auto font-body text-primary-foreground/80 text-lg">Schedule a free, no-obligation demo to see our platform in action and learn how it can be tailored to your business.</CardDescription>
                 </CardHeader>
                 <CardFooter className="justify-center">
-                    <Button asChild variant="secondary" size="lg" className="bg-white text-primary hover:bg-white/90">
+                    <Button asChild variant="default" size="lg" className="bg-white text-primary hover:bg-white/90">
                         <Link href="/e-safety-file">Book a Free Demo</Link>
                     </Button>
                 </CardFooter>

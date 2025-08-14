@@ -19,8 +19,8 @@
     --primary-dark: 217 91% 45%;
     --primary-dark-foreground: 210 40% 96%;
 
-    --secondary: 180 25% 96%; /* Muted Teal/Cyan base for sections */
-    --secondary-foreground: 180 25% 25%;
+    --secondary: 220 15% 95%; /* Lighter gray for section backgrounds */
+    --secondary-foreground: 224 10% 10%;
 
     --muted: 220 15% 90%; /* Lighter gray for borders/dividers */
     --muted-foreground: 220 9% 46%; /* Muted Gray for text */
@@ -49,8 +49,8 @@
     --primary-foreground: 210 40% 98%;
     --primary-dark: 217 91% 70%;
     --primary-dark-foreground: 224 10% 10%;
-    --secondary: 180 25% 15%; /* Dark Muted Teal/Cyan */
-    --secondary-foreground: 180 25% 90%;
+    --secondary: 220 12% 12%; /* Darker gray for section backgrounds */
+    --secondary-foreground: 210 40% 98%;
     --muted: 220 10% 20%;
     --muted-foreground: 220 9% 65%;
     --accent: 25 95% 53%;

@@ -1,24 +1,24 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, UserCheck, FileText, Settings } from "lucide-react";
 import Image from "next/image";
 
 const services = [
   {
-    icon: <UserCheck className="h-7 w-7 text-primary" />,
+    icon: <UserCheck className="h-8 w-8 text-primary" />,
     title: "Rent a Safety Officer",
     description: "Deploy certified safety professionals to your site, ensuring full compliance and risk mitigation from day one.",
     link: "/rent-a-safety-officer",
   },
   {
-    icon: <FileText className="h-7 w-7 text-primary" />,
+    icon: <FileText className="h-8 w-8 text-primary" />,
     title: "E-Safety File",
     description: "Digitize your compliance with our audit-proof, cloud-based safety file management system.",
     link: "/e-safety-file",
   },
   {
-    icon: <Settings className="h-7 w-7 text-primary" />,
+    icon: <Settings className="h-8 w-8 text-primary" />,
     title: "Safety Management System",
     description: "Implement a bespoke, scalable system to proactively manage safety and cultivate a zero-incident culture.",
     link: "/safety-management-system",
@@ -52,7 +52,7 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <div className="relative h-96 w-full lg:h-[500px] rounded-lg overflow-hidden shadow-lg border">
+            <div className="relative h-96 w-full lg:h-[500px] rounded-lg overflow-hidden shadow-xl border">
               <Image 
                 src="https://placehold.co/800x600.png"
                 alt="Engineer reviewing blueprints on a construction site"
@@ -70,16 +70,16 @@ export default function Home() {
       <section id="services" className="w-full py-24 md:py-32 bg-secondary border-y">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-headline font-bold tracking-tight text-primary-dark">Core Safety Solutions</h2>
+            <h2 className="text-3xl md:text-4xl font-headline font-bold tracking-tight text-primary-dark">Core Safety Solutions</h2>
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground font-body text-lg">
               Specialized services designed to integrate seamlessly with your operations, delivering unparalleled safety and compliance.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service) => (
-              <Card key={service.title} className="bg-card border hover:border-primary shadow-sm transition-all duration-300 transform hover:-translate-y-2 flex flex-col group hover:shadow-lg">
+              <Card key={service.title} className="bg-card border shadow-sm transition-all duration-300 transform hover:-translate-y-2 flex flex-col group hover:shadow-lg hover:border-primary">
                 <CardHeader>
-                  <div className="bg-primary/10 rounded-lg w-14 h-14 flex items-center justify-center mb-4 border-2 border-primary/20 group-hover:border-primary/40 transition-colors">
+                  <div className="bg-primary/10 rounded-lg w-16 h-16 flex items-center justify-center mb-4 border-2 border-primary/20 group-hover:border-primary/40 transition-colors">
                     {service.icon}
                   </div>
                   <CardTitle className="text-2xl font-headline font-semibold text-primary-dark">{service.title}</CardTitle>
@@ -99,7 +99,7 @@ export default function Home() {
       {/* Why Choose Us Section */}
       <section className="w-full py-24 md:py-32 bg-white">
         <div className="container grid items-center justify-center gap-12 px-4 text-center md:px-6 lg:grid-cols-2 lg:text-left lg:gap-20">
-          <div className="relative h-96 lg:h-[500px] w-full rounded-lg overflow-hidden shadow-lg border">
+          <div className="relative h-96 lg:h-[500px] w-full rounded-lg overflow-hidden shadow-xl border">
             <Image 
               src="https://placehold.co/800x600.png"
               alt="Team of safety professionals in a meeting"
@@ -112,7 +112,7 @@ export default function Home() {
             <div className="inline-block rounded-full bg-primary/10 px-4 py-2 font-body text-sm font-semibold text-primary border border-primary/30">
               The RAK-Safety Advantage
             </div>
-            <h2 className="text-3xl font-bold font-headline tracking-tight text-primary-dark">Precision in Practice</h2>
+            <h2 className="text-3xl md:text-4xl font-bold font-headline tracking-tight text-primary-dark">Precision in Practice</h2>
             <p className="text-muted-foreground font-body text-lg md:text-xl/relaxed">
               With over a decade of experience, we deliver safety solutions that protect your people, assets, and reputation. Our team of certified professionals is dedicated to creating safer work environments across all industries through technology and expertise.
             </p>

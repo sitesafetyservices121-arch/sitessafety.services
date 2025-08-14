@@ -138,20 +138,20 @@ export function InquiryForm() {
                   defaultValue={field.value}
                   className="grid grid-cols-2 gap-4"
                 >
-                  <FormItem className="flex items-center space-x-3 space-y-0">
+                  <FormItem>
                      <Label className="flex items-center gap-4 cursor-pointer rounded-lg border p-4 has-[:checked]:bg-primary/10 has-[:checked]:border-primary w-full transition-colors">
                         <FormControl>
-                        <RadioGroupItem value="smb" />
+                          <RadioGroupItem value="smb" />
                         </FormControl>
                         <span className="font-medium">
-                        SMB Plan
+                          SMB Plan
                         </span>
                      </Label>
                   </FormItem>
-                  <FormItem className="flex items-center space-x-3 space-y-0">
+                  <FormItem>
                      <Label className="flex items-center gap-4 cursor-pointer rounded-lg border p-4 has-[:checked]:bg-primary/10 has-[:checked]:border-primary w-full transition-colors">
                         <FormControl>
-                        <RadioGroupItem value="large" />
+                          <RadioGroupItem value="large" />
                         </FormControl>
                          <span className="font-medium">
                             Enterprise Plan

@@ -4,7 +4,7 @@ import { Logo } from "./logo";
 
 export function Footer() {
   return (
-    <footer className="border-t bg-secondary mt-auto">
+    <footer className="border-t bg-secondary">
       <div className="container mx-auto max-w-7xl px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             <div className="flex flex-col md:col-span-5">
@@ -30,23 +30,23 @@ export function Footer() {
           
             <div className="md:col-span-2 flex flex-col gap-2">
                 <h3 className="font-headline font-semibold text-primary-dark text-lg">Company</h3>
-                <Link href="/" className="text-base text-muted-foreground hover:text-accent font-body">Home</Link>
-                <Link href="/about" className="text-base text-muted-foreground hover:text-accent font-body">About Us</Link>
-                <Link href="/experience" className="text-base text-muted-foreground hover:text-accent font-body">Experience</Link>
-                <Link href="/e-safety-file" className="text-base text-muted-foreground hover:text-accent font-body">Contact</Link>
+                <Link href="/" className="text-base text-muted-foreground hover:text-primary font-body">Home</Link>
+                <Link href="/about" className="text-base text-muted-foreground hover:text-primary font-body">About Us</Link>
+                <Link href="/experience" className="text-base text-muted-foreground hover:text-primary font-body">Experience</Link>
+                <Link href="/e-safety-file" className="text-base text-muted-foreground hover:text-primary font-body">Contact</Link>
             </div>
 
             <div className="md:col-span-3 flex flex-col gap-2">
                 <h3 className="font-headline font-semibold text-primary-dark text-lg">Services</h3>
-                <Link href="/rent-a-safety-officer" className="text-base text-muted-foreground hover:text-accent font-body">Rent a Safety Officer</Link>
-                <Link href="/e-safety-file" className="text-base text-muted-foreground hover:text-accent font-body">E-Safety File</Link>
-                <Link href="/safety-management-system" className="text-base text-muted-foreground hover:text-accent font-body">Safety Management System</Link>
+                <Link href="/rent-a-safety-officer" className="text-base text-muted-foreground hover:text-primary font-body">Rent a Safety Officer</Link>
+                <Link href="/e-safety-file" className="text-base text-muted-foreground hover:text-primary font-body">E-Safety File</Link>
+                <Link href="/safety-management-system" className="text-base text-muted-foreground hover:text-primary font-body">Safety Management System</Link>
             </div>
 
             <div className="md:col-span-2 flex flex-col gap-2">
                 <h3 className="font-headline font-semibold text-primary-dark text-lg">Legal</h3>
-                <Link href="/terms" className="text-base text-muted-foreground hover:text-accent font-body">Terms & Conditions</Link>
-                <Link href="#" className="text-base text-muted-foreground hover:text-accent font-body">Privacy Policy</Link>
+                <Link href="/terms" className="text-base text-muted-foreground hover:text-primary font-body">Terms & Conditions</Link>
+                <Link href="#" className="text-base text-muted-foreground hover:text-primary font-body">Privacy Policy</Link>
             </div>
         </div>
         <div className="mt-12 border-t pt-8">

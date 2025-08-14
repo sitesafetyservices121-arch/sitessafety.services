@@ -59,7 +59,7 @@ export default function RentASafetyOfficerPage() {
               <div className="space-y-8">
                   {serviceFeatures.map((feature) => (
                       <div key={feature.title} className="flex items-start gap-4">
-                          <div className="flex-shrink-0 bg-white text-accent rounded-lg p-3 shadow-sm border">
+                          <div className="flex-shrink-0 bg-white text-accent rounded-lg p-3 shadow border">
                             {feature.icon}
                           </div>
                           <div>

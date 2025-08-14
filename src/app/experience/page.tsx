@@ -76,13 +76,13 @@ export default function ExperiencePage() {
       {/* CTA Section */}
       <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4">
-            <div className="bg-primary-dark rounded-lg p-10 md:p-16 text-center shadow-lg">
-                <h2 className="text-3xl md:text-4xl font-semibold font-headline text-white">Ready to Elevate Your Site's Safety?</h2>
-                <p className="mt-4 max-w-2xl mx-auto text-primary-dark-foreground font-body text-lg">Let's collaborate to build a safer, more compliant, and more productive work environment. Contact us today for a complimentary consultation.</p>
-                <Button asChild size="lg" className="mt-8" variant="cta">
-                <Link href="/e-safety-file">
-                    Request a Free Quote <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
+            <div className="bg-primary rounded-lg p-10 md:p-16 text-center shadow-lg">
+                <h2 className="text-3xl md:text-4xl font-semibold font-headline text-primary-foreground">Ready to Elevate Your Site's Safety?</h2>
+                <p className="mt-4 max-w-2xl mx-auto text-primary-foreground/90 font-body text-lg">Let's collaborate to build a safer, more compliant, and more productive work environment. Contact us today for a complimentary consultation.</p>
+                <Button asChild size="lg" className="mt-8 bg-white text-primary hover:bg-white/90">
+                  <Link href="/e-safety-file">
+                      Request a Free Quote <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
                 </Button>
             </div>
         </div>

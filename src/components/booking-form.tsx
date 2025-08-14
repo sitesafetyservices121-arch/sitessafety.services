@@ -174,7 +174,7 @@ export function BookingForm() {
                         <Button
                         variant={"outline"}
                         className={cn(
-                            "w-full justify-start text-left font-normal",
+                            "w-full justify-start text-left font-normal bg-background",
                             !field.value && "text-muted-foreground"
                         )}
                         >
@@ -224,7 +224,7 @@ export function BookingForm() {
               <FormControl>
                 <Textarea
                   placeholder="Tell us a little about your project (e.g., location, type of work)"
-                  className="resize-none"
+                  className="resize-none bg-background"
                   {...field}
                 />
               </FormControl>
