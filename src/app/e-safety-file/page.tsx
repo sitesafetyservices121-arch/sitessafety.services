@@ -27,7 +27,7 @@ export default function ESafetyFilePage() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="py-20 md:py-32">
+      <section className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-semibold font-headline tracking-tight text-primary-dark">
             Digitize Your Compliance
@@ -39,13 +39,13 @@ export default function ESafetyFilePage() {
       </section>
 
       {/* Pricing & Form Section */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-secondary">
         <div className="container max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-5 gap-12 md:gap-16 items-start">
             
             {/* Pricing Tiers */}
             <div className="lg:col-span-3 space-y-8">
-              <Card className="flex flex-col border bg-background shadow-sm transform hover:-translate-y-2 transition-transform duration-300 hover:shadow-lg">
+              <Card className="flex flex-col border bg-card shadow-sm transform hover:-translate-y-2 transition-transform duration-300 hover:shadow-lg">
                 <CardHeader>
                   <div className="flex items-center gap-4">
                     <div className="p-3 bg-primary/10 rounded-lg">
@@ -65,7 +65,7 @@ export default function ESafetyFilePage() {
                 </CardContent>
               </Card>
 
-              <Card className="flex flex-col border-2 border-accent shadow-lg shadow-accent/20 relative overflow-hidden bg-background">
+              <Card className="flex flex-col border-2 border-accent shadow-lg shadow-accent/20 relative overflow-hidden bg-card">
                   <div className="absolute top-4 right-4 bg-accent text-accent-foreground px-4 py-1 text-sm font-bold font-body rounded-full flex items-center gap-2">
                       <Star className="h-4 w-4" />
                       Most Popular
@@ -92,7 +92,7 @@ export default function ESafetyFilePage() {
 
             {/* Inquiry Form */}
             <div className="lg:col-span-2">
-                <Card className="shadow-lg sticky top-24 border bg-background p-2">
+                <Card className="shadow-lg sticky top-24 border bg-card p-2">
                 <CardHeader>
                     <CardTitle className="text-center text-3xl text-primary-dark font-headline">Request a Consultation</CardTitle>
                     <CardDescription className="text-center font-body text-base">Fill out the form below and our team will contact you to discuss your specific needs.</CardDescription>

@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="py-24 md:py-40">
+      <section className="py-24 md:py-40 bg-white">
         <div className="container px-4 md:px-6">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
             <div className="space-y-6">
@@ -67,7 +67,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="w-full py-24 md:py-32 bg-white border-y">
+      <section id="services" className="w-full py-24 md:py-32 bg-secondary border-y">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-headline font-bold tracking-tight text-primary-dark">Core Safety Solutions</h2>
@@ -77,9 +77,9 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service) => (
-              <Card key={service.title} className="bg-background border hover:border-primary shadow-sm transition-all duration-300 transform hover:-translate-y-2 flex flex-col group hover:shadow-lg">
+              <Card key={service.title} className="bg-card border hover:border-primary shadow-sm transition-all duration-300 transform hover:-translate-y-2 flex flex-col group hover:shadow-lg">
                 <CardHeader>
-                  <div className="bg-white rounded-lg w-14 h-14 flex items-center justify-center mb-4 border-2 border-primary/20 group-hover:border-primary/40 transition-colors">
+                  <div className="bg-primary/10 rounded-lg w-14 h-14 flex items-center justify-center mb-4 border-2 border-primary/20 group-hover:border-primary/40 transition-colors">
                     {service.icon}
                   </div>
                   <CardTitle className="text-2xl font-headline font-semibold text-primary-dark">{service.title}</CardTitle>
@@ -97,7 +97,7 @@ export default function Home() {
       </section>
       
       {/* Why Choose Us Section */}
-      <section className="w-full py-24 md:py-32">
+      <section className="w-full py-24 md:py-32 bg-white">
         <div className="container grid items-center justify-center gap-12 px-4 text-center md:px-6 lg:grid-cols-2 lg:text-left lg:gap-20">
           <div className="relative h-96 lg:h-[500px] w-full rounded-lg overflow-hidden shadow-lg border">
             <Image 

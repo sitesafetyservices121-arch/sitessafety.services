@@ -47,7 +47,7 @@ export default function RentASafetyOfficerPage() {
       </section>
 
       {/* Content & Form Section */}
-      <section className="py-24">
+      <section className="py-24 bg-secondary">
         <div className="container max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 md:gap-24 items-start">
             
@@ -59,7 +59,7 @@ export default function RentASafetyOfficerPage() {
               <div className="space-y-8">
                   {serviceFeatures.map((feature) => (
                       <div key={feature.title} className="flex items-start gap-4">
-                          <div className="flex-shrink-0 bg-primary/10 text-accent rounded-lg p-3">
+                          <div className="flex-shrink-0 bg-white text-accent rounded-lg p-3 shadow-sm border">
                             {feature.icon}
                           </div>
                           <div>
@@ -72,7 +72,7 @@ export default function RentASafetyOfficerPage() {
             </div>
 
             {/* Booking Form */}
-            <Card className="shadow-lg border bg-white sticky top-24 p-2">
+            <Card className="shadow-lg border bg-card sticky top-24 p-2">
               <CardHeader>
                 <CardTitle className="text-center text-3xl text-primary-dark font-headline">Book Your Safety Officer</CardTitle>
                 <CardDescription className="text-center font-body text-base">Complete the form to get a fast, no-obligation quote.</CardDescription>

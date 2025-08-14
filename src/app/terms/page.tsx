@@ -19,7 +19,7 @@ export default function TermsPage() {
           {currentDate && <p className="mt-4 text-lg text-muted-foreground font-body">Last updated: {currentDate}</p>}
         </div>
 
-        <div className="prose prose-lg max-w-none font-body text-foreground/80 prose-h2:font-headline prose-h2:text-primary-dark prose-h2:text-2xl prose-h2:border-b-2 prose-h2:border-primary/20 prose-h2:pb-3 prose-headings:font-headline prose-a:text-accent hover:prose-a:text-accent/80 prose-strong:text-foreground">
+        <div className="prose prose-lg max-w-none font-body text-foreground/80 prose-h2:font-headline prose-h2:text-primary-dark prose-h2:text-2xl prose-h2:border-b-2 prose-h2:border-secondary prose-h2:pb-3 prose-headings:font-headline prose-a:text-accent hover:prose-a:text-accent/80 prose-strong:text-foreground">
           <p>Please read these terms and conditions carefully before using Our Service.</p>
 
           <h2>1. Interpretation and Definitions</h2>

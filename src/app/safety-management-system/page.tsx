@@ -35,7 +35,7 @@ export default function SafetyManagementSystemPage() {
       </section>
 
       {/* Main Content Section */}
-      <section className="py-24">
+      <section className="py-24 bg-secondary">
         <div className="container max-w-6xl mx-auto px-4">
           <div className="grid lg:grid-cols-5 gap-12 md:gap-16 items-center">
             {/* Image */}
@@ -45,7 +45,7 @@ export default function SafetyManagementSystemPage() {
 
             {/* Pricing Card */}
             <div className="lg:col-span-2 space-y-8">
-                <Card className="border bg-white shadow-lg">
+                <Card className="border bg-card shadow-lg">
                   <CardHeader className="items-center text-center">
                       <div className="p-4 bg-primary/10 rounded-full">
                         <TrendingUp className="h-10 w-10 text-primary"/>
@@ -80,7 +80,7 @@ export default function SafetyManagementSystemPage() {
             </div>
             <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {systemFeatures.map((feature) => (
-                    <div key={feature.title} className="flex items-start gap-4 p-4 rounded-lg transition-colors hover:bg-background">
+                    <div key={feature.title} className="flex items-start gap-4 p-4 rounded-lg transition-colors hover:bg-secondary">
                         <div className="flex-shrink-0 mt-1">
                           <Zap className="h-6 w-6 text-accent"/>
                         </div>
@@ -95,7 +95,7 @@ export default function SafetyManagementSystemPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24">
+      <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4">
             <Card className="bg-primary text-primary-foreground border-none text-center p-10 md:p-16 rounded-lg">
                 <CardHeader>

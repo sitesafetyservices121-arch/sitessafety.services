@@ -28,7 +28,7 @@ export default function ExperiencePage() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="py-20 md:py-32">
+      <section className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-semibold font-headline tracking-tight text-primary-dark">
             Proven Expertise, Trusted Results
@@ -40,12 +40,12 @@ export default function ExperiencePage() {
       </section>
 
       {/* Project Portfolio Section */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-semibold text-center text-primary-dark font-headline mb-16">Project Portfolio</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {portfolio.map((item) => (
-                  <Card key={item.title} className="overflow-hidden group border shadow-sm rounded-lg transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                  <Card key={item.title} className="overflow-hidden group border shadow-sm rounded-lg transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-card">
                       <CardContent className="p-0">
                           <div className="relative h-80 w-full">
                               <Image src={item.image} alt={item.title} layout="fill" objectFit="cover" className="transition-transform duration-500 group-hover:scale-105" data-ai-hint={item.hint}/>
@@ -62,7 +62,7 @@ export default function ExperiencePage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24">
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-semibold text-center text-primary-dark font-headline mb-16">What Our Clients Say</h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -74,7 +74,7 @@ export default function ExperiencePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24">
+      <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4">
             <div className="bg-primary-dark rounded-lg p-10 md:p-16 text-center shadow-lg">
                 <h2 className="text-3xl md:text-4xl font-semibold font-headline text-white">Ready to Elevate Your Site's Safety?</h2>

@@ -25,7 +25,7 @@ export default function AboutPage() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="py-20 md:py-32">
+      <section className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold font-headline tracking-tight text-primary-dark">
             Pioneering Safety, Building Trust
@@ -37,7 +37,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story Section */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
             <div className="relative h-[450px] w-full rounded-lg overflow-hidden shadow-lg border">
@@ -53,7 +53,7 @@ export default function AboutPage() {
       </section>
       
       {/* Mission & Vision Section */}
-      <section className="py-24">
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
             <div className="space-y-4 lg:order-last">
@@ -69,15 +69,15 @@ export default function AboutPage() {
       </section>
 
       {/* Core Values Section */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-semibold text-primary-dark font-headline">Our Core Values</h2>
             <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto font-body">The principles that guide our every action.</p>
             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
                 {values.map(v => (
-                    <Card key={v.title} className="text-center bg-background border transform hover:-translate-y-2 transition-transform duration-300 hover:border-primary shadow-sm hover:shadow-lg">
+                    <Card key={v.title} className="text-center bg-card border transform hover:-translate-y-2 transition-transform duration-300 hover:border-primary shadow-sm hover:shadow-lg">
                         <CardHeader className="items-center">
-                            <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-4 border-2 border-primary/20">
+                            <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-4 border-2 border-primary/20">
                             {v.icon}
                             </div>
                             <CardTitle className="mt-4 font-headline text-2xl text-primary-dark">{v.title}</CardTitle>
@@ -92,12 +92,12 @@ export default function AboutPage() {
       </section>
 
       {/* Leadership Section */}
-      <section className="py-24">
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-semibold text-center text-primary-dark font-headline mb-16">Meet Our Leadership</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member) => (
-                <Card key={member.name} className="text-center bg-white border pt-8 pb-4 transition-all duration-300 hover:shadow-xl hover:border-primary/50 hover:-translate-y-2 transform">
+                <Card key={member.name} className="text-center bg-card border pt-8 pb-4 transition-all duration-300 hover:shadow-xl hover:border-primary/50 hover:-translate-y-2 transform">
                 <CardContent>
                     <Avatar className="w-32 h-32 mx-auto mb-6 border-4 border-primary/20">
                     <AvatarImage data-ai-hint={member.hint} src={member.avatar} />
