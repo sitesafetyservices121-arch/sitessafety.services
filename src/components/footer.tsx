@@ -4,16 +4,16 @@ import { Logo } from "./logo";
 
 export function Footer() {
   return (
-    <footer className="border-t bg-card mt-auto">
+    <footer className="border-t border-border bg-secondary mt-auto">
       <div className="container mx-auto max-w-7xl px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             <div className="flex flex-col md:col-span-5">
                 <Link href="/" className="flex items-center gap-2.5 mb-4">
                   <Logo className="h-8 w-8 text-accent" />
-                  <span className="font-headline text-2xl font-bold text-primary">RAK-Safety</span>
+                  <span className="font-headline text-2xl font-semibold text-primary">RAK-Safety</span>
                 </Link>
                 <p className="text-base text-muted-foreground font-body max-w-sm">
-                  Pioneering safety solutions for the modern workplace.
+                  Engineering a Safer Tomorrow. Precision safety solutions for complex industries.
                 </p>
                 <div className="flex gap-4 mt-6">
                   <Link href="#" aria-label="Twitter" className="text-muted-foreground hover:text-primary transition-colors">
@@ -49,7 +49,7 @@ export function Footer() {
                 <Link href="#" className="text-base text-muted-foreground hover:text-accent font-body">Privacy Policy</Link>
             </div>
         </div>
-        <div className="mt-12 border-t pt-8">
+        <div className="mt-12 border-t border-border pt-8">
             <p className="text-center text-sm text-muted-foreground font-body">
                 © {new Date().getFullYear()} RAK-Site Safety Services (Pty) Ltd. All rights reserved.
             </p>

@@ -22,9 +22,9 @@ export default function SafetyManagementSystemPage() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-card border-b">
+      <section className="py-20 md:py-32 bg-card border-b border-border">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold font-headline tracking-tight text-primary">
+          <h1 className="text-4xl md:text-6xl font-semibold font-headline tracking-tight text-primary">
             Your All-in-One Safety Platform
           </h1>
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto font-body">
@@ -38,15 +38,15 @@ export default function SafetyManagementSystemPage() {
         <div className="container max-w-6xl mx-auto px-4">
           <div className="grid lg:grid-cols-5 gap-12 md:gap-16 items-center">
             {/* Image */}
-            <div className="lg:col-span-3 relative h-[500px] w-full rounded-2xl overflow-hidden border shadow-2xl">
-                <Image src="https://placehold.co/800x600.png" alt="SMS Dashboard on a laptop" layout="fill" objectFit="cover" data-ai-hint="saas dashboard laptop" />
+            <div className="lg:col-span-3 relative h-[500px] w-full rounded-lg overflow-hidden border border-border shadow-2xl shadow-primary/5">
+                <Image src="https://placehold.co/800x600.png" alt="SMS Dashboard on a laptop" layout="fill" objectFit="cover" data-ai-hint="saas dashboard laptop" className="opacity-70" />
             </div>
 
             {/* Pricing Card */}
             <div className="lg:col-span-2 space-y-8">
-                <Card className="border bg-card shadow-2xl">
+                <Card className="border-border bg-card shadow-2xl shadow-primary/5">
                   <CardHeader className="items-center text-center">
-                      <div className="p-4 bg-accent/10 rounded-xl">
+                      <div className="p-4 bg-secondary rounded-lg border border-border">
                         <TrendingUp className="h-10 w-10 text-accent"/>
                       </div>
                       <CardTitle className="text-primary font-headline text-3xl pt-2">Simple, Powerful Pricing</CardTitle>
@@ -71,20 +71,20 @@ export default function SafetyManagementSystemPage() {
       </section>
       
       {/* Features Section */}
-      <section className="py-24 bg-card border-y">
+      <section className="py-24 bg-card border-y border-border">
         <div className="container max-w-6xl mx-auto px-4">
             <div className="text-center">
-                <h2 className="text-3xl md:text-4xl font-bold text-primary font-headline">Core Platform Features</h2>
+                <h2 className="text-3xl md:text-4xl font-semibold text-primary font-headline">Core Platform Features</h2>
                 <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto font-body">Everything you need to manage safety effectively.</p>
             </div>
             <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {systemFeatures.map((feature) => (
-                    <div key={feature.title} className="flex items-start gap-4 p-4 rounded-xl transition-colors hover:bg-background">
+                    <div key={feature.title} className="flex items-start gap-4 p-4 rounded-lg transition-colors hover:bg-secondary">
                         <div className="flex-shrink-0 mt-1">
                           <Zap className="h-6 w-6 text-accent"/>
                         </div>
                         <div>
-                          <h3 className="text-lg text-primary font-headline font-bold">{feature.title}</h3>
+                          <h3 className="text-lg text-primary font-headline font-semibold">{feature.title}</h3>
                           <p className="text-muted-foreground font-body">{feature.description}</p>
                         </div>
                     </div>
@@ -96,16 +96,16 @@ export default function SafetyManagementSystemPage() {
       {/* CTA Section */}
       <section className="py-24">
         <div className="container mx-auto px-4">
-            <Card className="bg-primary text-primary-foreground border-none text-center p-10 md:p-16">
+            <Card className="bg-accent text-background border-none text-center p-10 md:p-16 rounded-lg">
                 <CardHeader>
-                    <div className="mx-auto w-fit p-4 bg-background rounded-xl shadow-sm mb-6">
-                    <DownloadCloud className="h-10 w-10 text-accent" />
+                    <div className="mx-auto w-fit p-4 bg-background/10 rounded-lg shadow-sm mb-6">
+                    <DownloadCloud className="h-10 w-10 text-background" />
                     </div>
-                    <CardTitle className="text-primary-foreground font-headline text-3xl md:text-4xl">Ready to Transform Your Safety Management?</CardTitle>
-                    <CardDescription className="max-w-xl mx-auto font-body text-primary-foreground/80 text-lg">Schedule a free, no-obligation demo to see our platform in action and learn how it can be tailored to your business.</CardDescription>
+                    <CardTitle className="text-background font-headline text-3xl md:text-4xl">Ready to Transform Your Safety Management?</CardTitle>
+                    <CardDescription className="max-w-xl mx-auto font-body text-background/80 text-lg">Schedule a free, no-obligation demo to see our platform in action and learn how it can be tailored to your business.</CardDescription>
                 </CardHeader>
                 <CardFooter className="justify-center">
-                    <Button asChild variant="secondary" size="lg">
+                    <Button asChild variant="secondary" size="lg" className="bg-background text-primary hover:bg-background/90">
                         <Link href="/e-safety-file">Book a Free Demo</Link>
                     </Button>
                 </CardFooter>

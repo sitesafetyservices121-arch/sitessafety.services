@@ -24,9 +24,9 @@ export default function AboutPage() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-card">
+      <section className="py-20 md:py-32">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold font-headline tracking-tight text-primary">
+          <h1 className="text-4xl md:text-6xl font-semibold font-headline tracking-tight text-primary">
             Pioneering Safety, Building Trust
           </h1>
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto font-body">
@@ -36,14 +36,14 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story Section */}
-      <section className="py-24">
+      <section className="py-24 bg-card">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
-            <div className="relative h-[450px] w-full rounded-xl overflow-hidden shadow-lg border">
-                <Image src="https://placehold.co/800x600.png" alt="Company history collage" layout="fill" objectFit="cover" data-ai-hint="modern office architecture" />
+            <div className="relative h-[450px] w-full rounded-lg overflow-hidden border border-border">
+                <Image src="https://placehold.co/800x600.png" alt="Company history collage" layout="fill" objectFit="cover" data-ai-hint="modern office architecture" className="opacity-70" />
             </div>
             <div className="space-y-4">
-                <h2 className="text-3xl md:text-4xl font-bold text-primary font-headline">Our Story</h2>
+                <h2 className="text-3xl md:text-4xl font-semibold text-primary font-headline">Our Story</h2>
                 <p className="text-muted-foreground font-body text-lg">Founded in 2010, RAK-Site Safety has grown from a small consultancy to a leading provider of occupational health and safety services. Our journey is one of passion for safety and a deep commitment to our clients' success.</p>
                 <p className="text-muted-foreground font-body">We continuously adapt to the evolving landscape of safety regulations and technologies to provide state-of-the-art solutions, building a reputation for reliability, expertise, and unparalleled customer service.</p>
             </div>
@@ -52,31 +52,31 @@ export default function AboutPage() {
       </section>
       
       {/* Mission & Vision Section */}
-      <section className="py-24 bg-card">
+      <section className="py-24">
         <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
             <div className="space-y-4 lg:order-last">
-                <h2 className="text-3xl md:text-4xl font-bold text-primary font-headline">Our Mission & Vision</h2>
+                <h2 className="text-3xl md:text-4xl font-semibold text-primary font-headline">Our Mission & Vision</h2>
                 <p className="text-muted-foreground font-body text-lg">Our mission is to protect people, property, and the environment by delivering the highest quality safety services. We strive to empower our clients with the knowledge and tools to create a zero-incident workplace.</p>
                 <p className="text-muted-foreground font-body">Our vision is to be the most trusted name in workplace safety, setting new standards for excellence and innovation in the industry, ultimately creating a future where every worker returns home safe, every day.</p>
             </div>
-            <div className="relative h-[450px] w-full rounded-xl overflow-hidden shadow-lg border">
-                <Image src="https://placehold.co/800x600.png" alt="Team discussing a project" layout="fill" objectFit="cover" data-ai-hint="diverse team meeting" />
+            <div className="relative h-[450px] w-full rounded-lg overflow-hidden border border-border">
+                <Image src="https://placehold.co/800x600.png" alt="Team discussing a project" layout="fill" objectFit="cover" data-ai-hint="diverse team meeting" className="opacity-70" />
             </div>
             </div>
         </div>
       </section>
 
       {/* Core Values Section */}
-      <section className="py-24">
+      <section className="py-24 bg-card">
         <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary font-headline">Our Core Values</h2>
+            <h2 className="text-3xl md:text-4xl font-semibold text-primary font-headline">Our Core Values</h2>
             <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto font-body">The principles that guide our every action.</p>
             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
                 {values.map(v => (
-                    <Card key={v.title} className="text-center bg-card border-none shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+                    <Card key={v.title} className="text-center bg-secondary border-border transform hover:-translate-y-2 transition-transform duration-300 hover:border-accent">
                         <CardHeader className="items-center">
-                            <div className="bg-accent/10 rounded-xl w-16 h-16 flex items-center justify-center mb-4">
+                            <div className="bg-background rounded-lg w-16 h-16 flex items-center justify-center mb-4 border border-border">
                             {v.icon}
                             </div>
                             <CardTitle className="mt-4 font-headline text-2xl text-primary">{v.title}</CardTitle>
@@ -91,18 +91,18 @@ export default function AboutPage() {
       </section>
 
       {/* Leadership Section */}
-      <section className="py-24 bg-card">
+      <section className="py-24">
         <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-center text-primary font-headline mb-16">Meet Our Leadership</h2>
+            <h2 className="text-3xl md:text-4xl font-semibold text-center text-primary font-headline mb-16">Meet Our Leadership</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member) => (
-                <Card key={member.name} className="text-center bg-background border pt-8 pb-4 transition-all duration-300 hover:shadow-2xl hover:border-accent">
+                <Card key={member.name} className="text-center bg-card border-border pt-8 pb-4 transition-all duration-300 hover:shadow-2xl hover:border-accent hover:shadow-accent/10">
                 <CardContent>
                     <Avatar className="w-32 h-32 mx-auto mb-6 border-4 border-accent/20">
                     <AvatarImage data-ai-hint={member.hint} src={member.avatar} />
                     <AvatarFallback className="font-headline text-2xl">{member.initials}</AvatarFallback>
                     </Avatar>
-                    <h3 className="text-2xl font-headline font-bold text-primary">{member.name}</h3>
+                    <h3 className="text-2xl font-headline font-semibold text-primary">{member.name}</h3>
                     <p className="text-accent font-body font-semibold">{member.role}</p>
                 </CardContent>
                 </Card>

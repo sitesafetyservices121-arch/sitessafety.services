@@ -15,7 +15,7 @@ type TestimonialCardProps = {
 
 export function TestimonialCard({ name, title, company, image, testimonial, rating, hint }: TestimonialCardProps) {
   return (
-    <Card className="h-full flex flex-col bg-background border-none shadow-lg rounded-xl transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+    <Card className="h-full flex flex-col bg-card border-border shadow-lg rounded-lg transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-accent hover:shadow-accent/10">
       <CardContent className="p-8 flex flex-col flex-grow">
         <div className="flex mb-4">
           {Array.from({ length: 5 }).map((_, i) => (
@@ -25,7 +25,7 @@ export function TestimonialCard({ name, title, company, image, testimonial, rati
         <blockquote className="text-primary/90 font-body italic flex-grow text-lg border-l-4 border-accent pl-6 my-4">
             "{testimonial}"
         </blockquote>
-         <div className="flex items-center gap-4 mt-6 pt-6 border-t">
+         <div className="flex items-center gap-4 mt-6 pt-6 border-t border-border">
           <Avatar className="h-14 w-14 border-2 border-accent/30">
             <AvatarImage src={image} alt={name} data-ai-hint={hint} />
             <AvatarFallback>{name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
