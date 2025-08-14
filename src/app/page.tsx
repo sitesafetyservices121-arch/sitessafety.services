@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, Award, Building, HeartHandshake, ShieldCheck } from "lucide-react";
 import Image from "next/image";
+import { ComplianceAdvisor } from "@/components/compliance-advisor";
 
 const services = [
   {
@@ -71,8 +72,15 @@ export default function Home() {
         </div>
       </section>
 
+      {/* AI Compliance Advisor Section */}
+      <section className="w-full py-24 md:py-32 bg-secondary border-y">
+        <div className="container px-4 md:px-6">
+           <ComplianceAdvisor />
+        </div>
+      </section>
+
       {/* Services Section */}
-      <section id="services" className="w-full py-24 md:py-32 bg-secondary border-y">
+      <section id="services" className="w-full py-24 md:py-32 bg-background">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-headline font-bold tracking-tight text-primary-dark">Core Safety Solutions</h2>
@@ -99,7 +107,7 @@ export default function Home() {
       </section>
       
       {/* Stats Section */}
-      <section className="w-full py-24 md:py-32 bg-background">
+      <section className="w-full py-24 md:py-32 bg-secondary border-y">
         <div className="container px-4 md:px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 {stats.map((stat) => (
@@ -114,7 +122,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="w-full py-24 md:py-32 bg-secondary border-y">
+      <section className="w-full py-24 md:py-32 bg-background">
         <div className="container grid items-center justify-center gap-12 px-4 text-center md:px-6 lg:grid-cols-2 lg:text-left lg:gap-20">
           <div className="relative h-96 lg:h-[500px] w-full overflow-hidden">
             <Image 
@@ -127,7 +135,7 @@ export default function Home() {
             />
           </div>
           <div className="space-y-6">
-            <h2 className="text-4xl md:text-5xl font-bold font-headline tracking-tight text-primary-dark">Uncompromising Quality, Unmatched Expertise.</h2>
+            <h2 className="text-4xl md:text-5xl font-bold font-headline tracking-tight text-primary-dark">Your Trusted Partner in Occupational Safety.</h2>
             <p className="text-muted-foreground font-body text-lg md:text-xl/relaxed">
               With over a decade of dedicated experience, we provide safety solutions that protect your people, assets, and reputation. Our team of certified professionals is committed to creating safer work environments across all industries through proven processes and advanced technology.
             </p>
