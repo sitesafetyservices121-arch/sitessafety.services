@@ -1,6 +1,6 @@
 import { InquiryForm } from "@/components/inquiry-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle, Building, Briefcase, Star } from "lucide-react";
+import { Zap, Building, Briefcase, Star } from "lucide-react";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -60,7 +60,7 @@ export default function ESafetyFilePage() {
                 <CardContent className="flex-grow space-y-6">
                   <p className="text-5xl font-extrabold text-foreground">R119K<span className="text-lg font-normal text-muted-foreground">/one-time</span></p>
                   <ul className="space-y-3 text-muted-foreground">
-                      {smbFeatures.map(f => <li key={f} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-accent flex-shrink-0" /> <span>{f}</span></li>)}
+                      {smbFeatures.map(f => <li key={f} className="flex items-center gap-3"><Zap className="h-5 w-5 text-accent flex-shrink-0" /> <span>{f}</span></li>)}
                   </ul>
                 </CardContent>
               </Card>
@@ -84,7 +84,7 @@ export default function ESafetyFilePage() {
                 <CardContent className="flex-grow space-y-6">
                   <p className="text-5xl font-extrabold text-foreground">R250K<span className="text-base font-normal text-muted-foreground">/one-time</span></p>
                   <ul className="space-y-3 text-muted-foreground">
-                      {largeFeatures.map(f => <li key={f} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-accent flex-shrink-0" /> <span>{f}</span></li>)}
+                      {largeFeatures.map(f => <li key={f} className="flex items-center gap-3"><Zap className="h-5 w-5 text-accent flex-shrink-0" /> <span>{f}</span></li>)}
                   </ul>
                 </CardContent>
               </Card>

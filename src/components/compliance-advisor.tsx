@@ -17,7 +17,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState, useTransition } from "react";
 import { getComplianceAdvice } from "@/lib/actions";
-import { AlertTriangle, Bot, Check, FileDigit, HardHat, Loader2, Sparkles, UserCheck } from "lucide-react";
+import { AlertTriangle, Bot, Zap, FileDigit, HardHat, Loader2, Sparkles, UserCheck } from "lucide-react";
 import Link from "next/link";
 import { Separator } from "./ui/separator";
 import type { ComplianceRequest, ComplianceResponse } from "@/ai/schemas";
@@ -145,7 +145,7 @@ export function ComplianceAdvisor() {
 
               <div>
                 <h3 className="text-xl font-bold flex items-center gap-3 text-foreground mb-6">
-                    <Check className="h-6 w-6 text-green-600" />
+                    <Zap className="h-6 w-6 text-primary" />
                     Recommended Services
                 </h3>
                 <div className="space-y-6">

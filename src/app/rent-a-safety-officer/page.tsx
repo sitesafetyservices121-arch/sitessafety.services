@@ -1,6 +1,6 @@
 import { BookingForm } from "@/components/booking-form";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { CheckCircle, Shield, Briefcase, Calendar } from "lucide-react";
+import { Zap, Shield, Briefcase, Calendar } from "lucide-react";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -25,7 +25,7 @@ const serviceFeatures = [
         description: "Expertise in construction, manufacturing, energy, and more."
     },
     { 
-        icon: <CheckCircle className="h-7 w-7 text-primary" />,
+        icon: <Zap className="h-7 w-7 text-primary" />,
         title: "Comprehensive Duties",
         description: "On-site audits, incident reporting, safety meetings, and toolbox talks."
     }
