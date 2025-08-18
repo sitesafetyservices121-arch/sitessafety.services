@@ -18,7 +18,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         body: ['var(--font-body)', 'sans-serif'],
-        headline: ['var(--font-headline)', 'sans-serif'],
+        headline: ['var(--font-body)', 'sans-serif'], // Use body font for headlines for consistency
       },
       colors: {
         background: 'hsl(var(--background))',
@@ -34,8 +34,6 @@ const config: Config = {
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
-          dark: 'hsl(var(--primary-dark))',
-          'dark-foreground': 'hsl(var(--primary-dark-foreground))',
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
@@ -58,9 +56,12 @@ const config: Config = {
         ring: 'hsl(var(--ring))',
       },
       borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+        '3xl': 'calc(var(--radius) + 4px)',
+        '2xl': 'var(--radius)',
+        xl: 'calc(var(--radius) - 4px)',
+        lg: 'calc(var(--radius) - 8px)',
+        md: 'calc(var(--radius) - 12px)',
+        sm: 'calc(var(--radius) - 16px)',
       },
       keyframes: {
         'accordion-down': {

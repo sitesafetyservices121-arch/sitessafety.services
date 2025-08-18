@@ -51,7 +51,7 @@ export function Header() {
         "hover:text-primary",
         pathname === href ? "text-primary font-semibold" : "text-foreground/80",
         isMobile && "py-2 text-lg w-full",
-        isMobile && pathname === href && "text-accent font-semibold"
+        isMobile && pathname === href && "text-primary font-semibold"
       )}
     >
       {label}
@@ -92,7 +92,7 @@ export function Header() {
       <div className="container flex h-20 max-w-7xl items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 mr-6">
           <Logo className="h-7 w-7 text-primary" />
-          <span className="font-headline text-xl font-bold text-foreground">RAK-Safety</span>
+          <span className="font-bold text-xl text-foreground">RAK-Safety</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -103,7 +103,7 @@ export function Header() {
         </nav>
         
         <div className="flex items-center gap-2 md:ml-auto">
-          <Button asChild>
+          <Button asChild variant="cta">
             <Link href="/e-safety-file">Request a Quote</Link>
           </Button>
 
@@ -118,7 +118,7 @@ export function Header() {
               <SheetContent side="right" className="bg-card">
                 <Link href="/" className="flex items-center gap-2.5 mb-10">
                   <Logo className="h-8 w-8 text-primary" />
-                  <span className="font-headline text-2xl font-bold text-foreground">RAK-Safety</span>
+                  <span className="font-bold text-2xl text-foreground">RAK-Safety</span>
                 </Link>
                 <nav className="flex flex-col gap-4">
                   <NavLink href="/" label="Home" isMobile />
@@ -127,7 +127,7 @@ export function Header() {
                   <NavLink href="/experience" label="Experience" isMobile />
                   <NavLink href="/terms" label="T&Cs" isMobile />
                 </nav>
-                 <Button asChild className="w-full mt-8" size="lg">
+                 <Button asChild className="w-full mt-8" size="lg" variant="cta">
                   <Link href="/e-safety-file">Request a Quote</Link>
                 </Button>
               </SheetContent>

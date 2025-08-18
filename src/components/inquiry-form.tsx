@@ -139,7 +139,7 @@ export function InquiryForm() {
                   className="grid grid-cols-2 gap-4"
                 >
                   <FormItem>
-                     <Label className="flex items-center gap-4 cursor-pointer rounded-md border p-4 has-[:checked]:bg-primary/10 has-[:checked]:border-primary w-full transition-colors">
+                     <Label className="flex items-center gap-4 cursor-pointer rounded-2xl border p-4 has-[:checked]:bg-primary/10 has-[:checked]:border-primary w-full transition-colors">
                         <FormControl>
                           <RadioGroupItem value="smb" />
                         </FormControl>
@@ -149,7 +149,7 @@ export function InquiryForm() {
                      </Label>
                   </FormItem>
                   <FormItem>
-                     <Label className="flex items-center gap-4 cursor-pointer rounded-md border p-4 has-[:checked]:bg-primary/10 has-[:checked]:border-primary w-full transition-colors">
+                     <Label className="flex items-center gap-4 cursor-pointer rounded-2xl border p-4 has-[:checked]:bg-primary/10 has-[:checked]:border-primary w-full transition-colors">
                         <FormControl>
                           <RadioGroupItem value="large" />
                         </FormControl>

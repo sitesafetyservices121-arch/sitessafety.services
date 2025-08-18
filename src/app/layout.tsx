@@ -4,18 +4,17 @@ import { cn } from "@/lib/utils";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
-import { Inter, Lexend } from 'next/font/google';
+import { Inter } from 'next/font/google';
 
 export const metadata: Metadata = {
   title: {
-    default: "RAK-Site Safety | Precision Safety Solutions",
+    default: "RAK-Site Safety | Modern Safety Solutions",
     template: "%s | RAK-Site Safety",
   },
-  description: "Engineering a Safer Tomorrow. RAK-Site Safety delivers precision-engineered safety solutions for complex industries, ensuring compliance, efficiency, and fundamental security.",
+  description: "RAK-Site Safety delivers next-generation safety solutions for complex industries, ensuring compliance, efficiency, and a secure work environment.",
 };
 
-const inter = Inter({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-body' });
-const lexend = Lexend({ subsets: ['latin'], weight: ['700', '800'], variable: '--font-headline' });
+const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '700', '800'], variable: '--font-body' });
 
 export default function RootLayout({
   children,
@@ -24,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn("min-h-screen bg-background font-body antialiased", inter.variable, lexend.variable)}>
+      <body className={cn("min-h-screen bg-background font-body antialiased", inter.variable)}>
         <div className="relative flex min-h-dvh flex-col">
           <Header />
           <main className="flex-1">{children}</main>

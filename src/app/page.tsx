@@ -37,25 +37,25 @@ export default function Home() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-24 md:py-40">
+      <section className="relative overflow-hidden py-24 md:py-40 bg-gradient-to-br from-indigo-50 via-white to-cyan-50">
         <div className="container px-4 md:px-6">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
             <div className="space-y-6 text-center lg:text-left">
               <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-foreground">
-                Engineering a Safer Tomorrow
+                The Future of Workplace Safety is Here.
               </h1>
               <p className="max-w-xl text-lg md:text-xl text-muted-foreground mx-auto lg:mx-0">
                 RAK-Site Safety delivers precision-engineered safety solutions, ensuring your projects are compliant, efficient, and fundamentally secure.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
-                <Button asChild size="lg" variant="default">
+                <Button asChild size="lg">
                   <Link href="/e-safety-file">
-                    Request Consultation <ArrowRight className="ml-2 h-5 w-5" />
+                    Get Started <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <Link href="#services">
-                    Explore Our Services
+                    Explore Services
                   </Link>
                 </Button>
               </div>
@@ -138,7 +138,7 @@ export default function Home() {
             />
           </div>
           <div className="space-y-6">
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">Your Trusted Partner in Occupational Safety.</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">Your Partner in Proactive Safety</h2>
             <p className="text-muted-foreground text-lg md:text-xl/relaxed">
               With over a decade of dedicated experience, we provide safety solutions that protect your people, assets, and reputation. Our team of certified professionals is committed to creating safer work environments across all industries through proven processes and advanced technology.
             </p>
