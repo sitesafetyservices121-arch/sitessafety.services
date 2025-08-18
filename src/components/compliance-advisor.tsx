@@ -65,8 +65,8 @@ export function ComplianceAdvisor() {
         <div className="mx-auto bg-primary text-primary-foreground w-16 h-16 rounded-full flex items-center justify-center mb-4">
             <Bot className="h-8 w-8" />
         </div>
-        <CardTitle className="text-4xl md:text-5xl font-headline font-bold tracking-tight text-primary-dark">AI Safety Compliance Advisor</CardTitle>
-        <CardDescription className="max-w-2xl mx-auto mt-4 text-muted-foreground font-body text-lg">
+        <CardTitle className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">AI Safety Compliance Advisor</CardTitle>
+        <CardDescription className="max-w-2xl mx-auto mt-4 text-muted-foreground text-lg">
           Describe your work environment or project, and our AI will instantly analyze it for potential safety risks and recommend the best solutions.
         </CardDescription>
       </CardHeader>
@@ -82,7 +82,7 @@ export function ComplianceAdvisor() {
                   <FormControl>
                     <Textarea
                       placeholder="e.g., 'We're starting a 3-month construction project for a 5-story office building downtown. We have about 30 workers on site and need to manage our safety paperwork for regular audits.'"
-                      className="resize-vertical text-base min-h-[120px] bg-card"
+                      className="resize-vertical text-base min-h-[120px] bg-background rounded-xl"
                       rows={5}
                       {...field}
                     />
@@ -126,15 +126,15 @@ export function ComplianceAdvisor() {
         {result && (
           <Card className="w-full bg-card border-t-4 border-t-primary">
             <CardHeader>
-              <CardTitle className="text-2xl font-headline text-primary-dark">Your AI-Generated Compliance Analysis</CardTitle>
+              <CardTitle className="text-2xl font-bold text-foreground">Your AI-Generated Compliance Analysis</CardTitle>
             </CardHeader>
             <CardContent className="space-y-8">
               <div>
-                <h3 className="text-xl font-headline font-semibold flex items-center gap-3 text-primary-dark mb-4">
+                <h3 className="text-xl font-bold flex items-center gap-3 text-foreground mb-4">
                     <AlertTriangle className="h-6 w-6 text-amber-500" />
                     Potential Risks Identified
                 </h3>
-                <ul className="space-y-2 list-disc list-inside text-muted-foreground font-body pl-4">
+                <ul className="space-y-2 list-disc list-inside text-muted-foreground pl-4">
                   {result.risks.map((risk, index) => (
                     <li key={index}>{risk}</li>
                   ))}
@@ -144,7 +144,7 @@ export function ComplianceAdvisor() {
               <Separator />
 
               <div>
-                <h3 className="text-xl font-headline font-semibold flex items-center gap-3 text-primary-dark mb-6">
+                <h3 className="text-xl font-bold flex items-center gap-3 text-foreground mb-6">
                     <Check className="h-6 w-6 text-green-600" />
                     Recommended Services
                 </h3>
@@ -155,8 +155,8 @@ export function ComplianceAdvisor() {
                          {serviceIcons[rec.serviceName]}
                         </div>
                         <div>
-                            <h4 className="font-headline font-bold text-lg text-primary-dark">{rec.serviceName}</h4>
-                            <p className="font-body text-muted-foreground">{rec.reason}</p>
+                            <h4 className="font-bold text-lg text-foreground">{rec.serviceName}</h4>
+                            <p className="text-muted-foreground">{rec.reason}</p>
                         </div>
                     </div>
                   ))}
@@ -164,7 +164,7 @@ export function ComplianceAdvisor() {
               </div>
 
                <div className="text-center pt-6">
-                  <p className="text-muted-foreground font-body mb-4">Ready to take the next step towards a safer worksite?</p>
+                  <p className="text-muted-foreground mb-4">Ready to take the next step towards a safer worksite?</p>
                    <Button asChild size="lg">
                         <Link href="/e-safety-file">Request a Free Consultation</Link>
                     </Button>

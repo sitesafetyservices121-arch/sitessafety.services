@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   description: "Engineering a Safer Tomorrow. RAK-Site Safety delivers precision-engineered safety solutions for complex industries, ensuring compliance, efficiency, and fundamental security.",
 };
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-body' });
-const lexend = Lexend({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-headline' });
+const inter = Inter({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-body' });
+const lexend = Lexend({ subsets: ['latin'], weight: ['700', '800'], variable: '--font-headline' });
 
 export default function RootLayout({
   children,

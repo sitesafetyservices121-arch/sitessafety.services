@@ -1,22 +1,25 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, Award, Building, HeartHandshake, ShieldCheck } from "lucide-react";
+import { ArrowRight, FileText, HardHat, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import { ComplianceAdvisor } from "@/components/compliance-advisor";
 
 const services = [
   {
+    icon: <HardHat className="h-8 w-8 text-primary" />,
     title: "Rent a Safety Officer",
     description: "Deploy certified safety professionals to your site, ensuring full compliance and risk mitigation from day one.",
     link: "/rent-a-safety-officer",
   },
   {
+    icon: <FileText className="h-8 w-8 text-primary" />,
     title: "E-Safety File",
     description: "Digitize your compliance with our audit-proof, cloud-based safety file management system.",
     link: "/e-safety-file",
   },
   {
+    icon: <ShieldCheck className="h-8 w-8 text-primary" />,
     title: "Safety Management System",
     description: "Implement a bespoke, scalable system to proactively manage safety and cultivate a zero-incident culture.",
     link: "/safety-management-system",
@@ -24,27 +27,27 @@ const services = [
 ];
 
 const stats = [
-    { icon: <Award className="h-10 w-10 text-primary" />, value: "10+", label: "Years of Expertise" },
-    { icon: <Building className="h-10 w-10 text-primary" />, value: "500+", label: "Successful Projects" },
-    { icon: <ShieldCheck className="h-10 w-10 text-primary" />, value: "100%", label: "Compliance Record" },
-    { icon: <HeartHandshake className="h-10 w-10 text-primary" />, value: "99%", label: "Client Retention" },
+    { value: "10+", label: "Years of Expertise" },
+    { value: "500+", label: "Successful Projects" },
+    { value: "100%", label: "Compliance Record" },
+    { value: "99%", label: "Client Retention" },
 ]
 
 export default function Home() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="py-24 md:py-40 bg-background">
+      <section className="relative overflow-hidden py-24 md:py-40">
         <div className="container px-4 md:px-6">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
-            <div className="space-y-6">
-              <h1 className="text-5xl font-headline font-bold tracking-tight sm:text-6xl md:text-7xl text-primary-dark">
+            <div className="space-y-6 text-center lg:text-left">
+              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-foreground">
                 Engineering a Safer Tomorrow
               </h1>
-              <p className="max-w-xl text-lg md:text-xl text-muted-foreground font-body">
+              <p className="max-w-xl text-lg md:text-xl text-muted-foreground mx-auto lg:mx-0">
                 RAK-Site Safety delivers precision-engineered safety solutions, ensuring your projects are compliant, efficient, and fundamentally secure.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
                 <Button asChild size="lg" variant="default">
                   <Link href="/e-safety-file">
                     Request Consultation <ArrowRight className="ml-2 h-5 w-5" />
@@ -57,7 +60,7 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <div className="relative h-96 w-full lg:h-[500px] overflow-hidden">
+            <div className="relative h-80 w-full lg:h-[450px] overflow-hidden rounded-2xl shadow-xl">
               <Image 
                 src="https://placehold.co/800x600.png"
                 alt="Engineer reviewing blueprints on a construction site"
@@ -65,17 +68,23 @@ export default function Home() {
                 objectFit="cover"
                 data-ai-hint="engineer blueprints construction"
                 priority
-                className="border-4 border-border"
               />
             </div>
           </div>
         </div>
       </section>
 
-      {/* AI Compliance Advisor Section */}
-      <section className="w-full py-24 md:py-32 bg-secondary border-y">
+      {/* Stats Section */}
+      <section className="w-full py-24 bg-card border-y">
         <div className="container px-4 md:px-6">
-           <ComplianceAdvisor />
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                {stats.map((stat) => (
+                    <div key={stat.label} className="text-center">
+                        <p className="text-4xl md:text-5xl font-extrabold text-primary">{stat.value}</p>
+                        <p className="text-muted-foreground font-medium mt-2">{stat.label}</p>
+                    </div>
+                ))}
+            </div>
         </div>
       </section>
 
@@ -83,20 +92,23 @@ export default function Home() {
       <section id="services" className="w-full py-24 md:py-32 bg-background">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-headline font-bold tracking-tight text-primary-dark">Core Safety Solutions</h2>
-            <p className="max-w-2xl mx-auto mt-4 text-muted-foreground font-body text-lg">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">Core Safety Solutions</h2>
+            <p className="max-w-2xl mx-auto mt-4 text-muted-foreground text-lg">
               Specialized services designed to integrate seamlessly with your operations, delivering unparalleled safety and compliance.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {services.map((service) => (
-              <Card key={service.title} className="bg-card border flex flex-col group">
-                <CardHeader>
-                  <CardTitle className="text-2xl font-headline font-semibold text-primary-dark">{service.title}</CardTitle>
+              <Card key={service.title} className="bg-card text-center flex flex-col group p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                <CardHeader className="items-center">
+                  <div className="bg-primary/10 p-4 rounded-full mb-4">
+                    {service.icon}
+                  </div>
+                  <CardTitle className="text-xl font-bold text-foreground">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-grow flex flex-col">
-                  <p className="text-muted-foreground font-body mb-6 flex-grow">{service.description}</p>
-                  <Link href={service.link} className="font-body font-semibold text-primary hover:text-primary-dark flex items-center group">
+                  <p className="text-muted-foreground mb-6 flex-grow">{service.description}</p>
+                  <Link href={service.link} className="font-body font-semibold text-primary hover:underline flex items-center justify-center group">
                     Learn More <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </CardContent>
@@ -105,38 +117,29 @@ export default function Home() {
           </div>
         </div>
       </section>
-      
-      {/* Stats Section */}
-      <section className="w-full py-24 md:py-32 bg-secondary border-y">
+
+      {/* AI Compliance Advisor Section */}
+      <section className="w-full py-24 md:py-32 bg-card border-y">
         <div className="container px-4 md:px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                {stats.map((stat) => (
-                    <div key={stat.label} className="text-center">
-                        {stat.icon}
-                        <p className="text-4xl md:text-5xl font-bold font-headline text-primary-dark mt-4">{stat.value}</p>
-                        <p className="text-muted-foreground font-body mt-2">{stat.label}</p>
-                    </div>
-                ))}
-            </div>
+           <ComplianceAdvisor />
         </div>
       </section>
-
+      
       {/* Why Choose Us Section */}
       <section className="w-full py-24 md:py-32 bg-background">
         <div className="container grid items-center justify-center gap-12 px-4 text-center md:px-6 lg:grid-cols-2 lg:text-left lg:gap-20">
-          <div className="relative h-96 lg:h-[500px] w-full overflow-hidden">
+          <div className="relative h-96 lg:h-[500px] w-full overflow-hidden rounded-2xl shadow-xl">
             <Image 
               src="https://placehold.co/800x600.png"
               alt="Team of safety professionals in a meeting"
               layout="fill"
               objectFit="cover"
               data-ai-hint="industrial safety meeting"
-              className="border-4 border-border"
             />
           </div>
           <div className="space-y-6">
-            <h2 className="text-4xl md:text-5xl font-bold font-headline tracking-tight text-primary-dark">Your Trusted Partner in Occupational Safety.</h2>
-            <p className="text-muted-foreground font-body text-lg md:text-xl/relaxed">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">Your Trusted Partner in Occupational Safety.</h2>
+            <p className="text-muted-foreground text-lg md:text-xl/relaxed">
               With over a decade of dedicated experience, we provide safety solutions that protect your people, assets, and reputation. Our team of certified professionals is committed to creating safer work environments across all industries through proven processes and advanced technology.
             </p>
             <div className="flex justify-center lg:justify-start pt-4">

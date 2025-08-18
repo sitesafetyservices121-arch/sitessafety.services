@@ -28,30 +28,30 @@ export default function ExperiencePage() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-card">
+      <section className="py-20 md:py-32 bg-card border-b">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-semibold font-headline tracking-tight text-primary-dark">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
             Proven Expertise, Trusted Results
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto font-body">
+          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             We have a track record of successfully implementing safety solutions across diverse and challenging projects, delivering excellence every time.
           </p>
         </div>
       </section>
 
       {/* Project Portfolio Section */}
-      <section className="py-24 bg-secondary">
+      <section className="py-24">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-semibold text-center text-primary-dark font-headline mb-16">Project Portfolio</h2>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-center text-foreground mb-16">Project Portfolio</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {portfolio.map((item) => (
-                  <Card key={item.title} className="overflow-hidden group border shadow-sm rounded-md bg-card">
+                  <Card key={item.title} className="overflow-hidden group border shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
                       <CardContent className="p-0">
                           <div className="relative h-80 w-full">
                               <Image src={item.image} alt={item.title} layout="fill" objectFit="cover" className="transition-transform duration-500 group-hover:scale-105" data-ai-hint={item.hint}/>
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                               <div className="absolute bottom-0 left-0 p-6">
-                                  <h3 className="text-2xl font-headline font-semibold text-white">{item.title}</h3>
+                                  <h3 className="text-2xl font-bold text-white">{item.title}</h3>
                               </div>
                           </div>
                       </CardContent>
@@ -62,9 +62,9 @@ export default function ExperiencePage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 bg-card">
+      <section className="py-24 bg-card border-y">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-semibold text-center text-primary-dark font-headline mb-16">What Our Clients Say</h2>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-center text-foreground mb-16">What Our Clients Say</h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {testimonials.map((t) => (
               <TestimonialCard key={t.name} {...t} />
@@ -74,12 +74,12 @@ export default function ExperiencePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-secondary">
+      <section className="py-24">
         <div className="container mx-auto px-4">
-            <div className="bg-primary rounded-md p-10 md:p-16 text-center shadow-md">
-                <h2 className="text-3xl md:text-4xl font-semibold font-headline text-primary-foreground">Ready to Elevate Your Site's Safety?</h2>
-                <p className="mt-4 max-w-2xl mx-auto text-primary-foreground/90 font-body text-lg">Let's collaborate to build a safer, more compliant, and more productive work environment. Contact us today for a complimentary consultation.</p>
-                <Button asChild size="lg" className="mt-8 bg-card text-primary-dark hover:bg-card/90">
+            <div className="bg-gradient-to-r from-primary to-secondary rounded-2xl p-10 md:p-16 text-center shadow-lg">
+                <h2 className="text-3xl md:text-4xl font-extrabold text-primary-foreground">Ready to Elevate Your Site's Safety?</h2>
+                <p className="mt-4 max-w-2xl mx-auto text-primary-foreground/90 text-lg">Let's collaborate to build a safer, more compliant, and more productive work environment. Contact us today for a complimentary consultation.</p>
+                <Button asChild size="lg" className="mt-8 bg-background text-primary hover:bg-background/90">
                   <Link href="/e-safety-file">
                       Request a Free Quote <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>

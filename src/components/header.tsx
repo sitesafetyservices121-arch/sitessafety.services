@@ -13,6 +13,7 @@ import {
 import { Menu, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "./logo";
+import React from "react";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -32,12 +33,21 @@ const navLinks = [
 
 export function Header() {
   const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const NavLink = ({ href, label, isMobile }: { href: string; label: string, isMobile?: boolean }) => (
     <Link
       href={href}
       className={cn(
-        "font-body font-medium transition-colors text-base",
+        "font-medium transition-colors text-base",
         "hover:text-primary",
         pathname === href ? "text-primary font-semibold" : "text-foreground/80",
         isMobile && "py-2 text-lg w-full",
@@ -55,7 +65,7 @@ export function Header() {
       <DropdownMenuTrigger asChild>
         <button
           className={cn(
-            "flex items-center gap-1 font-body font-medium transition-colors",
+            "flex items-center gap-1 font-medium transition-colors",
             isMobile ? "w-full justify-between py-2 text-lg" : "text-base",
             isServicePage ? "text-primary font-semibold" : "text-foreground/80 hover:text-primary"
           )}
@@ -64,10 +74,10 @@ export function Header() {
           <ChevronDown className={cn("h-4 w-4 transition-transform duration-200")} />
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="font-body mt-2">
+      <DropdownMenuContent className="font-body mt-2 bg-card">
         {navLinks.find(l => l.isMenu)?.items?.map((item) => (
           <DropdownMenuItem key={item.href} asChild>
-            <Link href={item.href} className={cn("text-base py-2", pathname.startsWith(item.href) && "bg-accent/10 text-accent")}>{item.label}</Link>
+            <Link href={item.href} className={cn("text-base py-2", pathname.startsWith(item.href) && "bg-secondary/10 text-secondary")}>{item.label}</Link>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
@@ -75,11 +85,14 @@ export function Header() {
   )};
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm">
+    <header className={cn(
+      "sticky top-0 z-50 w-full transition-all duration-300",
+      isScrolled ? "bg-card/80 backdrop-blur-sm border-b" : "bg-transparent"
+    )}>
       <div className="container flex h-20 max-w-7xl items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 mr-6">
           <Logo className="h-7 w-7 text-primary" />
-          <span className="font-headline text-xl font-semibold text-primary-dark">RAK-Safety</span>
+          <span className="font-headline text-xl font-bold text-foreground">RAK-Safety</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -90,7 +103,7 @@ export function Header() {
         </nav>
         
         <div className="flex items-center gap-2 md:ml-auto">
-          <Button asChild variant="cta">
+          <Button asChild>
             <Link href="/e-safety-file">Request a Quote</Link>
           </Button>
 
@@ -102,10 +115,10 @@ export function Header() {
                   <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right">
+              <SheetContent side="right" className="bg-card">
                 <Link href="/" className="flex items-center gap-2.5 mb-10">
                   <Logo className="h-8 w-8 text-primary" />
-                  <span className="font-headline text-2xl font-semibold text-primary-dark">RAK-Safety</span>
+                  <span className="font-headline text-2xl font-bold text-foreground">RAK-Safety</span>
                 </Link>
                 <nav className="flex flex-col gap-4">
                   <NavLink href="/" label="Home" isMobile />
@@ -114,14 +127,13 @@ export function Header() {
                   <NavLink href="/experience" label="Experience" isMobile />
                   <NavLink href="/terms" label="T&Cs" isMobile />
                 </nav>
-                 <Button asChild className="w-full mt-8" size="lg" variant="cta">
+                 <Button asChild className="w-full mt-8" size="lg">
                   <Link href="/e-safety-file">Request a Quote</Link>
                 </Button>
               </SheetContent>
             </Sheet>
           </div>
         </div>
-
       </div>
     </header>
   );

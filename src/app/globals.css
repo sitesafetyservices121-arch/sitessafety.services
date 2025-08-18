@@ -4,41 +4,42 @@
 
 @layer base {
   :root {
-    --background: 224 71% 4%;
-    --foreground: 210 40% 98%;
+    --background: 220 14% 96%; /* #f9fafb */
+    --foreground: 224 71% 4%; /* #111827 */
 
-    --card: 224 71% 4%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 14% 99%; /* #fcfcfd */
+    --card-foreground: 224 71% 4%;
 
-    --popover: 224 71% 4%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 14% 99%;
+    --popover-foreground: 224 71% 4%;
 
-    --primary: 217 91% 60%; /* Blue */
+    --primary: 221 83% 53%; /* #2563eb */
     --primary-foreground: 210 40% 98%;
 
-    --primary-dark: 217 91% 60%;
+    --primary-dark: 221 83% 53%;
     --primary-dark-foreground: 210 40% 98%;
     
-    --secondary: 215 28% 17%;
+    --secondary: 173 80% 41%; /* #14b8a6 */
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 215 28% 17%;
-    --muted-foreground: 215 14% 65%;
+    --muted: 220 9% 45%; /* #6b7280 */
+    --muted-foreground: 220 9% 45%;
 
-    --accent: 25 95% 53%; /* Orange */
+    --accent: 38 92% 50%; /* #f59e0b */
     --accent-foreground: 210 40% 98%;
     
-    --destructive: 0 63% 31%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
     
-    --border: 215 28% 17%;
-    --input: 215 28% 17%;
-    --ring: 217 91% 60%;
+    --border: 220 13% 91%; /* #e5e7eb */
+    --input: 220 13% 91%;
+    --ring: 221 83% 53%;
 
-    --radius: 0.3rem;
+    --radius: 1.5rem; /* 2xl */
   }
 
   .dark {
+    /* Keeping dark mode consistent for now, but can be updated if needed */
     --background: 224 71% 4%;
     --foreground: 210 40% 98%;
     
@@ -48,7 +49,7 @@
     --popover: 224 71% 4%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 217 91% 60%; /* Blue */
+    --primary: 217 91% 60%;
     --primary-foreground: 210 40% 98%;
 
     --primary-dark: 217 91% 60%;
@@ -60,7 +61,7 @@
     --muted: 215 28% 17%;
     --muted-foreground: 215 14% 65%;
 
-    --accent: 25 95% 53%; /* Orange */
+    --accent: 25 95% 53%;
     --accent-foreground: 210 40% 98%;
     
     --destructive: 0 63% 31%;
@@ -70,7 +71,7 @@
     --input: 215 28% 17%;
     --ring: 217 91% 60%;
 
-    --radius: 0.3rem;
+    --radius: 1.5rem;
   }
 }
 
@@ -82,5 +83,11 @@
     @apply bg-background text-foreground;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline text-foreground;
+  }
+  p {
+    @apply font-body text-muted-foreground;
   }
 }

@@ -37,34 +37,34 @@ export default function RentASafetyOfficerPage() {
        {/* Hero Section */}
       <section className="py-20 md:py-32 bg-card border-b">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-semibold font-headline tracking-tight text-primary-dark">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
             On-Demand Safety Expertise
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto font-body">
+          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Ensure your project meets all safety regulations with our flexible and reliable safety officer rental service. Get qualified professionals on-site when you need them.
           </p>
         </div>
       </section>
 
       {/* Content & Form Section */}
-      <section className="py-24 bg-secondary">
+      <section className="py-24">
         <div className="container max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 md:gap-24 items-start">
             
             {/* Features */}
             <div className="space-y-10">
-              <h2 className="text-3xl md:text-4xl font-semibold font-headline text-primary-dark">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">
                 Flexible, Reliable, Certified
               </h2>
               <div className="space-y-8">
                   {serviceFeatures.map((feature) => (
                       <div key={feature.title} className="flex items-start gap-4">
-                          <div className="flex-shrink-0 bg-card text-accent rounded-md p-3 shadow-sm border">
+                          <div className="flex-shrink-0 bg-primary/10 text-primary rounded-xl p-3 shadow-sm border">
                             {feature.icon}
                           </div>
                           <div>
-                            <h3 className="font-headline text-xl font-semibold text-primary-dark">{feature.title}</h3>
-                            <p className="font-body text-muted-foreground mt-1">{feature.description}</p>
+                            <h3 className="text-xl font-bold text-foreground">{feature.title}</h3>
+                            <p className="text-muted-foreground mt-1">{feature.description}</p>
                           </div>
                       </div>
                   ))}
@@ -72,10 +72,10 @@ export default function RentASafetyOfficerPage() {
             </div>
 
             {/* Booking Form */}
-            <Card className="shadow-lg border bg-card sticky top-24 p-2">
+            <Card className="shadow-xl border bg-card sticky top-24 p-2">
               <CardHeader>
-                <CardTitle className="text-center text-3xl text-primary-dark font-headline">Book Your Safety Officer</CardTitle>
-                <CardDescription className="text-center font-body text-base">Complete the form to get a fast, no-obligation quote.</CardDescription>
+                <CardTitle className="text-center text-3xl text-foreground font-bold">Book Your Safety Officer</CardTitle>
+                <CardDescription className="text-center text-base">Complete the form to get a fast, no-obligation quote.</CardDescription>
               </CardHeader>
               <CardContent>
                 <BookingForm />
