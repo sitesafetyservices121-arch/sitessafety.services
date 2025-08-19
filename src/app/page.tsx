@@ -63,7 +63,7 @@ export default function Home() {
             </div>
             <div className="relative h-80 w-full lg:h-[450px] overflow-hidden rounded-2xl shadow-xl">
               <Image 
-                src="https://placehold.co/800x600.png"
+                src="https://iili.io/FpMAqwN.png"
                 alt="Engineer reviewing blueprints on a construction site"
                 layout="fill"
                 objectFit="cover"
