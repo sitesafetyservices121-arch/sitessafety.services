@@ -17,7 +17,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState, useTransition } from "react";
 import { getComplianceAdvice } from "@/lib/actions";
-import { AlertTriangle, Bot, Zap, FileDigit, HardHat, Loader2, Sparkles, UserCheck } from "lucide-react";
+import { AlertTriangle, Bot, Zap, FileDigit, HardHat, Loader2, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { Separator } from "./ui/separator";
 import type { ComplianceRequest, ComplianceResponse } from "@/ai/schemas";
@@ -31,7 +31,7 @@ const FormSchema = z.object({
 const serviceIcons: { [key: string]: React.ReactNode } = {
     "Rent a Safety Officer": <HardHat className="h-6 w-6 text-primary" />,
     "E-Safety File": <FileDigit className="h-6 w-6 text-primary" />,
-    "Safety Management System": <UserCheck className="h-6 w-6 text-primary" />,
+    "Safety Management System": <Sparkles className="h-6 w-6 text-primary" />,
 }
 
 export function ComplianceAdvisor() {
