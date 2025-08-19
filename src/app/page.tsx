@@ -15,7 +15,7 @@ const services = [
   {
     icon: <FileText className="h-8 w-8 text-primary" />,
     title: "E-Safety File",
-    description: "Digitize your compliance with our audit-proof, cloud-based safety file management system.",
+    description: "Save time and reduce costs with our cloud-based, audit-ready safety file management system. Fully legal and compliant, it streamlines safety file submissions for auditors, contractors, and companies, modernizing your compliance process without compromising on reliability or regulatory standards.",
     link: "/e-safety-file",
   },
   {
