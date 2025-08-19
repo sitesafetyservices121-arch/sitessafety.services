@@ -49,7 +49,7 @@ export default function Home() {
                 RAK-Site Safety provides cutting-edge safety solutions that go beyond compliance—driving efficiency, protecting people, and securing every phase of your project from planning to completion.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
-                <Button asChild size="lg" variant="cta">
+                <Button asChild size="lg">
                   <Link href="/e-safety-file">
                     Get Started <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
@@ -69,6 +69,7 @@ export default function Home() {
                 objectFit="cover"
                 data-ai-hint="safety officer"
                 priority
+                quality={100}
               />
             </div>
           </div>
@@ -131,6 +132,7 @@ export default function Home() {
               layout="fill"
               objectFit="cover"
               data-ai-hint="industrial safety meeting"
+              quality={100}
             />
           </div>
           <div className="space-y-6">
