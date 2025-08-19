@@ -98,6 +98,7 @@ export default function Home() {
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground text-lg">
               Specialized services designed to integrate seamlessly with your operations, delivering unparalleled safety and compliance.
             </p>
+            <p className="mt-4 font-semibold uppercase tracking-wider text-muted-foreground">We offer the following</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {services.map((service) => (
