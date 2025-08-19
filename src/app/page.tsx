@@ -46,7 +46,7 @@ export default function Home() {
                 Your Partner in Workplace Safety & Compliance.
               </h1>
               <p className="max-w-xl text-lg md:text-xl text-muted-foreground mx-auto lg:mx-0">
-                RAK-Site Safety delivers precision-engineered safety solutions, ensuring your projects are compliant, efficient, and fundamentally secure from start to finish.
+                RAK-Site Safety provides cutting-edge safety solutions that go beyond compliance—driving efficiency, protecting people, and securing every phase of your project from planning to completion.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
                 <Button asChild size="lg">
