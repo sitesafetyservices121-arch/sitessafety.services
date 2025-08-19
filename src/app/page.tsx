@@ -9,7 +9,7 @@ const services = [
   {
     icon: <HardHat className="h-8 w-8 text-primary" />,
     title: "Rent a Safety Officer",
-    description: "Deploy certified safety professionals to your site, ensuring full compliance and risk mitigation from day one.",
+    description: "We deploy certified safety officers nationwide, registered with SACPCMP, SAIOH, or both, ensuring full compliance and effective risk mitigation from day one.",
     link: "/rent-a-safety-officer",
   },
   {
