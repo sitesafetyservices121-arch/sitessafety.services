@@ -4,7 +4,7 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Award, Building2, HardHat, ShieldCheck, Factory, Truck, Wrench } from "lucide-react";
 
 export const metadata: Metadata = {
   title: 'Proven Experience & Client Success',
@@ -24,6 +24,20 @@ const portfolio = [
     { title: "Renewable Energy Wind Farm", image: "https://placehold.co/800x600.png", hint: "wind turbines field" },
 ];
 
+const stats = [
+    { icon: <Award className="h-10 w-10 text-primary" />, value: "10+", label: "Years in Business" },
+    { icon: <HardHat className="h-10 w-10 text-primary" />, value: "500+", label: "Projects Completed" },
+    { icon: <ShieldCheck className="h-10 w-10 text-primary" />, value: "100%", label: "Audit Pass Rate" },
+    { icon: <Building2 className="h-10 w-10 text-primary" />, value: "12+", label: "Industries Served" },
+];
+
+const industries = [
+    { icon: <HardHat className="h-8 w-8 text-primary" />, name: "Construction" },
+    { icon: <Factory className="h-8 w-8 text-primary" />, name: "Manufacturing" },
+    { icon: <Truck className="h-8 w-8 text-primary" />, name: "Logistics" },
+    { icon: <Wrench className="h-8 w-8 text-primary" />, name: "Engineering" },
+];
+
 export default function ExperiencePage() {
   return (
     <div className="bg-background text-foreground">
@@ -31,18 +45,35 @@ export default function ExperiencePage() {
       <section className="py-20 md:py-32 bg-card border-b">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
-            Proven Expertise, Trusted Results
+            Trusted Nationwide for Safety & Compliance
           </h1>
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            We have a track record of successfully implementing safety solutions across diverse and challenging projects, delivering excellence every time.
+            Our track record speaks for itself. We deliver reliable, expert safety solutions that protect your people, projects, and reputation.
           </p>
         </div>
       </section>
 
-      {/* Project Portfolio Section */}
+      {/* Quick Stats Section */}
       <section className="py-24">
+          <div className="container mx-auto px-4">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                  {stats.map((stat) => (
+                      <div key={stat.label} className="text-center p-4 bg-card rounded-2xl shadow-sm border">
+                          <div className="flex justify-center items-center mb-4 text-primary w-20 h-20 rounded-full mx-auto bg-primary/10">
+                              {stat.icon}
+                          </div>
+                          <p className="text-4xl md:text-5xl font-extrabold text-primary">{stat.value}</p>
+                          <p className="text-muted-foreground font-medium mt-2">{stat.label}</p>
+                      </div>
+                  ))}
+              </div>
+          </div>
+      </section>
+
+      {/* Project Portfolio Section */}
+      <section className="py-24 bg-card border-y">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-center text-foreground mb-16">Project Portfolio</h2>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-center text-foreground mb-16">Project Highlights</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {portfolio.map((item) => (
                   <Card key={item.title} className="overflow-hidden group border shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
@@ -62,12 +93,29 @@ export default function ExperiencePage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 bg-card border-y">
+      <section className="py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-extrabold text-center text-foreground mb-16">What Our Clients Say</h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {testimonials.map((t) => (
               <TestimonialCard key={t.name} {...t} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries Served Section */}
+       <section className="py-24 bg-card border-y">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-center text-foreground mb-16">Expertise Across Key Industries</h2>
+          <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+            {industries.map((industry) => (
+                <div key={industry.name} className="flex flex-col items-center text-center gap-4">
+                    <div className="bg-primary/10 rounded-full w-20 h-20 flex items-center justify-center border">
+                        {industry.icon}
+                    </div>
+                    <p className="text-lg font-bold text-foreground">{industry.name}</p>
+                </div>
             ))}
           </div>
         </div>
