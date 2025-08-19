@@ -49,7 +49,7 @@ export default function Home() {
                 RAK-Site Safety provides cutting-edge safety solutions that go beyond compliance—driving efficiency, protecting people, and securing every phase of your project from planning to completion.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
-                <Button asChild size="lg">
+                <Button asChild size="lg" variant="cta">
                   <Link href="/e-safety-file">
                     Get Started <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
@@ -63,11 +63,11 @@ export default function Home() {
             </div>
             <div className="relative h-80 w-full lg:h-[450px] overflow-hidden rounded-2xl shadow-xl">
               <Image 
-                src="https://iili.io/FpMAqwN.png"
-                alt="Engineer reviewing blueprints on a construction site"
+                src="https://iili.io/FpWzfEu.png"
+                alt="Professional safety officer on a work site"
                 layout="fill"
                 objectFit="cover"
-                data-ai-hint="engineer blueprints construction"
+                data-ai-hint="safety officer"
                 priority
               />
             </div>
