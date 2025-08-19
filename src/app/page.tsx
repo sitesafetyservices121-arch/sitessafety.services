@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -36,16 +37,16 @@ const stats = [
 export default function Home() {
   return (
     <div className="bg-background text-foreground">
-      {/* Hero Section */}
+      {/* 1. Hero Section */}
       <section className="relative overflow-hidden py-24 md:py-40 bg-gradient-to-br from-indigo-50 via-white to-cyan-50">
         <div className="container px-4 md:px-6">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
             <div className="space-y-6 text-center lg:text-left">
               <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-foreground">
-                The Future of Workplace Safety is Here.
+                Your Partner in Workplace Safety & Compliance.
               </h1>
               <p className="max-w-xl text-lg md:text-xl text-muted-foreground mx-auto lg:mx-0">
-                RAK-Site Safety delivers precision-engineered safety solutions, ensuring your projects are compliant, efficient, and fundamentally secure.
+                RAK-Site Safety delivers precision-engineered safety solutions, ensuring your projects are compliant, efficient, and fundamentally secure from start to finish.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
                 <Button asChild size="lg">
@@ -74,9 +75,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* 2. Trust & Proof Section */}
       <section className="w-full py-24 bg-card border-y">
         <div className="container px-4 md:px-6">
+            <h2 className="text-center text-muted-foreground font-semibold tracking-wider uppercase mb-12">Trusted by Hundreds of Companies</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 {stats.map((stat) => (
                     <div key={stat.label} className="text-center">
@@ -88,11 +90,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* 3. Core Value / Features Section */}
       <section id="services" className="w-full py-24 md:py-32 bg-background">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">Core Safety Solutions</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">A Solution for Every Safety Need</h2>
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground text-lg">
               Specialized services designed to integrate seamlessly with your operations, delivering unparalleled safety and compliance.
             </p>
@@ -118,14 +120,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* AI Compliance Advisor Section */}
-      <section className="w-full py-24 md:py-32 bg-card border-y">
-        <div className="container px-4 md:px-6">
-           <ComplianceAdvisor />
-        </div>
-      </section>
-      
-      {/* Why Choose Us Section */}
+      {/* 4. Showcase / Why Choose Us Section */}
       <section className="w-full py-24 md:py-32 bg-background">
         <div className="container grid items-center justify-center gap-12 px-4 text-center md:px-6 lg:grid-cols-2 lg:text-left lg:gap-20">
           <div className="relative h-96 lg:h-[500px] w-full overflow-hidden rounded-2xl shadow-xl">
@@ -138,7 +133,7 @@ export default function Home() {
             />
           </div>
           <div className="space-y-6">
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">Your Partner in Proactive Safety</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">Expertise You Can Build On</h2>
             <p className="text-muted-foreground text-lg md:text-xl/relaxed">
               With over a decade of dedicated experience, we provide safety solutions that protect your people, assets, and reputation. Our team of certified professionals is committed to creating safer work environments across all industries through proven processes and advanced technology.
             </p>
@@ -150,6 +145,14 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* 5 & 6. AI Compliance Advisor as Testimonial & Final CTA */}
+      <section className="w-full py-24 md:py-32 bg-card border-y">
+        <div className="container px-4 md:px-6">
+           <ComplianceAdvisor />
+        </div>
+      </section>
+      
     </div>
   );
 }
