@@ -78,7 +78,7 @@ export default function Home() {
       {/* 2. Trust & Proof Section */}
       <section className="w-full py-24 bg-card border-y">
         <div className="container px-4 md:px-6">
-            <h2 className="text-center text-muted-foreground font-semibold tracking-wider uppercase mb-12">TRUSTED BY COMPANIES NATIONWIDE</h2>
+            <h2 className="text-center text-lg text-muted-foreground font-semibold tracking-wider uppercase mb-12">TRUSTED BY COMPANIES NATIONWIDE</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 {stats.map((stat) => (
                     <div key={stat.label} className="text-center">
