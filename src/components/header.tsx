@@ -29,6 +29,7 @@ const navLinks = [
     ],
   },
   { href: "/experience", label: "Experience" },
+  { href: "/terms", label: "T&Cs" },
 ];
 
 export function Header() {
@@ -42,6 +43,20 @@ export function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const NavItem = ({ href, label, children }: { href: string; label: string, children?: React.ReactNode }) => (
+    <Link
+      href={href}
+      className={cn(
+        "font-medium transition-colors text-base",
+        "hover:text-primary",
+        pathname === href ? "text-primary font-semibold" : "text-foreground/80"
+      )}
+    >
+      {label}
+      {children}
+    </Link>
+  );
 
   const NavLink = ({ href, label, isMobile }: { href: string; label: string, isMobile?: boolean }) => (
     <Link
@@ -96,14 +111,11 @@ export function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          <NavLink href="/" label="Home" />
-          <NavLink href="/about" label="About Us" />
-          <NavMenu />
-          <NavLink href="/experience" label="Experience" />
+            {navLinks.map(link => link.isMenu ? <NavMenu key={link.label} /> : <NavLink key={link.href} href={link.href} label={link.label} />)}
         </nav>
         
         <div className="flex items-center gap-2 md:ml-auto">
-          <Button asChild variant="cta">
+          <Button asChild size="default">
             <Link href="/e-safety-file">Request a Quote</Link>
           </Button>
 
