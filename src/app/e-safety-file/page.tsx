@@ -1,7 +1,7 @@
 
 import { InquiryForm } from "@/components/inquiry-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Zap, Building, Briefcase, CheckCircle, FileText, Cloud, ShieldCheck, FolderArchive } from "lucide-react";
+import { Zap, Building, Briefcase, ShieldCheck, FileText, Cloud, FolderArchive } from "lucide-react";
 import type { Metadata } from 'next';
 import Image from "next/image";
 import Link from "next/link";
@@ -93,7 +93,7 @@ export default function ESafetyFilePage() {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-4">
                 {includedDocs.map(doc => (
                     <div key={doc} className="flex items-center gap-3">
-                        <CheckCircle className="h-6 w-6 text-accent flex-shrink-0" />
+                        <Zap className="h-6 w-6 text-accent flex-shrink-0" />
                         <p className="text-lg text-muted-foreground">{doc}</p>
                     </div>
                 ))}

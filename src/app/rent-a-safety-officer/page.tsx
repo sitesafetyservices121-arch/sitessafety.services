@@ -1,6 +1,6 @@
 import { BookingForm } from "@/components/booking-form";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Zap, Shield, Briefcase, Calendar, CheckCircle } from "lucide-react";
+import { Zap, Shield, Briefcase, Calendar } from "lucide-react";
 import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -94,7 +94,7 @@ export default function RentASafetyOfficerPage() {
                 <div className="space-y-4">
                     {differentiators.map((item) => (
                         <div key={item.text} className="flex items-center gap-3">
-                            <CheckCircle className="h-6 w-6 text-accent flex-shrink-0" />
+                            <Zap className="h-6 w-6 text-accent flex-shrink-0" />
                             <p className="text-lg text-muted-foreground">{item.text}</p>
                         </div>
                     ))}
