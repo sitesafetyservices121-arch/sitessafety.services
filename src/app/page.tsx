@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, FileText, HardHat, ShieldCheck } from "lucide-react";
 import Image from "next/image";
-import { ComplianceAdvisor } from "@/components/compliance-advisor";
 
 const services = [
   {
@@ -146,13 +145,6 @@ export default function Home() {
               </Button>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* 5 & 6. AI Compliance Advisor as Testimonial & Final CTA */}
-      <section className="w-full py-24 md:py-32 bg-card border-y">
-        <div className="container px-4 md:px-6">
-           <ComplianceAdvisor />
         </div>
       </section>
       
