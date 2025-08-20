@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Twitter, Facebook, Linkedin } from "lucide-react";
 import { Logo } from "./logo";
+import { ProudlySaLogo } from "./proudly-sa-logo";
 
 export function Footer() {
   return (
@@ -48,10 +49,13 @@ export function Footer() {
                 <Link href="/privacy" className="text-base text-background/70 hover:text-primary font-body">Privacy Policy</Link>
             </div>
         </div>
-        <div className="mt-12 border-t border-background/20 pt-8">
-            <p className="text-center text-sm text-background/70 font-body">
+        <div className="mt-12 border-t border-background/20 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <p className="text-center md:text-left text-sm text-background/70 font-body">
                 © {new Date().getFullYear()} RAK-Site Safety Services (Pty) Ltd. All rights reserved.
             </p>
+            <div className="flex-shrink-0">
+                <ProudlySaLogo className="h-20" />
+            </div>
         </div>
       </div>
     </footer>
