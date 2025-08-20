@@ -20,8 +20,8 @@ export const ProudlySaLogo = (props: React.SVGProps<SVGSVGElement>) => (
         <path d="M10 50 L 60 20" fill="none" stroke="#007749" strokeWidth="8" />
         <path d="M10 20 L 10 50" fill="none" stroke="white" strokeWidth="12" />
         <path d="M10 20 L 10 50" fill="none" stroke="#FFB612" strokeWidth="8" />
-        <path d="M 60 20 L 60 50" fill="none" stroke="white" strokeWidth="12" />
-        <path d="M 60 20 L 60 50" fill="none" stroke="#002366" strokeWidth="8" />
+        <path d=" M 60 20 L 60 50" fill="none" stroke="white" strokeWidth="12" />
+        <path d=" M 60 20 L 60 50" fill="none" stroke="#002366" strokeWidth="8" />
 
         <text x="80" y="28" fontFamily="Arial, sans-serif" fontSize="14" fill="currentColor" fontWeight="bold">PROUDLY</text>
         <text x="80" y="48" fontFamily="Arial, sans-serif" fontSize="14" fill="currentColor" fontWeight="bold">SOUTH AFRICAN</text>
