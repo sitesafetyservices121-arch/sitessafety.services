@@ -61,15 +61,13 @@ export default function Home() {
               </div>
             </div>
             <div className="relative h-80 w-full lg:h-[450px] overflow-hidden rounded-2xl shadow-xl">
-              <Image 
-                src="https://iili.io/FpWzfEu.png"
-                alt="Professional safety officer on a work site"
-                fill
-                sizes="100vw"
-                style={{ objectFit: 'cover' }}
-                data-ai-hint="safety officer"
-                priority
-                quality={100}
+              <video 
+                src="https://video.streamable.com/c2cm28.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute h-full w-full object-cover"
               />
             </div>
           </div>
@@ -153,5 +151,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
