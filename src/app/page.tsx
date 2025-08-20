@@ -64,8 +64,9 @@ export default function Home() {
               <Image 
                 src="https://iili.io/FpWzfEu.png"
                 alt="Professional safety officer on a work site"
-                layout="fill"
-                objectFit="cover"
+                fill
+                sizes="100vw"
+                style={{ objectFit: 'cover' }}
                 data-ai-hint="safety officer"
                 priority
                 quality={100}
@@ -128,8 +129,9 @@ export default function Home() {
             <Image 
               src="https://iili.io/FpW6fmF.png"
               alt="Team of safety professionals in a meeting"
-              layout="fill"
-              objectFit="cover"
+              fill
+              sizes="100vw"
+              style={{ objectFit: 'cover' }}
               data-ai-hint="industrial safety meeting"
               quality={100}
             />
@@ -151,3 +153,5 @@ export default function Home() {
     </div>
   );
 }
+
+    

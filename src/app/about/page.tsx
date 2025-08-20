@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Shield, Target, Users } from "lucide-react";
@@ -41,7 +42,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
             <div className="relative h-[450px] w-full rounded-2xl overflow-hidden shadow-lg">
-                <Image src="https://placehold.co/800x600.png" alt="Company history collage" layout="fill" objectFit="cover" data-ai-hint="modern office architecture" />
+                <Image src="https://placehold.co/800x600.png" alt="Company history collage" fill sizes="100vw" style={{objectFit: 'cover'}} data-ai-hint="modern office architecture" />
             </div>
             <div className="space-y-4">
                 <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Our Story</h2>
@@ -62,7 +63,7 @@ export default function AboutPage() {
                 <p className="text-muted-foreground">Our vision is to be the most trusted name in workplace safety, setting new standards for excellence and innovation in the industry, ultimately creating a future where every worker returns home safe, every day.</p>
             </div>
             <div className="relative h-[450px] w-full rounded-2xl overflow-hidden shadow-lg">
-                <Image src="https://placehold.co/800x600.png" alt="Team discussing a project" layout="fill" objectFit="cover" data-ai-hint="diverse team meeting" />
+                <Image src="https://placehold.co/800x600.png" alt="Team discussing a project" fill sizes="100vw" style={{objectFit: 'cover'}} data-ai-hint="diverse team meeting" />
             </div>
             </div>
         </div>
@@ -114,3 +115,5 @@ export default function AboutPage() {
     </div>
   );
 }
+
+    

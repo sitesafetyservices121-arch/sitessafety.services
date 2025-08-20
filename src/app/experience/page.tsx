@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import { TestimonialCard } from "@/components/testimonial-card";
 import Image from 'next/image';
@@ -79,7 +80,7 @@ export default function ExperiencePage() {
                   <Card key={item.title} className="overflow-hidden group border shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
                       <CardContent className="p-0">
                           <div className="relative h-80 w-full">
-                              <Image src={item.image} alt={item.title} layout="fill" objectFit="cover" className="transition-transform duration-500 group-hover:scale-105" data-ai-hint={item.hint}/>
+                              <Image src={item.image} alt={item.title} fill sizes="100vw" style={{objectFit: 'cover'}} className="transition-transform duration-500 group-hover:scale-105" data-ai-hint={item.hint}/>
                               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                               <div className="absolute bottom-0 left-0 p-6">
                                   <h3 className="text-2xl font-bold text-white">{item.title}</h3>
@@ -138,3 +139,5 @@ export default function ExperiencePage() {
     </div>
   );
 }
+
+    
