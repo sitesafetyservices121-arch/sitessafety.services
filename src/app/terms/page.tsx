@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import React from 'react';
 
@@ -5,12 +6,13 @@ export const metadata: Metadata = {
   title: 'Terms and Conditions',
 };
 
-export default function TermsPage() {
+function TermsContent() {
+  "use client";
   const [currentDate, setCurrentDate] = React.useState('');
   React.useEffect(() => {
     setCurrentDate(new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' }));
   },[]);
-
+  
   return (
     <div className="bg-background text-foreground">
       <div className="container max-w-4xl mx-auto py-24 md:py-32 px-4">
@@ -51,4 +53,8 @@ export default function TermsPage() {
       </div>
     </div>
   );
+}
+
+export default function TermsPage() {
+  return <TermsContent />;
 }

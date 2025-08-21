@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import React from 'react';
 
@@ -5,7 +6,8 @@ export const metadata: Metadata = {
   title: 'Privacy Policy',
 };
 
-export default function PrivacyPage() {
+function PrivacyContent() {
+  "use client";
   const [currentDate, setCurrentDate] = React.useState('');
   React.useEffect(() => {
     setCurrentDate(new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' }));
@@ -56,4 +58,9 @@ export default function PrivacyPage() {
       </div>
     </div>
   );
+}
+
+
+export default function PrivacyPage() {
+  return <PrivacyContent />;
 }
