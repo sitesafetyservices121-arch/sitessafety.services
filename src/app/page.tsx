@@ -60,9 +60,10 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <div className="relative h-80 w-full lg:h-[450px] overflow-hidden rounded-2xl shadow-xl">
+            <div className="relative h-80 w-full lg:h-[450px] overflow-hidden rounded-2xl shadow-xl bg-gray-200">
               <video
-                src="https://video.streamable.com/c2cm28.mp4"
+                poster="https://iili.io/FpW6fmF.png"
+                src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
                 autoPlay
                 loop
                 muted
