@@ -36,22 +36,6 @@ const stats = [
 export default function Home() {
   return (
     <div className="bg-background text-foreground">
-      {/* Video Section (Added above Hero Section) */}
-      <section className="w-full py-12 md:py-20 bg-card">
-        <div className="container px-4 md:px-6 flex justify-center">
-          <div className="w-full max-w-4xl aspect-video rounded-lg overflow-hidden shadow-xl">
-            <iframe
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/your-video-id" // Replace with your actual YouTube video ID or another embed URL
-              title="Company Introduction Video"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-      </section>
-
       {/* 1. Hero Section */}
       <section className="relative overflow-hidden py-24 md:py-40 bg-gradient-to-br from-indigo-50 via-white to-cyan-50">
         <div className="container px-4 md:px-6">
@@ -77,7 +61,7 @@ export default function Home() {
               </div>
             </div>
             <div className="relative h-80 w-full lg:h-[450px] overflow-hidden rounded-2xl shadow-xl">
-              <video 
+              <video
                 src="https://video.streamable.com/c2cm28.mp4"
                 autoPlay
                 loop
@@ -140,7 +124,7 @@ export default function Home() {
       <section className="w-full py-24 md:py-32 bg-background">
         <div className="container grid items-center justify-center gap-12 px-4 text-center md:px-6 lg:grid-cols-2 lg:text-left lg:gap-20">
           <div className="relative h-96 lg:h-[500px] w-full overflow-hidden rounded-2xl shadow-xl">
-            <Image 
+            <Image
               src="https://iili.io/FpW6fmF.png"
               alt="Team of safety professionals in a meeting"
               fill
