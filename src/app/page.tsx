@@ -36,6 +36,22 @@ const stats = [
 export default function Home() {
   return (
     <div className="bg-background text-foreground">
+      {/* Video Section (Added above Hero Section) */}
+      <section className="w-full py-12 md:py-20 bg-card">
+        <div className="container px-4 md:px-6 flex justify-center">
+          <div className="w-full max-w-4xl aspect-video rounded-lg overflow-hidden shadow-xl">
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/your-video-id" // Replace with your actual YouTube video ID or another embed URL
+              title="Company Introduction Video"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
       {/* 1. Hero Section */}
       <section className="relative overflow-hidden py-24 md:py-40 bg-gradient-to-br from-indigo-50 via-white to-cyan-50">
         <div className="container px-4 md:px-6">

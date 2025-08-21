@@ -1,11 +1,11 @@
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TestimonialCard } from "@/components/testimonial-card";
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight, Award, Building2, HardHat, ShieldCheck, Factory, Truck, Wrench } from "lucide-react";
+import { ArrowRight, Award, Building2, HardHat, ShieldCheck, Factory, Truck, Wrench, DollarSign, Users, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: 'Proven Experience & Client Success',
@@ -51,6 +51,20 @@ export default function ExperiencePage() {
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Our track record speaks for itself. We deliver reliable, expert safety solutions that protect your people, projects, and reputation.
           </p>
+          <Card className="mt-12 max-w-4xl mx-auto text-left bg-background/50 p-8 rounded-2xl border-2 border-primary/20 shadow-lg">
+            <CardContent className="p-0 space-y-6">
+                <div className="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 className="text-xl font-bold text-foreground flex items-center gap-2 mb-3"><Users className="h-6 w-6 text-primary" />Why Companies Trust Us</h3>
+                        <p className="text-muted-foreground">We have proudly partnered with a diverse range of clients, from national construction conglomerates and industrial manufacturing leaders to renewable energy pioneers. They trust us because we don't just enforce rules; we embed a culture of safety that becomes a core part of their operation. Our registered professionals bring verifiable expertise and a proactive mindset, ensuring projects stay compliant, on schedule, and—most importantly—safe.</p>
+                    </div>
+                    <div>
+                        <h3 className="text-xl font-bold text-foreground flex items-center gap-2 mb-3"><DollarSign className="h-6 w-6 text-primary" />The Financial Impact of Safety</h3>
+                        <p className="text-muted-foreground">Investing in professional safety management is not a cost; it's a high-return investment. By preventing just one serious incident, companies can save hundreds of thousands, if not millions, in direct and indirect costs, including fines, legal fees, project delays, and increased insurance premiums. Our proactive systems can reduce incident-related costs by up to <strong>40%</strong>, delivering a safer site and a healthier bottom line.</p>
+                    </div>
+                </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -139,5 +153,3 @@ export default function ExperiencePage() {
     </div>
   );
 }
-
-    
