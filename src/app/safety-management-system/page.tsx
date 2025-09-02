@@ -41,7 +41,7 @@ export default function SafetyManagementSystemPage() {
           <div className="grid lg:grid-cols-5 gap-12 md:gap-16 items-center">
             {/* Image */}
             <div className="lg:col-span-3 relative h-[500px] w-full rounded-2xl overflow-hidden border shadow-xl">
-                <Image src="https://placehold.co/800x600.png" alt="SMS Dashboard on a laptop" fill sizes="100vw" style={{objectFit: 'cover'}} data-ai-hint="saas dashboard laptop" />
+                <Image src="https://placehold.co/800x600.png" alt="AI-driven safety management system dashboard" fill sizes="100vw" style={{objectFit: 'cover'}} data-ai-hint="futuristic dashboard interface" />
             </div>
 
             {/* Pricing Card */}
@@ -117,5 +117,3 @@ export default function SafetyManagementSystemPage() {
     </div>
   );
 }
-
-    
