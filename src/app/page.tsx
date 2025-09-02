@@ -63,7 +63,7 @@ export default function Home() {
             <div className="relative h-80 w-full lg:h-[450px] overflow-hidden rounded-2xl shadow-xl bg-gray-200">
               <video
                 poster="https://iili.io/FpW6fmF.png"
-                src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                src="https://cdn.streamable.com/video/mp4/kge9ai.mp4?cid=374158&token=1724263056_b378107954e7d446a89304910360a7f1469e8020"
                 autoPlay
                 loop
                 muted
