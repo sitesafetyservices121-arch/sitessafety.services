@@ -6,8 +6,11 @@ import type { ComplianceRequest, ComplianceResponse } from "@/ai/schemas";
 export async function submitBooking(data: unknown) {
     try {
         // In a real app, you would validate the data against a schema (e.g., with Zod)
-        // and then save it to a database, send a notification email, etc.
-        console.log("Booking data received on server:", data);
+        // and then save it to a database and send a notification email.
+        console.log("--- New Booking Request ---");
+        console.log("ACTION: Send booking confirmation email to ruan@sitesafety.services");
+        console.log("DATA:", data);
+        console.log("--------------------------");
         
         return { success: true, message: "Booking request received! We'll be in touch soon." };
     } catch (error) {
