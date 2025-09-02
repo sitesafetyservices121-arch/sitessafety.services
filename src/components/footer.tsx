@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { Twitter, Facebook, Linkedin } from "lucide-react";
 import { Logo } from "./logo";
@@ -34,6 +35,7 @@ export function Footer() {
                 <Link href="/" className="text-base text-background/70 hover:text-primary font-body">Home</Link>
                 <Link href="/about" className="text-base text-background/70 hover:text-primary font-body">About Us</Link>
                 <Link href="/experience" className="text-base text-background/70 hover:text-primary font-body">Experience</Link>
+                <Link href="/contact" className="text-base text-background/70 hover:text-primary font-body">Contact</Link>
             </div>
 
             <div className="md:col-span-3 flex flex-col gap-2">

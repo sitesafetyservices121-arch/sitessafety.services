@@ -1,0 +1,76 @@
+
+import { InquiryForm } from "@/components/inquiry-form";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Mail, Phone, MapPin } from "lucide-react";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Contact Us',
+  description: 'Get in touch with RAK-Site Safety for inquiries, quotes, or consultations. We are here to help with all your safety needs.',
+};
+
+const contactDetails = [
+  { icon: <Mail className="h-6 w-6 text-primary" />, title: "Email Us", value: "support@raksafety.co.za", href: "mailto:support@raksafety.co.za" },
+  { icon: <Phone className="h-6 w-6 text-primary" />, title: "Call Us", value: "+27 12 345 6789", href: "tel:+27123456789" },
+  { icon: <MapPin className="h-6 w-6 text-primary" />, title: "Find Us", value: "Pretoria, Gauteng, South Africa", href: "#" },
+];
+
+export default function ContactPage() {
+  return (
+    <div className="bg-background text-foreground">
+      {/* Hero Section */}
+      <section className="py-20 md:py-32 bg-card border-b">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
+            Get in Touch
+          </h1>
+          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            We're here to help with all your safety questions and needs. Reach out today and let's make your worksite safer, together.
+          </p>
+        </div>
+      </section>
+
+      {/* Contact Details & Form Section */}
+      <section className="py-24">
+        <div className="container max-w-7xl mx-auto px-4">
+          <div className="grid lg:grid-cols-5 gap-12 md:gap-16">
+            
+            {/* Contact Info */}
+            <div className="lg:col-span-2 space-y-8">
+                <h2 className="text-3xl font-extrabold text-foreground">Contact Information</h2>
+                <p className="text-muted-foreground text-lg">
+                    Have a question or need a quote? Use the form or contact us directly through one of the methods below. Our team is ready to assist you.
+                </p>
+                <div className="space-y-6">
+                    {contactDetails.map((detail) => (
+                        <a key={detail.title} href={detail.href} className="flex items-start gap-4 group">
+                            <div className="flex-shrink-0 bg-primary/10 text-primary w-12 h-12 rounded-full flex items-center justify-center">
+                                {detail.icon}
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-bold text-foreground">{detail.title}</h3>
+                                <p className="text-muted-foreground group-hover:text-primary transition-colors">{detail.value}</p>
+                            </div>
+                        </a>
+                    ))}
+                </div>
+            </div>
+
+            {/* Inquiry Form */}
+            <div className="lg:col-span-3">
+                <Card className="shadow-xl border bg-card p-2">
+                <CardHeader>
+                    <CardTitle className="text-center text-3xl text-foreground font-bold">Send Us a Message</CardTitle>
+                    <CardDescription className="text-center text-base">Fill out the form and we'll get back to you shortly.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <InquiryForm />
+                </CardContent>
+                </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

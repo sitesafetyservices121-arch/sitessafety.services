@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -29,7 +30,7 @@ const navLinks = [
     ],
   },
   { href: "/experience", label: "Experience" },
-  { href: "/terms", label: "T&Cs" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Header() {
@@ -118,7 +119,7 @@ export function Header() {
                 <NavLink href="/about" label="About Us" isMobile />
                 <NavMenu isMobile />
                 <NavLink href="/experience" label="Experience" isMobile />
-                <NavLink href="/terms" label="T&Cs" isMobile />
+                <NavLink href="/contact" label="Contact" isMobile />
               </nav>
                <Button asChild className="w-full mt-8" size="lg" variant="cta">
                 <Link href="/e-safety-file">Request a Quote</Link>
