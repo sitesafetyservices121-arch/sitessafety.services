@@ -27,6 +27,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { addDays, differenceInCalendarDays } from "date-fns";
 import type { DateRange } from "react-day-picker";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
+import { Label } from "@/components/ui/label";
 
 const serviceOptions = {
     "Normal Site Representation": {
@@ -243,7 +244,7 @@ export function BookingForm() {
         />
 
         <div>
-            <FormLabel className="text-lg font-bold">3. Your Details</FormLabel>
+            <Label className="text-lg font-bold">3. Your Details</Label>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
               <FormField control={form.control} name="name" render={({ field }) => ( <FormItem> <FormLabel>Full Name</FormLabel> <FormControl><Input placeholder="John Doe" {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
               <FormField control={form.control} name="company" render={({ field }) => ( <FormItem> <FormLabel>Company Name</FormLabel> <FormControl><Input placeholder="Your Company Inc." {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
@@ -273,3 +274,5 @@ export function BookingForm() {
     </Form>
   );
 }
+
+    
