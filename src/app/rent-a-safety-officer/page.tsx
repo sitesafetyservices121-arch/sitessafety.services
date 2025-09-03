@@ -133,7 +133,7 @@ export default function RentASafetyOfficerPage() {
                 Complete the booking form with your project requirements. Our team will promptly review your submission and provide a no-obligation quote within one business day. Let us handle the complexities of safety compliance so you can focus on your project.
               </p>
               <div className="relative h-96 w-full rounded-2xl overflow-hidden border shadow-lg">
-                  <Image src="https://iili.io/JFZ26Lx.png" alt="Safety officer on a construction site" fill style={{objectFit: 'cover'}} data-ai-hint="safety officer construction" />
+                  <Image src="https://placehold.co/800x600.png" alt="Safety officer on a construction site" fill style={{objectFit: 'cover'}} data-ai-hint="safety officer construction" />
               </div>
             </div>
 
