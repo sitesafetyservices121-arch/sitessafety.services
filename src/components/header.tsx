@@ -10,6 +10,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { Menu, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -27,6 +28,8 @@ const navLinks = [
       { href: "/rent-a-safety-officer", label: "Rent a Safety Officer" },
       { href: "/e-safety-file", label: "E-Safety File" },
       { href: "/safety-management-system", label: "Safety Management System" },
+      { href: "/electronically-delivered-safety-files", label: "Electronically Delivered Safety Files" },
+      { href: "/legal-document-generator", label: "Legal Document Generator" },
     ],
   },
   { href: "/experience", label: "Experience" },
@@ -61,7 +64,11 @@ export function Header() {
   );
 
   const NavMenu = ({ isMobile = false }) => {
-    const isServicePage = navLinks.find(l => l.isMenu)?.items?.some(item => pathname.startsWith(item.href));
+    const serviceItems = navLinks.find(l => l.isMenu)?.items;
+    const isServicePage = serviceItems?.some(item => pathname.startsWith(item.href));
+    
+    if (!serviceItems) return null;
+
     return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -77,7 +84,7 @@ export function Header() {
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="font-body mt-2 bg-card">
-        {navLinks.find(l => l.isMenu)?.items?.map((item) => (
+        {serviceItems.map((item) => (
           <DropdownMenuItem key={item.href} asChild>
             <Link href={item.href} className={cn("text-base py-2", pathname.startsWith(item.href) && "bg-secondary/10 text-secondary")}>{item.label}</Link>
           </DropdownMenuItem>
