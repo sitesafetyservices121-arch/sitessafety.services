@@ -1,7 +1,7 @@
 
-import { InquiryForm } from "@/components/inquiry-form";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Zap, Building, Briefcase, ShieldCheck, FileText, Cloud, FolderArchive } from "lucide-react";
+import { ConsultationForm } from "@/components/consultation-form";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import { Bot, Hdd, Users, Server, ShieldCheck, FileText, Cloud, FolderArchive, ArrowRight } from "lucide-react";
 import type { Metadata } from 'next';
 import Image from "next/image";
 import Link from "next/link";
@@ -12,20 +12,49 @@ export const metadata: Metadata = {
   description: 'Digitize your compliance with our streamlined, audit-ready E-Safety File solutions. Request a consultation today.',
 };
 
-const benefits = [
-    { icon: <ShieldCheck className="h-7 w-7 text-primary" />, title: "100% OHS Act Compliant", description: "All documents meet legal requirements." },
-    { icon: <FileText className="h-7 w-7 text-primary" />, title: "Site-Ready Templates", description: "Get started instantly with included templates." },
-    { icon: <Cloud className="h-7 w-7 text-primary" />, title: "Secure Cloud Storage", description: "Access your files anywhere, anytime." },
-    { icon: <Zap className="h-7 w-7 text-primary" />, title: "Instant Delivery", description: "Receive and update your file digitally." },
-]
-
-const includedDocs = [
-    "OHS Appointments & Organograms",
-    "Risk Assessments & Method Statements",
-    "Company Policies & Procedures",
-    "Emergency Plans & Registers",
-    "Daily / Weekly Inspection Checklists",
-    "Toolbox Talks & Training Records"
+const plans = [
+    {
+        name: "Small to Medium",
+        price: "R55,000",
+        period: "/once-off",
+        description: "Ideal for growing businesses needing robust, compliant safety documentation.",
+        features: [
+            "3 Months Hosting & Setup Included",
+            "Unlimited Auditor & Contractor Logins",
+            "1TB Secure Online Storage",
+            "Full Compliance with OHS Act",
+        ],
+        icon: <Users className="h-8 w-8 text-primary"/>,
+        cta: "Choose SMB Plan"
+    },
+    {
+        name: "Large Enterprise",
+        price: "R119,000",
+        period: "/once-off",
+        description: "Advanced features for large-scale operations with proactive AI-driven compliance.",
+        features: [
+            "Auto-Assistant AI Auditor",
+            "Proactive Non-Compliance Alerts",
+            "2TB Secure Online Storage",
+            "Incident & Accident Reporting Flow",
+        ],
+        icon: <Bot className="h-8 w-8 text-primary"/>,
+        cta: "Choose Large Enterprise"
+    },
+    {
+        name: "Custom Enterprise",
+        price: "Custom",
+        period: "Pricing",
+        description: "A bespoke solution tailored to your organization's unique and complex safety needs.",
+        features: [
+            "Fully Customized Platform",
+            "Dedicated Account Manager",
+            "Bespoke Integrations (HR, etc.)",
+            "Tailored Support & Training",
+        ],
+        icon: <Server className="h-8 w-8 text-primary"/>,
+        cta: "Request Custom Plan"
+    }
 ]
 
 export default function ESafetyFilePage() {
@@ -40,11 +69,11 @@ export default function ESafetyFilePage() {
                         Your Complete OHS-Compliant e-Safety File.
                     </h1>
                     <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0">
-                        Legally compliant, site-ready, digital safety files accessible anywhere. Ready in hours, not weeks.
+                        Legally compliant, site-ready, digital safety files accessible anywhere. Choose a plan and get audit-ready in hours, not weeks.
                     </p>
                     <div className="mt-8">
                         <Button asChild size="lg" variant="cta">
-                            <Link href="#inquiry-form">Get Your e-Safety File Now</Link>
+                            <Link href="#inquiry-form">Book a Free Consultation</Link>
                         </Button>
                     </div>
                 </div>
@@ -55,119 +84,66 @@ export default function ESafetyFilePage() {
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Pricing Tiers Section */}
       <section className="py-24">
-        <div className="container max-w-6xl mx-auto px-4">
-            <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">What is an e-Safety File?</h2>
-                <p className="max-w-3xl mx-auto mt-4 text-muted-foreground text-lg">
-                    An e-Safety File is a legally required document pack for site compliance, stored digitally for easy access and updates. It's the modern way to manage your safety obligations efficiently.
-                </p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                {benefits.map((benefit) => (
-                    <div key={benefit.title} className="text-center p-4">
-                        <div className="flex justify-center items-center mb-4 bg-primary/10 text-primary w-16 h-16 rounded-full mx-auto">
-                            {benefit.icon}
-                        </div>
-                        <h3 className="text-xl font-bold text-foreground">{benefit.title}</h3>
-                        <p className="text-muted-foreground">{benefit.description}</p>
-                    </div>
-                ))}
-            </div>
-        </div>
-      </section>
-
-      {/* Whats Inside Section */}
-      <section className="py-24 bg-card border-y">
-        <div className="container max-w-5xl mx-auto px-4">
-            <div className="text-center mb-16">
-                <div className="inline-block bg-primary/10 text-primary p-4 rounded-full mb-4">
-                    <FolderArchive className="h-10 w-10"/>
-                </div>
-                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">A Complete Compliance System in One File</h2>
-                <p className="max-w-3xl mx-auto mt-4 text-muted-foreground text-lg">
-                    We provide a comprehensive set of documents to ensure you are fully prepared for any audit or inspection.
-                </p>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-4">
-                {includedDocs.map(doc => (
-                    <div key={doc} className="flex items-center gap-3">
-                        <Zap className="h-6 w-6 text-accent flex-shrink-0" />
-                        <p className="text-lg text-muted-foreground">{doc}</p>
-                    </div>
-                ))}
-            </div>
-        </div>
-      </section>
-
-      {/* Pricing & Form Section */}
-      <section id="inquiry-form" className="py-24">
         <div className="container max-w-7xl mx-auto px-4">
             <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Choose Your Plan</h2>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">A Plan for Every Business Size</h2>
                 <p className="max-w-3xl mx-auto mt-4 text-muted-foreground text-lg">
-                    Select the package that best fits your business needs. For custom requirements, please get in touch.
+                    From agile small businesses to large-scale enterprises, we have a secure, compliant, and powerful E-Safety File solution for you.
                 </p>
             </div>
-          <div className="grid lg:grid-cols-5 gap-12 md:gap-16 items-start">
-            
-            {/* Pricing Tiers */}
-            <div className="lg:col-span-3 space-y-8">
-              <Card className="flex flex-col border bg-card shadow-lg">
-                <CardHeader>
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 bg-primary/10 rounded-xl">
-                      <Briefcase className="h-7 w-7 text-primary"/>
-                    </div>
-                    <div>
-                      <CardTitle className="text-foreground font-bold text-2xl">SMB Plan</CardTitle>
-                      <CardDescription className="text-base">Ideal for Small to Medium Businesses</CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="flex-grow space-y-6">
-                  <p className="text-5xl font-extrabold text-foreground">R119K<span className="text-lg font-normal text-muted-foreground">/one-time</span></p>
-                  <p className="text-muted-foreground">Core compliance documents for teams up to 50 employees, with annual reviews and updates.</p>
-                </CardContent>
-              </Card>
-
-              <Card className="flex flex-col border-2 border-accent shadow-2xl shadow-accent/20 bg-card">
-                <CardHeader>
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 bg-primary/10 rounded-xl">
-                      <Building className="h-7 w-7 text-primary"/>
-                    </div>
-                    <div>
-                      <CardTitle className="text-foreground font-bold text-2xl">Enterprise Plan</CardTitle>
-                      <CardDescription className="text-base">For Large & Enterprise Companies</CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="flex-grow space-y-6">
-                  <p className="text-5xl font-extrabold text-foreground">R250K<span className="text-base font-normal text-muted-foreground">/one-time</span></p>
-                  <p className="text-muted-foreground">All core and advanced documents for unlimited employees, with a dedicated manager and quarterly reviews.</p>
-                </CardContent>
-              </Card>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                {plans.map(plan => (
+                    <Card key={plan.name} className="flex flex-col border bg-card shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                        <CardHeader className="text-center items-center pb-4">
+                          <div className="p-4 bg-primary/10 rounded-full mb-4">
+                            {plan.icon}
+                          </div>
+                          <CardTitle className="text-foreground font-bold text-3xl">{plan.name}</CardTitle>
+                        </CardHeader>
+                        <CardContent className="flex-grow space-y-6 text-center">
+                          <div className="flex items-baseline justify-center gap-1">
+                            <p className="text-5xl font-extrabold text-foreground">{plan.price}</p>
+                            <p className="text-lg font-normal text-muted-foreground">{plan.period}</p>
+                          </div>
+                          <p className="text-muted-foreground h-12">{plan.description}</p>
+                          <ul className="space-y-3 text-left pt-4">
+                            {plan.features.map(feature => (
+                                <li key={feature} className="flex items-center gap-3">
+                                    <ShieldCheck className="h-5 w-5 text-accent flex-shrink-0" />
+                                    <span className="text-muted-foreground">{feature}</span>
+                                </li>
+                            ))}
+                          </ul>
+                        </CardContent>
+                        <CardFooter>
+                            <Button asChild className="w-full" size="lg" variant={plan.name === 'Large Enterprise' ? 'cta' : 'default'}>
+                                <Link href="#inquiry-form">
+                                    {plan.cta} <ArrowRight className="ml-2 h-4 w-4"/>
+                                </Link>
+                            </Button>
+                        </CardFooter>
+                    </Card>
+                ))}
             </div>
+        </div>
+      </section>
 
-            {/* Inquiry Form */}
-            <div className="lg:col-span-2">
-                <Card className="shadow-xl sticky top-24 border bg-card p-2">
-                <CardHeader>
-                    <CardTitle className="text-center text-3xl text-foreground font-bold">Request a Consultation</CardTitle>
-                    <CardDescription className="text-center text-base">Fill out the form below and our team will contact you to discuss your specific needs.</CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <InquiryForm />
-                </CardContent>
-                </Card>
-            </div>
-          </div>
+      {/* Consultation Form Section */}
+      <section id="inquiry-form" className="py-24 bg-card border-y">
+        <div className="container max-w-4xl mx-auto px-4">
+          <Card className="shadow-xl border p-2">
+            <CardHeader>
+                <CardTitle className="text-center text-3xl text-foreground font-bold">Book Your Free Consultation</CardTitle>
+                <CardDescription className="text-center text-base">Fill out the form below and our team will contact you to discuss your specific needs and get you started.</CardDescription>
+            </CardHeader>
+            <CardContent>
+                <ConsultationForm />
+            </CardContent>
+          </Card>
         </div>
       </section>
     </div>
   );
 }
-
-    

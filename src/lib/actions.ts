@@ -72,3 +72,22 @@ export async function submitSmsSignup(data: unknown) {
         return { success: false, message: "Something went wrong during signup. Please try again." };
     }
 }
+
+export async function submitConsultation(data: unknown) {
+    try {
+        // In a real app, you would validate the data against a schema (e.g., with Zod)
+        // and then save it to a database and send a notification email.
+        console.log("--- New E-Safety File Consultation Request ---");
+        console.log("ACTION: Send consultation details to ruan@sitesafety.services");
+        console.log("DATA:", data);
+        console.log("-------------------------------------------");
+        
+        // Simulate processing time
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        
+        return { success: true, message: "Consultation request received! We will contact you at your selected time." };
+    } catch (error) {
+        console.error("Consultation submission error:", error);
+        return { success: false, message: "Something went wrong on the server. Please try again." };
+    }
+}
