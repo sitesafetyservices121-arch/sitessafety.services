@@ -1,5 +1,5 @@
 
-import { InquiryForm } from "@/components/inquiry-form";
+import { ElectronicFileForm } from "@/components/electronic-file-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Zap, ShieldCheck, FileText, Cloud, Download } from "lucide-react";
 import type { Metadata } from 'next';
@@ -16,7 +16,7 @@ const benefits = [
     { icon: <ShieldCheck className="h-7 w-7 text-primary" />, title: "100% OHS Act Compliant", description: "All documents meet legal requirements." },
     { icon: <Download className="h-7 w-7 text-primary" />, title: "Print-Ready ZIP Folder", description: "Get everything you need in one downloadable folder." },
     { icon: <Cloud className="h-7 w-7 text-primary" />, title: "Secure & Accessible", description: "Access your files anywhere, anytime." },
-    { icon: <Zap className="h-7 w-7 text-primary" />, title: "24-Hour Turnaround", description: "Upload your index and get your file the next day." },
+    { icon: <Zap className="h-7 w-7 text-primary" />, title: "Fast Turnaround", description: "Standard (24hr) and Express (12hr) options available." },
 ]
 
 export default function ElectronicallyDeliveredSafetyFilesPage() {
@@ -35,7 +35,7 @@ export default function ElectronicallyDeliveredSafetyFilesPage() {
                     </p>
                     <div className="mt-8">
                         <Button asChild size="lg" variant="cta">
-                            <Link href="#inquiry-form">Get Your Safety File</Link>
+                            <Link href="#order-form">Get Your Safety File</Link>
                         </Button>
                     </div>
                 </div>
@@ -70,15 +70,15 @@ export default function ElectronicallyDeliveredSafetyFilesPage() {
       </section>
 
       {/* Inquiry Form Section */}
-      <section id="inquiry-form" className="py-24 bg-card border-y">
+      <section id="order-form" className="py-24 bg-card border-y">
         <div className="container max-w-3xl mx-auto px-4">
             <Card className="shadow-xl border p-2">
                 <CardHeader>
                     <CardTitle className="text-center text-3xl text-foreground font-bold">Start Your Order</CardTitle>
-                    <CardDescription className="text-center text-base">Fill out the form below and our team will contact you to begin processing your electronically delivered safety file.</CardDescription>
+                    <CardDescription className="text-center text-base">Choose your delivery speed, provide your details, and upload your documents to begin.</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <InquiryForm />
+                    <ElectronicFileForm />
                 </CardContent>
             </Card>
         </div>

@@ -91,3 +91,28 @@ export async function submitConsultation(data: unknown) {
         return { success: false, message: "Something went wrong on the server. Please try again." };
     }
 }
+
+export async function submitElectronicFileOrder(data: unknown) {
+    try {
+        // This is a simulation. In a real application, you would:
+        // 1. Process payment via a payment gateway.
+        // 2. On successful payment, handle the file uploads to a secure storage (e.g., Google Cloud Storage).
+        // 3. Save order details to the database.
+        // 4. Send a notification email to your team.
+
+        console.log("--- New Electronically Delivered Safety File Order ---");
+        console.log("ACTION: Simulate successful payment.");
+        console.log("ACTION: Simulate file uploads.");
+        console.log("ACTION: Send order details to ruan@sitesafety.services:");
+        console.log("DATA:", data);
+        console.log("-----------------------------------------------------");
+        
+        // Simulating the process takes a moment
+        await new Promise(resolve => setTimeout(resolve, 1500));
+
+        return { success: true, message: "Order successful! Your files have been received." };
+    } catch (error) {
+        console.error("Electronic File Order submission error:", error);
+        return { success: false, message: "Something went wrong during your order. Please try again." };
+    }
+}

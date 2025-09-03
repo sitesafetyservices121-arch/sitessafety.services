@@ -15,21 +15,16 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
 import { submitInquiry } from "@/lib/actions";
 import { useTransition } from "react";
 import { Loader2 } from "lucide-react";
-import { Label } from "@/components/ui/label";
 
 const inquiryFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   company: z.string().min(2, { message: "Company name is required." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
   phone: z.string().min(10, { message: "Please enter a valid phone number." }),
-  businessSize: z.enum(["smb", "large"], {
-    required_error: "You need to select a business size.",
-  }),
   message: z.string().optional(),
 });
 
@@ -122,44 +117,6 @@ export function InquiryForm() {
               <FormLabel>Phone Number</FormLabel>
               <FormControl>
                 <Input placeholder="082 123 4567" {...field} type="tel" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="businessSize"
-          render={({ field }) => (
-            <FormItem className="space-y-3">
-              <FormLabel>Select Your Plan</FormLabel>
-              <FormControl>
-                <RadioGroup
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                  className="grid grid-cols-2 gap-4"
-                >
-                  <FormItem>
-                     <Label className="flex items-center gap-4 cursor-pointer rounded-lg border p-4 has-[:checked]:bg-primary/10 has-[:checked]:border-primary w-full transition-colors">
-                        <FormControl>
-                          <RadioGroupItem value="smb" />
-                        </FormControl>
-                        <span className="font-medium">
-                          SMB Plan
-                        </span>
-                     </Label>
-                  </FormItem>
-                  <FormItem>
-                     <Label className="flex items-center gap-4 cursor-pointer rounded-lg border p-4 has-[:checked]:bg-primary/10 has-[:checked]:border-primary w-full transition-colors">
-                        <FormControl>
-                          <RadioGroupItem value="large" />
-                        </FormControl>
-                         <span className="font-medium">
-                            Enterprise Plan
-                        </span>
-                     </Label>
-                  </FormItem>
-                </RadioGroup>
               </FormControl>
               <FormMessage />
             </FormItem>
