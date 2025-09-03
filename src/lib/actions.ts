@@ -7,10 +7,15 @@ export async function submitBooking(data: unknown) {
     try {
         // In a real app, you would validate the data against a schema (e.g., with Zod)
         // and then save it to a database and send a notification email.
+        // You would also process payment here via a payment gateway.
         console.log("--- New Booking Request ---");
+        console.log("ACTION: Process payment for calculated amount.");
         console.log("ACTION: Send booking confirmation email to ruan@sitesafety.services");
         console.log("DATA:", data);
         console.log("--------------------------");
+        
+        // Simulate processing time
+        await new Promise(resolve => setTimeout(resolve, 1500));
         
         return { success: true, message: "Booking request received! We'll be in touch soon." };
     } catch (error) {
