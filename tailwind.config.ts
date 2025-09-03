@@ -57,11 +57,11 @@ const config: Config = {
       },
       borderRadius: {
         '3xl': 'calc(var(--radius) + 4px)',
-        '2xl': 'var(--radius)',
-        xl: 'calc(var(--radius) - 4px)',
-        lg: 'calc(var(--radius) - 8px)',
-        md: 'calc(var(--radius) - 12px)',
-        sm: 'calc(var(--radius) - 16px)',
+        '2xl': 'calc(var(--radius) + 2px)',
+        xl: 'var(--radius)',
+        lg: 'calc(var(--radius) - 4px)',
+        md: 'calc(var(--radius) - 6px)',
+        sm: 'calc(var(--radius) - 8px)',
       },
       keyframes: {
         'accordion-down': {

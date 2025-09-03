@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <div className="bg-background text-foreground">
       {/* 1. Hero Section */}
-      <section className="relative overflow-hidden py-24 md:py-40 bg-gradient-to-br from-indigo-50 via-white to-cyan-50">
+      <section className="relative overflow-hidden py-24 md:py-40 bg-card border-b">
         <div className="container px-4 md:px-6">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
             <div className="space-y-6 text-center lg:text-left">
@@ -60,7 +60,7 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <div className="relative h-80 w-full lg:h-[450px] overflow-hidden rounded-2xl shadow-xl bg-gray-200">
+            <div className="relative h-80 w-full lg:h-[450px] overflow-hidden rounded-lg shadow-xl bg-gray-200">
               <video
                 poster="https://iili.io/FpW6fmF.png"
                 src="https://cdn.streamable.com/video/mp4/1d5a7d.mp4"
@@ -76,7 +76,7 @@ export default function Home() {
       </section>
 
       {/* 2. Trust & Proof Section */}
-      <section className="w-full py-24 bg-card border-y">
+      <section className="w-full py-24 bg-background">
         <div className="container px-4 md:px-6">
             <h2 className="text-center text-lg text-muted-foreground font-semibold tracking-wider uppercase mb-12">TRUSTED BY COMPANIES NATIONWIDE</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -91,7 +91,7 @@ export default function Home() {
       </section>
 
       {/* 3. Core Value / Features Section */}
-      <section id="services" className="w-full py-24 md:py-32 bg-background">
+      <section id="services" className="w-full py-24 md:py-32 bg-card border-y">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">A Solution for Every Safety Need</h2>
@@ -102,7 +102,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {services.map((service) => (
-              <Card key={service.title} className="bg-card text-center flex flex-col group p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+              <Card key={service.title} className="bg-background text-center flex flex-col group p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
                 <CardHeader className="items-center">
                   <div className="bg-primary/10 p-4 rounded-full mb-4">
                     {service.icon}
@@ -124,9 +124,9 @@ export default function Home() {
       {/* 4. Showcase / Why Choose Us Section */}
       <section className="w-full py-24 md:py-32 bg-background">
         <div className="container grid items-center justify-center gap-12 px-4 text-center md:px-6 lg:grid-cols-2 lg:text-left lg:gap-20">
-          <div className="relative h-96 lg:h-[500px] w-full overflow-hidden rounded-2xl shadow-xl">
+          <div className="relative h-96 lg:h-[500px] w-full overflow-hidden rounded-lg shadow-xl">
             <Image
-              src="https://iili.io/FpW6fmF.png"
+              src="https://placehold.co/800x600.png"
               alt="Team of safety professionals in a meeting"
               fill
               sizes="100vw"
