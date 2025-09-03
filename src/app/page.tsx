@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, FileText, HardHat, ShieldCheck } from "lucide-react";
+import { ArrowRight, FileText, HardHat, ShieldCheck, Zap } from "lucide-react";
 import Image from "next/image";
 
 const services = [
@@ -13,9 +13,9 @@ const services = [
     link: "/rent-a-safety-officer",
   },
   {
-    icon: <FileText className="h-8 w-8 text-primary" />,
-    title: "E-Safety File",
-    description: "Save time and reduce costs with our cloud-based, audit-ready safety file management system. Fully legal and compliant, it streamlines safety file submissions for auditors, contractors, and companies, modernizing your compliance process without compromising on reliability or regulatory standards.",
+    icon: <Zap className="h-8 w-8 text-primary" />,
+    title: "Instant E-Safety File",
+    description: "The future of compliance. Upload your project index, and within 24 hours, log on to download a complete, print-ready, and legally compliant safety file. Our system also functions as an instant document generator for HIRAs and all other required site documents, ready for immediate use.",
     link: "/e-safety-file",
   },
   {
