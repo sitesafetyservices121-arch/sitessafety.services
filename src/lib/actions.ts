@@ -41,3 +41,29 @@ export async function getComplianceAdvice(data: ComplianceRequest): Promise<{ su
         return { success: false, data: null, message: "An error occurred while analyzing your request. Please try again." };
     }
 }
+
+export async function submitSmsSignup(data: unknown) {
+    try {
+        // This is a simulation. In a real application, you would:
+        // 1. Process payment via a payment gateway (e.g., Stripe, PayFast).
+        // 2. On successful payment, create the user in your database.
+        // 3. Securely hash and store the password.
+        // 4. Send a welcome email to the client with their login details.
+        // 5. Send a notification email to your team.
+
+        console.log("--- New Safety Management System Signup ---");
+        console.log("ACTION: Simulate successful payment.");
+        console.log("ACTION: Create new user in the database.");
+        console.log("ACTION: Send the following details to ruan@sitesafety.services:");
+        console.log("DATA:", data);
+        console.log("-----------------------------------------");
+        
+        // Simulating the process takes a moment
+        await new Promise(resolve => setTimeout(resolve, 1500));
+
+        return { success: true, message: "Signup successful! You'll receive a confirmation email shortly." };
+    } catch (error) {
+        console.error("SMS Signup submission error:", error);
+        return { success: false, message: "Something went wrong during signup. Please try again." };
+    }
+}

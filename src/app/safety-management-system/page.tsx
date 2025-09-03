@@ -61,7 +61,7 @@ export default function SafetyManagementSystemPage() {
                   </CardContent>
                   <CardFooter>
                     <Button asChild className="w-full" size="lg" variant="cta">
-                        <Link href="/contact">
+                        <Link href="/safety-management-system/signup">
                             Get Started Now <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
                     </Button>
@@ -108,7 +108,7 @@ export default function SafetyManagementSystemPage() {
                 </CardHeader>
                 <CardFooter className="justify-center">
                     <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
-                        <Link href="/contact">Book a Free Demo</Link>
+                        <Link href="/safety-management-system/signup">Book a Free Demo</Link>
                     </Button>
                 </CardFooter>
             </Card>
