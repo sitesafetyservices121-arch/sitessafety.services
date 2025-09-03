@@ -21,7 +21,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
   {
-    href: "#",
+    href: "/services",
     label: "Services",
     isMenu: true,
     items: [
@@ -65,14 +65,15 @@ export function Header() {
 
   const NavMenu = ({ isMobile = false }) => {
     const serviceItems = navLinks.find(l => l.isMenu)?.items;
-    const isServicePage = serviceItems?.some(item => pathname.startsWith(item.href));
+    const isServicePage = pathname.startsWith('/services') || serviceItems?.some(item => pathname.startsWith(item.href));
     
     if (!serviceItems) return null;
 
     return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button
+        <Link
+          href="/services"
           className={cn(
             "flex items-center gap-1 font-medium transition-colors",
             isMobile ? "w-full justify-between py-2 text-lg" : "text-base",
@@ -81,7 +82,7 @@ export function Header() {
         >
           Services
           <ChevronDown className={cn("h-4 w-4 transition-transform duration-200")} />
-        </button>
+        </Link>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="font-body mt-2 bg-card">
         {serviceItems.map((item) => (

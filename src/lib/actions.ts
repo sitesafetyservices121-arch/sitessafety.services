@@ -111,8 +111,7 @@ export async function submitElectronicFileOrder(data: unknown) {
         await new Promise(resolve => setTimeout(resolve, 1500));
 
         return { success: true, message: "Order successful! Your files have been received." };
-    } catch (error) {
-        console.error("Electronic File Order submission error:", error);
+    } catch (error) {        console.error("Electronic File Order submission error:", error);
         return { success: false, message: "Something went wrong during your order. Please try again." };
     }
 }
