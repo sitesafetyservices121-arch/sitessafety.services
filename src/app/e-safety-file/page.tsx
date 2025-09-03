@@ -1,7 +1,7 @@
 
 import { ConsultationForm } from "@/components/consultation-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
-import { Bot, Hdd, Users, Server, CheckCircle, FileText, Cloud, FolderArchive, ArrowRight } from "lucide-react";
+import { Bot, Users, Server, CheckCircle, ArrowRight } from "lucide-react";
 import type { Metadata } from 'next';
 import Image from "next/image";
 import Link from "next/link";
