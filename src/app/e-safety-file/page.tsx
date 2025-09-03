@@ -1,7 +1,7 @@
 
 import { ConsultationForm } from "@/components/consultation-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
-import { Bot, Hdd, Users, Server, ShieldCheck, FileText, Cloud, FolderArchive, ArrowRight } from "lucide-react";
+import { Bot, Hdd, Users, Server, CheckCircle, FileText, Cloud, FolderArchive, ArrowRight } from "lucide-react";
 import type { Metadata } from 'next';
 import Image from "next/image";
 import Link from "next/link";
@@ -111,7 +111,7 @@ export default function ESafetyFilePage() {
                           <ul className="space-y-3 text-left pt-4">
                             {plan.features.map(feature => (
                                 <li key={feature} className="flex items-center gap-3">
-                                    <ShieldCheck className="h-5 w-5 text-accent flex-shrink-0" />
+                                    <CheckCircle className="h-5 w-5 text-success flex-shrink-0" />
                                     <span className="text-muted-foreground">{feature}</span>
                                 </li>
                             ))}
