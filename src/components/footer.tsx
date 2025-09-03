@@ -43,6 +43,8 @@ export function Footer() {
                 <Link href="/rent-a-safety-officer" className="text-base text-background/70 hover:text-primary font-body">Rent a Safety Officer</Link>
                 <Link href="/e-safety-file" className="text-base text-background/70 hover:text-primary font-body">E-Safety File</Link>
                 <Link href="/safety-management-system" className="text-base text-background/70 hover:text-primary font-body">Safety Management System</Link>
+                <Link href="/e-safety-file" className="text-base text-background/70 hover:text-primary font-body">Electronically Delivered Safety Files</Link>
+                <Link href="/e-safety-file" className="text-base text-background/70 hover:text-primary font-body">Legal Document Generator</Link>
             </div>
 
             <div className="md:col-span-2 flex flex-col gap-2">
