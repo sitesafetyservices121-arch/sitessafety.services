@@ -17,7 +17,7 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { submitElectronicFileOrder } from "@/lib/actions";
 import { useState, useTransition, useEffect } from "react";
-import { Info, Loader2, Upload } from "lucide-react";
+import { Info, Loader2, Upload, CheckCircle } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
@@ -100,8 +100,9 @@ export function ElectronicFileForm() {
 
   if (showThankYou) {
     return (
-        <div className="text-center p-8 bg-primary/10 rounded-lg">
-            <h3 className="text-2xl font-bold text-primary mb-2">Thank You For Your Order!</h3>
+        <div className="text-center p-8 bg-success/10 rounded-lg border border-success/20">
+            <CheckCircle className="h-12 w-12 text-success mx-auto mb-4" />
+            <h3 className="text-2xl font-bold text-success mb-2">Thank You For Your Order!</h3>
             <p className="text-muted-foreground">Your payment was successful. You will receive a password and a redirect link via email shortly. An agent will also contact you to confirm the details.</p>
         </div>
     )

@@ -52,7 +52,7 @@ export function InquiryForm() {
             toast({
                 title: "Inquiry Sent!",
                 description: result.message,
-                className: 'bg-primary text-primary-foreground',
+                variant: 'success',
             });
             form.reset();
         } else {

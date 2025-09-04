@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon, Loader2 } from "lucide-react";
+import { CalendarIcon, Loader2, CheckCircle } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
@@ -86,8 +86,9 @@ export function ConsultationForm() {
 
   if (showThankYou) {
     return (
-        <div className="text-center p-8 bg-primary/10 rounded-lg">
-            <h3 className="text-2xl font-bold text-primary mb-2">Thank You!</h3>
+        <div className="text-center p-8 bg-success/10 rounded-lg border border-success/20">
+            <CheckCircle className="h-12 w-12 text-success mx-auto mb-4" />
+            <h3 className="text-2xl font-bold text-success mb-2">Thank You!</h3>
             <p className="text-muted-foreground">Your consultation request has been received. A representative will contact you at your selected time.</p>
         </div>
     )
@@ -156,7 +157,7 @@ export function ConsultationForm() {
                           <FormControl>
                             <Button
                               variant={"outline"}
-                              className={cn("w-full justify-start text-left font-normal h-12 text-base", !field.value && "text-muted-foreground")}
+                              className={cn("w-full justify-start text-left font-normal h-11 text-base", !field.value && "text-muted-foreground")}
                             >
                               <CalendarIcon className="mr-2 h-4 w-4" />
                               {field.value ? format(field.value, "PPP") : <span>Pick a date</span>}
@@ -185,7 +186,7 @@ export function ConsultationForm() {
                         <FormLabel>Preferred Time</FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                            <SelectTrigger className="h-12 text-base">
+                            <SelectTrigger className="h-11 text-base">
                                 <SelectValue placeholder="Select a time slot" />
                             </SelectTrigger>
                             </FormControl>
@@ -205,7 +206,7 @@ export function ConsultationForm() {
                         <FormLabel>Preferred Method</FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                            <SelectTrigger className="h-12 text-base">
+                            <SelectTrigger className="h-11 text-base">
                                 <SelectValue placeholder="Select a contact method" />
                             </SelectTrigger>
                             </FormControl>

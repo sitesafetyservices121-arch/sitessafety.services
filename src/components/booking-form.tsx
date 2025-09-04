@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon, Loader2, Info } from "lucide-react";
+import { CalendarIcon, Loader2, Info, CheckCircle } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
@@ -145,8 +145,9 @@ export function BookingForm() {
 
   if (showThankYou) {
     return (
-        <div className="text-center p-8 bg-primary/10 rounded-lg">
-            <h3 className="text-2xl font-bold text-primary mb-2">Thank you for your order!</h3>
+        <div className="text-center p-8 bg-success/10 rounded-lg border border-success/20">
+            <CheckCircle className="h-12 w-12 text-success mx-auto mb-4" />
+            <h3 className="text-2xl font-bold text-success mb-2">Thank you for your order!</h3>
             <p className="text-muted-foreground">A representative will contact you shortly to confirm your booking.</p>
         </div>
     )

@@ -55,7 +55,7 @@ export function SmsSignupForm() {
             toast({
                 title: "Signup Successful!",
                 description: result.message,
-                className: 'bg-primary text-primary-foreground',
+                variant: 'success',
             });
             form.reset();
         } else {
