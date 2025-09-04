@@ -31,7 +31,7 @@ export default function ElectronicallyDeliveredSafetyFilesPage() {
                         Electronically Delivered Safety Files
                     </h1>
                     <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0">
-                        The modern solution for site compliance. Upload your project index, and within 24 hours, log on to download a complete, print-ready, and legally compliant safety file in a single ZIP folder.
+                        The modern solution for site compliance. Simply upload your required safety file index—from clients like Mittal, Sasol, Omnia, Cape Gate, Coca-Cola, or Gold One—and within 12 to 24 hours, log on to download your complete, print-ready, and legally compliant safety file in a single ZIP folder.
                     </p>
                     <div className="mt-8">
                         <Button asChild size="lg" variant="cta">

@@ -14,8 +14,8 @@ const services = [
   },
   {
     icon: <Zap className="h-8 w-8 text-primary" />,
-    title: "Instant E-Safety File",
-    description: "The future of compliance. Upload your project index, and within 24 hours, log on to download a complete, print-ready, and legally compliant safety file. Our system also functions as an instant document generator for HIRAs and all other required site documents, ready for immediate use.",
+    title: "E-Safety File",
+    description: "The future of compliance. Our cloud-based system provides a complete, digital safety file solution that is audit-ready and accessible anywhere.",
     link: "/e-safety-file",
   },
   {

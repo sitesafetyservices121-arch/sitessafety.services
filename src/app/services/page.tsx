@@ -33,7 +33,7 @@ const services = [
   {
     icon: <Zap className="h-8 w-8 text-primary" />,
     title: "Electronically Delivered Safety Files",
-    description: "The fastest way to get compliant. Upload your index and receive a complete, print-ready safety file in a single ZIP folder.",
+    description: "The fastest way to get compliant. Upload your client's index (e.g. Sasol, Mittal) and get a print-ready file in 12-24 hours.",
     link: "/electronically-delivered-safety-files",
   },
   {
