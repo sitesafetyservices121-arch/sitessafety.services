@@ -125,7 +125,7 @@ export default function Home() {
         <div className="container grid items-center justify-center gap-12 px-4 text-center md:px-6 lg:grid-cols-2 lg:text-left lg:gap-20">
           <div className="relative h-96 lg:h-[500px] w-full overflow-hidden rounded-lg shadow-xl">
             <Image
-              src="https://iili.io/J1eM6nN.png"
+              src="https://iili.io/JAA4jF2.png"
               alt="Handshake between two businessmen on a construction site"
               fill
               sizes="100vw"
