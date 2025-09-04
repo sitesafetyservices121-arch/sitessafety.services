@@ -56,7 +56,7 @@ export default function ExperiencePage() {
                 <div className="grid md:grid-cols-2 gap-8">
                     <div>
                         <h3 className="text-xl font-bold text-foreground flex items-center gap-2 mb-3"><Users className="h-6 w-6 text-primary" />Why Companies Trust Us</h3>
-                        <p className="text-muted-foreground">We have proudly partnered with a diverse range of clients, from national construction conglomerates and industrial manufacturing leaders to renewable energy pioneers. They trust us because we don't just enforce rules; we embed a culture of safety that becomes a core part of their operation. Our registered professionals bring verifiable expertise and a proactive mindset, ensuring projects stay compliant, on schedule, and—most importantly—safe.</p>
+                        <p className="text-muted-foreground">We have proudly partnered with a diverse range of clients, from national construction conglomerates and industrial manufacturing leaders to renewable energy pioneers. They trust us because we don't just enforce rules; we embed a culture of safety that becomes a core part of their operation. Our registered professionals bring verifiable expertise and a proactive mindset, ensuring projects stay compliant, on schedule, and most importantly safe.</p>
                     </div>
                     <div>
                         <h3 className="text-xl font-bold text-foreground flex items-center gap-2 mb-3"><DollarSign className="h-6 w-6 text-primary" />The Financial Impact of Safety</h3>
