@@ -1,5 +1,5 @@
 
-import { InquiryForm } from "@/components/inquiry-form";
+import { SmsSignupForm } from "@/components/sms-signup-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Zap, Bot, FileText, ShieldCheck } from "lucide-react";
 import type { Metadata } from 'next';
@@ -69,11 +69,11 @@ export default function LegalDocumentGeneratorPage() {
         <div className="container max-w-3xl mx-auto px-4">
             <Card className="shadow-xl border p-2">
                 <CardHeader>
-                    <CardTitle className="text-center text-3xl text-foreground font-bold">Request a Demo</CardTitle>
-                    <CardDescription className="text-center text-base">Fill out the form below to learn more about our instant document generator and get a personalized demo.</CardDescription>
+                    <CardTitle className="text-center text-3xl text-foreground font-bold">Get Access to the Document Generator</CardTitle>
+                    <CardDescription className="text-center text-base">Fill out the form below to create your account and get started with the Safety Management System.</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <InquiryForm />
+                    <SmsSignupForm />
                 </CardContent>
             </Card>
         </div>
