@@ -15,9 +15,9 @@ export const metadata: Metadata = {
 };
 
 const teamMembers = [
-  { name: "John Doe", role: "Founder & Lead Safety Consultant", avatar: "https://placehold.co/128x128.png", initials: "JD", hint: "male professional portrait" },
-  { name: "Jane Smith", role: "Operations Manager", avatar: "https://placehold.co/128x128.png", initials: "JS", hint: "female professional portrait" },
-  { name: "Mike Johnson", role: "Senior Safety Officer", avatar: "https://placehold.co/128x128.png", initials: "MJ", hint: "male expert portrait" },
+  { name: "John Doe", role: "Founder & Lead Safety Consultant", avatar: "https://iili.io/JADeLp1.png", initials: "JD", hint: "male professional portrait" },
+  { name: "Jane Smith", role: "Operations Manager", avatar: "https://iili.io/JADe4mB.png", initials: "JS", hint: "female professional portrait" },
+  { name: "Mike Johnson", role: "Senior Safety Officer", avatar: "https://iili.io/JADesol.png", initials: "MJ", hint: "male expert portrait" },
 ];
 
 const values = [
