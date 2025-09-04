@@ -78,7 +78,7 @@ export default function ESafetyFilePage() {
                     </div>
                 </div>
                 <div className="relative h-80 lg:h-[400px] w-full">
-                    <Image src="https://placehold.co/800x600.png" fill sizes="100vw" style={{objectFit: 'contain'}} alt="e-safety file on a laptop" data-ai-hint="saas dashboard laptop" />
+                    <Image src="https://iili.io/JADbWWp.png" fill sizes="100vw" style={{objectFit: 'contain'}} alt="e-safety file on a laptop" data-ai-hint="saas dashboard laptop" />
                 </div>
             </div>
         </div>
