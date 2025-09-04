@@ -47,6 +47,10 @@ const industries = [
     { icon: <Plane className="h-8 w-8 text-primary" />, name: "Aviation" },
 ];
 
+const clients = [
+    "AMSA (Mittal)", "Sasol", "Omnia", "Cape Gate", "Coca-Cola", "Gold One", "Engen", "Denel", "Eskom", "Rand Water", "Conco", "Aviation Giants"
+];
+
 export default function ExperiencePage() {
   return (
     <div className="bg-background text-foreground">
@@ -59,22 +63,48 @@ export default function ExperiencePage() {
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Our track record speaks for itself. We deliver reliable, expert safety solutions that protect your people, projects, and reputation.
           </p>
-          <Card className="mt-12 max-w-4xl mx-auto text-left bg-background/50 p-8 rounded-2xl border-2 border-primary/20 shadow-lg">
-            <CardContent className="p-0 space-y-6">
-                <div className="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h3 className="text-xl font-bold text-foreground flex items-center gap-2 mb-3"><Users className="h-6 w-6 text-primary" />Why Companies Trust Us</h3>
-                        <p className="text-muted-foreground">We have proudly partnered with a diverse range of clients, from national construction conglomerates and industrial manufacturing leaders to renewable energy pioneers. They trust us because we don't just enforce rules; we embed a culture of safety that becomes a core part of their operation. Our registered professionals bring verifiable expertise and a proactive mindset, ensuring projects stay compliant, on schedule, and most importantly, safe.</p>
-                    </div>
-                    <div>
-                        <h3 className="text-xl font-bold text-foreground flex items-center gap-2 mb-3"><DollarSign className="h-6 w-6 text-primary" />The Financial Impact of Safety</h3>
-                        <p className="text-muted-foreground">Investing in professional safety management is not a cost; it's a high-return investment. By preventing just one serious incident, companies can save hundreds of thousands, if not millions, in direct and indirect costs. These costs can include fines, legal fees, project delays, and increased insurance premiums. Our proactive systems can reduce incident-related costs by up to <strong>40%</strong>, delivering a safer site and a healthier bottom line.</p>
-                    </div>
-                </div>
-            </CardContent>
-          </Card>
         </div>
       </section>
+      
+      {/* Trusted By Section */}
+      <section className="py-24">
+        <div className="container mx-auto px-4">
+            <h2 className="text-center text-3xl md:text-4xl font-extrabold text-foreground mb-4">Trusted by Industry Leaders</h2>
+            <p className="text-center text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
+                We have extensive experience providing safety solutions for some of the biggest names in industry.
+            </p>
+            <div className="max-w-5xl mx-auto">
+                <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-6">
+                    {clients.map(client => (
+                        <span key={client} className="text-lg font-semibold text-muted-foreground transition-colors hover:text-primary">
+                            {client}
+                        </span>
+                    ))}
+                </div>
+            </div>
+        </div>
+      </section>
+
+      {/* Why Companies Trust Us Section */}
+      <section className="py-24 bg-card border-y">
+        <div className="container mx-auto px-4">
+            <Card className="max-w-5xl mx-auto bg-transparent p-8 rounded-2xl border-0 shadow-none">
+                <CardContent className="p-0 space-y-8">
+                    <div className="grid md:grid-cols-2 gap-12">
+                        <div>
+                            <h3 className="text-2xl font-bold text-foreground flex items-center gap-3 mb-4"><Users className="h-7 w-7 text-primary" />Why Companies Trust Us</h3>
+                            <p className="text-muted-foreground text-lg">We have proudly partnered with a diverse range of clients, from national construction conglomerates and industrial manufacturing leaders to renewable energy pioneers. They trust us because we don't just enforce rules; we embed a culture of safety that becomes a core part of their operation. Our registered professionals bring verifiable expertise and a proactive mindset, ensuring projects stay compliant, on schedule, and most importantly, safe.</p>
+                        </div>
+                        <div>
+                            <h3 className="text-2xl font-bold text-foreground flex items-center gap-3 mb-4"><DollarSign className="h-7 w-7 text-primary" />The Financial Impact of Safety</h3>
+                            <p className="text-muted-foreground text-lg">Investing in professional safety management is not a cost; it's a high-return investment. By preventing just one serious incident, companies can save hundreds of thousands, if not millions, in direct and indirect costs. These costs can include fines, legal fees, project delays, and increased insurance premiums. Our proactive systems can reduce incident-related costs by up to <strong>40%</strong>, delivering a safer site and a healthier bottom line.</p>
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
+        </div>
+      </section>
+
 
       {/* Quick Stats Section */}
       <section className="py-24">
