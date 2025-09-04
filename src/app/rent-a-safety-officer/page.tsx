@@ -12,18 +12,6 @@ export const metadata: Metadata = {
 export default function RentASafetyOfficerPage() {
   return (
     <div className="bg-background text-foreground">
-       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-card border-b">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
-            On-Demand Safety Expertise
-          </h1>
-          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ensure your project meets all safety regulations with our flexible and reliable safety officer rental service. Get a transparent quote and book qualified professionals in minutes.
-          </p>
-        </div>
-      </section>
-      
       {/* Content & Form Section */}
       <section id="booking-form" className="py-24">
         <div className="container max-w-4xl mx-auto px-4">
