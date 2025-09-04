@@ -5,7 +5,7 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight, Award, Building2, HardHat, ShieldCheck, Factory, Truck, Wrench, DollarSign, Users, CheckCircle } from "lucide-react";
+import { ArrowRight, Award, Building2, HardHat, ShieldCheck, Factory, Truck, Wrench, DollarSign, Users, CheckCircle, Mountain, Flame, Store, Tractor, Wind, TowerControl, Utensils, Plane } from "lucide-react";
 
 export const metadata: Metadata = {
   title: 'Proven Experience & Client Success',
@@ -37,6 +37,14 @@ const industries = [
     { icon: <Factory className="h-8 w-8 text-primary" />, name: "Manufacturing" },
     { icon: <Truck className="h-8 w-8 text-primary" />, name: "Logistics" },
     { icon: <Wrench className="h-8 w-8 text-primary" />, name: "Engineering" },
+    { icon: <Mountain className="h-8 w-8 text-primary" />, name: "Mining" },
+    { icon: <Flame className="h-8 w-8 text-primary" />, name: "Oil & Gas" },
+    { icon: <Store className="h-8 w-8 text-primary" />, name: "Retail" },
+    { icon: <Tractor className="h-8 w-8 text-primary" />, name: "Agriculture" },
+    { icon: <Wind className="h-8 w-8 text-primary" />, name: "Renewable Energy" },
+    { icon: <TowerControl className="h-8 w-8 text-primary" />, name: "Telecoms" },
+    { icon: <Utensils className="h-8 w-8 text-primary" />, name: "Food & Beverage" },
+    { icon: <Plane className="h-8 w-8 text-primary" />, name: "Aviation" },
 ];
 
 export default function ExperiencePage() {
@@ -123,7 +131,7 @@ export default function ExperiencePage() {
        <section className="py-24 bg-card border-y">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-extrabold text-center text-foreground mb-16">Expertise Across Key Industries</h2>
-          <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
             {industries.map((industry) => (
                 <div key={industry.name} className="flex flex-col items-center text-center gap-4">
                     <div className="bg-primary/10 rounded-full w-20 h-20 flex items-center justify-center border">
