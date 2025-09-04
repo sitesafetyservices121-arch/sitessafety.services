@@ -125,12 +125,12 @@ export default function Home() {
         <div className="container grid items-center justify-center gap-12 px-4 text-center md:px-6 lg:grid-cols-2 lg:text-left lg:gap-20">
           <div className="relative h-96 lg:h-[500px] w-full overflow-hidden rounded-lg shadow-xl">
             <Image
-              src="https://placehold.co/800x600.png"
-              alt="Team of safety professionals in a meeting"
+              src="https://iili.io/JADR7vV.png"
+              alt="Team of safety professionals reviewing plans on a construction site"
               fill
               sizes="100vw"
               style={{ objectFit: 'cover' }}
-              data-ai-hint="industrial safety meeting"
+              data-ai-hint="safety professionals plans"
               quality={100}
             />
           </div>
