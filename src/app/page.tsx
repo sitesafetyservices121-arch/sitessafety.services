@@ -42,7 +42,7 @@ export default function Home() {
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
             <div className="space-y-6 text-center lg:text-left">
               <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-foreground">
-                Your Partner in Workplace Safety & Compliance
+                Your Partner in Workplace Safety and Compliance
               </h1>
               <p className="max-w-xl text-lg md:text-xl text-muted-foreground mx-auto lg:mx-0">
                 RAK-Site Safety provides cutting-edge safety solutions that go beyond compliance, driving efficiency, protecting people, and securing every phase of your project from planning to completion.

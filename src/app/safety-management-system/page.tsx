@@ -55,9 +55,9 @@ export default function SafetyManagementSystemPage() {
                       <CardDescription className="text-base">One plan, everything you need.</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4 text-center">
-                    <p className="text-5xl font-extrabold text-foreground">R2500</p>
+                    <p className="text-5xl font-extrabold text-foreground">R2400</p>
                     <p className="text-lg text-muted-foreground -mt-2">per month</p>
-                    <p className="text-muted-foreground pt-4">Includes 1 user login. Need more? Add users for just <span className="font-bold text-foreground">R350/month</span> each.</p>
+                    <p className="text-muted-foreground pt-4">Includes 12 user logins. Need more? Add users for just <span className="font-bold text-foreground">R350/month</span> each.</p>
                   </CardContent>
                   <CardFooter>
                     <Button asChild className="w-full" size="lg" variant="cta">
