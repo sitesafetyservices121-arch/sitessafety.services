@@ -20,8 +20,15 @@ import { useState, useTransition, useEffect } from "react";
 import { Info, Loader2, Upload } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
+import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 
-const pricePerFile = 1850.00;
+const serviceTiers = {
+    "Standard": { price: 1850.00, time: "Within 24 Hours" },
+    "Express": { price: 2500.00, time: "Within 12 Hours" },
+    "Urgent": { price: 3000.00, time: "Within 6 Hours" }
+}
+
+type ServiceTierKey = keyof typeof serviceTiers;
 
 const electronicFileFormSchema = z.object({
   name: z.string().min(2, { message: "First name must be at least 2 characters." }),
@@ -31,6 +38,9 @@ const electronicFileFormSchema = z.object({
   phone: z.string().min(10, { message: "Please enter a valid phone number." }),
   companyLogo: z.any().refine(files => files?.length > 0, "Company logo is required."),
   fileIndex: z.any().refine(files => files?.length > 0, "File index is required."),
+  serviceTier: z.enum(Object.keys(serviceTiers) as [ServiceTierKey, ...ServiceTierKey[]], {
+    required_error: "You must select a service tier.",
+  }),
 });
 
 type ElectronicFileFormValues = z.infer<typeof electronicFileFormSchema>;
@@ -39,6 +49,7 @@ export function ElectronicFileForm() {
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
   const [showThankYou, setShowThankYou] = useState(false);
+  const [total, setTotal] = useState(0);
 
   const form = useForm<ElectronicFileFormValues>({
     resolver: zodResolver(electronicFileFormSchema),
@@ -48,11 +59,20 @@ export function ElectronicFileForm() {
       company: "",
       email: "",
       phone: "",
+      serviceTier: "Standard",
     },
   });
 
   const watchCompanyLogo = form.watch("companyLogo");
   const watchFileIndex = form.watch("fileIndex");
+  const watchServiceTier = form.watch("serviceTier");
+
+  useEffect(() => {
+    if (watchServiceTier) {
+        setTotal(serviceTiers[watchServiceTier].price);
+    }
+  }, [watchServiceTier]);
+
 
   function onSubmit(data: ElectronicFileFormValues) {
     startTransition(async () => {
@@ -60,7 +80,7 @@ export function ElectronicFileForm() {
         // For this simulation, we'll just use the file names.
         const submissionData = {
             ...data,
-            total: pricePerFile,
+            total: serviceTiers[data.serviceTier].price,
             companyLogo: data.companyLogo[0]?.name,
             fileIndex: data.fileIndex[0]?.name,
         };
@@ -91,8 +111,41 @@ export function ElectronicFileForm() {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 font-body">
         
+        <FormField
+          control={form.control}
+          name="serviceTier"
+          render={({ field }) => (
+            <FormItem className="space-y-3">
+              <FormLabel className="text-lg font-bold">1. Select Delivery Speed</FormLabel>
+              <FormControl>
+                <RadioGroup
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                  className="grid grid-cols-1 md:grid-cols-3 gap-4"
+                >
+                  {Object.entries(serviceTiers).map(([key, value]) => (
+                    <FormItem key={key}>
+                       <Label className="flex flex-col items-center justify-center text-center gap-2 cursor-pointer rounded-lg border p-4 has-[:checked]:bg-primary/10 has-[:checked]:border-primary transition-colors h-full">
+                            <FormControl>
+                                <RadioGroupItem value={key} />
+                            </FormControl>
+                            <span className="font-bold text-base text-foreground">{key}</span>
+                            <span className="font-normal text-sm text-muted-foreground">{value.time}</span>
+                            <span className="font-bold text-base text-primary mt-2">
+                                R{value.price.toLocaleString('en-ZA')}
+                            </span>
+                       </Label>
+                    </FormItem>
+                  ))}
+                </RadioGroup>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <div>
-            <Label className="text-lg font-bold">1. Your Details</Label>
+            <Label className="text-lg font-bold">2. Your Details</Label>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
                 <FormField control={form.control} name="name" render={({ field }) => ( <FormItem> <FormLabel>First Name</FormLabel> <FormControl><Input placeholder="John" {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
                 <FormField control={form.control} name="surname" render={({ field }) => ( <FormItem> <FormLabel>Surname</FormLabel> <FormControl><Input placeholder="Doe" {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
@@ -103,7 +156,7 @@ export function ElectronicFileForm() {
         </div>
 
         <div>
-            <Label className="text-lg font-bold">2. Upload Documents</Label>
+            <Label className="text-lg font-bold">3. Upload Documents</Label>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
                 <FormField control={form.control} name="companyLogo" render={({ field: { value, onChange, ...fieldProps } }) => ( 
                     <FormItem> 
@@ -138,7 +191,7 @@ export function ElectronicFileForm() {
           <Info className="h-4 w-4 text-primary" />
           <AlertTitle className="font-bold text-primary">Total Amount Due</AlertTitle>
           <AlertDescription className="text-2xl font-extrabold text-foreground">
-            R{pricePerFile.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            R{total.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </AlertDescription>
         </Alert>
 

@@ -16,7 +16,7 @@ const benefits = [
     { icon: <ShieldCheck className="h-7 w-7 text-primary" />, title: "100% OHS Act Compliant", description: "All documents meet legal requirements." },
     { icon: <Download className="h-7 w-7 text-primary" />, title: "Print-Ready ZIP Folder", description: "Get everything you need in one downloadable folder." },
     { icon: <Cloud className="h-7 w-7 text-primary" />, title: "Secure & Accessible", description: "Access your files anywhere, anytime." },
-    { icon: <Zap className="h-7 w-7 text-primary" />, title: "Fast Turnaround", description: "Receive your file within 24 hours." },
+    { icon: <Zap className="h-7 w-7 text-primary" />, title: "Fast Turnaround", description: "Choose the delivery speed that fits your needs." },
 ]
 
 export default function ElectronicallyDeliveredSafetyFilesPage() {
@@ -31,7 +31,7 @@ export default function ElectronicallyDeliveredSafetyFilesPage() {
                         Electronically Delivered Safety Files
                     </h1>
                     <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0">
-                        The modern solution for site compliance. Simply upload your client's required safety file index for clients like Mittal, Sasol, Omnia, Cape Gate, Coca-Cola, or Gold One. Within 24 hours, you can download your complete, print-ready, and legally compliant safety file in a single ZIP folder.
+                        The modern solution for site compliance. Simply upload your client's required safety file index for clients like Mittal, Sasol, Omnia, Cape Gate, Coca-Cola, or Gold One. Choose your delivery speed, and download your complete, print-ready, and legally compliant safety file in a single ZIP folder.
                     </p>
                     <div className="mt-8">
                         <Button asChild size="lg" variant="cta">
