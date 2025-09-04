@@ -6,13 +6,13 @@ import { ProudlySaLogo } from "./proudly-sa-logo";
 
 export function Footer() {
   return (
-    <footer className="bg-foreground text-background">
+    <footer className="bg-foreground text-background border-t-4 border-primary">
       <div className="container mx-auto max-w-7xl px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             <div className="flex flex-col md:col-span-5">
                 <Link href="/" className="flex items-center gap-2.5 mb-4">
                   <Logo className="h-8 w-8 text-primary" />
-                  <span className="font-bold text-2xl">RAK-Safety</span>
+                  <span className="font-bold text-2xl text-white">RAK-Safety</span>
                 </Link>
                 <p className="text-base text-background/70 max-w-sm">
                   Modern Safety Solutions for a Complex World.
@@ -31,7 +31,7 @@ export function Footer() {
             </div>
           
             <div className="md:col-span-2 flex flex-col gap-2">
-                <h3 className="font-bold text-lg">Quick Links</h3>
+                <h3 className="font-bold text-lg text-white">Quick Links</h3>
                 <Link href="/" className="text-base text-background/70 hover:text-primary font-body">Home</Link>
                 <Link href="/about" className="text-base text-background/70 hover:text-primary font-body">About Us</Link>
                 <Link href="/experience" className="text-base text-background/70 hover:text-primary font-body">Experience</Link>
@@ -39,7 +39,7 @@ export function Footer() {
             </div>
 
             <div className="md:col-span-3 flex flex-col gap-2">
-                <h3 className="font-bold text-lg">Services</h3>
+                <h3 className="font-bold text-lg text-white">Services</h3>
                 <Link href="/rent-a-safety-officer" className="text-base text-background/70 hover:text-primary font-body">Rent a Safety Officer</Link>
                 <Link href="/e-safety-file" className="text-base text-background/70 hover:text-primary font-body">E-Safety File</Link>
                 <Link href="/safety-management-system" className="text-base text-background/70 hover:text-primary font-body">Safety Management System</Link>
@@ -48,7 +48,7 @@ export function Footer() {
             </div>
 
             <div className="md:col-span-2 flex flex-col gap-2">
-                <h3 className="font-bold text-lg">Legal</h3>
+                <h3 className="font-bold text-lg text-white">Legal</h3>
                 <Link href="/terms" className="text-base text-background/70 hover:text-primary font-body">Terms & Conditions</Link>
                 <Link href="/privacy" className="text-base text-background/70 hover:text-primary font-body">Privacy Policy</Link>
             </div>

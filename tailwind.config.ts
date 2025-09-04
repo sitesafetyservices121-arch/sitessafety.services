@@ -18,7 +18,6 @@ const config: Config = {
     extend: {
       fontFamily: {
         body: ['var(--font-body)', 'sans-serif'],
-        headline: ['var(--font-body)', 'sans-serif'], // Use body font for headlines for consistency
       },
       colors: {
         background: 'hsl(var(--background))',

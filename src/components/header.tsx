@@ -10,7 +10,6 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { Menu, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -54,9 +53,9 @@ export function Header() {
       className={cn(
         "font-medium transition-colors text-base",
         "hover:text-primary",
-        pathname === href ? "text-primary font-semibold" : "text-foreground/80",
+        pathname === href ? "text-primary font-bold" : "text-foreground/80",
         isMobile && "py-2 text-lg w-full",
-        isMobile && pathname === href && "text-primary font-semibold"
+        isMobile && pathname === href && "text-primary font-bold"
       )}
     >
       {label}
@@ -77,7 +76,7 @@ export function Header() {
           className={cn(
             "flex items-center gap-1 font-medium transition-colors",
             isMobile ? "w-full justify-between py-2 text-lg" : "text-base",
-            isServicePage ? "text-primary font-semibold" : "text-foreground/80 hover:text-primary"
+            isServicePage ? "text-primary font-bold" : "text-foreground/80 hover:text-primary"
           )}
         >
           Services
@@ -87,7 +86,7 @@ export function Header() {
       <DropdownMenuContent className="font-body mt-2 bg-card">
         {serviceItems.map((item) => (
           <DropdownMenuItem key={item.href} asChild>
-            <Link href={item.href} className={cn("text-base py-2", pathname.startsWith(item.href) && "bg-secondary/10 text-secondary")}>{item.label}</Link>
+            <Link href={item.href} className={cn("text-base py-2", pathname.startsWith(item.href) && "bg-primary/10 text-primary")}>{item.label}</Link>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

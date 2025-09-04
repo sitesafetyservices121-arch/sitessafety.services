@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description: "RAK-Site Safety delivers next-generation safety solutions for complex industries, ensuring compliance, efficiency, and a secure work environment.",
 };
 
-const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '700', '800'], variable: '--font-body' });
+const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '700', '900'], variable: '--font-body' });
 
 export default function RootLayout({
   children,
