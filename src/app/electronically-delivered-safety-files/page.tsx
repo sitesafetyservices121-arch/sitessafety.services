@@ -9,14 +9,14 @@ import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: 'Electronically Delivered Safety Files',
-  description: 'Receive your complete, print-ready safety file electronically within 24 hours. Fast, efficient, and compliant.',
+  description: 'Receive your complete, print-ready safety file electronically. Fast, efficient, and compliant.',
 };
 
 const benefits = [
     { icon: <ShieldCheck className="h-7 w-7 text-primary" />, title: "100% OHS Act Compliant", description: "All documents meet legal requirements." },
     { icon: <Download className="h-7 w-7 text-primary" />, title: "Print-Ready ZIP Folder", description: "Get everything you need in one downloadable folder." },
     { icon: <Cloud className="h-7 w-7 text-primary" />, title: "Secure & Accessible", description: "Access your files anywhere, anytime." },
-    { icon: <Zap className="h-7 w-7 text-primary" />, title: "Fast Turnaround", description: "Standard (24hr) and Express (12hr) options available." },
+    { icon: <Zap className="h-7 w-7 text-primary" />, title: "Fast Turnaround", description: "Receive your file within 24 hours." },
 ]
 
 export default function ElectronicallyDeliveredSafetyFilesPage() {
@@ -31,7 +31,7 @@ export default function ElectronicallyDeliveredSafetyFilesPage() {
                         Electronically Delivered Safety Files
                     </h1>
                     <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0">
-                        The modern solution for site compliance. Simply upload your client's required safety file index, for clients like Mittal, Sasol, Omnia, Cape Gate, Coca-Cola, or Gold One. Within 12 to 24 hours, you can download your complete, print-ready, and legally compliant safety file in a single ZIP folder.
+                        The modern solution for site compliance. Simply upload your client's required safety file index for clients like Mittal, Sasol, Omnia, Cape Gate, Coca-Cola, or Gold One. Within 24 hours, you can download your complete, print-ready, and legally compliant safety file in a single ZIP folder.
                     </p>
                     <div className="mt-8">
                         <Button asChild size="lg" variant="cta">
@@ -75,7 +75,7 @@ export default function ElectronicallyDeliveredSafetyFilesPage() {
             <Card className="shadow-xl border p-2">
                 <CardHeader>
                     <CardTitle className="text-center text-3xl text-foreground font-bold">Start Your Order</CardTitle>
-                    <CardDescription className="text-center text-base">Choose your delivery speed, provide your details, and upload your documents to begin.</CardDescription>
+                    <CardDescription className="text-center text-base">Provide your details and upload your documents to begin.</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <ElectronicFileForm />

@@ -18,25 +18,17 @@ import { useToast } from "@/hooks/use-toast";
 import { submitElectronicFileOrder } from "@/lib/actions";
 import { useState, useTransition, useEffect } from "react";
 import { Info, Loader2, Upload } from "lucide-react";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 
-const serviceOptions = {
-    "Standard": 2200.00,
-    "Express": 2800.00
-};
-
-type ServiceOptionKey = keyof typeof serviceOptions;
+const pricePerFile = 1850.00;
 
 const electronicFileFormSchema = z.object({
   name: z.string().min(2, { message: "First name must be at least 2 characters." }),
   surname: z.string().min(2, { message: "Surname must be at least 2 characters." }),
   company: z.string().min(2, { message: "Company name is required." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
   phone: z.string().min(10, { message: "Please enter a valid phone number." }),
-  service: z.enum(Object.keys(serviceOptions) as [ServiceOptionKey, ...ServiceOptionKey[]], {
-    required_error: "You must select a service option.",
-  }),
   companyLogo: z.any().refine(files => files?.length > 0, "Company logo is required."),
   fileIndex: z.any().refine(files => files?.length > 0, "File index is required."),
 });
@@ -46,7 +38,6 @@ type ElectronicFileFormValues = z.infer<typeof electronicFileFormSchema>;
 export function ElectronicFileForm() {
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
-  const [total, setTotal] = useState(0);
   const [showThankYou, setShowThankYou] = useState(false);
 
   const form = useForm<ElectronicFileFormValues>({
@@ -55,18 +46,13 @@ export function ElectronicFileForm() {
       name: "",
       surname: "",
       company: "",
+      email: "",
       phone: "",
-      service: "Standard",
     },
   });
 
-  const watchService = form.watch("service");
   const watchCompanyLogo = form.watch("companyLogo");
   const watchFileIndex = form.watch("fileIndex");
-
-  useEffect(() => {
-    setTotal(serviceOptions[watchService]);
-  }, [watchService]);
 
   function onSubmit(data: ElectronicFileFormValues) {
     startTransition(async () => {
@@ -74,7 +60,7 @@ export function ElectronicFileForm() {
         // For this simulation, we'll just use the file names.
         const submissionData = {
             ...data,
-            total,
+            total: pricePerFile,
             companyLogo: data.companyLogo[0]?.name,
             fileIndex: data.fileIndex[0]?.name,
         };
@@ -96,7 +82,7 @@ export function ElectronicFileForm() {
     return (
         <div className="text-center p-8 bg-primary/10 rounded-lg">
             <h3 className="text-2xl font-bold text-primary mb-2">Thank You For Your Order!</h3>
-            <p className="text-muted-foreground">Your payment was successful and your files have been received. We will process your order and be in touch shortly.</p>
+            <p className="text-muted-foreground">Your payment was successful. You will receive a password and a redirect link via email shortly. An agent will also contact you to confirm the details.</p>
         </div>
     )
   }
@@ -104,55 +90,20 @@ export function ElectronicFileForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 font-body">
-         <FormField
-          control={form.control}
-          name="service"
-          render={({ field }) => (
-            <FormItem className="space-y-3">
-              <FormLabel className="text-lg font-bold">1. Choose Service Speed</FormLabel>
-              <FormControl>
-                <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <FormItem>
-                       <Label className="flex flex-col items-center justify-center gap-2 cursor-pointer rounded-lg border p-4 h-full has-[:checked]:bg-primary/10 has-[:checked]:border-primary transition-colors">
-                          <div className="flex items-center gap-4">
-                             <FormControl><RadioGroupItem value="Standard" /></FormControl>
-                             <div className="text-center">
-                                 <p className="font-bold text-base text-foreground">Standard (24 Hours)</p>
-                                 <p className="font-bold text-lg text-primary">R2200.00</p>
-                            </div>
-                          </div>
-                       </Label>
-                  </FormItem>
-                  <FormItem>
-                       <Label className="flex flex-col items-center justify-center gap-2 cursor-pointer rounded-lg border p-4 h-full has-[:checked]:bg-primary/10 has-[:checked]:border-primary transition-colors">
-                            <div className="flex items-center gap-4">
-                                <FormControl><RadioGroupItem value="Express" /></FormControl>
-                                 <div className="text-center">
-                                     <p className="font-bold text-base text-foreground">Express (&lt;12 Hours)</p>
-                                     <p className="font-bold text-lg text-primary">R2800.00</p>
-                                </div>
-                           </div>
-                       </Label>
-                  </FormItem>
-                </RadioGroup>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         
         <div>
-            <Label className="text-lg font-bold">2. Your Details</Label>
+            <Label className="text-lg font-bold">1. Your Details</Label>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
                 <FormField control={form.control} name="name" render={({ field }) => ( <FormItem> <FormLabel>First Name</FormLabel> <FormControl><Input placeholder="John" {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
                 <FormField control={form.control} name="surname" render={({ field }) => ( <FormItem> <FormLabel>Surname</FormLabel> <FormControl><Input placeholder="Doe" {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
                 <FormField control={form.control} name="company" render={({ field }) => ( <FormItem> <FormLabel>Company Name</FormLabel> <FormControl><Input placeholder="Your Company Inc." {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
+                <FormField control={form.control} name="email" render={({ field }) => ( <FormItem> <FormLabel>Email Address</FormLabel> <FormControl><Input placeholder="you@company.com" {...field} type="email" /></FormControl> <FormMessage /> </FormItem> )}/>
                 <FormField control={form.control} name="phone" render={({ field }) => ( <FormItem> <FormLabel>Contact Number</FormLabel> <FormControl><Input placeholder="082 123 4567" {...field} type="tel"/></FormControl> <FormMessage /> </FormItem> )}/>
             </div>
         </div>
 
         <div>
-            <Label className="text-lg font-bold">3. Upload Documents</Label>
+            <Label className="text-lg font-bold">2. Upload Documents</Label>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
                 <FormField control={form.control} name="companyLogo" render={({ field: { value, onChange, ...fieldProps } }) => ( 
                     <FormItem> 
@@ -187,14 +138,14 @@ export function ElectronicFileForm() {
           <Info className="h-4 w-4 text-primary" />
           <AlertTitle className="font-bold text-primary">Total Amount Due</AlertTitle>
           <AlertDescription className="text-2xl font-extrabold text-foreground">
-            R{total.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            R{pricePerFile.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </AlertDescription>
         </Alert>
 
         <div className="flex justify-end space-x-4">
-            <Button type="submit" className="w-full md:w-auto" size="lg" disabled={isPending || total === 0}>
+            <Button type="submit" className="w-full md:w-auto" size="lg" disabled={isPending}>
             {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            {isPending ? "Processing..." : "Process Payment & Upload"}
+            {isPending ? "Processing..." : "Accept & Pay"}
             </Button>
         </div>
       </form>

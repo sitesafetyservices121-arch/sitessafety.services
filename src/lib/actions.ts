@@ -28,7 +28,10 @@ export async function submitInquiry(data: unknown) {
     try {
         // In a real app, you would validate the data against a schema (e.g., with Zod)
         // and then save it to a database, send a notification email, etc.
-        console.log("Inquiry data received on server:", data);
+        console.log("--- New General Inquiry ---");
+        console.log("ACTION: Send inquiry to info@sitesafety.services");
+        console.log("DATA:", data);
+        console.log("--------------------------");
 
         return { success: true, message: "Inquiry received! We'll get back to you shortly." };
     } catch (error) {
