@@ -18,7 +18,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { submitInquiry } from "@/lib/actions";
 import { useTransition } from "react";
-import { Loader2 } from "lucide-react";
+import { Loader2, CheckCircle } from "lucide-react";
 
 const inquiryFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -34,23 +34,17 @@ export function InquiryForm() {
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
 
-  const form = useForm<InquiryFormValues>({
-    resolver: zodResolver(inquiryFormSchema),
-    defaultValues: {
-      name: "",
-      company: "",
-      email: "",
-      phone: "",
-      message: "",
-    },
-  });
-
   function onSubmit(data: InquiryFormValues) {
     startTransition(async () => {
         const result = await submitInquiry(data);
         if (result.success) {
             toast({
-                title: "Inquiry Sent!",
+                title: (
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="h-5 w-5 text-success-foreground" />
+                    <span>Inquiry Sent!</span>
+                  </div>
+                ),
                 description: result.message,
                 variant: 'success',
             });
