@@ -82,7 +82,7 @@ export function ComplianceAdvisor() {
                   <FormControl>
                     <Textarea
                       placeholder="e.g., 'We're starting a 3-month construction project for a 5-story office building downtown. We have about 30 workers on site and need to manage our safety paperwork for regular audits.'"
-                      className="resize-vertical text-base min-h-[120px] bg-background rounded-xl"
+                      className="resize-vertical text-base min-h-[120px] bg-card rounded-xl"
                       rows={5}
                       {...field}
                     />
