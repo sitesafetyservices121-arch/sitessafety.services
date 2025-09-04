@@ -70,26 +70,17 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="py-20 md:py-32 bg-card border-b">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
-            Pioneering Safety, Building Trust
-          </h1>
-          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            We are a team of dedicated professionals committed to creating safer work environments across industries through innovation, expertise, and unwavering dedication.
-          </p>
+            <h2 className="text-primary font-bold tracking-widest uppercase">RAK-SITE SAFETY SERVICES</h2>
+            <h1 className="mt-2 text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">Perfection in Compliance—where AI meets human expertise.</h1>
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+                When safety and legality are non-negotiable, you need more than promises. You need a system that makes compliance inevitable. RAK-SITE blends certified professionals with purpose-built AI to deliver audit-ready documentation, faster decisions, and measurable cost savings—across South Africa.
+            </p>
         </div>
       </section>
 
       {/* Manifesto Section */}
       <section className="py-24">
         <div className="container mx-auto px-4 max-w-5xl">
-            <div className="text-center mb-16">
-                <h2 className="text-primary font-bold tracking-widest uppercase">RAK-SITE SAFETY SERVICES</h2>
-                <p className="mt-2 text-3xl md:text-4xl font-extrabold text-foreground">Perfection in Compliance—where AI meets human expertise.</p>
-                <p className="mt-6 text-lg text-muted-foreground max-w-3xl mx-auto">
-                    When safety and legality are non-negotiable, you need more than promises. You need a system that makes compliance inevitable. RAK-SITE blends certified professionals with purpose-built AI to deliver audit-ready documentation, faster decisions, and measurable cost savings—across South Africa.
-                </p>
-            </div>
-
             <Card className="bg-card shadow-lg border p-6 rounded-2xl mb-20">
                 <CardContent className="p-0">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
@@ -213,5 +204,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
-    
