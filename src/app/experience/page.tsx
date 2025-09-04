@@ -13,9 +13,9 @@ export const metadata: Metadata = {
 };
 
 const testimonials = [
-  { name: "Sarah Williams", title: "Project Manager", company: "ConstructCo", testimonial: "RAK's safety officers were professional, knowledgeable, and integrated seamlessly with our team. Their proactive approach prevented numerous issues. Highly recommended for any large-scale project!", rating: 5, image: "https://placehold.co/100x100.png", hint: "female professional" },
-  { name: "David Chen", title: "CEO", company: "BuildRight Inc.", testimonial: "The E-Safety File service saved us countless hours and ensured we were fully compliant for a critical audit. The process was smooth, efficient, and professional.", rating: 5, image: "https://placehold.co/100x100.png", hint: "male ceo" },
-  { name: "Emily Rodriguez", title: "Ops Director", company: "InfraGroup", testimonial: "Implementing their Safety Management System has transformed our safety culture for the better. We've seen a measurable reduction in incidents and a huge boost in employee engagement.", rating: 5, image: "https://placehold.co/100x100.png", hint: "female director" },
+  { name: "Lerato Khumalo", title: "Project Manager", company: "ConstructCo", testimonial: "RAK's safety officers were professional, knowledgeable, and integrated seamlessly with our team. Their proactive approach prevented numerous issues. Highly recommended for any large-scale project!", rating: 5, image: "https://placehold.co/100x100.png", hint: "female professional" },
+  { name: "Pieter van der Merwe", title: "CEO", company: "BuildRight Inc.", testimonial: "The E-Safety File service saved us countless hours and ensured we were fully compliant for a critical audit. The process was smooth, efficient, and professional.", rating: 5, image: "https://placehold.co/100x100.png", hint: "male ceo" },
+  { name: "Anika Patel", title: "Ops Director", company: "InfraGroup", testimonial: "Implementing their Safety Management System has transformed our safety culture for the better. We've seen a measurable reduction in incidents and a huge boost in employee engagement.", rating: 5, image: "https://placehold.co/100x100.png", hint: "female director" },
 ];
 
 const portfolio = [
