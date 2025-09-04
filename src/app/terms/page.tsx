@@ -48,7 +48,7 @@ function TermsContent() {
           <p>We reserve the right, at Our sole discretion, to modify or replace these Terms at any time. If a revision is material We will make reasonable efforts to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at Our sole discretion. Continued use of our Service after any such changes shall constitute your consent to such changes.</p>
           
           <h2>8. Contact Us</h2>
-          <p>If you have any questions about these Terms and Conditions, You can contact us through the inquiry and booking forms provided on our website, or by emailing us directly at <a href="mailto:support@raksafety.co.za">support@raksafety.co.za</a>.</p>
+          <p>If you have any questions about these Terms and Conditions, You can contact us through the inquiry and booking forms provided on our website, or by emailing us directly at <a href="mailto:info@sitesafety.services">info@sitesafety.services</a>.</p>
         </div>
       </div>
     </div>

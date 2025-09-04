@@ -53,7 +53,7 @@ function PrivacyContent() {
           <p>We may update Our Privacy Policy from time to time. We will notify You of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
 
           <h2>7. Contact Us</h2>
-          <p>If you have any questions about this Privacy Policy, You can contact us through the inquiry and booking forms provided on our website, or by emailing us directly at <a href="mailto:support@raksafety.co.za">support@raksafety.co.za</a>.</p>
+          <p>If you have any questions about this Privacy Policy, You can contact us through the inquiry and booking forms provided on our website, or by emailing us directly at <a href="mailto:info@sitesafety.services">info@sitesafety.services</a>.</p>
         </div>
       </div>
     </div>
