@@ -45,7 +45,7 @@ export default function Home() {
                 Your Partner in Workplace Safety and Compliance
               </h1>
               <p className="max-w-xl text-lg md:text-xl text-muted-foreground mx-auto lg:mx-0">
-                RAK-Site Safety provides cutting-edge safety solutions that go beyond compliance, driving efficiency, protecting people, and securing every phase of your project from planning to completion.
+                RAK-Site Safety Services provides cutting-edge safety solutions that go beyond compliance, driving efficiency, protecting people, and securing every phase of your project from planning to completion.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
                 <Button asChild size="lg">
@@ -137,7 +137,7 @@ export default function Home() {
           <div className="space-y-6">
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">Expertise You Can Build On</h2>
             <p className="text-muted-foreground text-lg md:text-xl/relaxed">
-              With over a decade of specialized experience, RAK-Site Safety delivers comprehensive safety solutions designed to safeguard your people, protect your assets, and uphold your reputation. Our team of highly qualified and certified professionals brings deep industry knowledge, proven methodologies, and cutting-edge technology to every project. We partner with organizations across diverse sectors to create safer, more compliant, and more productive workplaces, ensuring not only regulatory alignment but also long-term operational excellence and peace of mind.
+              With over a decade of specialized experience, RAK-Site Safety Services delivers comprehensive safety solutions designed to safeguard your people, protect your assets, and uphold your reputation. Our team of highly qualified and certified professionals brings deep industry knowledge, proven methodologies, and cutting-edge technology to every project. We partner with organizations across diverse sectors to create safer, more compliant, and more productive workplaces, ensuring not only regulatory alignment but also long-term operational excellence and peace of mind.
             </p>
             <div className="flex justify-center lg:justify-start pt-4">
               <Button asChild size="lg" variant="outline">

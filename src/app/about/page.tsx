@@ -11,7 +11,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: 'About Our Mission',
-  description: 'Learn about the story, mission, and values that drive RAK-Site Safety to be a leader in occupational safety services.',
+  description: 'Learn about the story, mission, and values that drive RAK-Site Safety Services to be a leader in occupational safety services.',
 };
 
 const teamMembers = [
@@ -70,10 +70,9 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="py-20 md:py-32 bg-card border-b">
         <div className="container mx-auto px-4 text-center">
-            <h2 className="text-primary font-bold tracking-widest uppercase">RAK-SITE SAFETY SERVICES</h2>
-            <h1 className="mt-2 text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">Perfection in Compliance where AI meets human expertise.</h1>
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">Perfection in Compliance where AI meets human expertise.</h1>
             <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-                When safety and legality are non-negotiable, you need more than promises. You need a system that makes compliance inevitable. RAK-SITE blends certified professionals with purpose-built AI to deliver audit-ready documentation, faster decisions, and measurable cost savings across South Africa.
+                When safety and legality are non-negotiable, you need more than promises. You need a system that makes compliance inevitable. RAK-Site Safety Services blends certified professionals with purpose-built AI to deliver audit-ready documentation, faster decisions, and measurable cost savings across South Africa.
             </p>
         </div>
       </section>
@@ -134,7 +133,7 @@ export default function AboutPage() {
                 
                 {/* Why Choose Us */}
                 <div>
-                    <h3 className="text-3xl font-extrabold text-foreground text-center mb-12">Why Clients Choose RAK-SITE</h3>
+                    <h3 className="text-3xl font-extrabold text-foreground text-center mb-12">Why Clients Choose RAK-Site Safety Services</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {whyChooseUs.map(item => (
                             <CheckIconCard key={item.title} title={item.title} description={item.description} />
@@ -146,7 +145,7 @@ export default function AboutPage() {
                 <div className="text-center border-t border-dashed pt-16">
                      <h3 className="text-3xl font-extrabold text-foreground">The Promise</h3>
                      <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                        Perfection in compliance isn’t luck. It’s a system. With RAK-SITE, AI does the heavy lifting, and registered professionals sign it off. That’s how you reduce risk, cut costs, and pass audits, consistently.
+                        Perfection in compliance isn’t luck. It’s a system. With RAK-Site Safety Services, AI does the heavy lifting, and registered professionals sign it off. That’s how you reduce risk, cut costs, and pass audits, consistently.
                      </p>
                      <p className="mt-8 text-2xl font-bold text-primary">Ready to make compliance inevitable?</p>
                      <p className="mt-2 text-muted-foreground">Let’s build your file, deploy your officer, and put your legal proof in writing.</p>

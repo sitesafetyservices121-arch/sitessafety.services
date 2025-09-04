@@ -38,8 +38,8 @@ function TermsContent() {
           <p>Fees for services are due as specified in the service description or the governing Service Level Agreement. We utilize secure, industry-standard third-party payment processors. By making a payment, you acknowledge and agree to the terms and conditions of our payment partners. All prices are listed in South African Rand (ZAR) unless otherwise stated.</p>
 
           <h2>5. Limitation of Liability</h2>
-          <p>While RAK-Site Safety endeavors to provide the highest quality of service and expertise, our liability is limited. Notwithstanding any damages that You might incur, the entire liability of the Company and any of its suppliers under any provision of these Terms and Your exclusive remedy for all of the foregoing shall be limited to the amount actually paid by You for the specific Service in question.</p>
-          <p>RAK-Site Safety is not liable for indirect, incidental, or consequential damages resulting from the use of our services.</p>
+          <p>While RAK-Site Safety Services endeavors to provide the highest quality of service and expertise, our liability is limited. Notwithstanding any damages that You might incur, the entire liability of the Company and any of its suppliers under any provision of these Terms and Your exclusive remedy for all of the foregoing shall be limited to the amount actually paid by You for the specific Service in question.</p>
+          <p>RAK-Site Safety Services is not liable for indirect, incidental, or consequential damages resulting from the use of our services.</p>
 
           <h2>6. Governing Law</h2>
           <p>The laws of the Republic of South Africa, excluding its conflicts of law rules, shall govern these Terms and Your use of the Service. Your use of the Application may also be subject to other local, state, national, or international laws.</p>

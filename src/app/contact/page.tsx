@@ -6,7 +6,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
-  description: 'Get in touch with RAK-Site Safety for inquiries, quotes, or consultations. We are here to help with all your safety needs.',
+  description: 'Get in touch with RAK-Site Safety Services for inquiries, quotes, or consultations. We are here to help with all your safety needs.',
 };
 
 const contactDetails = [

@@ -9,10 +9,10 @@ import Script from "next/script";
 
 export const metadata: Metadata = {
   title: {
-    default: "RAK-Site Safety | Modern Safety Solutions",
-    template: "%s | RAK-Site Safety",
+    default: "RAK-Site Safety Services | Modern Safety Solutions",
+    template: "%s | RAK-Site Safety Services",
   },
-  description: "RAK-Site Safety delivers next-generation safety solutions for complex industries, ensuring compliance, efficiency, and a secure work environment.",
+  description: "RAK-Site Safety Services delivers next-generation safety solutions for complex industries, ensuring compliance, efficiency, and a secure work environment.",
 };
 
 const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '700', '900'], variable: '--font-body' });
