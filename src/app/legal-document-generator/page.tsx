@@ -6,6 +6,7 @@ import type { Metadata } from 'next';
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { CheckIconCard } from "@/components/ui/check-icon-card";
 
 export const metadata: Metadata = {
   title: 'Instant Legal Document Generator',
@@ -13,10 +14,10 @@ export const metadata: Metadata = {
 };
 
 const features = [
-    { icon: <Zap className="h-7 w-7 text-primary" />, title: "Instant Generation", description: "Create legally compliant documents in seconds." },
-    { icon: <FileText className="h-7 w-7 text-primary" />, title: "HIRA & Method Statements", description: "Generate complex documents with ease." },
-    { icon: <ShieldCheck className="h-7 w-7 text-primary" />, title: "Always Compliant", description: "Our templates are always up-to-date with the latest regulations." },
-    { icon: <Bot className="h-7 w-7 text-primary" />, title: "AI-Powered", description: "Leverage our intelligent system for accurate documentation." },
+    { title: "Instant Generation", description: "Create legally compliant documents in seconds." },
+    { title: "HIRA & Method Statements", description: "Generate complex documents with ease." },
+    { title: "Always Compliant", description: "Our templates are always up-to-date with the latest regulations." },
+    { title: "AI-Powered", description: "Leverage our intelligent system for accurate documentation." },
 ]
 
 export default function LegalDocumentGeneratorPage() {
@@ -57,13 +58,7 @@ export default function LegalDocumentGeneratorPage() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {features.map((feature) => (
-                    <div key={feature.title} className="text-center p-4">
-                        <div className="flex justify-center items-center mb-4 bg-primary/10 text-primary w-16 h-16 rounded-full mx-auto">
-                            {feature.icon}
-                        </div>
-                        <h3 className="text-xl font-bold text-foreground">{feature.title}</h3>
-                        <p className="text-muted-foreground">{feature.description}</p>
-                    </div>
+                    <CheckIconCard key={feature.title} title={feature.title} description={feature.description} />
                 ))}
             </div>
         </div>

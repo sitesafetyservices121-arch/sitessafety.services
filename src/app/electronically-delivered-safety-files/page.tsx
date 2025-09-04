@@ -6,6 +6,7 @@ import type { Metadata } from 'next';
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { CheckIconCard } from "@/components/ui/check-icon-card";
 
 export const metadata: Metadata = {
   title: 'Electronically Delivered Safety Files',
@@ -13,10 +14,10 @@ export const metadata: Metadata = {
 };
 
 const benefits = [
-    { icon: <ShieldCheck className="h-7 w-7 text-primary" />, title: "100% OHS Act Compliant", description: "All documents meet legal requirements." },
-    { icon: <Download className="h-7 w-7 text-primary" />, title: "Print-Ready ZIP Folder", description: "Get everything you need in one downloadable folder." },
-    { icon: <Cloud className="h-7 w-7 text-primary" />, title: "Secure & Accessible", description: "Access your files anywhere, anytime." },
-    { icon: <Zap className="h-7 w-7 text-primary" />, title: "Fast Turnaround", description: "Choose the delivery speed that fits your needs." },
+    { title: "100% OHS Act Compliant", description: "All documents meet legal requirements." },
+    { title: "Print-Ready ZIP Folder", description: "Get everything you need in one downloadable folder." },
+    { title: "Secure & Accessible", description: "Access your files anywhere, anytime." },
+    { title: "Fast Turnaround", description: "Choose the delivery speed that fits your needs." },
 ]
 
 export default function ElectronicallyDeliveredSafetyFilesPage() {
@@ -57,13 +58,7 @@ export default function ElectronicallyDeliveredSafetyFilesPage() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {benefits.map((benefit) => (
-                    <div key={benefit.title} className="text-center p-4">
-                        <div className="flex justify-center items-center mb-4 bg-primary/10 text-primary w-16 h-16 rounded-full mx-auto">
-                            {benefit.icon}
-                        </div>
-                        <h3 className="text-xl font-bold text-foreground">{benefit.title}</h3>
-                        <p className="text-muted-foreground">{benefit.description}</p>
-                    </div>
+                    <CheckIconCard key={benefit.title} title={benefit.title} description={benefit.description} />
                 ))}
             </div>
         </div>
