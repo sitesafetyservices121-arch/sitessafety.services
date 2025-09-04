@@ -38,38 +38,42 @@ export default function Home() {
     <div className="bg-background text-foreground">
       {/* 1. Hero Section */}
       <section className="relative overflow-hidden py-24 md:py-40 bg-card border-b">
-        <div className="container px-4 md:px-6">
+        <div className="absolute inset-0 z-0">
+            <video
+              poster="https://iili.io/FpW6fmF.png"
+              src="https://cdn.streamable.com/video/mp4/1d5a7d.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/50"></div>
+        </div>
+        <div className="container px-4 md:px-6 relative z-10">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
             <div className="space-y-6 text-center lg:text-left">
-              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-foreground">
+              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-white">
                 Your Partner in Workplace Safety and Compliance
               </h1>
-              <p className="max-w-xl text-lg md:text-xl text-muted-foreground mx-auto lg:mx-0">
+              <p className="max-w-xl text-lg md:text-xl text-white/80 mx-auto lg:mx-0">
                 RAK-Site Safety Services provides cutting-edge safety solutions that go beyond compliance, driving efficiency, protecting people, and securing every phase of your project from planning to completion.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
-                <Button asChild size="lg">
-                  <Link href="/e-safety-file">
-                    Get Started <ArrowRight className="ml-2 h-5 w-5" />
+                <Button asChild size="lg" variant="cta">
+                  <Link href="/e-safety-file/#inquiry-form">
+                    Request a Free Consultation
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="outline">
+                <Button asChild size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-primary">
                   <Link href="#services">
                     Explore Services
                   </Link>
                 </Button>
               </div>
             </div>
-            <div className="relative h-80 w-full lg:h-[450px] overflow-hidden rounded-lg shadow-xl bg-gray-200">
-              <video
-                poster="https://iili.io/FpW6fmF.png"
-                src="https://cdn.streamable.com/video/mp4/1d5a7d.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute h-full w-full object-cover"
-              />
+            <div>
+                {/* This div is intentionally left empty to create the two-column layout */}
             </div>
           </div>
         </div>

@@ -12,7 +12,7 @@ export function Footer() {
             <div className="flex flex-col md:col-span-5">
                 <Link href="/" className="flex items-center gap-2.5 mb-4">
                   <Logo className="h-8 w-8 text-primary" />
-                  <span className="font-bold text-2xl text-white">RAK-Safety</span>
+                  <span className="font-bold text-2xl text-white">RAK-Site Safety Services</span>
                 </Link>
                 <p className="text-base text-background/70 max-w-sm">
                   Modern Safety Solutions for a Complex World.
