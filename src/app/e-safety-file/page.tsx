@@ -66,7 +66,7 @@ export default function ESafetyFilePage() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div className="text-center lg:text-left">
                     <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
-                        Your Complete OHS-Compliant e-Safety File.
+                        Your Complete OHS-Compliant E-Safety File.
                     </h1>
                     <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0">
                         Legally compliant, site-ready, digital safety files accessible anywhere. Choose a plan and get audit-ready in hours, not weeks.

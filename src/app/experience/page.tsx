@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 const testimonials = [
   { name: "Sarah Williams", title: "Project Manager", company: "ConstructCo", testimonial: "RAK's safety officers were professional, knowledgeable, and integrated seamlessly with our team. Their proactive approach prevented numerous issues. Highly recommended for any large-scale project!", rating: 5, image: "https://placehold.co/100x100.png", hint: "female professional" },
-  { name: "David Chen", title: "CEO", company: "BuildRight Inc.", testimonial: "The E-Safety File service saved us countless hours and ensured we were fully compliant for a critical audit. The process was smooth, efficient, and utterly professional.", rating: 5, image: "https://placehold.co/100x100.png", hint: "male ceo" },
+  { name: "David Chen", title: "CEO", company: "BuildRight Inc.", testimonial: "The E-Safety File service saved us countless hours and ensured we were fully compliant for a critical audit. The process was smooth, efficient, and professional.", rating: 5, image: "https://placehold.co/100x100.png", hint: "male ceo" },
   { name: "Emily Rodriguez", title: "Ops Director", company: "InfraGroup", testimonial: "Implementing their Safety Management System has transformed our safety culture for the better. We've seen a measurable reduction in incidents and a huge boost in employee engagement.", rating: 5, image: "https://placehold.co/100x100.png", hint: "female director" },
 ];
 
@@ -56,11 +56,11 @@ export default function ExperiencePage() {
                 <div className="grid md:grid-cols-2 gap-8">
                     <div>
                         <h3 className="text-xl font-bold text-foreground flex items-center gap-2 mb-3"><Users className="h-6 w-6 text-primary" />Why Companies Trust Us</h3>
-                        <p className="text-muted-foreground">We have proudly partnered with a diverse range of clients, from national construction conglomerates and industrial manufacturing leaders to renewable energy pioneers. They trust us because we don't just enforce rules; we embed a culture of safety that becomes a core part of their operation. Our registered professionals bring verifiable expertise and a proactive mindset, ensuring projects stay compliant, on schedule, and most importantly safe.</p>
+                        <p className="text-muted-foreground">We have proudly partnered with a diverse range of clients, from national construction conglomerates and industrial manufacturing leaders to renewable energy pioneers. They trust us because we don't just enforce rules; we embed a culture of safety that becomes a core part of their operation. Our registered professionals bring verifiable expertise and a proactive mindset, ensuring projects stay compliant, on schedule, and most importantly, safe.</p>
                     </div>
                     <div>
                         <h3 className="text-xl font-bold text-foreground flex items-center gap-2 mb-3"><DollarSign className="h-6 w-6 text-primary" />The Financial Impact of Safety</h3>
-                        <p className="text-muted-foreground">Investing in professional safety management is not a cost; it's a high-return investment. By preventing just one serious incident, companies can save hundreds of thousands, if not millions, in direct and indirect costs, including fines, legal fees, project delays, and increased insurance premiums. Our proactive systems can reduce incident-related costs by up to <strong>40%</strong>, delivering a safer site and a healthier bottom line.</p>
+                        <p className="text-muted-foreground">Investing in professional safety management is not a cost; it's a high-return investment. By preventing just one serious incident, companies can save hundreds of thousands, if not millions, in direct and indirect costs. These costs can include fines, legal fees, project delays, and increased insurance premiums. Our proactive systems can reduce incident-related costs by up to <strong>40%</strong>, delivering a safer site and a healthier bottom line.</p>
                     </div>
                 </div>
             </CardContent>

@@ -46,7 +46,7 @@ export default function AboutPage() {
             </div>
             <div className="space-y-4">
                 <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Our Story</h2>
-                <p className="text-muted-foreground text-lg">Founded in 2010, RAK-Site Safety has grown from a small consultancy to a leading provider of occupational health and safety services. Our journey is one of passion for safety and a deep commitment to our clients' success.</p>
+                <p className="text-muted-foreground text-lg">Founded in 2010, RAK-Site Safety has grown from a small consultancy into a leading provider of occupational health and safety services. Our journey is one of passion for safety and a deep commitment to our clients' success.</p>
                 <p className="text-muted-foreground">We continuously adapt to the evolving landscape of safety regulations and technologies to provide state-of-the-art solutions, building a reputation for reliability, expertise, and unparalleled customer service.</p>
             </div>
           </div>
@@ -60,7 +60,7 @@ export default function AboutPage() {
             <div className="space-y-4 lg:order-last">
                 <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Our Mission & Vision</h2>
                 <p className="text-muted-foreground text-lg">Our mission is to protect people, property, and the environment by delivering the highest quality safety services. We strive to empower our clients with the knowledge and tools to create a zero-incident workplace.</p>
-                <p className="text-muted-foreground">Our vision is to be the most trusted name in workplace safety, setting new standards for excellence and innovation in the industry, ultimately creating a future where every worker returns home safe, every day.</p>
+                <p className="text-muted-foreground">Our vision is to be the most trusted name in workplace safety, setting new standards for excellence and innovation in the industry, ultimately creating a future where every worker returns home safe every day.</p>
             </div>
             <div className="relative h-[450px] w-full rounded-2xl overflow-hidden shadow-lg">
                 <Image src="https://placehold.co/800x600.png" alt="Team discussing a project" fill sizes="100vw" style={{objectFit: 'cover'}} data-ai-hint="diverse team meeting" />

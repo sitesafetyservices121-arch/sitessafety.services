@@ -127,7 +127,7 @@ export function ConsultationForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
                 <FormField control={form.control} name="companyName" render={({ field }) => ( <FormItem> <FormLabel>Company Name</FormLabel> <FormControl><Input placeholder="Your Company Inc." {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
                 <FormField control={form.control} name="domainName" render={({ field }) => ( <FormItem> <FormLabel>Desired Domain (Optional)</FormLabel> <FormControl><Input placeholder="yourcompany.sitesafety.services" {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
-                <FormField control={form.control} name="desiredLogins" render={({ field }) => ( <FormItem> <FormLabel>Desired Logins</FormLabel> <FormControl><Input type="number" min="1" placeholder="e.g., 5" {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
+                <FormField control={form.control} name="desiredLogins" render={({ field }) => ( <FormItem> <FormLabel>Number of Logins</FormLabel> <FormControl><Input type="number" min="1" placeholder="e.g., 5" {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
             </div>
         </div>
 

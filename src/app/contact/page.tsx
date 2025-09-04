@@ -62,7 +62,7 @@ export default function ContactPage() {
             <div className="lg:col-span-3">
                 <Card className="shadow-xl border bg-card p-2">
                 <CardHeader>
-                    <CardTitle className="text-center text-3xl text-foreground font-bold">General Inquiries</CardTitle>
+                    <CardTitle className="text-center text-3xl text-foreground font-bold">Send us a Message</CardTitle>
                     <CardDescription className="text-center text-base">For general questions, please fill out the form below.</CardDescription>
                 </CardHeader>
                 <CardContent>

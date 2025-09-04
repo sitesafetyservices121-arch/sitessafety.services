@@ -128,7 +128,7 @@ export function ElectronicFileForm() {
                             <div className="flex items-center gap-4">
                                 <FormControl><RadioGroupItem value="Express" /></FormControl>
                                  <div className="text-center">
-                                     <p className="font-bold text-base text-foreground">Express (&#60;12 Hours)</p>
+                                     <p className="font-bold text-base text-foreground">Express (&lt;12 Hours)</p>
                                      <p className="font-bold text-lg text-primary">R2800.00</p>
                                 </div>
                            </div>

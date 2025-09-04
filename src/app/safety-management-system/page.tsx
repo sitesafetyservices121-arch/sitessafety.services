@@ -76,7 +76,7 @@ export default function SafetyManagementSystemPage() {
       <section className="py-24 bg-card border-y">
         <div className="container max-w-6xl mx-auto px-4">
             <div className="text-center">
-                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">5 Powerful AI Management Tools</h2>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Five Powerful AI Management Tools</h2>
                 <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">Everything you need to manage safety effectively, powered by AI.</p>
             </div>
             <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

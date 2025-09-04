@@ -15,7 +15,7 @@ const services = [
   {
     icon: <HardHat className="h-8 w-8 text-primary" />,
     title: "Rent a Safety Officer",
-    description: "Get a certified, registered safety professional on-site, whenever you need one. Flexible, reliable, and fully compliant.",
+    description: "Get a certified, registered safety professional on-site whenever you need one. Flexible, reliable, and fully compliant.",
     link: "/rent-a-safety-officer",
   },
   {
@@ -33,7 +33,7 @@ const services = [
   {
     icon: <Zap className="h-8 w-8 text-primary" />,
     title: "Electronically Delivered Safety Files",
-    description: "The fastest way to get compliant. Upload your client's index (e.g. Sasol, Mittal) and get a print-ready file in 12-24 hours.",
+    description: "The fastest way to get compliant. Upload your client's index, like those for Sasol or Mittal, and get a print-ready file in 12-24 hours.",
     link: "/electronically-delivered-safety-files",
   },
   {
