@@ -41,7 +41,7 @@ export default function LegalDocumentGeneratorPage() {
                     </div>
                 </div>
                 <div className="relative h-80 lg:h-[400px] w-full">
-                    <Image src="https://placehold.co/800x600.png" fill sizes="100vw" style={{objectFit: 'contain'}} alt="AI document generation interface" data-ai-hint="ai document generator" />
+                    <Image src="https://iili.io/JAbgStp.png" fill sizes="100vw" style={{objectFit: 'contain'}} alt="AI document generation interface" data-ai-hint="ai document generator" />
                 </div>
             </div>
         </div>
