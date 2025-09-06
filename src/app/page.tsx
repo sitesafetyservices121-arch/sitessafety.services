@@ -147,7 +147,7 @@ export default function Home() {
           <div className="space-y-6">
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">Expertise Forged for the Future</h2>
             <p className="text-muted-foreground text-lg md:text-xl/relaxed">
-              For over a decade, we have not just participated in the safety industry; we have redefined it. Our deep field experience is the foundation upon which we built our world-first AI technology. This unique combination offers a level of protection and efficiency previously unimaginable. Our systems safeguard your people and assets, ensuring you don't just meet regulatory requirements—you exceed them. Partner with us to transform your workplace into a model of modern safety and operational excellence.
+              For over a decade, we have not just participated in the safety industry; we have redefined it. Our deep field experience is the foundation upon which we built our world-first AI technology. This unique combination offers a level of protection and efficiency previously unimaginable. Our systems safeguard your people and assets, ensuring you don't just meet regulatory requirements, you exceed them. Partner with us to transform your workplace into a model of modern safety and operational excellence.
             </p>
             <div className="flex justify-center lg:justify-start pt-4">
               <Button asChild size="lg" variant="outline">
