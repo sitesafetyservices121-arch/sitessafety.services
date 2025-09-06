@@ -70,7 +70,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="py-20 md:py-32 bg-card border-b">
         <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">Perfection in Compliance where AI meets human expertise.</h1>
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">Achieving Perfection in Compliance Where AI Meets Human Expertise.</h1>
             <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
                 When safety and legality are non-negotiable, you need more than promises. You need a system that makes compliance inevitable. RAK-Site Safety Services blends certified professionals with purpose-built AI to deliver audit-ready documentation, faster decisions, and measurable cost savings across South Africa.
             </p>

@@ -39,7 +39,7 @@ const services = [
   {
     icon: <Bot className="h-8 w-8 text-primary" />,
     title: "Legal Document Generator",
-    description: "Instantly generate HIRAs, method statements, and all other required site documents on demand with our AI-powered tool.",
+    description: "Instantly generate compliant HIRAs, method statements, and all other required site documents on demand with our powerful AI tool.",
     link: "/legal-document-generator",
   }
 ];

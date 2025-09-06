@@ -104,7 +104,7 @@ export default function Home() {
       <section id="services" className="w-full py-24 md:py-32 bg-card border-y">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">A Revolutionary Suite of Safety Services</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">Our Revolutionary Suite of Safety Services</h2>
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground text-lg">
               We engineered the future of safety. Explore our pioneering services, built to deliver unprecedented compliance and efficiency.
             </p>
@@ -145,9 +145,9 @@ export default function Home() {
             />
           </div>
           <div className="space-y-6">
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">Expertise Forged in the Future</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">Expertise Forged for the Future</h2>
             <p className="text-muted-foreground text-lg md:text-xl/relaxed">
-              For over a decade, we have not just participated in the safety industry; we have redefined it. RAK-Site Safety Services combines deep field experience with world-first AI technology to offer a level of protection and efficiency previously unimaginable. Our systems safeguard your people and assets, ensuring you don't just meet regulatory requirements—you exceed them. Partner with us to transform your workplace into a model of modern safety and operational excellence.
+              For over a decade, we have not just participated in the safety industry; we have redefined it. Our deep field experience is the foundation upon which we built our world-first AI technology. This unique combination offers a level of protection and efficiency previously unimaginable. Our systems safeguard your people and assets, ensuring you don't just meet regulatory requirements—you exceed them. Partner with us to transform your workplace into a model of modern safety and operational excellence.
             </p>
             <div className="flex justify-center lg:justify-start pt-4">
               <Button asChild size="lg" variant="outline">
