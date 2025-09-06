@@ -147,7 +147,7 @@ export function BookingForm() {
     return (
         <div className="text-center p-8 bg-success/10 rounded-lg border border-success/20">
             <CheckCircle className="h-12 w-12 text-success mx-auto mb-4" />
-            <h3 className="text-2xl font-bold text-success-foreground mb-2">Thank you for your booking request!</h3>
+            <h3 className="text-2xl font-bold text-success mb-2">Thank you for your booking request!</h3>
             <p className="text-muted-foreground">A representative will contact you shortly to confirm your booking.</p>
         </div>
     )
