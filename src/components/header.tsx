@@ -101,7 +101,8 @@ export function Header() {
       <div className="container flex h-20 max-w-7xl items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 mr-6">
           <Logo className="h-7 w-7 text-primary" />
-          <span className="font-bold text-xl text-foreground">RAK-Safety</span>
+          <span className="hidden md:inline font-bold text-xl text-foreground whitespace-nowrap">RAK-Site Safety Services</span>
+          <span className="md:hidden font-bold text-xl text-foreground">RAK-Safety</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8 ml-auto">
