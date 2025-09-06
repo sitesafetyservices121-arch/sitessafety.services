@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     template: "%s | RAK-Site Safety Services",
   },
   description: "RAK-Site Safety Services delivers next-generation safety solutions for complex industries, ensuring compliance, efficiency, and a secure work environment.",
+  icons: {
+    icon: "https://iili.io/KnOi1Og.png",
+    shortcut: "https://iili.io/KnOi1Og.png",
+    apple: "https://iili.io/KnOi1Og.png",
+  }
 };
 
 const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '700', '900'], variable: '--font-body' });
