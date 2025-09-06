@@ -9,25 +9,25 @@ const services = [
   {
     icon: <HardHat className="h-8 w-8 text-primary" />,
     title: "Rent a Safety Officer",
-    description: "We deploy certified safety officers nationwide, registered with SACPCMP, SAIOH, or both, ensuring full compliance and effective risk mitigation from day one.",
+    description: "Deploy elite, certified safety officers, registered with SACPCMP or SAIOH, for on-demand risk mitigation and unparalleled on-site expertise.",
     link: "/rent-a-safety-officer",
   },
   {
     icon: <FileText className="h-8 w-8 text-primary" />,
     title: "E-Safety File",
-    description: "The future of compliance. Our cloud-based system provides a complete, digital safety file solution that is audit-ready and accessible anywhere.",
+    description: "The world's first fully-digitized compliance solution. An audit-proof, cloud-based safety file, accessible instantly, anywhere on earth.",
     link: "/e-safety-file",
   },
   {
     icon: <ShieldCheck className="h-8 w-8 text-primary" />,
     title: "Safety Management System",
-    description: "Implement a bespoke, scalable system to proactively manage safety and cultivate a zero-incident culture.",
+    description: "Command your entire safety operation from a single, AI-powered platform. A revolutionary system to build a zero-incident culture.",
     link: "/safety-management-system",
   },
   {
     icon: <Zap className="h-8 w-8 text-primary" />,
     title: "Electronically Delivered Safety Files",
-    description: "The fastest way to get compliant. Upload your client's index and get a print-ready file in as little as 6-24 hours.",
+    description: "The future of rapid compliance. Upload your client's index and our AI builds your print-ready file in as little as 6-24 hours.",
     link: "/electronically-delivered-safety-files",
   },
 ];
@@ -60,10 +60,10 @@ export default function Home() {
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
             <div className="space-y-6 text-center lg:text-left">
               <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-white">
-                Your Partner in Workplace Safety and Compliance
+                The Future of Safety Compliance is Here
               </h1>
               <p className="max-w-xl text-lg md:text-xl text-white/80 mx-auto lg:mx-0">
-                RAK-Site Safety Services provides cutting-edge safety solutions that go beyond compliance, driving efficiency, protecting people, and securing every phase of your project from planning to completion.
+                Welcome to the world's first AI-powered safety ecosystem. RAK-Site Safety Services delivers revolutionary solutions that automate compliance, eliminate risk, and redefine operational excellence for your industry.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
                 <Button asChild size="lg" variant="cta">
@@ -73,7 +73,7 @@ export default function Home() {
                 </Button>
                 <Button asChild size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-primary">
                   <Link href="#services">
-                    Explore Services
+                    Explore Our Services
                   </Link>
                 </Button>
               </div>
@@ -88,7 +88,7 @@ export default function Home() {
       {/* 2. Trust & Proof Section */}
       <section className="w-full py-24 bg-background">
         <div className="container px-4 md:px-6">
-            <h2 className="text-center text-lg text-muted-foreground font-semibold tracking-wider uppercase mb-12">TRUSTED BY COMPANIES NATIONWIDE</h2>
+            <h2 className="text-center text-lg text-muted-foreground font-semibold tracking-wider uppercase mb-12">TRUSTED BY INDUSTRY LEADERS NATIONWIDE</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 {stats.map((stat) => (
                     <div key={stat.label} className="text-center">
@@ -104,9 +104,9 @@ export default function Home() {
       <section id="services" className="w-full py-24 md:py-32 bg-card border-y">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">A Solution for Every Safety Need</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">A Revolutionary Suite of Safety Services</h2>
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground text-lg">
-              We offer specialized services designed to integrate seamlessly with your operations, delivering unparalleled safety and compliance.
+              We engineered the future of safety. Explore our pioneering services, built to deliver unprecedented compliance and efficiency.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -145,13 +145,13 @@ export default function Home() {
             />
           </div>
           <div className="space-y-6">
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">Expertise You Can Build On</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">Expertise Forged in the Future</h2>
             <p className="text-muted-foreground text-lg md:text-xl/relaxed">
-              With over a decade of specialized experience, RAK-Site Safety Services delivers comprehensive safety solutions designed to safeguard your people, protect your assets, and uphold your reputation. Our team of highly qualified and certified professionals brings deep industry knowledge, proven methodologies, and cutting-edge technology to every project. We partner with organizations across diverse sectors to create safer, more compliant, and more productive workplaces, ensuring not only regulatory alignment but also long-term operational excellence and peace of mind.
+              For over a decade, we have not just participated in the safety industry; we have redefined it. RAK-Site Safety Services combines deep field experience with world-first AI technology to offer a level of protection and efficiency previously unimaginable. Our systems safeguard your people and assets, ensuring you don't just meet regulatory requirements—you exceed them. Partner with us to transform your workplace into a model of modern safety and operational excellence.
             </p>
             <div className="flex justify-center lg:justify-start pt-4">
               <Button asChild size="lg" variant="outline">
-                <Link href="/about">About Our Company</Link>
+                <Link href="/about">Discover Our Story</Link>
               </Button>
             </div>
           </div>
