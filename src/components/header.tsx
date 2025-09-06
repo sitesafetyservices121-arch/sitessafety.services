@@ -15,6 +15,7 @@ import { Menu, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "./logo";
 import React from "react";
+import { ThemeToggle } from "./theme-toggle";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -107,9 +108,11 @@ export function Header() {
 
         <nav className="hidden md:flex items-center gap-8 ml-auto">
             {navLinks.map(link => link.isMenu ? <NavMenu key={link.label} /> : <NavLink key={link.href} href={link.href} label={link.label} />)}
+            <ThemeToggle />
         </nav>
         
         <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
