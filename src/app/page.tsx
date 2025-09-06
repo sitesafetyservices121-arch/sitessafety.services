@@ -45,14 +45,13 @@ export default function Home() {
       {/* 1. Hero Section */}
       <section className="relative overflow-hidden py-24 md:py-40 bg-card border-b">
         <div className="absolute inset-0 z-0">
-            <video
-              poster="https://iili.io/JADbBv4.png"
-              src="https://cdn.streamable.com/video/mp4/1d5a7d.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute h-full w-full object-cover"
+            <Image
+              src="https://iili.io/JADbBv4.png"
+              alt="Modern industrial facility"
+              fill
+              style={{ objectFit: 'cover' }}
+              quality={100}
+              priority
             />
             <div className="absolute inset-0 bg-black/50"></div>
         </div>
