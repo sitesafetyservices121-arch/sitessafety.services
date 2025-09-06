@@ -25,10 +25,10 @@ const testimonials = [
 ];
 
 const portfolio = [
-    { title: "High-Rise Commercial Tower", image: "https://placehold.co/800x600.png", hint: "skyscraper construction" },
-    { title: "Industrial Manufacturing Plant", image: "https://placehold.co/800x600.png", hint: "modern factory interior" },
-    { title: "Metropolitan Subway Expansion", image: "https://placehold.co/800x600.png", hint: "tunnel construction site" },
-    { title: "Renewable Energy Wind Farm", image: "https://placehold.co/800x600.png", hint: "wind turbines field" },
+    { title: "High-Rise Commercial Tower", image: "https://iili.io/JADbmXb.png", hint: "skyscraper construction" },
+    { title: "Industrial Manufacturing Plant", image: "https://iili.io/JADbBv4.png", hint: "modern factory interior" },
+    { title: "Metropolitan Subway Expansion", image: "https://iili.io/JADbHSp.png", hint: "tunnel construction site" },
+    { title: "Renewable Energy Wind Farm", image: "https://iili.io/JADbnef.png", hint: "wind turbines field" },
 ];
 
 const stats = [
