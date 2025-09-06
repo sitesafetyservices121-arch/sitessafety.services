@@ -32,7 +32,7 @@ function TermsContent() {
           <p>Your access to and use of the Service is conditioned on Your acceptance of and compliance with these Terms and Conditions. These Terms and Conditions apply to all visitors, users and others who access or use the Service. By accessing or using the Service You agree to be bound by these Terms and Conditions. If You disagree with any part of these Terms and Conditions then You may not access the Service.</p>
 
           <h2>3. Service Provision</h2>
-          <p>Our services, including <strong>"Rent a Safety Officer," "E Safety File,"</strong> and <strong>"Safety Management System,"</strong> are provided as described on their respective pages on our website. Specific terms, deliverables, and pricing for any engaged services will be formally outlined in a separate Service Level Agreement (SLA) which must be signed by both parties before the commencement of work.</p>
+          <p>Our services, including "Rent a Safety Officer," "E Safety File," and "Safety Management System," are provided as described on their respective pages on our website. Specific terms, deliverables, and pricing for any engaged services will be formally outlined in a separate Service Level Agreement (SLA) which must be signed by both parties before the commencement of work.</p>
           
           <h2>4. Payments and Fees</h2>
           <p>Fees for services are due as specified in the service description or the governing Service Level Agreement. We utilize secure, industry-standard third-party payment processors. By making a payment, you acknowledge and agree to the terms and conditions of our payment partners. All prices are listed in South African Rand (ZAR) unless otherwise stated.</p>

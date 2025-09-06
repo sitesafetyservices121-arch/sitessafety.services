@@ -215,7 +215,7 @@ export function BookingForm() {
                       {field.value?.from ? (
                         field.value.to ? (
                           <>
-                            {format(field.value.from, "LLL dd, y")} -{" "}
+                            {format(field.value.from, "LLL dd, y")} to{" "}
                             {format(field.value.to, "LLL dd, y")}
                           </>
                         ) : (

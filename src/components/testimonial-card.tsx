@@ -15,7 +15,7 @@ type TestimonialCardProps = {
 
 export function TestimonialCard({ name, title, company, image, testimonial, rating, hint }: TestimonialCardProps) {
   return (
-    <Card className="h-full flex flex-col bg-card border shadow-sm rounded-md">
+    <Card className="h-full flex flex-col bg-card border shadow-sm rounded-lg">
       <CardContent className="p-8 flex flex-col flex-grow">
         <div className="flex mb-4">
           {Array.from({ length: 5 }).map((_, i) => (
