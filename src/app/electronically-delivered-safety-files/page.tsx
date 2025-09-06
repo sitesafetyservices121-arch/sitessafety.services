@@ -41,7 +41,7 @@ export default function ElectronicallyDeliveredSafetyFilesPage() {
                     </div>
                 </div>
                 <div className="relative h-80 lg:h-[400px] w-full">
-                    <Image src="https://placehold.co/800x600.png" fill sizes="100vw" style={{objectFit: 'contain'}} alt="Digital folder on a screen" data-ai-hint="digital file download" />
+                    <Image src="https://iili.io/JADbLPS.png" fill sizes="100vw" style={{objectFit: 'contain'}} alt="A secure digital folder being downloaded to a computer screen" data-ai-hint="digital file download" />
                 </div>
             </div>
         </div>
