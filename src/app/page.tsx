@@ -13,7 +13,7 @@ const services = [
     link: "/rent-a-safety-officer",
   },
   {
-    icon: <Zap className="h-8 w-8 text-primary" />,
+    icon: <FileText className="h-8 w-8 text-primary" />,
     title: "E-Safety File",
     description: "The future of compliance. Our cloud-based system provides a complete, digital safety file solution that is audit-ready and accessible anywhere.",
     link: "/e-safety-file",
@@ -23,6 +23,12 @@ const services = [
     title: "Safety Management System",
     description: "Implement a bespoke, scalable system to proactively manage safety and cultivate a zero-incident culture.",
     link: "/safety-management-system",
+  },
+  {
+    icon: <Zap className="h-8 w-8 text-primary" />,
+    title: "Electronically Delivered Safety Files",
+    description: "The fastest way to get compliant. Upload your client's index and get a print-ready file in as little as 6-24 hours.",
+    link: "/electronically-delivered-safety-files",
   },
 ];
 
@@ -103,7 +109,7 @@ export default function Home() {
               We offer specialized services designed to integrate seamlessly with your operations, delivering unparalleled safety and compliance.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service) => (
               <Card key={service.title} className="bg-background text-center flex flex-col group p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
                 <CardHeader className="items-center">
