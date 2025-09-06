@@ -46,7 +46,7 @@ export default function Home() {
       <section className="relative overflow-hidden py-24 md:py-40 bg-card border-b">
         <div className="absolute inset-0 z-0">
             <video
-              poster="https://iili.io/JADbWWp.png"
+              poster="https://iili.io/JADbBv4.png"
               src="https://cdn.streamable.com/video/mp4/1d5a7d.mp4"
               autoPlay
               loop
@@ -135,7 +135,7 @@ export default function Home() {
         <div className="container grid items-center justify-center gap-12 px-4 text-center md:px-6 lg:grid-cols-2 lg:text-left lg:gap-20">
           <div className="relative h-96 lg:h-[500px] w-full overflow-hidden rounded-xl shadow-xl">
             <Image
-              src="https://iili.io/JAbeybV.png"
+              src="https://iili.io/JADbHSp.png"
               alt="Handshake between two businessmen on a construction site"
               fill
               sizes="100vw"
