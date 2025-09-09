@@ -5,17 +5,33 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import { Menu, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "./logo";
 import React from "react";
 import { ThemeToggle } from "./theme-toggle";
+import { 
+  NavigationMenu, 
+  NavigationMenuList, 
+  NavigationMenuItem, 
+  NavigationMenuTrigger, 
+  NavigationMenuContent, 
+  NavigationMenuLink,
+  navigationMenuTriggerStyle
+} from "@/components/ui/navigation-menu";
 
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/experience", label: "Projects" },
-  { href: "/contact", label: "Contact" },
+];
+
+const services = [
+  { href: "/rent-a-safety-officer", title: "Rent a Safety Officer", description: "Flexible, on-demand certified safety professionals for any project." },
+  { href: "/e-safety-file", title: "E-Safety File", description: "Cloud-based, audit-proof digital safety file solutions." },
+  { href: "/safety-management-system", title: "Safety Management System", description: "An AI-powered platform to manage your entire safety program." },
+  { href: "/electronically-delivered-safety-files", title: "Electronic Safety Files", description: "Get print-ready, compliant safety files delivered in hours." },
+  { href: "/legal-document-generator", title: "Legal Document Generator", description: "Instantly generate compliant HIRAs and method statements." },
 ];
 
 export function Header() {
@@ -30,19 +46,12 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const NavLink = ({ href, label, isMobile }: { href: string; label: string, isMobile?: boolean }) => (
-    <Link
-      href={href}
-      className={cn(
-        "font-medium transition-colors text-base",
-        "hover:text-primary",
-        pathname === href ? "text-primary font-bold" : "text-foreground/80",
-        isMobile && "py-2 text-lg w-full",
-        isMobile && pathname === href && "text-primary font-bold"
-      )}
-    >
-      {label}
-    </Link>
+  const NavLink = ({ href, label, className }: { href: string; label: string, className?: string }) => (
+    <NavigationMenuLink asChild active={pathname === href}>
+      <Link href={href} className={cn(navigationMenuTriggerStyle(), "bg-transparent", className)}>
+        {label}
+      </Link>
+    </NavigationMenuLink>
   );
 
   return (
@@ -56,12 +65,34 @@ export function Header() {
           <span className="hidden md:inline font-bold text-xl text-foreground whitespace-nowrap">RAK-Site Safety</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6 ml-auto">
-            {navLinks.map(link => <NavLink key={link.href} href={link.href} label={link.label} />)}
-            <ThemeToggle />
-        </nav>
+        <NavigationMenu className="hidden md:flex">
+          <NavigationMenuList>
+            {navLinks.map(link => (
+              <NavigationMenuItem key={link.href}>
+                <NavLink href={link.href} label={link.label} />
+              </NavigationMenuItem>
+            ))}
+
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Services</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                  {services.map((service) => (
+                    <ListItem key={service.title} href={service.href} title={service.title}>
+                      {service.description}
+                    </ListItem>
+                  ))}
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem>
+                <NavLink href="/contact" label="Contact" />
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
         
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-2 md:hidden ml-auto">
           <ThemeToggle />
           <Sheet>
             <SheetTrigger asChild>
@@ -70,13 +101,22 @@ export function Header() {
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-card">
-              <Link href="/" className="flex items-center gap-2.5 mb-10">
+            <SheetContent side="right" className="bg-card pt-10">
+              <Link href="/" className="flex items-center gap-2.5 mb-8">
                 <Logo className="h-8 w-8 text-primary" />
                 <span className="font-bold text-2xl text-foreground">RAK-Safety</span>
               </Link>
               <nav className="flex flex-col gap-4">
-                {navLinks.map(link => <NavLink key={link.href} href={link.href} label={link.label} isMobile />)}
+                {navLinks.map(link => 
+                  <Link key={link.href} href={link.href} className="text-lg font-medium text-foreground/80 hover:text-primary">{link.label}</Link>
+                )}
+                 <h3 className="text-lg font-medium text-foreground/80 pt-2">Services</h3>
+                 <div className="flex flex-col gap-4 pl-4 border-l">
+                    {services.map(service => (
+                       <Link key={service.href} href={service.href} className="text-base font-medium text-foreground/70 hover:text-primary">{service.title}</Link>
+                    ))}
+                 </div>
+                 <Link href="/contact" className="text-lg font-medium text-foreground/80 hover:text-primary pt-2">Contact</Link>
               </nav>
                <Button asChild className="w-full mt-8" size="lg" variant="cta">
                 <Link href="/contact">Get in Touch</Link>
@@ -84,7 +124,36 @@ export function Header() {
             </SheetContent>
           </Sheet>
         </div>
+        <div className="hidden md:flex items-center gap-2">
+            <ThemeToggle />
+        </div>
       </div>
     </header>
   );
 }
+
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-bold leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  )
+})
+ListItem.displayName = "ListItem"
