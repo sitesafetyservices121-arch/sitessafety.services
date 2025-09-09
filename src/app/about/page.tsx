@@ -49,11 +49,6 @@ const whatWeDo = [
         description: "We design a compliant, client-facing safety file website that matches your existing look and runs on your own domain. Replace hard-copy files with a secure, searchable, version-controlled system. Clean, professional, always up to date, built to impress auditors and clients.",
         icon: <FileDigit className="h-8 w-8 text-primary" />
     },
-    { 
-        title: "AI Legal Document Generation & Electronic Delivery", 
-        description: "Tell us what you need; our system generates legally structured documents with your logo and company details, ready to print and use on site. Prefer it all in one go? Upload your required index and, within 24 hours, log in to download a zip containing your entire file with custom instructions, prepped to print and deploy.",
-        icon: <Cpu className="h-8 w-8 text-primary" />
-    },
 ];
 
 const whyChooseUs = [

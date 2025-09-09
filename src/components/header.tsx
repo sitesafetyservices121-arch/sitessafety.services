@@ -31,7 +31,6 @@ const services = [
   { href: "/e-safety-file", title: "E-Safety File", description: "Cloud-based, audit-proof digital safety file solutions." },
   { href: "/safety-management-system", title: "Safety Management System", description: "An AI-powered platform to manage your entire safety program." },
   { href: "/electronically-delivered-safety-files", title: "Electronic Safety Files", description: "Get print-ready, compliant safety files delivered in hours." },
-  { href: "/legal-document-generator", title: "Legal Document Generator", description: "Instantly generate compliant HIRAs and method statements." },
 ];
 
 export function Header() {

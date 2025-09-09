@@ -36,12 +36,6 @@ const services = [
     description: "The fastest way to get compliant. Upload your client's index, like those for Sasol or Mittal, and get a print-ready file in 12-24 hours.",
     link: "/electronically-delivered-safety-files",
   },
-  {
-    icon: <Bot className="h-8 w-8 text-primary" />,
-    title: "Legal Document Generator",
-    description: "Instantly generate compliant HIRAs, method statements, and all other required site documents on demand with our powerful AI tool.",
-    link: "/legal-document-generator",
-  }
 ];
 
 export default function ServicesPage() {
@@ -62,7 +56,7 @@ export default function ServicesPage() {
       {/* Services Grid Section */}
       <section className="py-24">
         <div className="container max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {services.map((service) => (
               <Card key={service.title} className="bg-card border text-center flex flex-col group p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
                 <CardHeader className="items-center">
