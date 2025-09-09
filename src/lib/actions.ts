@@ -2,20 +2,66 @@
 "use server";
 import { checkCompliance } from "@/ai/flows/compliance-checker-flow";
 import type { ComplianceRequest, ComplianceResponse } from "@/ai/schemas";
+import { Resend } from 'resend';
+import { z } from 'zod';
+import { format } from 'date-fns';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+const toEmail = process.env.DESTINATION_EMAIL;
+
+// Utility to send email and handle errors
+async function sendEmail(subject: string, htmlContent: string) {
+    if (!toEmail || !process.env.RESEND_API_KEY) {
+        throw new Error("Missing RESEND_API_KEY or DESTINATION_EMAIL environment variables.");
+    }
+    
+    const { data, error } = await resend.emails.send({
+        from: 'RAK-Site Safety <noreply@resend.dev>',
+        to: [toEmail],
+        subject: subject,
+        html: htmlContent,
+    });
+
+    if (error) {
+        throw new Error(`Failed to send email: ${error.message}`);
+    }
+
+    return data;
+}
+
+const bookingSchema = z.object({
+  name: z.string(),
+  company: z.string(),
+  email: z.string().email(),
+  phone: z.string(),
+  siteAddress: z.string(),
+  service: z.string(),
+  dates: z.object({
+    from: z.coerce.date(),
+    to: z.coerce.date(),
+  }),
+  total: z.number(),
+});
+
 
 export async function submitBooking(data: unknown) {
     try {
-        // In a real app, you would validate the data against a schema (e.g., with Zod)
-        // and then save it to a database and send a notification email.
-        // You would also process payment here via a payment gateway.
-        console.log("--- New Booking Request ---");
-        console.log("ACTION: Process payment for calculated amount.");
-        console.log("ACTION: Send booking confirmation email to ruan@sitesafety.services");
-        console.log("DATA:", data);
-        console.log("--------------------------");
+        const validatedData = bookingSchema.parse(data);
+        const { name, company, email, phone, siteAddress, service, dates, total } = validatedData;
         
-        // Simulate processing time
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        const htmlContent = `
+            <h1>New Booking Request</h1>
+            <p><strong>Service:</strong> ${service}</p>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Company:</strong> ${company}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Phone:</strong> ${phone}</p>
+            <p><strong>Site Address:</strong> ${siteAddress}</p>
+            <p><strong>Dates:</strong> ${format(dates.from, 'PPP')} to ${format(dates.to, 'PPP')}</p>
+            <p><strong>Estimated Total:</strong> R${total.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+        `;
+
+        await sendEmail("New Booking Request", htmlContent);
         
         return { success: true, message: "Booking request received! We'll be in touch soon." };
     } catch (error) {
@@ -24,14 +70,30 @@ export async function submitBooking(data: unknown) {
     }
 }
 
+const inquirySchema = z.object({
+    name: z.string(),
+    company: z.string(),
+    email: z.string().email(),
+    phone: z.string(),
+    message: z.string().optional(),
+});
+
 export async function submitInquiry(data: unknown) {
     try {
-        // In a real app, you would validate the data against a schema (e.g., with Zod)
-        // and then save it to a database, send a notification email, etc.
-        console.log("--- New General Inquiry ---");
-        console.log("ACTION: Send inquiry to info@sitesafety.services");
-        console.log("DATA:", data);
-        console.log("--------------------------");
+        const validatedData = inquirySchema.parse(data);
+        const { name, company, email, phone, message } = validatedData;
+
+        const htmlContent = `
+            <h1>New General Inquiry</h1>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Company:</strong> ${company}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Phone:</strong> ${phone}</p>
+            <p><strong>Message:</strong></p>
+            <p>${message || 'No message provided.'}</p>
+        `;
+
+        await sendEmail("New General Inquiry", htmlContent);
 
         return { success: true, message: "Inquiry received! We'll get back to you shortly." };
     } catch (error) {
@@ -50,25 +112,32 @@ export async function getComplianceAdvice(data: ComplianceRequest): Promise<{ su
     }
 }
 
+const smsSignupSchema = z.object({
+  firstName: z.string(),
+  surname: z.string(),
+  company: z.string(),
+  email: z.string().email(),
+  password: z.string(),
+  age: z.string(),
+  cellNumber: z.string(),
+});
+
 export async function submitSmsSignup(data: unknown) {
     try {
-        // This is a simulation. In a real application, you would:
-        // 1. Process payment via a payment gateway (e.g., Stripe, PayFast).
-        // 2. On successful payment, create the user in your database.
-        // 3. Securely hash and store the password.
-        // 4. Send a welcome email to the client with their login details.
-        // 5. Send a notification email to your team.
+        const validatedData = smsSignupSchema.parse(data);
+        const { firstName, surname, company, email, age, cellNumber } = validatedData;
 
-        console.log("--- New Safety Management System Signup ---");
-        console.log("ACTION: Simulate successful payment.");
-        console.log("ACTION: Create new user in the database.");
-        console.log("ACTION: Send the following details to ruan@sitesafety.services:");
-        console.log("DATA:", data);
-        console.log("-----------------------------------------");
+        const htmlContent = `
+            <h1>New Safety Management System Signup</h1>
+            <p><strong>Name:</strong> ${firstName} ${surname}</p>
+            <p><strong>Company:</strong> ${company}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Cell Number:</strong> ${cellNumber}</p>
+            <p><strong>Age:</strong> ${age}</p>
+        `;
+
+        await sendEmail("New SMS Signup", htmlContent);
         
-        // Simulating the process takes a moment
-        await new Promise(resolve => setTimeout(resolve, 1500));
-
         return { success: true, message: "Signup successful! You'll receive a confirmation email shortly." };
     } catch (error) {
         console.error("SMS Signup submission error:", error);
@@ -76,17 +145,42 @@ export async function submitSmsSignup(data: unknown) {
     }
 }
 
+const consultationSchema = z.object({
+  name: z.string(),
+  email: z.string().email(),
+  phone: z.string(),
+  companyName: z.string(),
+  domainName: z.string().optional().or(z.literal('')),
+  desiredLogins: z.string(),
+  plan: z.string(),
+  consultationDate: z.coerce.date(),
+  consultationTime: z.string(),
+  contactMethod: z.string(),
+});
+
 export async function submitConsultation(data: unknown) {
     try {
-        // In a real app, you would validate the data against a schema (e.g., with Zod)
-        // and then save it to a database and send a notification email.
-        console.log("--- New E-Safety File Consultation Request ---");
-        console.log("ACTION: Send consultation details to ruan@sitesafety.services");
-        console.log("DATA:", data);
-        console.log("-------------------------------------------");
-        
-        // Simulate processing time
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        const validatedData = consultationSchema.parse(data);
+        const { name, email, phone, companyName, domainName, desiredLogins, plan, consultationDate, consultationTime, contactMethod } = validatedData;
+
+        const htmlContent = `
+            <h1>New E-Safety File Consultation Request</h1>
+            <h2>Plan Details</h2>
+            <p><strong>Selected Plan:</strong> ${plan}</p>
+            <p><strong>Company Name:</strong> ${companyName}</p>
+            <p><strong>Desired Domain:</strong> ${domainName || 'Not specified'}</p>
+            <p><strong>Number of Logins:</strong> ${desiredLogins}</p>
+            <h2>Contact Details</h2>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Phone:</strong> ${phone}</p>
+            <h2>Consultation Time</h2>
+            <p><strong>Date:</strong> ${format(consultationDate, 'PPP')}</p>
+            <p><strong>Time:</strong> ${consultationTime}</p>
+            <p><strong>Method:</strong> ${contactMethod}</p>
+        `;
+
+        await sendEmail("New E-Safety File Consultation Request", htmlContent);
         
         return { success: true, message: "Consultation request received! We will contact you at your selected time." };
     } catch (error) {
@@ -95,26 +189,42 @@ export async function submitConsultation(data: unknown) {
     }
 }
 
+const electronicFileOrderSchema = z.object({
+  name: z.string(),
+  surname: z.string(),
+  company: z.string(),
+  email: z.string().email(),
+  phone: z.string(),
+  companyLogo: z.string(), // Filename
+  fileIndex: z.string(), // Filename
+  serviceTier: z.string(),
+  total: z.number(),
+});
+
 export async function submitElectronicFileOrder(data: unknown) {
     try {
-        // This is a simulation. In a real application, you would:
-        // 1. Process payment via a payment gateway.
-        // 2. On successful payment, handle the file uploads to a secure storage (e.g., Google Cloud Storage).
-        // 3. Save order details to the database.
-        // 4. Send a notification email to your team.
-
-        console.log("--- New Electronically Delivered Safety File Order ---");
-        console.log("ACTION: Simulate successful payment.");
-        console.log("ACTION: Simulate file uploads.");
-        console.log("ACTION: Send order details to ruan@sitesafety.services:");
-        console.log("DATA:", data);
-        console.log("-----------------------------------------------------");
+        const validatedData = electronicFileOrderSchema.parse(data);
+        const { name, surname, company, email, phone, companyLogo, fileIndex, serviceTier, total } = validatedData;
         
-        // Simulating the process takes a moment
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        const htmlContent = `
+            <h1>New Electronically Delivered Safety File Order</h1>
+            <h2>Order Details</h2>
+            <p><strong>Service Tier:</strong> ${serviceTier}</p>
+            <p><strong>Total Paid:</strong> R${total.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+            <p><strong>Uploaded Company Logo:</strong> ${companyLogo}</p>
+            <p><strong>Uploaded File Index:</strong> ${fileIndex}</p>
+            <h2>Customer Details</h2>
+            <p><strong>Name:</strong> ${name} ${surname}</p>
+            <p><strong>Company:</strong> ${company}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Phone:</strong> ${phone}</p>
+        `;
+
+        await sendEmail("New Electronic File Order", htmlContent);
 
         return { success: true, message: "Order successful! Your files have been received." };
-    } catch (error) {        console.error("Electronic File Order submission error:", error);
+    } catch (error) {        
+        console.error("Electronic File Order submission error:", error);
         return { success: false, message: "Something went wrong during your order. Please try again." };
     }
 }
