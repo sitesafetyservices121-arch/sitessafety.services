@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, FileText, HardHat, ShieldCheck, Mail, Phone, Linkedin, Facebook, Twitter, Building, Shield } from "lucide-react";
+import { ArrowRight, FileText, HardHat, ShieldCheck, Mail, Phone, Linkedin, Facebook, Twitter, Building, Shield, Zap } from "lucide-react";
 import Image from "next/image";
 import { TestimonialCard } from "@/components/testimonial-card";
 import { InquiryForm } from "@/components/inquiry-form";
@@ -10,7 +10,7 @@ import { InquiryForm } from "@/components/inquiry-form";
 const projects = [
   {
     icon: <HardHat className="h-8 w-8 text-primary" />,
-    title: "On-Demand Safety Officer",
+    title: "Rent a Safety Officer",
     description: "Deploy elite, certified safety officers for on-demand risk mitigation and unparalleled on-site expertise.",
     link: "/rent-a-safety-officer",
     image: "https://picsum.photos/seed/safety-officer/600/400",
@@ -18,7 +18,7 @@ const projects = [
   },
   {
     icon: <FileText className="h-8 w-8 text-primary" />,
-    title: "Audit-Ready E-Safety File",
+    title: "E-Safety File Website & Hosting",
     description: "A fully-digitized, cloud-based safety file solution, ensuring you are always audit-proof and compliant.",
     link: "/e-safety-file",
     image: "https://picsum.photos/seed/safety-file/600/400",
@@ -27,17 +27,25 @@ const projects = [
   {
     icon: <ShieldCheck className="h-8 w-8 text-primary" />,
     title: "AI-Powered Safety System",
-    description: "A revolutionary, AI-powered platform to command your entire safety operation and build a zero-incident culture.",
+    description: "A revolutionary platform to command your entire safety operation and build a zero-incident culture.",
     link: "/safety-management-system",
     image: "https://picsum.photos/seed/safety-system/600/400",
     hint: "safety dashboard analytics"
   },
+  {
+    icon: <Zap className="h-8 w-8 text-primary" />,
+    title: "Download Print-Ready Safety Files",
+    description: "Instantly get your compliant, print-ready safety documents delivered electronically within hours.",
+    link: "/electronically-delivered-safety-files",
+    image: "https://picsum.photos/seed/print-files/600/400",
+    hint: "digital file download"
+  },
 ];
 
 const testimonials = [
-  { name: "Lerato Khumalo", title: "Project Manager", company: "ConstructCo", testimonial: "RAK's safety officers were professional, knowledgeable, and integrated seamlessly with our team. Their proactive approach prevented numerous issues.", rating: 5, image: "https://picsum.photos/seed/woman1/100/100", hint: "professional black woman" },
-  { name: "Pieter van der Merwe", title: "CEO", company: "BuildRight Inc.", testimonial: "The E-Safety File service saved us countless hours and ensured we were fully compliant for a critical audit. The process was smooth and professional.", rating: 5, image: "https://picsum.photos/seed/man1/100/100", hint: "professional white man" },
-  { name: "Anika Patel", title: "Ops Director", company: "InfraGroup", testimonial: "Implementing their Safety Management System has transformed our safety culture for the better. We've seen a measurable reduction in incidents.", rating: 5, image: "https://picsum.photos/seed/woman2/100/100", hint: "professional indian woman" },
+  { name: "Lerato Khumalo", title: "Project Manager", company: "ConstructCo", testimonial: "RAK's safety officers were professional, knowledgeable, and integrated seamlessly with our team. Their proactive approach prevented numerous issues.", rating: 5, image: "https://iili.io/JADe4mB.png", hint: "professional black woman" },
+  { name: "Pieter van der Merwe", title: "CEO", company: "BuildRight Inc.", testimonial: "The E-Safety File service saved us countless hours and ensured we were fully compliant for a critical audit. The process was smooth and professional.", rating: 5, image: "https://iili.io/JADeLp1.png", hint: "professional white man" },
+  { name: "Anika Patel", title: "Ops Director", company: "InfraGroup", testimonial: "Implementing their Safety Management System has transformed our safety culture for the better. We've seen a measurable reduction in incidents.", rating: 5, image: "https://iili.io/JADeZuG.png", hint: "professional indian woman" },
 ];
 
 
@@ -48,7 +56,7 @@ export default function Home() {
       <section className="relative py-40 md:py-60 bg-card border-b">
         <div className="absolute inset-0 z-0">
             <Image
-              src="https://picsum.photos/seed/hero-bg/1200/800"
+              src="https://iili.io/JADbBv4.png"
               alt="Modern industrial facility background"
               fill
               style={{ objectFit: 'cover' }}
@@ -80,7 +88,7 @@ export default function Home() {
         <div className="container grid items-center justify-center gap-12 px-4 text-center md:px-6 lg:grid-cols-2 lg:text-left lg:gap-20">
           <div className="relative h-96 lg:h-[500px] w-full overflow-hidden rounded-xl shadow-xl">
             <Image
-              src="https://picsum.photos/seed/founder/600/800"
+              src="https://iili.io/JADeLp1.png"
               alt="Portrait of the founder"
               fill
               sizes="100vw"
@@ -112,7 +120,7 @@ export default function Home() {
               We engineered the future of safety. Explore our pioneering services, built to deliver unprecedented compliance and efficiency.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {projects.map((project) => (
               <Card key={project.title} className="bg-background flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
                 <CardContent className="p-0">
