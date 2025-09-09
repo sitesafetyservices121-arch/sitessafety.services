@@ -13,7 +13,7 @@ const projects = [
     title: "On-Demand Safety Officer",
     description: "Deploy elite, certified safety officers for on-demand risk mitigation and unparalleled on-site expertise.",
     link: "/rent-a-safety-officer",
-    image: "https://iili.io/JADbnef.png",
+    image: "https://picsum.photos/seed/safety-officer/600/400",
     hint: "construction site safety"
   },
   {
@@ -21,7 +21,7 @@ const projects = [
     title: "Audit-Ready E-Safety File",
     description: "A fully-digitized, cloud-based safety file solution, ensuring you are always audit-proof and compliant.",
     link: "/e-safety-file",
-    image: "https://iili.io/JADbLPS.png",
+    image: "https://picsum.photos/seed/safety-file/600/400",
     hint: "digital document management"
   },
   {
@@ -29,15 +29,15 @@ const projects = [
     title: "AI-Powered Safety System",
     description: "A revolutionary, AI-powered platform to command your entire safety operation and build a zero-incident culture.",
     link: "/safety-management-system",
-    image: "https://iili.io/JADb27u.png",
+    image: "https://picsum.photos/seed/safety-system/600/400",
     hint: "safety dashboard analytics"
   },
 ];
 
 const testimonials = [
-  { name: "Lerato Khumalo", title: "Project Manager", company: "ConstructCo", testimonial: "RAK's safety officers were professional, knowledgeable, and integrated seamlessly with our team. Their proactive approach prevented numerous issues.", rating: 5, image: "https://iili.io/JADe4mB.png", hint: "professional black woman" },
-  { name: "Pieter van der Merwe", title: "CEO", company: "BuildRight Inc.", testimonial: "The E-Safety File service saved us countless hours and ensured we were fully compliant for a critical audit. The process was smooth and professional.", rating: 5, image: "https://iili.io/JADeLp1.png", hint: "professional white man" },
-  { name: "Anika Patel", title: "Ops Director", company: "InfraGroup", testimonial: "Implementing their Safety Management System has transformed our safety culture for the better. We've seen a measurable reduction in incidents.", rating: 5, image: "https://iili.io/JADeZuG.png", hint: "professional indian woman" },
+  { name: "Lerato Khumalo", title: "Project Manager", company: "ConstructCo", testimonial: "RAK's safety officers were professional, knowledgeable, and integrated seamlessly with our team. Their proactive approach prevented numerous issues.", rating: 5, image: "https://picsum.photos/seed/woman1/100/100", hint: "professional black woman" },
+  { name: "Pieter van der Merwe", title: "CEO", company: "BuildRight Inc.", testimonial: "The E-Safety File service saved us countless hours and ensured we were fully compliant for a critical audit. The process was smooth and professional.", rating: 5, image: "https://picsum.photos/seed/man1/100/100", hint: "professional white man" },
+  { name: "Anika Patel", title: "Ops Director", company: "InfraGroup", testimonial: "Implementing their Safety Management System has transformed our safety culture for the better. We've seen a measurable reduction in incidents.", rating: 5, image: "https://picsum.photos/seed/woman2/100/100", hint: "professional indian woman" },
 ];
 
 
@@ -48,12 +48,13 @@ export default function Home() {
       <section className="relative py-40 md:py-60 bg-card border-b">
         <div className="absolute inset-0 z-0">
             <Image
-              src="https://iili.io/JADbBv4.png"
+              src="https://picsum.photos/seed/hero-bg/1200/800"
               alt="Modern industrial facility background"
               fill
               style={{ objectFit: 'cover' }}
-              quality={90}
+              quality={100}
               priority
+              data-ai-hint="industrial factory"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
         </div>
@@ -79,7 +80,7 @@ export default function Home() {
         <div className="container grid items-center justify-center gap-12 px-4 text-center md:px-6 lg:grid-cols-2 lg:text-left lg:gap-20">
           <div className="relative h-96 lg:h-[500px] w-full overflow-hidden rounded-xl shadow-xl">
             <Image
-              src="https://iili.io/JADeLp1.png"
+              src="https://picsum.photos/seed/founder/600/800"
               alt="Portrait of the founder"
               fill
               sizes="100vw"

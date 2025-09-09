@@ -31,7 +31,7 @@ export function TestimonialCard({ name, title, company, image, testimonial, rati
             <AvatarFallback>{name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
           </Avatar>
           <div>
-            <p className="font-headline font-semibold text-lg text-primary-dark">{name}</p>
+            <p className="font-headline font-semibold text-lg text-foreground">{name}</p>
             <p className="text-sm text-muted-foreground font-body">{title}, {company}</p>
           </div>
         </div>

@@ -56,7 +56,7 @@ export function Header() {
           <span className="hidden md:inline font-bold text-xl text-foreground whitespace-nowrap">RAK-Site Safety</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8 ml-auto">
+        <nav className="hidden md:flex items-center gap-6 ml-auto">
             {navLinks.map(link => <NavLink key={link.href} href={link.href} label={link.label} />)}
             <ThemeToggle />
         </nav>
