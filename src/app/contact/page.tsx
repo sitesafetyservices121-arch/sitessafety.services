@@ -1,7 +1,7 @@
 
 import { InquiryForm } from "@/components/inquiry-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, Phone, MapPin, MessageSquareText } from "lucide-react";
+import { Mail, Phone, MapPin, MessageSquareText, MessageCircle } from "lucide-react";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -14,6 +14,7 @@ const contactDetails = [
   { icon: <Mail className="h-6 w-6 text-primary" />, title: "Direct Contact", value: "ruan@sitesafety.services", href: "mailto:ruan@sitesafety.services" },
   { icon: <Phone className="h-6 w-6 text-primary" />, title: "Phone", value: "079 461 3898", href: "tel:0794613898" },
   { icon: <MessageSquareText className="h-6 w-6 text-primary" />, title: "WhatsApp & Phone", value: "071 611 5429", href: "https://wa.me/27716115429" },
+  { icon: <MessageCircle className="h-6 w-6 text-primary" />, title: "Live Chat", value: "Bottom right corner. Agents are always online.", href: "#" },
   { icon: <MapPin className="h-6 w-6 text-primary" />, title: "Find Us", value: "Three Rivers East, Vereeniging, Gauteng, South Africa", href: "https://www.google.com/maps/search/?api=1&query=Three+Rivers+East+Vereeniging+Gauteng+South+Africa" },
 ];
 
@@ -45,7 +46,7 @@ export default function ContactPage() {
                 </p>
                 <div className="space-y-6">
                     {contactDetails.map((detail) => (
-                        <a key={detail.title} href={detail.href} className="flex items-start gap-4 group" target="_blank" rel="noopener noreferrer">
+                        <a key={detail.title} href={detail.href} className="flex items-start gap-4 group" target={detail.href === "#" ? "" : "_blank"} rel="noopener noreferrer" onClick={(e) => detail.href === "#" && e.preventDefault()}>
                             <div className="flex-shrink-0 bg-primary/10 text-primary w-12 h-12 rounded-full flex items-center justify-center">
                                 {detail.icon}
                             </div>
