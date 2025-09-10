@@ -1,13 +1,10 @@
 
+"use client";
+
 import { InquiryForm } from "@/components/inquiry-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, Phone, MapPin, MessageSquareText, MessageCircle } from "lucide-react";
-import type { Metadata } from 'next';
 
-export const metadata: Metadata = {
-  title: 'Contact Us',
-  description: 'Get in touch with RAK-Site Safety Services for inquiries, quotes, or consultations. We are here to help with all your safety needs.',
-};
 
 const contactDetails = [
   { icon: <Mail className="h-6 w-6 text-primary" />, title: "General Inquiries", value: "info@sitesafety.services", href: "mailto:info@sitesafety.services" },
