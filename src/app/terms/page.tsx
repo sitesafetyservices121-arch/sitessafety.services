@@ -1,26 +1,20 @@
 
-"use client";
-
 import type { Metadata } from 'next';
 import React from 'react';
 
-// Note: Metadata is still respected in client components
 export const metadata: Metadata = {
   title: 'Terms and Conditions',
 };
 
 export default function TermsPage() {
-  const [currentDate, setCurrentDate] = React.useState('');
-  React.useEffect(() => {
-    setCurrentDate(new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' }));
-  },[]);
+  const currentDate = new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' });
   
   return (
     <div className="bg-background text-foreground">
       <div className="container max-w-4xl mx-auto py-24 md:py-32 px-4">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-extrabold text-primary-dark font-headline tracking-tight">Terms and Conditions</h1>
-          {currentDate && <p className="mt-4 text-lg text-muted-foreground font-body">Last updated: {currentDate}</p>}
+          <p className="mt-4 text-lg text-muted-foreground font-body">Last updated: {currentDate}</p>
         </div>
 
         <div className="prose prose-lg max-w-none font-body text-muted-foreground prose-h2:font-headline prose-h2:text-primary-dark prose-h2:text-2xl prose-h2:border-b-2 prose-h2:border-secondary prose-h2:pb-3 prose-headings:font-headline prose-a:text-primary hover:prose-a:text-primary/80 prose-strong:text-foreground">
