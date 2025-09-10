@@ -1,13 +1,15 @@
 
+"use client";
+
 import type { Metadata } from 'next';
 import React from 'react';
 
+// Note: Metadata is still respected in client components
 export const metadata: Metadata = {
   title: 'Privacy Policy',
 };
 
-function PrivacyContent() {
-  "use client";
+export default function PrivacyPage() {
   const [currentDate, setCurrentDate] = React.useState('');
   React.useEffect(() => {
     setCurrentDate(new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' }));
@@ -61,9 +63,4 @@ function PrivacyContent() {
       </div>
     </div>
   );
-}
-
-
-export default function PrivacyPage() {
-  return <PrivacyContent />;
 }

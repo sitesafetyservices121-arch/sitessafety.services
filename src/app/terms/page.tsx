@@ -1,13 +1,15 @@
 
+"use client";
+
 import type { Metadata } from 'next';
 import React from 'react';
 
+// Note: Metadata is still respected in client components
 export const metadata: Metadata = {
   title: 'Terms and Conditions',
 };
 
-function TermsContent() {
-  "use client";
+export default function TermsPage() {
   const [currentDate, setCurrentDate] = React.useState('');
   React.useEffect(() => {
     setCurrentDate(new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' }));
@@ -53,8 +55,4 @@ function TermsContent() {
       </div>
     </div>
   );
-}
-
-export default function TermsPage() {
-  return <TermsContent />;
 }
