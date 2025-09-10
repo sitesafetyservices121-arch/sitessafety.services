@@ -14,7 +14,7 @@ const contactDetails = [
   { icon: <Mail className="h-6 w-6 text-primary" />, title: "Direct Contact", value: "ruan@sitesafety.services", href: "mailto:ruan@sitesafety.services" },
   { icon: <Phone className="h-6 w-6 text-primary" />, title: "Phone", value: "079 461 3898", href: "tel:0794613898" },
   { icon: <MessageSquareText className="h-6 w-6 text-primary" />, title: "WhatsApp & Phone", value: "071 611 5429", href: "https://wa.me/27716115429" },
-  { icon: <MapPin className="h-6 w-6 text-primary" />, title: "Find Us", value: "Pretoria, Gauteng, South Africa", href: "#" },
+  { icon: <MapPin className="h-6 w-6 text-primary" />, title: "Find Us", value: "Three Rivers East, Vereeniging, Gauteng, South Africa", href: "https://www.google.com/maps/search/?api=1&query=Three+Rivers+East+Vereeniging+Gauteng+South+Africa" },
 ];
 
 export default function ContactPage() {
