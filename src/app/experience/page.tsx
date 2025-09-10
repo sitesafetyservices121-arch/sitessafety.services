@@ -5,7 +5,7 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight, Award, Building2, HardHat, ShieldCheck, Factory, Truck, Wrench, DollarSign, Users, CheckCircle, Mountain, Flame, Store, Tractor, Wind, TowerControl, Utensils, Plane } from "lucide-react";
+import { ArrowRight, Award, Building2, HardHat, ShieldCheck, Factory, Truck, Wrench, DollarSign, Users, CheckCircle, Mountain, Flame, Store, Tractor, Wind, TowerControl, Utensils, Plane, Cpu, Handshake } from "lucide-react";
 
 export const metadata: Metadata = {
   title: 'Proven Experience & Client Success',
@@ -20,7 +20,7 @@ const testimonials = [
   { name: "Fatima Allie", title: "Compliance Officer", company: "Omnia Foods", testimonial: "RAK's AI-powered Safety Management System is revolutionary. The built-in consultant helps us identify risks we hadn't even considered. It's an essential tool for maintaining our safety standards.", rating: 5, image: "https://iili.io/JADeYXv.png", hint: "professional coloured woman" },
   { name: "Jaco Jacobs", title: "Small Business Owner", company: "JJ Engineering", testimonial: "As a smaller operation, we don't have a dedicated safety department. The instant Legal Document Generator is invaluable for creating compliant HIRAs and method statements quickly and affordably.", rating: 5, image: "https://iili.io/JADejnJ.png", hint: "male engineer" },
   { name: "Sipho Ndlovu", title: "Logistics Manager", company: "Cape Gate Logistics", testimonial: "We rented a safety officer for a complex warehouse setup. The expertise provided was top-notch. They helped us establish safe operating procedures that we still use today. A fantastic service.", rating: 5, image: "https://iili.io/JADe5X7.png", hint: "male logistics manager" },
-  { name: "Naledi Ramphele", title: "Head of Operations", company: "Aviation Giants", testimonial: "The thoroughness of the compliance audit RAK-Site Safety Services performed was exceptional. They prepared us for our ISO certification and identified critical areas for improvement. Highly professional.", rating: 5, image: "https://iili.io/JADeKGs.png", hint: "female executive" },
+  { name: "Naledi Ramphele", title: "Head of Operations", company: "Aviation Giants", testimonial: "The thoroughness of the compliance audit RAK-Site Safety Services performed was exceptional. They prepared us for our ISO certification and identified critical areas for improvement. Highly professional.", rating\: 5, image: "https://iili.io/JADeKGs.png", hint: "female executive" },
   { name: "Chris Botha", title: "Factory Manager", company: "Sasol Polymers", testimonial: "The Specialised Risk Assessment identified key vulnerabilities in our production line. The detailed report and actionable recommendations have been instrumental in enhancing our operational safety.", rating: 5, image: "https://iili.io/JADeGvF.png", hint: "male factory manager" },
 ];
 
@@ -55,6 +55,29 @@ const industries = [
 
 const clients = [
     "AMSA (Mittal)", "Sasol", "Omnia", "Cape Gate", "Coca-Cola", "Gold One", "Engen", "Denel", "Eskom", "Rand Water", "Conco", "Aviation Giants"
+];
+
+const valuePropositions = [
+    { 
+        icon: <Users className="h-7 w-7 text-primary" />, 
+        title: "Why Companies Trust Us", 
+        description: "We have proudly partnered with a diverse range of clients, from national construction conglomerates and industrial manufacturing leaders to renewable energy pioneers. They trust us because we do not just enforce rules; we embed a culture of safety that becomes a core part of their operation. Our registered professionals bring verifiable expertise and a proactive mindset, ensuring projects stay compliant, on schedule, and most importantly, safe." 
+    },
+    { 
+        icon: <DollarSign className="h-7 w-7 text-primary" />, 
+        title: "The Financial Impact of Safety", 
+        description: "Investing in professional safety management is not a cost; it is a high-return investment. By preventing just one serious incident, companies can save hundreds of thousands, if not millions, in direct and indirect costs. Our proactive systems can reduce incident-related costs by up to 40%, delivering a safer site and a healthier bottom line." 
+    },
+    { 
+        icon: <Cpu className="h-7 w-7 text-primary" />, 
+        title: "Innovation in Action", 
+        description: "Our competitive edge lies in our purpose-built AI. While others manually draft documents, our systems generate legally-aligned, site-specific documentation in a fraction of the time. This allows our certified experts to focus on high-level risk analysis, strategic planning, and hands-on site management, providing you with a faster, more intelligent, and cost-effective service." 
+    },
+    { 
+        icon: <Handshake className="h-7 w-7 text-primary" />, 
+        title: "Partnership Approach", 
+        description: "We don’t just consult; we integrate. Our goal is to become a seamless extension of your team. We work to transfer knowledge, empower your staff with our AI tools, and build a self-sustaining safety culture. This collaborative approach ensures that safety excellence continues long after a project is complete, saving your business money and building a lasting legacy of safety." 
+    },
 ];
 
 export default function ExperiencePage() {
@@ -94,17 +117,15 @@ export default function ExperiencePage() {
       {/* Why Companies Trust Us Section */}
       <section className="py-24 bg-card border-y">
         <div className="container mx-auto px-4">
-            <Card className="max-w-5xl mx-auto bg-transparent p-8 rounded-2xl border-0 shadow-none">
-                <CardContent className="p-0 space-y-8">
-                    <div className="grid md:grid-cols-2 gap-12">
-                        <div>
-                            <h3 className="text-2xl font-bold text-foreground flex items-center gap-3 mb-4"><Users className="h-7 w-7 text-primary" />Why Companies Trust Us</h3>
-                            <p className="text-muted-foreground text-lg">We have proudly partnered with a diverse range of clients, from national construction conglomerates and industrial manufacturing leaders to renewable energy pioneers. They trust us because we do not just enforce rules; we embed a culture of safety that becomes a core part of their operation. Our registered professionals bring verifiable expertise and a proactive mindset, ensuring projects stay compliant, on schedule, and most importantly, safe.</p>
-                        </div>
-                        <div>
-                            <h3 className="text-2xl font-bold text-foreground flex items-center gap-3 mb-4"><DollarSign className="h-7 w-7 text-primary" />The Financial Impact of Safety</h3>
-                            <p className="text-muted-foreground text-lg">Investing in professional safety management is not a cost; it is a high-return investment. By preventing just one serious incident, companies can save hundreds of thousands, if not millions, in direct and indirect costs. These costs can include fines, legal fees, project delays, and increased insurance premiums. Our proactive systems can reduce incident-related costs by up to <strong>40%</strong>, delivering a safer site and a healthier bottom line.</p>
-                        </div>
+            <Card className="max-w-7xl mx-auto bg-transparent p-8 rounded-2xl border-0 shadow-none">
+                <CardContent className="p-0">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-x-12 gap-y-10">
+                        {valuePropositions.map(prop => (
+                            <div key={prop.title}>
+                                <h3 className="text-2xl font-bold text-foreground flex items-center gap-3 mb-4">{prop.icon}{prop.title}</h3>
+                                <p className="text-muted-foreground text-lg">{prop.description}</p>
+                            </div>
+                        ))}
                     </div>
                 </CardContent>
             </Card>
