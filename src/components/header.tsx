@@ -30,7 +30,7 @@ const services = [
   { href: "/rent-a-safety-officer", title: "Rent a Safety Officer", description: "Flexible, on-demand certified safety professionals for any project." },
   { href: "/e-safety-file", title: "E-Safety File", description: "Cloud-based, audit-proof digital safety file solutions." },
   { href: "/safety-management-system", title: "Safety Management System", description: "An AI-powered platform to manage your entire safety program." },
-  { href: "/electronically-delivered-safety-files", title: "Electronic Safety Files", description: "Get print-ready, compliant safety files delivered in hours." },
+  { href: "/electronically-delivered-safety-files", title: "Print Ready Safety Files", description: "Get print-ready, compliant safety files delivered in hours." },
 ];
 
 export function Header() {
