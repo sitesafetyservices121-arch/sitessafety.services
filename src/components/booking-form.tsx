@@ -28,6 +28,7 @@ import { addDays, differenceInCalendarDays } from "date-fns";
 import type { DateRange } from "react-day-picker";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "./ui/checkbox";
 
 const serviceOptions = {
     "Normal Site Representation": {
@@ -59,6 +60,8 @@ const serviceOptions = {
     }
 };
 
+const emergencyFee = 1800;
+
 type ServiceOptionKey = keyof typeof serviceOptions;
 
 const bookingFormSchema = z.object({
@@ -74,6 +77,7 @@ const bookingFormSchema = z.object({
       from: z.date({ required_error: "A start date is required."}),
       to: z.date({ required_error: "An end date is required."}),
   }),
+  isEmergency: z.boolean().default(false),
 });
 
 type BookingFormValues = z.infer<typeof bookingFormSchema>;
@@ -91,39 +95,56 @@ export function BookingForm() {
       company: "",
       email: "",
       phone: "",
-      siteAddress: ""
+      siteAddress: "",
+      isEmergency: false,
     },
   });
 
   const watchService = form.watch("service");
   const watchDates = form.watch("dates");
+  const watchIsEmergency = form.watch("isEmergency");
 
   useEffect(() => {
+    let newTotal = 0;
     if (watchService && watchDates?.from && watchDates?.to) {
         const option = serviceOptions[watchService];
         if (option.per === 'day') {
             const days = differenceInCalendarDays(watchDates.to, watchDates.from) + 1;
-            setTotal(days * option.price);
+            newTotal = days * option.price;
         } else {
-            setTotal(option.price);
+            newTotal = option.price;
         }
-    } else {
-        setTotal(0);
     }
-  }, [watchService, watchDates]);
+    if (watchIsEmergency) {
+        newTotal += emergencyFee;
+    }
+    setTotal(newTotal);
+  }, [watchService, watchDates, watchIsEmergency]);
 
   useEffect(() => {
     if (watchService) {
       const option = serviceOptions[watchService];
       const currentDates = form.getValues('dates');
       if (option.minDays && currentDates?.from) {
-        const newToDate = addDays(currentDates.from, option.minDays - 1);
+        let minDate = addDays(new Date(), 2);
+        let fromDate = currentDates.from;
+
+        if (watchIsEmergency) {
+          minDate = new Date();
+        } else {
+          if (fromDate < minDate) {
+            fromDate = minDate;
+            form.setValue('dates.from', fromDate);
+          }
+        }
+        
+        const newToDate = addDays(fromDate, option.minDays - 1);
         if (!currentDates.to || currentDates.to < newToDate) {
           form.setValue('dates.to', newToDate);
         }
       }
     }
-  }, [watchService, form, watchDates?.from]);
+  }, [watchService, form, watchDates?.from, watchIsEmergency]);
 
 
   function onSubmit(data: BookingFormValues) {
@@ -235,11 +256,39 @@ export function BookingForm() {
                     selected={field.value}
                     onSelect={field.onChange}
                     numberOfMonths={2}
-                    disabled={(date) => date < new Date(new Date().setDate(new Date().getDate() - 1))}
+                    disabled={(date) => {
+                      if (watchIsEmergency) {
+                        return date < new Date(new Date().setDate(new Date().getDate() - 1));
+                      }
+                      return date < addDays(new Date(), 2);
+                    }}
                   />
                 </PopoverContent>
               </Popover>
               <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="isEmergency"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-center gap-4 space-y-0 rounded-lg border p-4 bg-amber-500/10 border-amber-500/20">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <div className="space-y-0.5 leading-none">
+                <FormLabel className="font-bold text-amber-900 dark:text-amber-300">
+                  Emergency Booking?
+                </FormLabel>
+                <p className="text-sm text-muted-foreground">
+                  Select this for bookings required within the next 3 days. A once-off fee of R{emergencyFee.toLocaleString('en-ZA')} will apply.
+                </p>
+              </div>
             </FormItem>
           )}
         />

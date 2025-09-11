@@ -40,6 +40,7 @@ const bookingSchema = z.object({
     from: z.coerce.date(),
     to: z.coerce.date(),
   }),
+  isEmergency: z.boolean(),
   total: z.number(),
 });
 
@@ -47,10 +48,11 @@ const bookingSchema = z.object({
 export async function submitBooking(data: unknown) {
     try {
         const validatedData = bookingSchema.parse(data);
-        const { name, company, email, phone, siteAddress, service, dates, total } = validatedData;
+        const { name, company, email, phone, siteAddress, service, dates, total, isEmergency } = validatedData;
         
         const htmlContent = `
             <h1>New Booking Request</h1>
+            <p><strong>Booking Type:</strong> ${isEmergency ? 'EMERGENCY' : 'Standard'}</p>
             <p><strong>Service:</strong> ${service}</p>
             <p><strong>Name:</strong> ${name}</p>
             <p><strong>Company:</strong> ${company}</p>
