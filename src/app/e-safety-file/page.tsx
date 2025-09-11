@@ -1,7 +1,7 @@
 
 import { ConsultationForm } from "@/components/consultation-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
-import { Bot, Users, Server, CheckCircle, ArrowRight } from "lucide-react";
+import { Bot, Users, Server, CheckCircle, ArrowRight, Eye } from "lucide-react";
 import type { Metadata } from 'next';
 import Image from "next/image";
 import Link from "next/link";
@@ -127,6 +127,30 @@ export default function ESafetyFilePage() {
                     </Card>
                 ))}
             </div>
+        </div>
+      </section>
+
+      {/* Live Preview Section */}
+      <section className="py-24 text-center">
+        <div className="container">
+          <Card className="max-w-3xl mx-auto bg-card border p-10">
+            <CardHeader>
+              <div className="mx-auto w-fit p-4 bg-primary/10 rounded-full mb-4">
+                <Eye className="h-10 w-10 text-primary"/>
+              </div>
+              <CardTitle className="text-3xl font-extrabold text-foreground">See a Live E-Safety File in Action</CardTitle>
+              <CardDescription className="text-lg text-muted-foreground mt-2">
+                Explore a fully-featured demo to understand the power and simplicity of our digital safety file system.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button asChild size="lg">
+                <Link href="https://efile.services" target="_blank" rel="noopener noreferrer">
+                  Live Preview <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
