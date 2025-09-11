@@ -17,7 +17,7 @@ export default function SmsSignupPage() {
       <section className="py-24">
         <div className="container max-w-4xl mx-auto px-4">
             <div className="text-center mb-12">
-                <h1 className="text-4xl font-extrabold tracking-tight text-foreground">Get Started with Your AI Safety System</h1>
+                <h1 className="text-4xl font-extrabold text-foreground">Get Started with Your AI Safety System</h1>
                 <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">Follow these simple steps to gain access to the future of worksite safety management.</p>
             </div>
           

@@ -67,7 +67,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
         </div>
         <div className="container px-4 md:px-6 relative z-10 text-center">
-            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-7xl text-white">
+            <h1 className="text-4xl font-extrabold sm:text-5xl md:text-7xl text-white">
               Building Safer Tomorrows
             </h1>
             <p className="max-w-2xl mx-auto mt-6 text-lg md:text-xl text-white/90">
@@ -98,7 +98,7 @@ export default function Home() {
             />
           </div>
           <div className="space-y-6">
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">A Commitment to Uncompromising Safety</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">A Commitment to Uncompromising Safety</h2>
             <p className="text-muted-foreground text-lg md:text-xl/relaxed">
               For over a decade, RAK-Site Safety Services has been at the forefront of the safety industry. We blend deep field experience with cutting-edge, AI-powered technology to offer a level of protection and efficiency previously unimaginable. Our mission is to safeguard your people and assets, ensuring you don't just meet regulatory requirements—you exceed them. Partner with us to transform your workplace into a model of modern safety and operational excellence.
             </p>
@@ -115,7 +115,7 @@ export default function Home() {
       <section id="projects" className="w-full py-24 md:py-32 bg-card border-y">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">Our Core Services</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Our Core Services</h2>
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground text-lg">
               We engineered the future of safety. Explore our pioneering services, built to deliver unprecedented compliance and efficiency.
             </p>
@@ -157,7 +157,7 @@ export default function Home() {
       <section id="contact" className="py-24 md:py-32 bg-card border-y">
         <div className="container max-w-4xl mx-auto px-4">
             <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">Get in Touch</h2>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Get in Touch</h2>
                 <p className="max-w-2xl mx-auto mt-4 text-muted-foreground text-lg">
                     Have a project in mind or need to discuss your safety requirements? We're here to help.
                 </p>

@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 };
 
 const aiTools = [
-    { icon: <Cpu className="h-6 w-6 text-accent" />, title: "HIRA Generator", description: "Automatically generate Hazard Identification and Risk Assessments." },
-    { icon: <FileText className="h-6 w-6 text-accent" />, title: "Safe Work Procedure Generator", description: "Create site-specific, compliant safe work procedures in minutes." },
-    { icon: <SlidersHorizontal className="h-6 w-6 text-accent" />, title: "Method Statement Generator", description: "Develop comprehensive method statements with AI assistance." },
-    { icon: <AlertTriangle className="h-6 w-6 text-accent" />, title: "Incident Reporting & Statements", description: "Streamline incident reporting and generate initial statements." },
-    { icon: <BarChart className="h-6 w-6 text-accent" />, title: "LTIR Tracker", description: "Monitor your Lost Time Injury Rate with automated tracking." },
+    { icon: <Cpu className="h-6 w-6 text-primary" />, title: "HIRA Generator", description: "Automatically generate Hazard Identification and Risk Assessments." },
+    { icon: <FileText className="h-6 w-6 text-primary" />, title: "Safe Work Procedure Generator", description: "Create site-specific, compliant safe work procedures in minutes." },
+    { icon: <SlidersHorizontal className="h-6 w-6 text-primary" />, title: "Method Statement Generator", description: "Develop comprehensive method statements with AI assistance." },
+    { icon: <AlertTriangle className="h-6 w-6 text-primary" />, title: "Incident Reporting & Statements", description: "Streamline incident reporting and generate initial statements." },
+    { icon: <BarChart className="h-6 w-6 text-primary" />, title: "LTIR Tracker", description: "Monitor your Lost Time Injury Rate with automated tracking." },
 ];
 
 const managementTools = [
@@ -34,7 +34,7 @@ export default function SafetyManagementSystemPage() {
       {/* Hero Section */}
       <section className="py-20 md:py-32 bg-card border-b">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-foreground">
             Your AI-Powered Safety Command Center
           </h1>
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -68,7 +68,7 @@ export default function SafetyManagementSystemPage() {
                     <p className="text-muted-foreground pt-4">Includes 1 user login. Need more? Add users for just <span className="font-bold text-foreground">R350/month</span> each.</p>
                   </CardContent>
                   <CardFooter>
-                    <Button asChild className="w-full" size="lg" variant="cta">
+                    <Button asChild className="w-full" size="lg">
                         <Link href="/safety-management-system/signup">
                             Get Started Now <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
@@ -91,7 +91,7 @@ export default function SafetyManagementSystemPage() {
             </div>
             <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <div>
-                    <h3 className="text-2xl font-bold flex items-center gap-3 text-foreground mb-6"><Cpu className="h-7 w-7 text-accent" />5 Powerful AI Tools</h3>
+                    <h3 className="text-2xl font-bold flex items-center gap-3 text-foreground mb-6"><Cpu className="h-7 w-7 text-primary" />5 Powerful AI Tools</h3>
                     <div className="space-y-6">
                         {aiTools.map((feature) => (
                             <div key={feature.title} className="flex items-start gap-4 p-4 rounded-lg hover:bg-background transition-colors">
@@ -129,7 +129,7 @@ export default function SafetyManagementSystemPage() {
       {/* CTA Section */}
       <section className="py-24">
         <div className="container mx-auto px-4">
-            <Card className="bg-gradient-to-r from-primary to-secondary text-primary-foreground border-none text-center p-10 md:p-16 rounded-2xl shadow-lg">
+            <Card className="bg-gradient-to-r from-primary to-orange-400 text-primary-foreground border-none text-center p-10 md:p-16 rounded-2xl shadow-lg">
                 <CardHeader>
                     <div className="mx-auto w-fit p-4 bg-white/20 rounded-full shadow-sm mb-6">
                     <Bot className="h-10 w-10 text-white" />
@@ -149,3 +149,4 @@ export default function SafetyManagementSystemPage() {
   );
 
     
+

@@ -65,7 +65,7 @@ export function ComplianceAdvisor() {
         <div className="mx-auto bg-primary text-primary-foreground w-16 h-16 rounded-full flex items-center justify-center mb-4">
             <Bot className="h-8 w-8" />
         </div>
-        <CardTitle className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">AI Safety Compliance Advisor</CardTitle>
+        <CardTitle className="text-3xl md:text-4xl font-extrabold text-foreground">AI Safety Compliance Advisor</CardTitle>
         <CardDescription className="max-w-2xl mx-auto mt-4 text-muted-foreground text-lg">
           Describe your work environment or project, and our AI will instantly analyze it for potential safety risks and recommend the best solutions.
         </CardDescription>

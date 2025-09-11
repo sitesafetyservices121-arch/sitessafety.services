@@ -35,7 +35,7 @@ export default function RootLayout({
       <body className={cn("min-h-screen bg-background font-body antialiased", inter.variable)}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >

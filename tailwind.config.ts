@@ -59,8 +59,8 @@ const config: Config = {
         ring: 'hsl(var(--ring))',
       },
       borderRadius: {
-        '3xl': 'calc(var(--radius) + 4px)',
-        '2xl': 'calc(var(--radius) + 2px)',
+        '3xl': 'calc(var(--radius) + 8px)',
+        '2xl': 'calc(var(--radius) + 4px)',
         xl: 'var(--radius)',
         lg: 'calc(var(--radius) - 4px)',
         md: 'calc(var(--radius) - 6px)',

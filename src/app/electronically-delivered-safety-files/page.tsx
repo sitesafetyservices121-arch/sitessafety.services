@@ -51,14 +51,14 @@ export default function ElectronicallyDeliveredSafetyFilesPage() {
         <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div className="text-center lg:text-left">
-                    <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
+                    <h1 className="text-4xl md:text-6xl font-extrabold text-foreground">
                         Electronically Delivered Safety Files
                     </h1>
                     <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0">
                         The modern solution for site compliance. Simply upload your client's required safety file index for clients like Mittal, Sasol, Omnia, Cape Gate, Coca-Cola, or Gold One. Choose your delivery speed, and download your complete, print-ready, and legally compliant safety file in a single ZIP folder.
                     </p>
                     <div className="mt-8">
-                        <Button asChild size="lg" variant="cta">
+                        <Button asChild size="lg">
                             <Link href="#order-form">Get Your Safety File</Link>
                         </Button>
                     </div>

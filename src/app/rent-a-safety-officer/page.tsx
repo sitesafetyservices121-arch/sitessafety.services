@@ -38,7 +38,7 @@ export default function RentASafetyOfficerPage() {
       {/* Header Section */}
       <section className="py-20 md:py-32 bg-card border-b">
         <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-foreground">
               Book Your On-Demand Safety Officer
             </h1>
             <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">

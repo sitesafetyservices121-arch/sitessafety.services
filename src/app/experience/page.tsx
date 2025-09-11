@@ -86,7 +86,7 @@ export default function ExperiencePage() {
       {/* Hero Section */}
       <section className="py-20 md:py-32 bg-card border-b">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-foreground">
             Trusted Nationwide for Safety & Compliance
           </h1>
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -204,7 +204,7 @@ export default function ExperiencePage() {
       {/* CTA Section */}
       <section className="py-24">
         <div className="container mx-auto px-4">
-            <div className="bg-gradient-to-r from-primary to-secondary rounded-2xl p-10 md:p-16 text-center shadow-lg">
+            <div className="bg-gradient-to-r from-primary to-orange-400 rounded-2xl p-10 md:p-16 text-center shadow-lg">
                 <h2 className="text-3xl md:text-4xl font-extrabold text-primary-foreground">Ready to Elevate Your Site's Safety?</h2>
                 <p className="mt-4 max-w-2xl mx-auto text-primary-foreground/90 text-lg">Let's collaborate to build a safer, more compliant, and more productive work environment. Contact us today for a complimentary consultation.</p>
                 <Button asChild size="lg" className="mt-8 bg-background text-primary hover:bg-background/90">

@@ -65,14 +65,14 @@ export default function ESafetyFilePage() {
         <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div className="text-center lg:text-left">
-                    <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
+                    <h1 className="text-4xl md:text-6xl font-extrabold text-foreground">
                         Your Complete OHS-Compliant E-Safety File
                     </h1>
                     <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0">
                         Legally compliant, site-ready, digital safety files accessible anywhere. Choose a plan and get audit-ready in hours, not weeks.
                     </p>
                     <div className="mt-8">
-                        <Button asChild size="lg" variant="cta">
+                        <Button asChild size="lg">
                             <Link href="#inquiry-form">Book a Free Consultation</Link>
                         </Button>
                     </div>
@@ -118,7 +118,7 @@ export default function ESafetyFilePage() {
                           </ul>
                         </CardContent>
                         <CardFooter>
-                            <Button asChild className="w-full" size="lg" variant={plan.name === 'Large Enterprise' ? 'cta' : 'default'}>
+                            <Button asChild className="w-full" size="lg" variant={plan.name === 'Large Enterprise' ? 'default' : 'default'}>
                                 <Link href="#inquiry-form">
                                     {plan.cta} <ArrowRight className="ml-2 h-4 w-4"/>
                                 </Link>
