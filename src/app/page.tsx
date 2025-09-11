@@ -6,6 +6,13 @@ import { ArrowRight, FileText, HardHat, ShieldCheck, Mail, Phone, Linkedin, Face
 import Image from "next/image";
 import { TestimonialCard } from "@/components/testimonial-card";
 import { InquiryForm } from "@/components/inquiry-form";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'RAK-Site Safety | AI-Powered Safety & Compliance Solutions',
+  description: 'Leading provider of on-site safety officers, AI-driven safety management systems, and audit-ready e-safety files in South Africa. Achieve total compliance.',
+};
+
 
 const projects = [
   {
@@ -74,7 +81,7 @@ export default function Home() {
               We provide expert safety solutions that protect your people, ensure compliance, and drive operational excellence.
             </p>
             <div className="mt-10">
-              <Button asChild size="lg" variant="cta">
+              <Button asChild size="lg" variant="default">
                 <Link href="#projects">
                   View Our Work
                 </Link>
