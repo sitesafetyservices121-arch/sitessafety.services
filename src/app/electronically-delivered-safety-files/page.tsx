@@ -1,7 +1,7 @@
 
 import { ElectronicFileForm } from "@/components/electronic-file-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Zap, ShieldCheck, FileText, Cloud, Download } from "lucide-react";
+import { Zap, ShieldCheck, FileText, Cloud, Download, Upload, Construction, KeyRound, FolderDown, ArrowRight, Eye } from "lucide-react";
 import type { Metadata } from 'next';
 import Image from "next/image";
 import Link from "next/link";
@@ -18,6 +18,29 @@ const benefits = [
     { title: "Print-Ready ZIP Folder", description: "Get everything you need in one downloadable folder." },
     { title: "Secure & Accessible", description: "Access your files anywhere, anytime." },
     { title: "Fast Turnaround", description: "Choose the delivery speed that fits your needs." },
+]
+
+const howItWorksSteps = [
+    {
+        icon: <Upload className="h-8 w-8 text-primary" />,
+        title: "1. Upload Your Index",
+        description: "In the order form below, upload the required safety file index from your client (e.g., Sasol, Mittal)."
+    },
+    {
+        icon: <Construction className="h-8 w-8 text-primary" />,
+        title: "2. We Build Your File",
+        description: "Our experts compile your complete, compliant, and print-ready safety file based on the index provided."
+    },
+    {
+        icon: <KeyRound className="h-8 w-8 text-primary" />,
+        title: "3. Receive Your Access",
+        description: "Once complete, you'll receive an email with your secure login password for our file portal."
+    },
+    {
+        icon: <FolderDown className="h-8 w-8 text-primary" />,
+        title: "4. Download & Print",
+        description: "Log in to ecopyfile.services, download your folder, and print your site-ready safety file with instructions."
+    }
 ]
 
 export default function ElectronicallyDeliveredSafetyFilesPage() {
@@ -47,8 +70,53 @@ export default function ElectronicallyDeliveredSafetyFilesPage() {
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* How It Works Section */}
       <section className="py-24">
+        <div className="container max-w-6xl mx-auto px-4">
+            <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">How It Works</h2>
+                <p className="max-w-3xl mx-auto mt-4 text-muted-foreground text-lg">A simple, four-step process to get your compliant safety file, fast.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {howItWorksSteps.map(step => (
+                    <Card key={step.title} className="text-center p-6 border bg-card shadow-sm">
+                        <CardHeader className="items-center p-0 mb-4">
+                            <div className="bg-primary/10 p-4 rounded-full">
+                                {step.icon}
+                            </div>
+                        </CardHeader>
+                        <CardContent className="p-0">
+                            <h3 className="text-xl font-bold text-foreground mb-2">{step.title}</h3>
+                            <p className="text-muted-foreground">{step.description}</p>
+                        </CardContent>
+                    </Card>
+                ))}
+            </div>
+             <div className="text-center mt-16">
+                <Card className="max-w-2xl mx-auto bg-card border p-8 inline-block">
+                    <CardHeader className="p-0">
+                    <div className="mx-auto w-fit p-3 bg-primary/10 rounded-full mb-4">
+                        <Eye className="h-8 w-8 text-primary"/>
+                    </div>
+                    <CardTitle className="text-2xl font-bold text-foreground">See the File Portal</CardTitle>
+                    <CardDescription className="text-base text-muted-foreground mt-2">
+                        Explore the portal where you'll access your files.
+                    </CardDescription>
+                    </CardHeader>
+                    <CardContent className="p-0 mt-6">
+                    <Button asChild size="lg">
+                        <Link href="https://ecopyfile.services" target="_blank" rel="noopener noreferrer">
+                            Live Preview <ArrowRight className="ml-2 h-5 w-5" />
+                        </Link>
+                    </Button>
+                    </CardContent>
+                </Card>
+            </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-24 bg-card border-y">
         <div className="container max-w-6xl mx-auto px-4">
             <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Fast, Digital, and Compliant</h2>
@@ -65,9 +133,9 @@ export default function ElectronicallyDeliveredSafetyFilesPage() {
       </section>
 
       {/* Inquiry Form Section */}
-      <section id="order-form" className="py-24 bg-card border-y">
+      <section id="order-form" className="py-24">
         <div className="container max-w-3xl mx-auto px-4">
-            <Card className="shadow-xl border p-2">
+            <Card className="shadow-xl border bg-card p-2">
                 <CardHeader>
                     <CardTitle className="text-center text-3xl text-foreground font-bold">Start Your Order</CardTitle>
                     <CardDescription className="text-center text-base">Provide your details and upload your documents to begin.</CardDescription>
