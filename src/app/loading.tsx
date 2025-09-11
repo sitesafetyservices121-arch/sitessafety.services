@@ -2,5 +2,9 @@
 import { TopLoader } from "@/components/top-loader";
 
 export default function Loading() {
-  return <TopLoader />;
+  return (
+    <div className="w-full h-full">
+      <TopLoader />
+    </div>
+  );
 }
