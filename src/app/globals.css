@@ -87,9 +87,3 @@
     @apply font-bold;
   }
 }
-
-@layer components {
-    .bg-card, .bg-secondary {
-        @apply bg-opacity-80 backdrop-blur-sm;
-    }
-}
