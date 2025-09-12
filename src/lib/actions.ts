@@ -25,8 +25,9 @@ async function sendEmail(subject: string, htmlContent: string) {
         });
 
         if (error) {
+            const errorMessage = error.message || JSON.stringify(error);
             console.error("❌ Resend API Error (full):", JSON.stringify(error, null, 2));
-            throw new Error(error.message || "Unknown error from Resend API");
+            throw new Error(errorMessage);
         }
 
         console.log("✅ Email sent successfully:", JSON.stringify(data, null, 2));
@@ -254,5 +255,3 @@ export async function submitElectronicFileOrder(data: unknown) {
         return { success: false, message: "Something went wrong during your order. Please try again." };
     }
 }
-
-    
