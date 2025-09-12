@@ -1,17 +1,35 @@
 
+"use client";
+
 import { SmsSignupForm } from "@/components/sms-signup-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Bot, ShieldCheck, ArrowRight } from "lucide-react";
 import type { Metadata } from 'next';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/context/auth-context";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-export const metadata: Metadata = {
-  title: 'Sign Up for Safety Management System',
-  description: 'Create your account to access the AI-Powered Safety Management System.',
-};
+// export const metadata: Metadata = { // Metadata must be defined in a server component
+//   title: 'Sign Up for Safety Management System',
+//   description: 'Create your account to access the AI-Powered Safety Management System.',
+// };
 
 export default function SmsSignupPage() {
+    const { user, loading } = useAuth();
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!loading && !user) {
+        router.push('/login?redirect=/safety-management-system/signup');
+        }
+    }, [user, loading, router]);
+
+    if (loading || !user) {
+        return <div className="container py-24 text-center">Loading...</div>;
+    }
+
   return (
     <div className="bg-background text-foreground">
       <section className="py-24">

@@ -1,13 +1,18 @@
 
+"use client";
+
 import { BookingForm } from "@/components/booking-form";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Shield, Clock, Phone, UserCheck, CalendarDays } from "lucide-react";
 import type { Metadata } from 'next';
+import { useAuth } from "@/context/auth-context";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-export const metadata: Metadata = {
-  title: 'Book a Certified Safety Officer',
-  description: 'Get an instant quote and book a certified safety professional for your specific project needs. Fast, transparent, and compliant.',
-};
+// export const metadata: Metadata = { // Metadata must be defined in a server component
+//   title: 'Book a Certified Safety Officer',
+//   description: 'Get an instant quote and book a certified safety professional for your specific project needs. Fast, transparent, and compliant.',
+// };
 
 const howItWorksSteps = [
     {
@@ -33,6 +38,19 @@ const howItWorksSteps = [
 ]
 
 export default function RentASafetyOfficerPage() {
+  const { user, loading } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/login?redirect=/rent-a-safety-officer');
+    }
+  }, [user, loading, router]);
+
+  if (loading || !user) {
+    return <div className="container py-24 text-center">Loading...</div>;
+  }
+
   return (
     <div className="bg-background text-foreground">
       {/* Header Section */}

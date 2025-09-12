@@ -1,4 +1,6 @@
 
+"use client";
+
 import { ConsultationForm } from "@/components/consultation-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Bot, Users, Server, CheckCircle, ArrowRight, Eye } from "lucide-react";
@@ -6,11 +8,14 @@ import type { Metadata } from 'next';
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/context/auth-context";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-export const metadata: Metadata = {
-  title: 'E-Safety File Solutions',
-  description: 'Digitize your compliance with our streamlined, audit-ready E-Safety File solutions. Request a consultation today.',
-};
+// export const metadata: Metadata = { // Metadata must be defined in a server component
+//   title: 'E-Safety File Solutions',
+//   description: 'Digitize your compliance with our streamlined, audit-ready E-Safety File solutions. Request a consultation today.',
+// };
 
 const plans = [
     {
@@ -58,6 +63,19 @@ const plans = [
 ]
 
 export default function ESafetyFilePage() {
+    const { user, loading } = useAuth();
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!loading && !user) {
+        router.push('/login?redirect=/e-safety-file');
+        }
+    }, [user, loading, router]);
+
+    if (loading || !user) {
+        return <div className="container py-24 text-center">Loading...</div>;
+    }
+
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
