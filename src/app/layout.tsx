@@ -9,6 +9,7 @@ import { Inter } from 'next/font/google';
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider } from "@/context/auth-context";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.sitesafety.services'),
@@ -63,6 +64,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <div className="fixed inset-0 z-[-1]">
+            <Image
+              src="https://iili.io/KnOWvJ1.png"
+              alt="Abstract background"
+              fill
+              style={{ objectFit: 'cover' }}
+              quality={100}
+            />
+          </div>
           <AuthProvider>
             <div className="relative flex min-h-dvh flex-col">
               <Header />
