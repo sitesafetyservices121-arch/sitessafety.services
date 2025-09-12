@@ -8,6 +8,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Inter } from 'next/font/google';
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AuthProvider } from "@/context/auth-context";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.sitesafety.services'),
@@ -62,12 +63,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="relative flex min-h-dvh flex-col">
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-          <Toaster />
+          <AuthProvider>
+            <div className="relative flex min-h-dvh flex-col">
+              <Header />
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </div>
+            <Toaster />
+          </AuthProvider>
           <Script id="tawk-to-script" strategy="lazyOnload">
             {`
               var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();

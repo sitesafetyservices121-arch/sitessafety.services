@@ -5,11 +5,21 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, ChevronDown } from "lucide-react";
+import { Menu, ChevronDown, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "./logo";
 import React from "react";
 import { ThemeToggle } from "./theme-toggle";
+import { useAuth } from "@/context/auth-context";
+import { signOut } from "@/lib/firebase/auth";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { 
   NavigationMenu, 
   NavigationMenuList, 
@@ -19,6 +29,7 @@ import {
   NavigationMenuLink,
   navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -36,6 +47,7 @@ const services = [
 export function Header() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = React.useState(false);
+  const { user } = useAuth();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -117,14 +129,78 @@ export function Header() {
                  </div>
                  <Link href="/contact" className="text-lg font-medium text-foreground/80 hover:text-primary pt-2">Contact</Link>
               </nav>
-               <Button asChild className="w-full mt-8" size="lg" variant="cta">
-                <Link href="/contact">Get in Touch</Link>
-              </Button>
+              {user ? (
+                 <div className="mt-8 border-t pt-6">
+                    <Link href="/account" className="flex items-center gap-3 mb-4">
+                        <Avatar>
+                            <AvatarImage src={user.photoURL ?? undefined} />
+                            <AvatarFallback>{user.email?.[0].toUpperCase()}</AvatarFallback>
+                        </Avatar>
+                        <div>
+                            <p className="font-semibold">{user.displayName ?? user.email}</p>
+                            <p className="text-sm text-muted-foreground">View Account</p>
+                        </div>
+                    </Link>
+                    <form action={signOut}>
+                        <Button variant="ghost" className="w-full justify-start">Logout</Button>
+                    </form>
+                 </div>
+              ) : (
+                <div className="mt-8 grid grid-cols-2 gap-4">
+                    <Button asChild className="w-full" size="lg" variant="outline">
+                        <Link href="/login">Log In</Link>
+                    </Button>
+                    <Button asChild className="w-full" size="lg">
+                        <Link href="/signup">Sign Up</Link>
+                    </Button>
+                </div>
+              )}
             </SheetContent>
           </Sheet>
         </div>
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-2 ml-auto">
             <ThemeToggle />
+             {user ? (
+                <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+                             <Avatar className="h-9 w-9">
+                                <AvatarImage src={user.photoURL ?? undefined} alt={user.displayName ?? ""} />
+                                <AvatarFallback>{user.email?.[0].toUpperCase() ?? "U"}</AvatarFallback>
+                            </Avatar>
+                        </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-56" align="end" forceMount>
+                        <DropdownMenuLabel className="font-normal">
+                            <div className="flex flex-col space-y-1">
+                                <p className="text-sm font-medium leading-none">{user.displayName ?? "User"}</p>
+                                <p className="text-xs leading-none text-muted-foreground">
+                                {user.email}
+                                </p>
+                            </div>
+                        </DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem asChild>
+                            <Link href="/account">Account</Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator />
+                        <form action={signOut}>
+                            <DropdownMenuItem asChild>
+                                <button type="submit" className="w-full text-left">Log out</button>
+                            </DropdownMenuItem>
+                        </form>
+                    </DropdownMenuContent>
+                </DropdownMenu>
+            ) : (
+                <div className="flex items-center gap-2">
+                    <Button asChild variant="ghost">
+                        <Link href="/login">Log In</Link>
+                    </Button>
+                    <Button asChild>
+                        <Link href="/signup">Sign Up</Link>
+                    </Button>
+                </div>
+            )}
         </div>
       </div>
     </header>
