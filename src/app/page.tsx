@@ -58,21 +58,9 @@ const testimonials = [
 
 export default function Home() {
   return (
-    <div className="bg-background text-foreground">
+    <div className="bg-transparent text-foreground">
       {/* Hero Section */}
-      <section className="relative py-40 md:py-60 bg-card border-b">
-        <div className="absolute inset-0 z-0">
-            <Image
-              src="https://iili.io/JADbnef.png"
-              alt="Modern industrial facility background"
-              fill
-              style={{ objectFit: 'cover' }}
-              quality={100}
-              priority
-              data-ai-hint="wind turbines"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
-        </div>
+      <section className="relative py-40 md:py-60 border-b bg-transparent">
         <div className="container px-4 md:px-6 relative z-10 text-center">
             <h1 className="text-4xl font-extrabold sm:text-5xl md:text-7xl text-white">
               Building Safer Tomorrows
@@ -119,7 +107,7 @@ export default function Home() {
       </section>
 
       {/* Projects/Featured Work Section */}
-      <section id="projects" className="w-full py-24 md:py-32 bg-card border-y">
+      <section id="projects" className="w-full py-24 md:py-32 bg-card/50 border-y">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Our Core Services</h2>
@@ -129,7 +117,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {projects.map((project) => (
-              <Card key={project.title} className="bg-background flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+              <Card key={project.title} className="bg-transparent flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border">
                 <CardContent className="p-0">
                   <div className="relative h-56 w-full">
                     <Image src={project.image} alt={project.title} layout="fill" objectFit="cover" data-ai-hint={project.hint} className="transition-transform duration-500 group-hover:scale-105" />
@@ -161,7 +149,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 md:py-32 bg-card border-y">
+      <section id="contact" className="py-24 md:py-32 bg-card/50 border-y">
         <div className="container max-w-4xl mx-auto px-4">
             <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Get in Touch</h2>

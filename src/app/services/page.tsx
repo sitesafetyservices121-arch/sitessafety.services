@@ -40,9 +40,9 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <div className="bg-background text-foreground">
+    <div className="bg-transparent text-foreground">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-card border-b">
+      <section className="py-20 md:py-32 bg-card/50 border-b">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-extrabold text-foreground">
             A Solution for Every Safety Challenge
@@ -58,7 +58,7 @@ export default function ServicesPage() {
         <div className="container max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {services.map((service) => (
-              <Card key={service.title} className="bg-card border text-center flex flex-col group p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+              <Card key={service.title} className="bg-transparent border text-center flex flex-col group p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
                 <CardHeader className="items-center">
                   <div className="bg-primary/10 p-4 rounded-full mb-4">
                     {service.icon}
@@ -80,7 +80,7 @@ export default function ServicesPage() {
       </section>
 
       {/* AI Advisor Section */}
-      <section id="ai-advisor" className="py-24 bg-card border-y">
+      <section id="ai-advisor" className="py-24 bg-card/50 border-y">
         <div className="container mx-auto px-4">
           <ComplianceAdvisor />
         </div>
