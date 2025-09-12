@@ -82,7 +82,7 @@ const valuePropositions = [
 
 export default function ExperiencePage() {
   return (
-    <div className="bg-background text-foreground">
+    <div className="bg-transparent text-foreground">
       {/* Hero Section */}
       <section className="py-20 md:py-32 bg-card border-b">
         <div className="container mx-auto px-4 text-center">
