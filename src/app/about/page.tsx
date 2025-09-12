@@ -61,9 +61,9 @@ const whyChooseUs = [
 
 export default function AboutPage() {
   return (
-    <div className="bg-background text-foreground">
+    <div className="bg-transparent text-foreground">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-card border-b">
+      <section className="py-20 md:py-32 bg-card/50 border-b">
         <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-6xl font-extrabold text-foreground">Achieving Perfection in Compliance Where AI Meets Human Expertise.</h1>
             <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -75,7 +75,7 @@ export default function AboutPage() {
       {/* Manifesto Section */}
       <section className="py-24">
         <div className="container mx-auto px-4 max-w-5xl">
-            <Card className="bg-card shadow-lg border p-6 rounded-2xl mb-20">
+            <Card className="bg-card/50 shadow-lg border p-6 rounded-2xl mb-20">
                 <CardContent className="p-0">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                         {trustMarkers.map(marker => (
@@ -94,7 +94,7 @@ export default function AboutPage() {
                     <h3 className="text-3xl font-extrabold text-foreground text-center mb-12">What We Do</h3>
                     <div className="grid md:grid-cols-2 gap-8">
                         {whatWeDo.map((item, index) => (
-                            <Card key={item.title} className="bg-card border-0 shadow-none">
+                            <Card key={item.title} className="bg-transparent border-0 shadow-none">
                                 <CardContent className="flex items-start gap-6 p-0">
                                     <div className="flex-shrink-0 mt-1">
                                         {item.icon}
@@ -110,7 +110,7 @@ export default function AboutPage() {
                 </div>
 
                 {/* Who We Serve */}
-                <div className="bg-card p-10 md:p-12 rounded-2xl border">
+                <div className="bg-card/50 p-10 md:p-12 rounded-2xl border">
                      <div className="grid md:grid-cols-3 items-center gap-8">
                         <div className="md:col-span-1 flex justify-center">
                            <div className="bg-primary/10 rounded-full w-40 h-40 flex items-center justify-center">
@@ -153,13 +153,13 @@ export default function AboutPage() {
       </section>
 
       {/* Core Values Section */}
-      <section className="py-24 bg-card border-y">
+      <section className="py-24 bg-card/50 border-y">
         <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Our Core Values</h2>
             <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">The principles that guide our every action.</p>
             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
                 {values.map(v => (
-                    <Card key={v.title} className="text-center border-t-4 border-t-primary p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <Card key={v.title} className="text-center border-t-4 border-t-primary p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-card">
                         <CardHeader className="items-center">
                             <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-4">
                             {v.icon}
@@ -181,7 +181,7 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-4xl font-extrabold text-center text-foreground mb-16">Meet Our Leadership</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member) => (
-                <Card key={member.name} className="text-center bg-card border p-8 shadow-lg">
+                <Card key={member.name} className="text-center bg-card/50 border p-8 shadow-lg">
                 <CardContent>
                     <Avatar className="w-32 h-32 mx-auto mb-6 border-4 border-primary/20">
                     <AvatarImage data-ai-hint={member.hint} src={member.avatar} />
