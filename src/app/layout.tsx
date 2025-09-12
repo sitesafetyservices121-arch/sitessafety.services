@@ -9,7 +9,6 @@ import { Inter } from 'next/font/google';
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider } from "@/context/auth-context";
-import Image from "next/image";
 import VantaBackground from "@/components/vanta-background";
 
 export const metadata: Metadata = {
@@ -67,7 +66,7 @@ export default function RootLayout({
         >
           <VantaBackground />
           <AuthProvider>
-            <div className="relative flex min-h-dvh flex-col">
+            <div className="relative flex min-h-dvh flex-col bg-transparent">
               <Header />
               <main className="flex-1">{children}</main>
               <Footer />

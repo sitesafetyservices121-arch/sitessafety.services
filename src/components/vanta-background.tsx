@@ -17,55 +17,72 @@ const VantaBackground = () => {
     const vantaRef = useRef(null);
 
     useEffect(() => {
-        if (window.VANTA && vantaEffect === null) {
-            const effect = window.VANTA.NET({
-                el: vantaRef.current,
-                THREE: window.THREE,
-                mouseControls: true,
-                touchControls: true,
-                gyroControls: false,
-                minHeight: 200.00,
-                minWidth: 200.00,
-                scale: 1.00,
-                scaleMobile: 1.00,
-                color: 0x8c8c8c, // Silver-gray color for the lines
-                backgroundColor: 0x0, // Black background
-                points: 10.00,
-                maxDistance: 25.00,
-                spacing: 20.00
-            });
-            setVantaEffect(effect);
+        // This effect should only run once on mount to initialize Vanta
+        let effect: any = null;
+
+        const initVanta = () => {
+            if (window.VANTA && window.THREE && vantaRef.current) {
+                effect = window.VANTA.NET({
+                    el: vantaRef.current,
+                    THREE: window.THREE,
+                    mouseControls: true,
+                    touchControls: true,
+                    gyroControls: false,
+                    minHeight: 200.00,
+                    minWidth: 200.00,
+                    scale: 1.00,
+                    scaleMobile: 1.00,
+                    color: 0x8c8c8c, // Silver-gray color for the lines
+                    backgroundColor: 0x0, // Black background
+                    points: 10.00,
+                    maxDistance: 25.00,
+                    spacing: 20.00
+                });
+                setVantaEffect(effect);
+            }
+        };
+
+        // Check if scripts are already loaded
+        if (window.VANTA && window.THREE) {
+            initVanta();
         }
+
+        // Set a listener for when the scripts are loaded
+        window.addEventListener('vanta-loaded', initVanta);
 
         // Cleanup function to destroy the effect when the component unmounts
         return () => {
-            if (vantaEffect) {
-                (vantaEffect as any).destroy();
+            if (effect) {
+                effect.destroy();
             }
+            window.removeEventListener('vanta-loaded', initVanta);
         };
-    }, [vantaEffect]);
+    }, []);
+
+    const handleScriptsLoaded = () => {
+      // Once both scripts are loaded, dispatch a custom event
+      window.dispatchEvent(new Event('vanta-loaded'));
+    };
 
     return (
         <>
             <Script
                 src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
-                strategy="beforeInteractive"
+                strategy="afterInteractive"
                 onLoad={() => {
-                    // After Three.js loads, load Vanta.js
-                    const vantaScript = document.createElement('script');
-                    vantaScript.src = '/vanta.net.min.js';
-                    vantaScript.onload = () => {
-                        // Manually trigger a state update if VANTA is ready
-                        // This helps in case the component mounts before the script is fully parsed
-                         if (window.VANTA) {
-                           setVantaEffect(null); // Reset to trigger re-initialization
-                           if (vantaEffect) (vantaEffect as any).destroy(); // Destroy old instance if exists
-                         }
-                    };
-                    document.body.appendChild(vantaScript);
+                  // This is a bit of a hack. We assume if three.js is loaded, 
+                  // we can check if vanta is also ready to go.
+                  if (document.querySelector('script[src="/vanta.net.min.js"]')) {
+                    handleScriptsLoaded();
+                  }
                 }}
             />
-            <div ref={vantaRef} style={{ width: '100vw', height: '100vh', position: 'fixed', top: 0, left: 0, zIndex: -1 }} />
+             <Script
+                src="/vanta.net.min.js"
+                strategy="afterInteractive"
+                onLoad={handleScriptsLoaded}
+            />
+            <div ref={vantaRef} style={{ width: '100%', height: '100%', position: 'fixed', top: 0, left: 0, zIndex: -10 }} />
         </>
     );
 };
