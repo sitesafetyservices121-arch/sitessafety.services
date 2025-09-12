@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon, Loader2, Info, CheckCircle } from "lucide-react";
+import { CalendarIcon, Loader2, Info, CheckCircle, User } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
@@ -29,6 +29,10 @@ import type { DateRange } from "react-day-picker";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "./ui/checkbox";
+import { useAuth } from "@/context/auth-context";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 
 const serviceOptions = {
     "Normal Site Representation": {
@@ -87,13 +91,15 @@ export function BookingForm() {
   const [isPending, startTransition] = useTransition();
   const [total, setTotal] = useState(0);
   const [showThankYou, setShowThankYou] = useState(false);
+  const { user, loading } = useAuth();
+  const pathname = usePathname();
 
   const form = useForm<BookingFormValues>({
     resolver: zodResolver(bookingFormSchema),
     defaultValues: {
-      name: "",
+      name: user?.displayName ?? "",
       company: "",
-      email: "",
+      email: user?.email ?? "",
       phone: "",
       siteAddress: "",
       isEmergency: false,
@@ -103,6 +109,13 @@ export function BookingForm() {
   const watchService = form.watch("service");
   const watchDates = form.watch("dates");
   const watchIsEmergency = form.watch("isEmergency");
+
+  useEffect(() => {
+    if (user) {
+        form.setValue('name', user.displayName || '');
+        form.setValue('email', user.email || '');
+    }
+  }, [user, form]);
 
   useEffect(() => {
     let newTotal = 0;
@@ -162,6 +175,23 @@ export function BookingForm() {
             });
         }
     });
+  }
+  
+  if (loading) {
+    return <div className="text-center p-8">Loading...</div>
+  }
+
+  if (!user) {
+    return (
+        <div className="text-center p-8 bg-secondary rounded-lg border">
+            <User className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+            <h3 className="text-2xl font-bold text-foreground mb-2">Please Log In</h3>
+            <p className="text-muted-foreground mb-6">You need to be logged in to make a booking.</p>
+            <Button asChild>
+                <Link href={`/login?redirect=${pathname}#booking-form`}>Log In or Sign Up</Link>
+            </Button>
+        </div>
+    )
   }
 
   if (showThankYou) {

@@ -15,16 +15,20 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon, Loader2, CheckCircle } from "lucide-react";
+import { CalendarIcon, Loader2, CheckCircle, User } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { useToast } from "@/hooks/use-toast";
 import { submitConsultation } from "@/lib/actions";
-import { useState, useTransition } from "react";
+import { useState, useTransition, useEffect } from "react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import { useAuth } from "@/context/auth-context";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 
 const consultationFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -47,18 +51,28 @@ export function ConsultationForm() {
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
   const [showThankYou, setShowThankYou] = useState(false);
+  const { user, loading } = useAuth();
+  const pathname = usePathname();
 
   const form = useForm<ConsultationFormValues>({
     resolver: zodResolver(consultationFormSchema),
     defaultValues: {
-        name: "",
-        email: "",
+        name: user?.displayName ?? "",
+        email: user?.email ?? "",
         phone: "",
         companyName: "",
         domainName: "",
         desiredLogins: "1",
     },
   });
+
+  useEffect(() => {
+    if (user) {
+        form.setValue('name', user.displayName || '');
+        form.setValue('email', user.email || '');
+    }
+  }, [user, form]);
+
 
   function onSubmit(data: ConsultationFormValues) {
     startTransition(async () => {
@@ -83,6 +97,23 @@ export function ConsultationForm() {
     const displayHour = hour > 12 ? hour - 12 : hour;
     return `${String(displayHour).padStart(2, '0')}:${minute} ${period}`;
   });
+  
+  if (loading) {
+    return <div className="text-center p-8">Loading...</div>
+  }
+
+  if (!user) {
+    return (
+        <div className="text-center p-8 bg-secondary rounded-lg border">
+            <User className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+            <h3 className="text-2xl font-bold text-foreground mb-2">Please Log In</h3>
+            <p className="text-muted-foreground mb-6">You need to be logged in to book a consultation.</p>
+            <Button asChild>
+                <Link href={`/login?redirect=${pathname}#inquiry-form`}>Log In or Sign Up</Link>
+            </Button>
+        </div>
+    )
+  }
 
   if (showThankYou) {
     return (

@@ -7,9 +7,6 @@ import { Bot, ShieldCheck, ArrowRight } from "lucide-react";
 import type { Metadata } from 'next';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { useAuth } from "@/context/auth-context";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 // export const metadata: Metadata = { // Metadata must be defined in a server component
 //   title: 'Sign Up for Safety Management System',
@@ -17,18 +14,6 @@ import { useEffect } from "react";
 // };
 
 export default function SmsSignupPage() {
-    const { user, loading } = useAuth();
-    const router = useRouter();
-
-    useEffect(() => {
-        if (!loading && !user) {
-        router.push('/login?redirect=/safety-management-system/signup');
-        }
-    }, [user, loading, router]);
-
-    if (loading || !user) {
-        return <div className="container py-24 text-center">Loading...</div>;
-    }
 
   return (
     <div className="bg-background text-foreground">
@@ -44,7 +29,7 @@ export default function SmsSignupPage() {
                     <CardTitle className="text-2xl font-bold text-foreground">How It Works</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4 text-muted-foreground text-base">
-                    <p>1. <span className="font-semibold text-foreground">Complete the Form:</span> Fill out your details in the signup form below. This will register your initial administrator account.</p>
+                    <p>1. <span className="font-semibold text-foreground">Create an Account:</span> You'll need to sign up or log in to continue. This will register your initial administrator account.</p>
                     <p>2. <span className="font-semibold text-foreground">Confirmation & Payment:</span> An agent will contact you within the hour to confirm your details, process the payment, and help set up any additional users you require.</p>
                     <p>3. <span className="font-semibold text-foreground">Gain Access:</span> Once payment is confirmed, you will receive full access to the AI Safety Management System within 15 minutes.</p>
                      <div className="pt-4">
@@ -64,7 +49,7 @@ export default function SmsSignupPage() {
                 </div>
                 <CardTitle className="text-3xl text-foreground font-bold">Step 1: Create Your Admin Account</CardTitle>
                 <CardDescription className="text-base">
-                    Join the future of workplace safety. Fill out the form below and an agent will contact you to finalize your account setup.
+                    Join the future of workplace safety. Sign up or log in below and an agent will contact you to finalize your account setup.
                 </CardDescription>
             </CardHeader>
             <CardContent>

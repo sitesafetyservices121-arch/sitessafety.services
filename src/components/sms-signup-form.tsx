@@ -16,8 +16,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { submitSmsSignup } from "@/lib/actions";
-import { useTransition } from "react";
-import { Loader2 } from "lucide-react";
+import { useTransition, useEffect } from "react";
+import { Loader2, User } from "lucide-react";
+import { useAuth } from "@/context/auth-context";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const smsSignupFormSchema = z.object({
   firstName: z.string().min(2, { message: "First name must be at least 2 characters." }),
@@ -34,19 +37,30 @@ type SmsSignupFormValues = z.infer<typeof smsSignupFormSchema>;
 export function SmsSignupForm() {
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
+  const { user, loading } = useAuth();
+  const pathname = usePathname();
 
   const form = useForm<SmsSignupFormValues>({
     resolver: zodResolver(smsSignupFormSchema),
     defaultValues: {
-      firstName: "",
-      surname: "",
+      firstName: user?.displayName?.split(' ')[0] ?? "",
+      surname: user?.displayName?.split(' ')[1] ?? "",
       company: "",
-      email: "",
+      email: user?.email ?? "",
       password: "",
       age: "",
       cellNumber: "",
     },
   });
+
+  useEffect(() => {
+    if (user) {
+        form.setValue('email', user.email || '');
+        const nameParts = user.displayName?.split(' ') || [];
+        form.setValue('firstName', nameParts[0] || '');
+        form.setValue('surname', nameParts.slice(1).join(' ') || '');
+    }
+  }, [user, form]);
 
   function onSubmit(data: SmsSignupFormValues) {
     startTransition(async () => {
@@ -67,6 +81,24 @@ export function SmsSignupForm() {
         }
     });
   }
+  
+  if (loading) {
+    return <div className="text-center p-8">Loading...</div>
+  }
+
+  if (!user) {
+    return (
+        <div className="text-center p-8 bg-secondary rounded-lg border">
+            <User className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+            <h3 className="text-2xl font-bold text-foreground mb-2">Please Log In</h3>
+            <p className="text-muted-foreground mb-6">You need to create an account to sign up for the Safety Management System.</p>
+            <Button asChild>
+                <Link href={`/login?redirect=${pathname}`}>Log In or Sign Up</Link>
+            </Button>
+        </div>
+    )
+  }
+
 
   return (
     <Form {...form}>
@@ -119,7 +151,7 @@ export function SmsSignupForm() {
             <FormItem>
               <FormLabel>Email Address</FormLabel>
               <FormControl>
-                <Input placeholder="you@company.com" {...field} type="email" />
+                <Input placeholder="you@company.com" {...field} type="email" readOnly />
               </FormControl>
               <FormMessage />
             </FormItem>

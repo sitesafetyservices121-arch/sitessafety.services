@@ -8,9 +8,6 @@ import type { Metadata } from 'next';
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { useAuth } from "@/context/auth-context";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 // export const metadata: Metadata = { // Metadata must be defined in a server component
 //   title: 'E-Safety File Solutions',
@@ -63,18 +60,6 @@ const plans = [
 ]
 
 export default function ESafetyFilePage() {
-    const { user, loading } = useAuth();
-    const router = useRouter();
-
-    useEffect(() => {
-        if (!loading && !user) {
-        router.push('/login?redirect=/e-safety-file');
-        }
-    }, [user, loading, router]);
-
-    if (loading || !user) {
-        return <div className="container py-24 text-center">Loading...</div>;
-    }
 
   return (
     <div className="bg-background text-foreground">
@@ -91,7 +76,7 @@ export default function ESafetyFilePage() {
                     </p>
                     <div className="mt-8">
                         <Button asChild size="lg">
-                            <Link href="#inquiry-form">Book a Free Consultation</Link>
+                            <Link href="/login?redirect=/e-safety-file#inquiry-form">Book a Free Consultation</Link>
                         </Button>
                     </div>
                 </div>
@@ -137,7 +122,7 @@ export default function ESafetyFilePage() {
                         </CardContent>
                         <CardFooter>
                             <Button asChild className="w-full" size="lg" variant={plan.name === 'Large Enterprise' ? 'default' : 'default'}>
-                                <Link href="#inquiry-form">
+                                <Link href="/login?redirect=/e-safety-file#inquiry-form">
                                     {plan.cta} <ArrowRight className="ml-2 h-4 w-4"/>
                                 </Link>
                             </Button>

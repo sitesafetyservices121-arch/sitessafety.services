@@ -5,9 +5,6 @@ import { BookingForm } from "@/components/booking-form";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Shield, Clock, Phone, UserCheck, CalendarDays } from "lucide-react";
 import type { Metadata } from 'next';
-import { useAuth } from "@/context/auth-context";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 // export const metadata: Metadata = { // Metadata must be defined in a server component
 //   title: 'Book a Certified Safety Officer',
@@ -38,19 +35,6 @@ const howItWorksSteps = [
 ]
 
 export default function RentASafetyOfficerPage() {
-  const { user, loading } = useAuth();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!loading && !user) {
-      router.push('/login?redirect=/rent-a-safety-officer');
-    }
-  }, [user, loading, router]);
-
-  if (loading || !user) {
-    return <div className="container py-24 text-center">Loading...</div>;
-  }
-
   return (
     <div className="bg-background text-foreground">
       {/* Header Section */}
@@ -98,7 +82,7 @@ export default function RentASafetyOfficerPage() {
                 </div>
                 <CardTitle className="text-3xl text-foreground font-bold">Book Your Safety Officer</CardTitle>
                 <CardDescription className="text-center text-base max-w-2xl mx-auto">
-                    Select your required service, choose your dates, and get an instant quote. Complete the form to finalize your booking request.
+                    Select your required service, choose your dates, and get an instant quote. You'll need to be logged in to complete the booking.
                 </CardDescription>
             </CardHeader>
             <CardContent>
