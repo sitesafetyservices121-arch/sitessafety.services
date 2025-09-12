@@ -63,13 +63,13 @@ export default function Home() {
       <section className="relative py-40 md:py-60 bg-card border-b">
         <div className="absolute inset-0 z-0">
             <Image
-              src="https://iili.io/JADbBv4.png"
+              src="https://iili.io/JADbnef.png"
               alt="Modern industrial facility background"
               fill
               style={{ objectFit: 'cover' }}
               quality={100}
               priority
-              data-ai-hint="industrial factory"
+              data-ai-hint="wind turbines"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
         </div>
@@ -181,7 +181,7 @@ export default function Home() {
                     <Link href="#" aria-label="Facebook" className="text-muted-foreground hover:text-primary transition-colors">
                         <Facebook className="h-7 w-7" />
                     </Link>
-                    <Link href="#" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors">
+                    <Link href="#" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colsors">
                         <Linkedin className="h-7 w-7" />
                     </Link>
                 </div>
