@@ -2,39 +2,41 @@
 "use server";
 import { checkCompliance } from "@/ai/flows/compliance-checker-flow";
 import type { ComplianceRequest, ComplianceResponse } from "@/ai/schemas";
-import { Resend } from 'resend';
+import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 import { z } from 'zod';
 import { format } from 'date-fns';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const mailerSend = new MailerSend({
+    apiKey: process.env.MAILERSEND_API_KEY!,
+});
+
 const toEmail = process.env.DESTINATION_EMAIL;
+const fromEmail = process.env.SENDER_EMAIL;
 
 // Utility to send email and handle errors with more debug info
 async function sendEmail(subject: string, htmlContent: string) {
-    if (!toEmail || !process.env.RESEND_API_KEY) {
-        console.error("❌ Missing RESEND_API_KEY or DESTINATION_EMAIL environment variables.");
-        throw new Error("Server is not configured to send emails. Please check your .env file.");
+    if (!toEmail || !fromEmail || !process.env.MAILERSEND_API_KEY) {
+        console.error("❌ Missing MAILERSEND_API_KEY, DESTINATION_EMAIL, or SENDER_EMAIL environment variables.");
+        throw new Error("Server is not configured to send emails. Please check your .env file and MailerSend account setup.");
     }
 
+    const sentFrom = new Sender(fromEmail, "RAK-Site Safety Website");
+    const recipients = [new Recipient(toEmail, "Admin")];
+
+    const emailParams = new EmailParams()
+      .setFrom(sentFrom)
+      .setTo(recipients)
+      .setSubject(subject)
+      .setHtml(htmlContent);
+
     try {
-        const { data, error } = await resend.emails.send({
-            from: 'onboarding@resend.dev', // ✅ use Resend's safe test sender
-            to: [toEmail],
-            subject: subject,
-            html: htmlContent,
-        });
-
-        if (error) {
-            const errorMessage = error.message || JSON.stringify(error);
-            console.error("❌ Resend API Error (full):", JSON.stringify(error, null, 2));
-            throw new Error(errorMessage);
-        }
-
-        console.log("✅ Email sent successfully:", JSON.stringify(data, null, 2));
+        const data = await mailerSend.email.send(emailParams);
+        console.log("✅ Email sent successfully via MailerSend:", JSON.stringify(data, null, 2));
         return data;
-    } catch (err: any) {
-        console.error("❌ Unexpected sendEmail error:", err);
-        throw err;
+    } catch (error: any) {
+        console.error("❌ MailerSend API Error:", JSON.stringify(error, null, 2));
+        const errorMessage = error.body?.message || error.message || "An unknown error occurred with the email service.";
+        throw new Error(errorMessage);
     }
 }
 
