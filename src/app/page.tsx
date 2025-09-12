@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, FileText, HardHat, ShieldCheck, Mail, Phone, Linkedin, Facebook, Twitter, Building, Shield, Zap } from "lucide-react";
+import { ArrowRight, FileText, HardHat, ShieldCheck, Mail, Phone, Linkedin, Facebook, Twitter, Building, Shield, Zap, Puzzle, BrainCircuit } from "lucide-react";
 import Image from "next/image";
 import { TestimonialCard } from "@/components/testimonial-card";
 import { InquiryForm } from "@/components/inquiry-form";
@@ -54,6 +54,52 @@ const testimonials = [
   { name: "Pieter van der Merwe", title: "CEO", company: "BuildRight Inc.", testimonial: "The E-Safety File service saved us countless hours and ensured we were fully compliant for a critical audit. The process was smooth and professional.", rating: 5, image: "https://iili.io/JADeLp1.png", hint: "professional white man" },
   { name: "Anika Patel", title: "Ops Director", company: "InfraGroup", testimonial: "Implementing their Safety Management System has transformed our safety culture for the better. We've seen a measurable reduction in incidents.", rating: 5, image: "https://iili.io/JADeZuG.png", hint: "professional indian woman" },
 ];
+
+const problems = [
+    {
+        title: "Wasted Admin Time",
+        description: "Hours lost building complex safety files and chasing paperwork instead of managing site safety.",
+        icon: <Puzzle className="h-8 w-8 text-primary" />
+    },
+    {
+        title: "Compliance Blind Spots",
+        description: "The constant risk of missing a new regulation, leading to fines, project delays, or legal trouble.",
+        icon: <Puzzle className="h-8 w-8 text-primary" />
+    },
+    {
+        title: "Unseen Site Hazards",
+        description: "Without a dedicated expert, critical risks go unnoticed, leading to incidents that should have been prevented.",
+        icon: <Puzzle className="h-8 w-8 text-primary" />
+    },
+    {
+        title: "Inconsistent Safety Culture",
+        description: "Safety is treated as a checklist, not a core value, leading to shortcuts and disengaged teams.",
+        icon: <Puzzle className="h-8 w-8 text-primary" />
+    },
+]
+
+const solutions = [
+    {
+        title: "Automated Documentation",
+        description: "Our AI platform generates legally-aligned HIRAs, method statements, and full safety files in minutes, freeing your team to focus on-site.",
+        icon: <BrainCircuit className="h-8 w-8 text-primary" />
+    },
+    {
+        title: "Expert Human Oversight",
+        description: "Every AI-generated document and system is verified and signed off by certified safety professionals, guaranteeing 100% compliance.",
+        icon: <HardHat className="h-8 w-8 text-primary" />
+    },
+    {
+        title: "On-Demand Expertise",
+        description: "Deploy our registered safety officers exactly when and where you need them for immediate risk mitigation and expert site management.",
+        icon: <Zap className="h-8 w-8 text-primary" />
+    },
+    {
+        title: "Total Safety Ecosystem",
+        description: "We provide an integrated system of tools and talent that builds a proactive, sustainable safety culture from the ground up.",
+        icon: <ShieldCheck className="h-8 w-8 text-primary" />
+    },
+]
 
 
 export default function Home() {
@@ -136,6 +182,60 @@ export default function Home() {
         </div>
       </section>
 
+       {/* Problems Section */}
+       <section className="py-24 md:py-32">
+        <div className="container px-4 md:px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">What Problems We Solve</h2>
+            <p className="max-w-2xl mx-auto mt-4 text-muted-foreground text-lg">
+              Companies face the same compliance headaches again and again. We built the cure.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {problems.map((problem) => (
+              <Card key={problem.title} className="text-center p-6 border-0 shadow-none bg-transparent">
+                  <CardHeader className="items-center p-0 mb-4">
+                      <div className="bg-primary/10 p-4 rounded-full">
+                          {problem.icon}
+                      </div>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                      <h3 className="text-xl font-bold text-foreground mb-2">{problem.title}</h3>
+                      <p className="text-muted-foreground">{problem.description}</p>
+                  </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Solutions Section */}
+      <section className="py-24 md:py-32 bg-card/50 border-y">
+        <div className="container px-4 md:px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">How We Solve It</h2>
+            <p className="max-w-2xl mx-auto mt-4 text-muted-foreground text-lg">
+              We combine purpose-built AI with certified human expertise to deliver a complete safety solution.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {solutions.map((solution) => (
+              <Card key={solution.title} className="text-center p-6 border bg-card shadow-sm">
+                  <CardHeader className="items-center p-0 mb-4">
+                      <div className="bg-primary/10 p-4 rounded-full">
+                          {solution.icon}
+                      </div>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                      <h3 className="text-xl font-bold text-foreground mb-2">{solution.title}</h3>
+                      <p className="text-muted-foreground">{solution.description}</p>
+                  </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
        {/* Testimonials Section */}
       <section className="py-24 md:py-32">
         <div className="container mx-auto px-4">
@@ -180,3 +280,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
