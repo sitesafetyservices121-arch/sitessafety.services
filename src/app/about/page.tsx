@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Shield, Target, Handshake, CheckCircle, HardHat, Bot, FileDigit, Users, Cpu, ArrowRight } from "lucide-react";
+import { Shield, Target, Handshake, CheckCircle, HardHat, Bot, FileDigit, Users, Cpu, ArrowRight, Zap } from "lucide-react";
 import type { Metadata } from 'next';
 import Image from "next/image";
 import { CheckIconCard } from "@/components/ui/check-icon-card";
@@ -48,6 +48,11 @@ const whatWeDo = [
         title: "e-Safety File Websites (Your brand. Your domain.)", 
         description: "We design a compliant, client-facing safety file website that matches your existing look and runs on your own domain. Replace hard-copy files with a secure, searchable, version-controlled system. Clean, professional, always up to date, built to impress auditors and clients.",
         icon: <FileDigit className="h-8 w-8 text-primary" />
+    },
+    { 
+        title: "Print Ready Safety Files", 
+        description: "Simply upload your client's required index and receive a complete, compliant, and print-ready safety file electronically in hours. Fast, efficient, and site-ready.",
+        icon: <Zap className="h-8 w-8 text-primary" />
     },
 ];
 
@@ -198,3 +203,5 @@ export default function AboutPage() {
     </div>
   );
 }
+
+    
