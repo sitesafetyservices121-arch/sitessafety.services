@@ -11,8 +11,9 @@ const toEmail = process.env.DESTINATION_EMAIL;
 
 // Utility to send email and handle errors
 async function sendEmail(subject: string, htmlContent: string) {
-    if (!toEmail || !process.env.RESEND_API_KEY) {
-        throw new Error("Missing RESEND_API_KEY or DESTINATION_EMAIL environment variables.");
+    if (!toEmail || !process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === "YOUR_API_KEY_HERE") {
+        console.error("Missing RESEND_API_KEY or DESTINATION_EMAIL environment variables.");
+        throw new Error("Server is not configured to send emails.");
     }
     
     const { data, error } = await resend.emails.send({
@@ -68,6 +69,9 @@ export async function submitBooking(data: unknown) {
         return { success: true, message: "Booking request received! We'll be in touch soon." };
     } catch (error) {
         console.error("Booking submission error:", error);
+        if (error instanceof Error) {
+            return { success: false, message: error.message };
+        }
         return { success: false, message: "Something went wrong on the server. Please try again." };
     }
 }
@@ -100,6 +104,9 @@ export async function submitInquiry(data: unknown) {
         return { success: true, message: "Inquiry received! We'll get back to you shortly." };
     } catch (error) {
         console.error("Inquiry submission error:", error);
+        if (error instanceof Error) {
+            return { success: false, message: error.message };
+        }
         return { success: false, message: "Something went wrong on the server. Please try again." };
     }
 }
@@ -143,6 +150,9 @@ export async function submitSmsSignup(data: unknown) {
         return { success: true, message: "Signup successful! You'll receive a confirmation email shortly." };
     } catch (error) {
         console.error("SMS Signup submission error:", error);
+        if (error instanceof Error) {
+            return { success: false, message: error.message };
+        }
         return { success: false, message: "Something went wrong during signup. Please try again." };
     }
 }
@@ -187,6 +197,9 @@ export async function submitConsultation(data: unknown) {
         return { success: true, message: "Consultation request received! We will contact you at your selected time." };
     } catch (error) {
         console.error("Consultation submission error:", error);
+        if (error instanceof Error) {
+            return { success: false, message: error.message };
+        }
         return { success: false, message: "Something went wrong on the server. Please try again." };
     }
 }
@@ -227,6 +240,9 @@ export async function submitElectronicFileOrder(data: unknown) {
         return { success: true, message: "Order successful! Your files have been received." };
     } catch (error) {        
         console.error("Electronic File Order submission error:", error);
+        if (error instanceof Error) {
+            return { success: false, message: error.message };
+        }
         return { success: false, message: "Something went wrong during your order. Please try again." };
     }
 }
