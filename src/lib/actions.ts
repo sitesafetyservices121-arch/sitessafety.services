@@ -11,9 +11,9 @@ const toEmail = process.env.DESTINATION_EMAIL;
 
 // Utility to send email and handle errors
 async function sendEmail(subject: string, htmlContent: string) {
-    if (!toEmail || !process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === "YOUR_API_KEY_HERE") {
+    if (!toEmail || !process.env.RESEND_API_KEY) {
         console.error("Missing RESEND_API_KEY or DESTINATION_EMAIL environment variables.");
-        throw new Error("Server is not configured to send emails.");
+        throw new Error("Server is not configured to send emails. Please check your .env file.");
     }
     
     const { data, error } = await resend.emails.send({
@@ -246,3 +246,4 @@ export async function submitElectronicFileOrder(data: unknown) {
         return { success: false, message: "Something went wrong during your order. Please try again." };
     }
 }
+
