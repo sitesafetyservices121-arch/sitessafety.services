@@ -9,27 +9,35 @@ import { format } from 'date-fns';
 const resend = new Resend(process.env.RESEND_API_KEY);
 const toEmail = process.env.DESTINATION_EMAIL;
 
-// Utility to send email and handle errors
+// Utility to send email and handle errors with more debug info
 async function sendEmail(subject: string, htmlContent: string) {
     if (!toEmail || !process.env.RESEND_API_KEY) {
-        console.error("Missing RESEND_API_KEY or DESTINATION_EMAIL environment variables.");
+        console.error("❌ Missing RESEND_API_KEY or DESTINATION_EMAIL environment variables.");
         throw new Error("Server is not configured to send emails. Please check your .env file.");
     }
-    
-    const { data, error } = await resend.emails.send({
-        from: 'RAK-Site Safety <noreply@resend.dev>',
-        to: [toEmail],
-        subject: subject,
-        html: htmlContent,
-    });
 
-    if (error) {
-        console.error("Resend API Error:", error);
-        throw new Error(error.message || "An unknown error occurred while sending the email.");
+    try {
+        const { data, error } = await resend.emails.send({
+            from: 'onboarding@resend.dev', // ✅ use Resend's safe test sender
+            to: [toEmail],
+            subject: subject,
+            html: htmlContent,
+        });
+
+        if (error) {
+            console.error("❌ Resend API Error (full):", JSON.stringify(error, null, 2));
+            throw new Error(error.message || "Unknown error from Resend API");
+        }
+
+        console.log("✅ Email sent successfully:", JSON.stringify(data, null, 2));
+        return data;
+    } catch (err: any) {
+        console.error("❌ Unexpected sendEmail error:", err);
+        throw err;
     }
-
-    return data;
 }
+
+// ------------------- Schemas and Handlers -------------------
 
 const bookingSchema = z.object({
   name: z.string(),
@@ -45,7 +53,6 @@ const bookingSchema = z.object({
   isEmergency: z.boolean(),
   total: z.number(),
 });
-
 
 export async function submitBooking(data: unknown) {
     try {
@@ -69,7 +76,7 @@ export async function submitBooking(data: unknown) {
         
         return { success: true, message: "Booking request received! We'll be in touch soon." };
     } catch (error) {
-        console.error("Booking submission error:", error);
+        console.error("❌ Booking submission error:", error);
         if (error instanceof Error) {
             return { success: false, message: error.message };
         }
@@ -104,7 +111,7 @@ export async function submitInquiry(data: unknown) {
 
         return { success: true, message: "Inquiry received! We'll get back to you shortly." };
     } catch (error) {
-        console.error("Inquiry submission error:", error);
+        console.error("❌ Inquiry submission error:", error);
         if (error instanceof Error) {
             return { success: false, message: error.message };
         }
@@ -117,7 +124,7 @@ export async function getComplianceAdvice(data: ComplianceRequest): Promise<{ su
         const result = await checkCompliance(data);
         return { success: true, data: result };
     } catch (error) {
-        console.error("Compliance check error:", error);
+        console.error("❌ Compliance check error:", error);
         return { success: false, data: null, message: "An error occurred while analyzing your request. Please try again." };
     }
 }
@@ -150,7 +157,7 @@ export async function submitSmsSignup(data: unknown) {
         
         return { success: true, message: "Signup successful! You'll receive a confirmation email shortly." };
     } catch (error) {
-        console.error("SMS Signup submission error:", error);
+        console.error("❌ SMS Signup submission error:", error);
         if (error instanceof Error) {
             return { success: false, message: error.message };
         }
@@ -197,7 +204,7 @@ export async function submitConsultation(data: unknown) {
         
         return { success: true, message: "Consultation request received! We will contact you at your selected time." };
     } catch (error) {
-        console.error("Consultation submission error:", error);
+        console.error("❌ Consultation submission error:", error);
         if (error instanceof Error) {
             return { success: false, message: error.message };
         }
@@ -240,7 +247,7 @@ export async function submitElectronicFileOrder(data: unknown) {
 
         return { success: true, message: "Order successful! Your files have been received." };
     } catch (error) {        
-        console.error("Electronic File Order submission error:", error);
+        console.error("❌ Electronic File Order submission error:", error);
         if (error instanceof Error) {
             return { success: false, message: error.message };
         }
@@ -248,3 +255,4 @@ export async function submitElectronicFileOrder(data: unknown) {
     }
 }
 
+    
