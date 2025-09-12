@@ -24,7 +24,8 @@ async function sendEmail(subject: string, htmlContent: string) {
     });
 
     if (error) {
-        throw new Error(`Failed to send email: ${error.message}`);
+        console.error("Resend API Error:", error);
+        throw new Error(error.message || "An unknown error occurred while sending the email.");
     }
 
     return data;
