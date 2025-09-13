@@ -174,7 +174,7 @@ const consultationSchema = z.object({
   phone: z.string(),
   companyName: z.string(),
   domainName: z.string().optional().or(z.literal('')),
-  desiredLogins: z.string(),
+  desiredLogins: z.coerce.number(),
   plan: z.string(),
   consultationDate: z.coerce.date(),
   consultationTime: z.string(),
@@ -257,3 +257,5 @@ export async function submitElectronicFileOrder(data: unknown) {
         return { success: false, message: "Something went wrong during your order. Please try again." };
     }
 }
+
+    

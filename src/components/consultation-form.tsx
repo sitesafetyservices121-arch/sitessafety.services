@@ -36,7 +36,7 @@ const consultationFormSchema = z.object({
   phone: z.string().min(10, "Please enter a valid phone number."),
   companyName: z.string().min(2, "Company name is required."),
   domainName: z.string().min(3, "Please enter a valid domain name.").optional().or(z.literal('')),
-  desiredLogins: z.string().refine((val) => !isNaN(parseInt(val, 10)) && parseInt(val, 10) > 0, { message: "Please enter a valid number." }),
+  desiredLogins: z.coerce.number().min(1, "Please enter a number greater than 0."),
   plan: z.enum(["Small to Medium", "Large Enterprise", "Custom Enterprise"], {
     required_error: "You must select a plan.",
   }),
@@ -62,7 +62,7 @@ export function ConsultationForm() {
         phone: "",
         companyName: "",
         domainName: "",
-        desiredLogins: "1",
+        desiredLogins: 1,
     },
   });
 
@@ -94,7 +94,7 @@ export function ConsultationForm() {
     const hour = Math.floor(i / 2) + 8;
     const minute = i % 2 === 0 ? '00' : '30';
     const period = hour < 12 ? 'AM' : 'PM';
-    const displayHour = hour > 12 ? hour - 12 : hour;
+    const displayHour = hour > 12 ? hour - 12 : (hour === 0 ? 12 : hour);
     return `${String(displayHour).padStart(2, '0')}:${minute} ${period}`;
   });
   
@@ -159,7 +159,7 @@ export function ConsultationForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
                 <FormField control={form.control} name="companyName" render={({ field }) => ( <FormItem> <FormLabel>Company Name</FormLabel> <FormControl><Input placeholder="Your Company Inc." {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
                 <FormField control={form.control} name="domainName" render={({ field }) => ( <FormItem> <FormLabel>Desired Domain (Optional)</FormLabel> <FormControl><Input placeholder="yourcompany.sitesafety.services" {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
-                <FormField control={form.control} name="desiredLogins" render={({ field }) => ( <FormItem> <FormLabel>Number of Logins</FormLabel> <FormControl><Input type="number" min="1" placeholder="e.g., 5" {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
+                <FormField control={form.control} name="desiredLogins" render={({ field }) => ( <FormItem> <FormLabel>Number of Logins</FormLabel> <FormControl><Input type="number" min="1" placeholder="e.g., 5" {...field} onChange={e => field.onChange(e.target.valueAsNumber)} /></FormControl> <FormMessage /> </FormItem> )}/>
             </div>
         </div>
 
@@ -200,7 +200,7 @@ export function ConsultationForm() {
                             mode="single"
                             selected={field.value}
                             onSelect={field.onChange}
-                            disabled={(date) => date < new Date(new Date().setDate(new Date().getDate() - 1))}
+                            disabled={(date) => date < new Date()}
                             initialFocus
                           />
                         </PopoverContent>
@@ -266,3 +266,5 @@ export function ConsultationForm() {
     </Form>
   );
 }
+
+    
