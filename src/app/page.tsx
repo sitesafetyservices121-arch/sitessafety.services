@@ -44,7 +44,7 @@ const projects = [
     title: "Download Print-Ready Safety Files",
     description: "Instantly get your compliant, print-ready safety documents delivered electronically within hours.",
     link: "/electronically-delivered-safety-files",
-    image: "https://picsum.photos/seed/print-files/600/400",
+    image: "https://i.ibb.co/rR17WKMj/image-14.jpg",
     hint: "digital file download"
   },
 ];
