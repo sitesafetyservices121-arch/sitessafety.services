@@ -5,15 +5,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, FileText, HardHat, ShieldCheck, Mail, Phone, Linkedin, Facebook, Twitter, Building, Shield, Zap, Puzzle, BrainCircuit } from "lucide-react";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { TestimonialCard } from "@/components/testimonial-card";
 import { InquiryForm } from "@/components/inquiry-form";
-import type { Metadata } from 'next';
-
-// export const metadata: Metadata = { // Metadata must be on a server component
-//   title: 'RAK-Site Safety | AI-Powered Safety & Compliance Solutions',
-//   description: 'Leading provider of on-site safety officers, AI-driven safety management systems, and audit-ready e-safety files in South Africa. Achieve total compliance.',
-// };
+import { VantaBackground } from "@/components/vanta-background";
 
 
 const projects = [
@@ -109,6 +104,7 @@ export default function Home() {
     <div className="bg-transparent text-foreground">
       {/* Hero Section */}
       <section className="relative py-40 md:py-60 border-b bg-transparent">
+        <VantaBackground />
         <div className="container px-4 md:px-6 relative z-10 text-center">
             <h1 className="text-4xl font-extrabold sm:text-5xl md:text-7xl text-white">
               Building Safer Tomorrows
@@ -133,11 +129,11 @@ export default function Home() {
             <Image
               src="https://i.ibb.co/5pHLV4D/image-27.jpg"
               alt="Portrait of the founder"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
+              fill
+              style={{objectFit:"cover", objectPosition: "center"}}
               data-ai-hint="male professional portrait"
               quality={100}
+              priority
             />
           </div>
           <div className="space-y-6">
@@ -168,7 +164,7 @@ export default function Home() {
               <Card key={project.title} className="bg-transparent flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border">
                 <CardContent className="p-0">
                   <div className="relative h-56 w-full">
-                    <Image src={project.image} alt={project.title} layout="fill" objectFit="cover" data-ai-hint={project.hint} className="transition-transform duration-500 group-hover:scale-105" />
+                    <Image src={project.image} alt={project.title} fill style={{objectFit:"cover"}} data-ai-hint={project.hint} className="transition-transform duration-500 group-hover:scale-105" />
                   </div>
                 </CardContent>
                 <div className="p-6 flex flex-col flex-grow">
@@ -282,3 +278,5 @@ export default function Home() {
     </div>
   );
 }
+
+    

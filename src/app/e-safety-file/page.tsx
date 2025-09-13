@@ -4,15 +4,9 @@
 import { ConsultationForm } from "@/components/consultation-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Bot, Users, Server, CheckCircle, ArrowRight, Eye } from "lucide-react";
-import type { Metadata } from 'next';
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-
-// export const metadata: Metadata = { // Metadata must be defined in a server component
-//   title: 'E-Safety File Solutions',
-//   description: 'Digitize your compliance with our streamlined, audit-ready E-Safety File solutions. Request a consultation today.',
-// };
 
 const plans = [
     {
@@ -81,7 +75,7 @@ export default function ESafetyFilePage() {
                     </div>
                 </div>
                 <div className="relative h-80 lg:h-[400px] w-full">
-                    <Image src="https://i.ibb.co/67SpdDsd/image-20.jpg" fill sizes="100vw" style={{objectFit: 'contain'}} alt="e-safety file on a laptop" data-ai-hint="saas dashboard laptop" />
+                    <Image src="https://i.ibb.co/67SpdDsd/image-20.jpg" fill style={{objectFit: 'contain'}} alt="e-safety file on a laptop" data-ai-hint="saas dashboard laptop" quality={100} priority />
                 </div>
             </div>
         </div>
@@ -174,3 +168,5 @@ export default function ESafetyFilePage() {
     </div>
   );
 }
+
+    

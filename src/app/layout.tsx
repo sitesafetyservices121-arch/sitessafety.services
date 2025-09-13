@@ -9,7 +9,6 @@ import { Inter } from 'next/font/google';
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider } from "@/context/auth-context";
-import VantaBackground from "@/components/vanta-background";
 
 
 export const metadata: Metadata = {
@@ -49,7 +48,12 @@ export const metadata: Metadata = {
   }
 };
 
-const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '700', '900'], variable: '--font-body' });
+const inter = Inter({ 
+  subsets: ['latin'], 
+  weight: ['400', '500', '700', '900'], 
+  variable: '--font-body',
+  display: 'swap',
+});
 
 export default function RootLayout({
   children,
@@ -72,7 +76,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <AuthProvider>
-            <VantaBackground />
             <div className="relative flex min-h-dvh flex-col bg-transparent">
               <Header />
               <main className="flex-1">{children}</main>
@@ -98,3 +101,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+    

@@ -3,7 +3,7 @@ import { ElectronicFileForm } from "@/components/electronic-file-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Zap, ShieldCheck, FileText, Cloud, Download, Upload, Construction, KeyRound, FolderDown, ArrowRight, Eye } from "lucide-react";
 import type { Metadata } from 'next';
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CheckIconCard } from "@/components/ui/check-icon-card";
@@ -64,7 +64,7 @@ export default function ElectronicallyDeliveredSafetyFilesPage() {
                     </div>
                 </div>
                 <div className="relative h-80 lg:h-[400px] w-full">
-                    <Image src="https://iili.io/JADbLPS.png" fill sizes="100vw" style={{objectFit: 'contain'}} alt="A secure digital folder being downloaded to a computer screen" data-ai-hint="digital file download" />
+                    <Image src="https://iili.io/JADbLPS.png" fill style={{objectFit: 'contain'}} alt="A secure digital folder being downloaded to a computer screen" data-ai-hint="digital file download" quality={100} priority/>
                 </div>
             </div>
         </div>
@@ -149,3 +149,5 @@ export default function ElectronicallyDeliveredSafetyFilesPage() {
     </div>
   );
 }
+
+    
