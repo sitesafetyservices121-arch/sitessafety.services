@@ -28,7 +28,7 @@ const portfolio = [
     { title: "High-Rise Commercial Tower", image: "https://i.ibb.co/rKv0KSNP/image-29.jpg", hint: "skyscraper construction" },
     { title: "Industrial Manufacturing Plant", image: "https://i.ibb.co/4wkRjkxL/image-32.jpg", hint: "industrial plant" },
     { title: "Metropolitan Subway Expansion", image: "https://i.ibb.co/FbCcN8Nq/image-36.jpg", hint: "tunnel construction site" },
-    { title: "Renewable Energy Wind Farm", image: "https://iili.io/JADbnef.png", hint: "wind turbines field" },
+    { title: "Renewable Energy Wind Farm", image: "https://i.ibb.co/Y4HJxm8w/image-38.jpg", hint: "wind turbines field" },
 ];
 
 const stats = [
