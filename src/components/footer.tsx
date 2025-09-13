@@ -43,7 +43,7 @@ export function Footer() {
                 <Link href="/rent-a-safety-officer" className="text-base text-secondary-foreground/70 hover:text-primary font-body">Rent a Safety Officer</Link>
                 <Link href="/e-safety-file" className="text-base text-secondary-foreground/70 hover:text-primary font-body">E-Safety File</Link>
                 <Link href="/safety-management-system" className="text-base text-secondary-foreground/70 hover:text-primary font-body">Safety Management System</Link>
-                <Link href="/electronically-delivered-safety-files" className="text-base text-secondary-foreground/70 hover:text-primary font-body">Electronically Delivered Safety Files</Link>
+                <Link href="/print-ready-safety-files" className="text-base text-secondary-foreground/70 hover:text-primary font-body">Print Ready Safety Files</Link>
             </div>
 
             <div className="md:col-span-2 flex flex-col gap-2">
@@ -55,7 +55,7 @@ export function Footer() {
         </div>
         <div className="mt-12 border-t border-secondary-foreground/20 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="text-center md:text-left text-sm text-secondary-foreground/70 font-body">
-                © {new Date().getFullYear()} RAK-Site Safety Services (Pty) Ltd. All rights reserved.
+                © {new Date().getFullYear()} RAK-Site Safety Services (Pty) Ltd. All rights reserved. with all designs and flows of ai is patent pending
             </p>
             <div className="flex-shrink-0">
                 <ProudlySaLogo className="h-20" />

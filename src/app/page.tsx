@@ -28,7 +28,7 @@ const projects = [
     title: "E-Safety File Website & Hosting",
     description: "A fully-digitized, cloud-based safety file solution, ensuring you are always audit-proof and compliant.",
     link: "/e-safety-file",
-    image: "https://picsum.photos/seed/safety-file/600/400",
+    image: "https://i.ibb.co/tBSxQdY/image.png",
     hint: "digital document management"
   },
   {
@@ -280,5 +280,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
