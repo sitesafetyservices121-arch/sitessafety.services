@@ -5,6 +5,7 @@ import { BookingForm } from "@/components/booking-form";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Shield, Clock, Phone, UserCheck, CalendarDays } from "lucide-react";
 import type { Metadata } from 'next';
+import Image from "next/image";
 
 // export const metadata: Metadata = { // Metadata must be defined in a server component
 //   title: 'Book a Certified Safety Officer',
@@ -38,12 +39,24 @@ export default function RentASafetyOfficerPage() {
   return (
     <div className="bg-background text-foreground">
       {/* Header Section */}
-      <section className="py-20 md:py-32 bg-card border-b">
-        <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-foreground">
+      <section className="relative py-20 md:py-32 border-b text-white">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://i.ibb.co/5pHLV4D/image-27.jpg"
+            alt="Safety officer on site"
+            fill
+            sizes="100vw"
+            style={{ objectFit: 'cover' }}
+            data-ai-hint="male professional portrait"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+            <h1 className="text-4xl md:text-6xl font-extrabold">
               Book Your On-Demand Safety Officer
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="mt-6 text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
               Get an instant quote and book a certified safety professional for your specific project needs. Fast, transparent, and compliant.
             </p>
         </div>
