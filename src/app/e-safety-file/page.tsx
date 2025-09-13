@@ -75,7 +75,7 @@ export default function ESafetyFilePage() {
                     </div>
                 </div>
                 <div className="relative h-80 lg:h-[400px] w-full">
-                    <Image src="https://i.ibb.co/67SpdDsd/image-20.jpg" fill style={{objectFit: 'contain'}} alt="e-safety file on a laptop" data-ai-hint="saas dashboard laptop" quality={100} priority />
+                    <Image src="https://i.ibb.co/TxGnCPhC/image-20.jpg" fill style={{objectFit: 'contain'}} alt="e-safety file on a laptop" data-ai-hint="saas dashboard laptop" quality={100} priority />
                 </div>
             </div>
         </div>
@@ -168,5 +168,3 @@ export default function ESafetyFilePage() {
     </div>
   );
 }
-
-    

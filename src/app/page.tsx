@@ -164,7 +164,7 @@ export default function Home() {
               <Card key={project.title} className="bg-transparent flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border">
                 <CardContent className="p-0">
                   <div className="relative h-56 w-full">
-                    <Image src={project.image} alt={project.title} fill style={{objectFit:"cover"}} data-ai-hint={project.hint} className="transition-transform duration-500 group-hover:scale-105" />
+                    <Image src={project.image} alt={project.title} fill style={{objectFit:"cover"}} data-ai-hint={project.hint} quality={100} className="transition-transform duration-500 group-hover:scale-105" />
                   </div>
                 </CardContent>
                 <div className="p-6 flex flex-col flex-grow">
@@ -278,5 +278,3 @@ export default function Home() {
     </div>
   );
 }
-
-    

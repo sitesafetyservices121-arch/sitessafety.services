@@ -19,7 +19,7 @@ export function TestimonialCard({ name, title, company, testimonial, rating, ima
       <CardContent className="p-0">
         <div className="flex items-center mb-4">
           <div className="relative h-16 w-16 rounded-full overflow-hidden mr-4">
-            <Image src={image} alt={name} fill style={{objectFit: "cover"}} data-ai-hint={hint} quality={100} />
+            <Image src={image} alt={name} fill style={{objectFit: "cover"}} data-ai-hint={hint} />
           </div>
           <div>
             <p className="font-bold text-foreground">{name}</p>
@@ -36,5 +36,3 @@ export function TestimonialCard({ name, title, company, testimonial, rating, ima
     </Card>
   );
 }
-
-    
