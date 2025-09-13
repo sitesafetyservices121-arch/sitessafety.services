@@ -24,7 +24,7 @@ import { submitBooking } from "@/lib/actions";
 import { useState, useTransition, useEffect } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { addDays, differenceInCalendarDays } from "date-fns";
+import { addDays, differenceInCalendarDays, isBefore, startOfToday } from "date-fns";
 import type { DateRange } from "react-day-picker";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { Label } from "@/components/ui/label";
@@ -97,9 +97,9 @@ export function BookingForm() {
   const form = useForm<BookingFormValues>({
     resolver: zodResolver(bookingFormSchema),
     defaultValues: {
-      name: user?.displayName ?? "",
+      name: "",
       company: "",
-      email: user?.email ?? "",
+      email: "",
       phone: "",
       siteAddress: "",
       isEmergency: false,
@@ -112,8 +112,11 @@ export function BookingForm() {
 
   useEffect(() => {
     if (user) {
-        form.setValue('name', user.displayName || '');
-        form.setValue('email', user.email || '');
+        form.reset({
+          ...form.getValues(),
+          name: user.displayName || "",
+          email: user.email || "",
+        });
     }
   }, [user, form]);
 
@@ -134,31 +137,56 @@ export function BookingForm() {
     setTotal(newTotal);
   }, [watchService, watchDates, watchIsEmergency]);
 
-  useEffect(() => {
-    if (watchService) {
-      const option = serviceOptions[watchService];
-      const currentDates = form.getValues('dates');
-      if (option.minDays && currentDates?.from) {
-        let minDate = addDays(new Date(), 2);
-        let fromDate = currentDates.from;
 
-        if (watchIsEmergency) {
-          minDate = new Date();
-        } else {
-          if (fromDate < minDate) {
-            fromDate = minDate;
-            form.setValue('dates.from', fromDate);
-          }
-        }
-        
-        const newToDate = addDays(fromDate, option.minDays - 1);
-        if (!currentDates.to || currentDates.to < newToDate) {
-          form.setValue('dates.to', newToDate);
-        }
-      }
+  const handleServiceChange = (service: ServiceOptionKey) => {
+    form.setValue('service', service);
+    const option = serviceOptions[service];
+    const isEmergency = form.getValues('isEmergency');
+    
+    let fromDate = form.getValues('dates.from');
+    const today = startOfToday();
+    const minStandardDate = addDays(today, 3);
+    
+    if (!isEmergency && (!fromDate || isBefore(fromDate, minStandardDate))) {
+      fromDate = minStandardDate;
+    } else if (isEmergency && (!fromDate || isBefore(fromDate, today))) {
+      fromDate = today;
     }
-  }, [watchService, form, watchDates?.from, watchIsEmergency]);
 
+    let toDate = form.getValues('dates.to');
+    if (option.minDays) {
+      const minToDate = addDays(fromDate, option.minDays - 1);
+      if (!toDate || isBefore(toDate, minToDate)) {
+        toDate = minToDate;
+      }
+    } else if (!toDate) {
+      toDate = fromDate;
+    }
+
+    form.setValue('dates', { from: fromDate, to: toDate }, { shouldValidate: true });
+  }
+
+  const handleEmergencyToggle = (isEmergency: boolean) => {
+    form.setValue('isEmergency', isEmergency);
+    const service = form.getValues('service');
+    if (!service) return;
+
+    let { from, to } = form.getValues('dates') || {};
+    const today = startOfToday();
+    const minStandardDate = addDays(today, 3);
+    
+    if (!isEmergency && (!from || isBefore(from, minStandardDate))) {
+      from = minStandardDate;
+    } else if (isEmergency && from && isBefore(from, today)) {
+      from = today;
+    }
+    
+    if (from && to && isBefore(to, from)) {
+        to = from;
+    }
+
+    form.setValue('dates', { from: from!, to: to! }, { shouldValidate: true });
+  }
 
   function onSubmit(data: BookingFormValues) {
     startTransition(async () => {
@@ -166,7 +194,6 @@ export function BookingForm() {
         const result = await submitBooking(submissionData);
         if (result.success) {
             setShowThankYou(true);
-            form.reset();
         } else {
             toast({
                 title: "Error",
@@ -215,7 +242,7 @@ export function BookingForm() {
               <FormLabel className="text-lg font-bold">1. Select a Service</FormLabel>
               <FormControl>
                 <RadioGroup
-                  onValueChange={field.onChange}
+                  onValueChange={(value) => handleServiceChange(value as ServiceOptionKey)}
                   defaultValue={field.value}
                   className="grid grid-cols-1 md:grid-cols-2 gap-4"
                 >
@@ -287,14 +314,17 @@ export function BookingForm() {
                     onSelect={field.onChange}
                     numberOfMonths={2}
                     disabled={(date) => {
+                      const today = new Date();
+                      today.setHours(0, 0, 0, 0); // Start of today
                       if (watchIsEmergency) {
-                        return date < new Date(new Date().setDate(new Date().getDate() - 1));
+                        return date < today;
                       }
-                      return date < addDays(new Date(), 2);
+                      return date < addDays(today, 3);
                     }}
                   />
                 </PopoverContent>
               </Popover>
+               {!watchService && <p className="text-sm text-muted-foreground">Please select a service to enable date selection.</p>}
               <FormMessage />
             </FormItem>
           )}
@@ -308,7 +338,8 @@ export function BookingForm() {
               <FormControl>
                 <Checkbox
                   checked={field.value}
-                  onCheckedChange={field.onChange}
+                  onCheckedChange={(checked) => handleEmergencyToggle(Boolean(checked))}
+                  disabled={!watchService}
                 />
               </FormControl>
               <div className="space-y-0.5 leading-none">
@@ -345,7 +376,7 @@ export function BookingForm() {
         </Alert>
 
         <div className="flex justify-end space-x-4">
-            <Button type="submit" className="w-full md:w-auto" size="lg" disabled={isPending || total === 0}>
+            <Button type="submit" className="w-full md:w-auto" size="lg" disabled={isPending || total === 0 || !form.formState.isValid}>
             {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             {isPending ? "Processing..." : "Accept & Request Booking"}
             </Button>
@@ -354,3 +385,5 @@ export function BookingForm() {
     </Form>
   );
 }
+
+    
