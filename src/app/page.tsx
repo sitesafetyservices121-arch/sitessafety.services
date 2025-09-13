@@ -20,7 +20,7 @@ const projects = [
     title: "Rent a Safety Officer",
     description: "Deploy elite, certified safety officers for on-demand risk mitigation and unparalleled on-site expertise.",
     link: "/rent-a-safety-officer",
-    image: "https://picsum.photos/seed/safety-officer/600/400",
+    image: "https://i.ibb.co/ks6sd9mP/image-4.jpg",
     hint: "construction site safety"
   },
   {
