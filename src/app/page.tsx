@@ -129,7 +129,7 @@ export default function Home() {
         <div className="container grid items-center justify-center gap-12 px-4 text-center md:px-6 lg:grid-cols-2 lg:text-left lg:gap-20">
           <div className="relative h-96 lg:h-[500px] w-full overflow-hidden rounded-xl shadow-xl">
             <Image
-              src="https://iili.io/JADeLp1.png"
+              src="https://i.ibb.co/5pHLV4D/image-27.jpg"
               alt="Portrait of the founder"
               fill
               sizes="100vw"
