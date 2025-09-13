@@ -27,9 +27,18 @@ const smsSignupFormSchema = z.object({
   surname: z.string().min(2, { message: "Surname must be at least 2 characters." }),
   company: z.string().min(2, { message: "Company name is required." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
-  password: z.string().min(8, { message: "Password must be at least 8 characters." }),
+  password: z.string().min(8, { message: "Password must be at least 8 characters." }).optional(),
   age: z.string().refine((val) => !isNaN(parseInt(val, 10)) && parseInt(val, 10) > 0, { message: "Please enter a valid age." }),
   cellNumber: z.string().min(10, { message: "Please enter a valid cell number." }),
+}).refine(data => {
+    const isGoogleUser = data.email.endsWith('@gmail.com'); // Simplified check, see component logic
+    if (!isGoogleUser) {
+        return !!data.password;
+    }
+    return true;
+}, {
+    message: "Password is required.",
+    path: ["password"],
 });
 
 type SmsSignupFormValues = z.infer<typeof smsSignupFormSchema>;
@@ -40,13 +49,15 @@ export function SmsSignupForm() {
   const { user, loading } = useAuth();
   const pathname = usePathname();
 
+  const isGoogleUser = user?.providerData.some(p => p.providerId === 'google.com');
+
   const form = useForm<SmsSignupFormValues>({
     resolver: zodResolver(smsSignupFormSchema),
     defaultValues: {
-      firstName: user?.displayName?.split(' ')[0] ?? "",
-      surname: user?.displayName?.split(' ')[1] ?? "",
+      firstName: "",
+      surname: "",
       company: "",
-      email: user?.email ?? "",
+      email: "",
       password: "",
       age: "",
       cellNumber: "",
@@ -157,19 +168,21 @@ export function SmsSignupForm() {
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input placeholder="********" {...field} type="password" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        {!isGoogleUser && (
+            <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+                <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                    <Input placeholder="********" {...field} type="password" />
+                </FormControl>
+                <FormMessage />
+                </FormItem>
+            )}
+            />
+        )}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FormField
                 control={form.control}
