@@ -15,11 +15,10 @@ declare global {
 const VantaBackground = () => {
     const [vantaEffect, setVantaEffect] = useState<any>(null);
     const vantaRef = useRef<HTMLDivElement>(null);
-    const threeScriptLoaded = useRef(false);
     const vantaScriptLoaded = useRef(false);
 
     const initVanta = () => {
-        if (vantaEffect || !threeScriptLoaded.current || !vantaScriptLoaded.current || !window.VANTA || !vantaRef.current) {
+        if (vantaEffect || !vantaScriptLoaded.current || !window.VANTA || !window.THREE || !vantaRef.current) {
             return;
         }
 
@@ -43,19 +42,17 @@ const VantaBackground = () => {
     };
 
     useEffect(() => {
-        initVanta();
+        if (vantaScriptLoaded.current) {
+            initVanta();
+        }
+
         return () => {
             if (vantaEffect) {
                 vantaEffect.destroy();
             }
         };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [threeScriptLoaded.current, vantaScriptLoaded.current]);
-
-    const handleThreeLoad = () => {
-        threeScriptLoaded.current = true;
-        initVanta();
-    };
+    }, [vantaScriptLoaded.current]);
 
     const handleVantaLoad = () => {
         vantaScriptLoaded.current = true;
@@ -65,11 +62,6 @@ const VantaBackground = () => {
     return (
         <>
             <Script
-                src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
-                strategy="lazyOnload"
-                onLoad={handleThreeLoad}
-            />
-             <Script
                 src="/vanta.net.min.js"
                 strategy="lazyOnload"
                 onLoad={handleVantaLoad}

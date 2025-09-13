@@ -9,7 +9,6 @@ import Image from "next/legacy/image";
 import { TestimonialCard } from "@/components/testimonial-card";
 import { InquiryForm } from "@/components/inquiry-form";
 import type { Metadata } from 'next';
-import VantaBackground from "@/components/vanta-background";
 
 // export const metadata: Metadata = { // Metadata must be on a server component
 //   title: 'RAK-Site Safety | AI-Powered Safety & Compliance Solutions',
@@ -23,7 +22,7 @@ const projects = [
     title: "Rent a Safety Officer",
     description: "Deploy elite, certified safety officers for on-demand risk mitigation and unparalleled on-site expertise.",
     link: "/rent-a-safety-officer",
-    image: "https://i.ibb.co/ks6sd9mP/image-4.jpg",
+    image: "https://i.ibb.co/ks6sd9m/image-4.jpg",
     hint: "construction site safety"
   },
   {
@@ -31,7 +30,7 @@ const projects = [
     title: "E-Safety File Website & Hosting",
     description: "A fully-digitized, cloud-based safety file solution, ensuring you are always audit-proof and compliant.",
     link: "/e-safety-file",
-    image: "https://i.ibb.co/Y46T4bcM/image-19.jpg",
+    image: "https://i.ibb.co/Y46T4bc/image-19.jpg",
     hint: "digital document management"
   },
   {
@@ -39,7 +38,7 @@ const projects = [
     title: "AI-Powered Safety System",
     description: "A revolutionary platform to command your entire safety operation and build a zero-incident culture.",
     link: "/safety-management-system",
-    image: "https://i.ibb.co/TM3NSPDW/image-10.jpg",
+    image: "https://i.ibb.co/TM3NSPD/image-10.jpg",
     hint: "safety dashboard analytics"
   },
   {
@@ -47,7 +46,7 @@ const projects = [
     title: "Download Print-Ready Safety Files",
     description: "Instantly get your compliant, print-ready safety documents delivered electronically within hours.",
     link: "/print-ready-safety-files",
-    image: "https://i.ibb.co/rR17WKMj/image-14.jpg",
+    image: "https://i.ibb.co/rR17WKM/image-14.jpg",
     hint: "digital file download"
   },
 ];
@@ -108,7 +107,6 @@ const solutions = [
 export default function Home() {
   return (
     <div className="bg-transparent text-foreground">
-      <VantaBackground />
       {/* Hero Section */}
       <section className="relative py-40 md:py-60 border-b bg-transparent">
         <div className="container px-4 md:px-6 relative z-10 text-center">

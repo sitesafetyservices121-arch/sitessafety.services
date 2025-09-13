@@ -9,6 +9,7 @@ import { Inter } from 'next/font/google';
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider } from "@/context/auth-context";
+import VantaBackground from "@/components/vanta-background";
 
 
 export const metadata: Metadata = {
@@ -57,6 +58,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <Script
+            src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
+            strategy="beforeInteractive"
+        />
+      </head>
       <body className={cn("min-h-screen bg-background font-body antialiased", inter.variable)}>
         <ThemeProvider
           attribute="class"
@@ -65,6 +72,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <AuthProvider>
+            <VantaBackground />
             <div className="relative flex min-h-dvh flex-col bg-transparent">
               <Header />
               <main className="flex-1">{children}</main>
