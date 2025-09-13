@@ -5,7 +5,7 @@ import { BookingForm } from "@/components/booking-form";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Shield, Clock, Phone, UserCheck, CalendarDays } from "lucide-react";
 import type { Metadata } from 'next';
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 // export const metadata: Metadata = { // Metadata must be defined in a server component
 //   title: 'Book a Certified Safety Officer',

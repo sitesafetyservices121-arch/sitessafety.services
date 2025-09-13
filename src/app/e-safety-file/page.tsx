@@ -5,7 +5,7 @@ import { ConsultationForm } from "@/components/consultation-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Bot, Users, Server, CheckCircle, ArrowRight, Eye } from "lucide-react";
 import type { Metadata } from 'next';
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
@@ -81,7 +81,7 @@ export default function ESafetyFilePage() {
                     </div>
                 </div>
                 <div className="relative h-80 lg:h-[400px] w-full">
-                    <Image src="https://i.ibb.co/TxGnCPh/image-20.jpg" fill sizes="100vw" style={{objectFit: 'contain'}} alt="e-safety file on a laptop" data-ai-hint="saas dashboard laptop" />
+                    <Image src="https://i.ibb.co/67SpdDsd/image-20.jpg" fill sizes="100vw" style={{objectFit: 'contain'}} alt="e-safety file on a laptop" data-ai-hint="saas dashboard laptop" />
                 </div>
             </div>
         </div>

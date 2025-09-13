@@ -3,7 +3,7 @@ import { ElectronicFileForm } from "@/components/electronic-file-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Zap, ShieldCheck, FileText, Cloud, Download, Upload, Construction, KeyRound, FolderDown, ArrowRight, Eye } from "lucide-react";
 import type { Metadata } from 'next';
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CheckIconCard } from "@/components/ui/check-icon-card";

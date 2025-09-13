@@ -4,7 +4,7 @@ import { ArrowRight, Bot, Library, Send, Warehouse, ClipboardCheck, AlertTriangl
 import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 export const metadata: Metadata = {
   title: 'AI-Powered Safety Management System',
@@ -147,6 +147,4 @@ export default function SafetyManagementSystemPage() {
       </section>
     </div>
   );
-
-    
-
+}

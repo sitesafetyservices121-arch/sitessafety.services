@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Shield, Target, Handshake, CheckCircle, HardHat, Bot, FileDigit, Users, Cpu, ArrowRight, Zap } from "lucide-react";
 import type { Metadata } from 'next';
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { CheckIconCard } from "@/components/ui/check-icon-card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";

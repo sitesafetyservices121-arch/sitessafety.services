@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, FileText, HardHat, ShieldCheck, Mail, Phone, Linkedin, Facebook, Twitter, Building, Shield, Zap, Puzzle, BrainCircuit } from "lucide-react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { TestimonialCard } from "@/components/testimonial-card";
 import { InquiryForm } from "@/components/inquiry-form";
 import type { Metadata } from 'next';
@@ -131,9 +131,9 @@ export default function Home() {
             <Image
               src="https://i.ibb.co/5pHLV4D/image-27.jpg"
               alt="Portrait of the founder"
-              fill
-              sizes="100vw"
-              style={{ objectFit: 'cover', objectPosition: 'center' }}
+              layout="fill"
+              objectFit="cover"
+              objectPosition="center"
               data-ai-hint="male professional portrait"
               quality={100}
             />
