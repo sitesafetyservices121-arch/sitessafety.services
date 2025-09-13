@@ -28,7 +28,7 @@ const projects = [
     title: "E-Safety File Website & Hosting",
     description: "A fully-digitized, cloud-based safety file solution, ensuring you are always audit-proof and compliant.",
     link: "/e-safety-file",
-    image: "https://i.ibb.co/tBSxQdY/image.png",
+    image: "https://i.ibb.co/Y46T4bcM/image-19.jpg",
     hint: "digital document management"
   },
   {
