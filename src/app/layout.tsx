@@ -9,7 +9,7 @@ import { Inter } from 'next/font/google';
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider } from "@/context/auth-context";
-import VantaBackground from "@/components/vanta-background";
+
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.sitesafety.services'),
@@ -64,7 +64,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <VantaBackground />
           <AuthProvider>
             <div className="relative flex min-h-dvh flex-col bg-transparent">
               <Header />

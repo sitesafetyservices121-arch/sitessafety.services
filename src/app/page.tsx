@@ -1,4 +1,6 @@
 
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,11 +9,12 @@ import Image from "next/legacy/image";
 import { TestimonialCard } from "@/components/testimonial-card";
 import { InquiryForm } from "@/components/inquiry-form";
 import type { Metadata } from 'next';
+import VantaBackground from "@/components/vanta-background";
 
-export const metadata: Metadata = {
-  title: 'RAK-Site Safety | AI-Powered Safety & Compliance Solutions',
-  description: 'Leading provider of on-site safety officers, AI-driven safety management systems, and audit-ready e-safety files in South Africa. Achieve total compliance.',
-};
+// export const metadata: Metadata = { // Metadata must be on a server component
+//   title: 'RAK-Site Safety | AI-Powered Safety & Compliance Solutions',
+//   description: 'Leading provider of on-site safety officers, AI-driven safety management systems, and audit-ready e-safety files in South Africa. Achieve total compliance.',
+// };
 
 
 const projects = [
@@ -43,7 +46,7 @@ const projects = [
     icon: <Zap className="h-8 w-8 text-primary" />,
     title: "Download Print-Ready Safety Files",
     description: "Instantly get your compliant, print-ready safety documents delivered electronically within hours.",
-    link: "/electronically-delivered-safety-files",
+    link: "/print-ready-safety-files",
     image: "https://i.ibb.co/rR17WKMj/image-14.jpg",
     hint: "digital file download"
   },
@@ -105,6 +108,7 @@ const solutions = [
 export default function Home() {
   return (
     <div className="bg-transparent text-foreground">
+      <VantaBackground />
       {/* Hero Section */}
       <section className="relative py-40 md:py-60 border-b bg-transparent">
         <div className="container px-4 md:px-6 relative z-10 text-center">
