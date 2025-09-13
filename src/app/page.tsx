@@ -36,7 +36,7 @@ const projects = [
     title: "AI-Powered Safety System",
     description: "A revolutionary platform to command your entire safety operation and build a zero-incident culture.",
     link: "/safety-management-system",
-    image: "https://picsum.photos/seed/safety-system/600/400",
+    image: "https://i.ibb.co/TM3NSPDW/image-10.jpg",
     hint: "safety dashboard analytics"
   },
   {
