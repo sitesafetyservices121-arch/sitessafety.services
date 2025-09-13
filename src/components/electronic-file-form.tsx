@@ -17,10 +17,13 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { submitElectronicFileOrder } from "@/lib/actions";
 import { useState, useTransition, useEffect } from "react";
-import { Info, Loader2, Upload, CheckCircle } from "lucide-react";
+import { Info, Loader2, Upload, CheckCircle, User } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
+import { useAuth } from "@/context/auth-context";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const serviceTiers = {
     "Standard": { price: 1850.00, time: "Within 24 Hours" },
@@ -50,6 +53,8 @@ export function ElectronicFileForm() {
   const [isPending, startTransition] = useTransition();
   const [showThankYou, setShowThankYou] = useState(false);
   const [total, setTotal] = useState(0);
+  const { user, loading } = useAuth();
+  const pathname = usePathname();
 
   const form = useForm<ElectronicFileFormValues>({
     resolver: zodResolver(electronicFileFormSchema),
@@ -66,6 +71,15 @@ export function ElectronicFileForm() {
   const watchCompanyLogo = form.watch("companyLogo");
   const watchFileIndex = form.watch("fileIndex");
   const watchServiceTier = form.watch("serviceTier");
+  
+  useEffect(() => {
+    if (user) {
+        const nameParts = user.displayName?.split(' ') || [];
+        form.setValue('name', nameParts[0] || '');
+        form.setValue('surname', nameParts.slice(1).join(' ') || '');
+        form.setValue('email', user.email || '');
+    }
+  }, [user, form]);
 
   useEffect(() => {
     if (watchServiceTier) {
@@ -96,6 +110,23 @@ export function ElectronicFileForm() {
             });
         }
     });
+  }
+  
+  if (loading) {
+    return <div className="text-center p-8">Loading...</div>
+  }
+
+  if (!user) {
+    return (
+        <div className="text-center p-8 bg-secondary rounded-lg border">
+            <User className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+            <h3 className="text-2xl font-bold text-foreground mb-2">Please Log In</h3>
+            <p className="text-muted-foreground mb-6">You need to be logged in to place an order.</p>
+            <Button asChild>
+                <Link href={`/login?redirect=${pathname}#order-form`}>Log In or Sign Up</Link>
+            </Button>
+        </div>
+    )
   }
 
   if (showThankYou) {
@@ -151,7 +182,7 @@ export function ElectronicFileForm() {
                 <FormField control={form.control} name="name" render={({ field }) => ( <FormItem> <FormLabel>First Name</FormLabel> <FormControl><Input placeholder="John" {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
                 <FormField control={form.control} name="surname" render={({ field }) => ( <FormItem> <FormLabel>Surname</FormLabel> <FormControl><Input placeholder="Doe" {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
                 <FormField control={form.control} name="company" render={({ field }) => ( <FormItem> <FormLabel>Company Name</FormLabel> <FormControl><Input placeholder="Your Company Inc." {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
-                <FormField control={form.control} name="email" render={({ field }) => ( <FormItem> <FormLabel>Email Address</FormLabel> <FormControl><Input placeholder="you@company.com" {...field} type="email" /></FormControl> <FormMessage /> </FormItem> )}/>
+                <FormField control={form.control} name="email" render={({ field }) => ( <FormItem> <FormLabel>Email Address</FormLabel> <FormControl><Input placeholder="you@company.com" {...field} type="email" readOnly /></FormControl> <FormMessage /> </FormItem> )}/>
                 <FormField control={form.control} name="phone" render={({ field }) => ( <FormItem> <FormLabel>Contact Number</FormLabel> <FormControl><Input placeholder="082 123 4567" {...field} type="tel"/></FormControl> <FormMessage /> </FormItem> )}/>
             </div>
         </div>
