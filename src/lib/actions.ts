@@ -2,41 +2,115 @@
 "use server";
 import { checkCompliance } from "@/ai/flows/compliance-checker-flow";
 import type { ComplianceRequest, ComplianceResponse } from "@/ai/schemas";
-import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 import { z } from 'zod';
 import { format } from 'date-fns';
+import { generateSignature } from './payfast';
 
-const mailerSend = new MailerSend({
-    apiKey: process.env.MAILERSEND_API_KEY!,
-});
+const WEB3FORMS_INFO_ACCESS_KEY = process.env.WEB3FORMS_INFO_ACCESS_KEY;
+const WEB3FORMS_RUAN_ACCESS_KEY = process.env.WEB3FORMS_RUAN_ACCESS_KEY;
 
-const toEmail = process.env.DESTINATION_EMAIL;
-const fromEmail = process.env.SENDER_EMAIL;
+const PAYFAST_MERCHANT_ID = process.env.PAYFAST_MERCHANT_ID;
+const PAYFAST_MERCHANT_KEY = process.env.PAYFAST_MERCHANT_KEY;
+const PAYFAST_PASSPHRASE = process.env.PAYFAST_PASSPHRASE;
+const PAYFAST_ENV = process.env.PAYFAST_ENV || 'sandbox'; // Default to sandbox
 
-// Utility to send email and handle errors with more debug info
-async function sendEmail(subject: string, htmlContent: string) {
-    if (!toEmail || !fromEmail || !process.env.MAILERSEND_API_KEY) {
-        console.error("❌ Missing MAILERSEND_API_KEY, DESTINATION_EMAIL, or SENDER_EMAIL environment variables.");
-        throw new Error("Server is not configured to send emails. Please check your .env file and MailerSend account setup.");
+const PAYFAST_ONSITE_PROCESS_URL = PAYFAST_ENV === 'live'
+    ? 'https://www.payfast.co.za/onsite/process'
+    : 'https://sandbox.payfast.co.za/onsite/process';
+
+async function sendWeb3Form(accessKey: string, formData: FormData) {
+    if (!accessKey) {
+        console.error("❌ Missing Web3Forms access key.");
+        throw new Error("Server is not configured to send emails via Web3Forms. Please check your .env file.");
     }
 
-    const sentFrom = new Sender(fromEmail, "RAK-Site Safety Website");
-    const recipients = [new Recipient(toEmail, "Admin")];
-
-    const emailParams = new EmailParams()
-      .setFrom(sentFrom)
-      .setTo(recipients)
-      .setSubject(subject)
-      .setHtml(htmlContent);
+    formData.append("access_key", accessKey);
 
     try {
-        const data = await mailerSend.email.send(emailParams);
-        console.log("✅ Email sent successfully via MailerSend:", JSON.stringify(data, null, 2));
-        return data;
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData
+        });
+        const data = await response.json();
+
+        if (data.success) {
+            console.log("✅ Web3Forms submission successful:", JSON.stringify(data, null, 2));
+            return { success: true, message: data.message || "Form submitted successfully!" };
+        } else {
+            console.error("❌ Web3Forms submission error:", JSON.stringify(data, null, 2));
+            throw new Error(data.message || "An unknown error occurred with Web3Forms.");
+        }
     } catch (error: any) {
-        console.error("❌ MailerSend API Error:", JSON.stringify(error, null, 2));
-        const errorMessage = error.body?.message || error.message || "An unknown error occurred with the email service.";
-        throw new Error(errorMessage);
+        console.error("❌ Web3Forms API Error:", error);
+        throw new Error(error.message || "An unknown error occurred with the form submission service.");
+    }
+}
+
+// ------------------- Payfast Actions -------------------
+
+interface PayfastPaymentDetails {
+    amount: number;
+    item_name: string;
+    email_address: string;
+    return_url: string;
+    cancel_url: string;
+    notify_url: string;
+    // Add any other required fields for Payfast here
+}
+
+export async function createPayfastPaymentIdentifier(details: PayfastPaymentDetails): Promise<{ success: boolean; uuid?: string; message?: string }> {
+    if (!PAYFAST_MERCHANT_ID || !PAYFAST_MERCHANT_KEY || !PAYFAST_PASSPHRASE) {
+        console.error("❌ Missing Payfast environment variables.");
+        return { success: false, message: "Payfast is not configured. Please check your .env file." };
+    }
+
+    try {
+        const data: Record<string, string | number> = {
+            merchant_id: PAYFAST_MERCHANT_ID,
+            merchant_key: PAYFAST_MERCHANT_KEY,
+            amount: details.amount.toFixed(2), // Amount must be a string with 2 decimal places
+            item_name: details.item_name,
+            return_url: details.return_url,
+            cancel_url: details.cancel_url,
+            notify_url: details.notify_url,
+            email_address: details.email_address,
+            // Add other fields as needed, e.g., name_first, name_last, cell_number
+        };
+
+        // Sort the data alphabetically by key
+        const sortedData: Record<string, string | number> = {};
+        Object.keys(data).sort().forEach(key => {
+            sortedData[key] = data[key];
+        });
+
+        const signature = generateSignature(sortedData, PAYFAST_PASSPHRASE);
+        data.signature = signature; // Add signature to the data payload
+
+        const formData = new URLSearchParams();
+        for (const key in data) {
+            formData.append(key, String(data[key]));
+        }
+
+        const response = await fetch(PAYFAST_ONSITE_PROCESS_URL, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: formData.toString(),
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.uuid) {
+            console.log("✅ Payfast UUID generated:", result.uuid);
+            return { success: true, uuid: result.uuid };
+        } else {
+            console.error("❌ Payfast UUID generation error:", JSON.stringify(result, null, 2));
+            return { success: false, message: result.message || "Failed to generate Payfast payment identifier." };
+        }
+    } catch (error: any) {
+        console.error("❌ createPayfastPaymentIdentifier error:", error);
+        return { success: false, message: error.message || "An unexpected error occurred during payment identifier generation." };
     }
 }
 
@@ -62,22 +136,21 @@ export async function submitBooking(data: unknown) {
         const validatedData = bookingSchema.parse(data);
         const { name, company, email, phone, siteAddress, service, dates, total, isEmergency } = validatedData;
         
-        const htmlContent = `
-            <h1>New Booking Request</h1>
-            <p><strong>Booking Type:</strong> ${isEmergency ? 'EMERGENCY' : 'Standard'}</p>
-            <p><strong>Service:</strong> ${service}</p>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Company:</strong> ${company}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Phone:</strong> ${phone}</p>
-            <p><strong>Site Address:</strong> ${siteAddress}</p>
-            <p><strong>Dates:</strong> ${format(dates.from, 'PPP')} to ${format(dates.to, 'PPP')}</p>
-            <p><strong>Estimated Total:</strong> R${total.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-        `;
+        const formData = new FormData();
+        formData.append("subject", "New Booking Request");
+        formData.append("Booking Type", isEmergency ? 'EMERGENCY' : 'Standard');
+        formData.append("Service", service);
+        formData.append("Name", name);
+        formData.append("Company", company);
+        formData.append("Email", email);
+        formData.append("Phone", phone);
+        formData.append("Site Address", siteAddress);
+        formData.append("Dates", `${format(dates.from, 'PPP')} to ${format(dates.to, 'PPP')}`);
+        formData.append("Estimated Total", `R${total.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`);
 
-        await sendEmail("New Booking Request", htmlContent);
+        const result = await sendWeb3Form(WEB3FORMS_INFO_ACCESS_KEY!, formData);
         
-        return { success: true, message: "Booking request received! We'll be in touch soon." };
+        return { success: true, message: result.message };
     } catch (error) {
         console.error("❌ Booking submission error:", error);
         if (error instanceof Error) {
@@ -100,19 +173,17 @@ export async function submitInquiry(data: unknown) {
         const validatedData = inquirySchema.parse(data);
         const { name, company, email, phone, message } = validatedData;
 
-        const htmlContent = `
-            <h1>New General Inquiry</h1>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Company:</strong> ${company}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Phone:</strong> ${phone}</p>
-            <p><strong>Message:</strong></p>
-            <p>${message || 'No message provided.'}</p>
-        `;
+        const formData = new FormData();
+        formData.append("subject", "New General Inquiry");
+        formData.append("Name", name);
+        formData.append("Company", company);
+        formData.append("Email", email);
+        formData.append("Phone", phone);
+        formData.append("Message", message || 'No message provided.');
 
-        await sendEmail("New General Inquiry", htmlContent);
+        const result = await sendWeb3Form(WEB3FORMS_INFO_ACCESS_KEY!, formData);
 
-        return { success: true, message: "Inquiry received! We'll get back to you shortly." };
+        return { success: true, message: result.message };
     } catch (error) {
         console.error("❌ Inquiry submission error:", error);
         if (error instanceof Error) {
@@ -147,18 +218,17 @@ export async function submitSmsSignup(data: unknown) {
         const validatedData = smsSignupSchema.parse(data);
         const { firstName, surname, company, email, age, cellNumber } = validatedData;
 
-        const htmlContent = `
-            <h1>New Safety Management System Signup</h1>
-            <p><strong>Name:</strong> ${firstName} ${surname}</p>
-            <p><strong>Company:</strong> ${company}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Cell Number:</strong> ${cellNumber}</p>
-            <p><strong>Age:</strong> ${age}</p>
-        `;
+        const formData = new FormData();
+        formData.append("subject", "New Safety Management System Signup");
+        formData.append("Name", `${firstName} ${surname}`);
+        formData.append("Company", company);
+        formData.append("Email", email);
+        formData.append("Cell Number", cellNumber);
+        formData.append("Age", age);
 
-        await sendEmail("New SMS Signup", htmlContent);
+        const result = await sendWeb3Form(WEB3FORMS_RUAN_ACCESS_KEY!, formData);
         
-        return { success: true, message: "Signup successful! You'll receive a confirmation email shortly." };
+        return { success: true, message: result.message };
     } catch (error) {
         console.error("❌ SMS Signup submission error:", error);
         if (error instanceof Error) {
@@ -186,26 +256,22 @@ export async function submitConsultation(data: unknown) {
         const validatedData = consultationSchema.parse(data);
         const { name, email, phone, companyName, domainName, desiredLogins, plan, consultationDate, consultationTime, contactMethod } = validatedData;
 
-        const htmlContent = `
-            <h1>New E-Safety File Consultation Request</h1>
-            <h2>Plan Details</h2>
-            <p><strong>Selected Plan:</strong> ${plan}</p>
-            <p><strong>Company Name:</strong> ${companyName}</p>
-            <p><strong>Desired Domain:</strong> ${domainName || 'Not specified'}</p>
-            <p><strong>Number of Logins:</strong> ${desiredLogins}</p>
-            <h2>Contact Details</h2>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Phone:</strong> ${phone}</p>
-            <h2>Consultation Time</h2>
-            <p><strong>Date:</strong> ${format(consultationDate, 'PPP')}</p>
-            <p><strong>Time:</strong> ${consultationTime}</p>
-            <p><strong>Method:</strong> ${contactMethod}</p>
-        `;
+        const formData = new FormData();
+        formData.append("subject", "New E-Safety File Consultation Request");
+        formData.append("Selected Plan", plan);
+        formData.append("Company Name", companyName);
+        formData.append("Desired Domain", domainName || 'Not specified');
+        formData.append("Number of Logins", desiredLogins.toString());
+        formData.append("Name", name);
+        formData.append("Email", email);
+        formData.append("Phone", phone);
+        formData.append("Consultation Date", format(consultationDate, 'PPP'));
+        formData.append("Consultation Time", consultationTime);
+        formData.append("Contact Method", contactMethod);
 
-        await sendEmail("New E-Safety File Consultation Request", htmlContent);
+        const result = await sendWeb3Form(WEB3FORMS_INFO_ACCESS_KEY!, formData);
         
-        return { success: true, message: "Consultation request received! We will contact you at your selected time." };
+        return { success: true, message: result.message };
     } catch (error) {
         console.error("❌ Consultation submission error:", error);
         if (error instanceof Error) {
@@ -232,23 +298,20 @@ export async function submitElectronicFileOrder(data: unknown) {
         const validatedData = electronicFileOrderSchema.parse(data);
         const { name, surname, company, email, phone, companyLogo, fileIndex, serviceTier, total } = validatedData;
         
-        const htmlContent = `
-            <h1>New Electronically Delivered Safety File Order</h1>
-            <h2>Order Details</h2>
-            <p><strong>Service Tier:</strong> ${serviceTier}</p>
-            <p><strong>Total Paid:</strong> R${total.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-            <p><strong>Uploaded Company Logo:</strong> ${companyLogo}</p>
-            <p><strong>Uploaded File Index:</strong> ${fileIndex}</p>
-            <h2>Customer Details</h2>
-            <p><strong>Name:</strong> ${name} ${surname}</p>
-            <p><strong>Company:</strong> ${company}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Phone:</strong> ${phone}</p>
-        `;
+        const formData = new FormData();
+        formData.append("subject", "New Electronically Delivered Safety File Order");
+        formData.append("Service Tier", serviceTier);
+        formData.append("Total Paid", `R${total.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`);
+        formData.append("Uploaded Company Logo", companyLogo);
+        formData.append("Uploaded File Index", fileIndex);
+        formData.append("Name", `${name} ${surname}`);
+        formData.append("Company", company);
+        formData.append("Email", email);
+        formData.append("Phone", phone);
 
-        await sendEmail("New Electronic File Order", htmlContent);
+        const result = await sendWeb3Form(WEB3FORMS_INFO_ACCESS_KEY!, formData);
 
-        return { success: true, message: "Order successful! Your files have been received." };
+        return { success: true, message: result.message };
     } catch (error) {        
         console.error("❌ Electronic File Order submission error:", error);
         if (error instanceof Error) {

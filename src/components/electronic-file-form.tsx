@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { submitElectronicFileOrder } from "@/lib/actions";
+import { submitElectronicFileOrder, createPayfastPaymentIdentifier } from "@/lib/actions";
 import { useState, useTransition, useEffect } from "react";
 import { Info, Loader2, Upload, CheckCircle, User } from "lucide-react";
 import { Label } from "@/components/ui/label";
@@ -24,6 +24,12 @@ import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { useAuth } from "@/context/auth-context";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+declare global {
+    interface Window {
+        payfast: any;
+    }
+}
 
 const serviceTiers = {
     "Standard": { price: 1850.00, time: "Within 24 Hours" },
@@ -87,25 +93,85 @@ export function ElectronicFileForm() {
     }
   }, [watchServiceTier]);
 
+  // Dynamically load Payfast engine.js
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://www.payfast.co.za/onsite/engine.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
 
   function onSubmit(data: ElectronicFileFormValues) {
     startTransition(async () => {
-        // In a real app, you would handle file uploads to a storage service.
-        // For this simulation, we'll just use the file names.
         const submissionData = {
             ...data,
             total: serviceTiers[data.serviceTier].price,
             companyLogo: data.companyLogo[0]?.name,
             fileIndex: data.fileIndex[0]?.name,
         };
-        const result = await submitElectronicFileOrder(submissionData);
-        if (result.success) {
-            setShowThankYou(true);
-            form.reset();
-        } else {
+
+        // First, submit the order details via Web3Forms (email notification)
+        const orderResult = await submitElectronicFileOrder(submissionData);
+
+        if (!orderResult.success) {
             toast({
                 title: "Error",
-                description: result.message,
+                description: orderResult.message,
+                variant: "destructive",
+            });
+            return;
+        }
+
+        // Then, initiate Payfast payment
+        try {
+            const payfastDetails = {
+                amount: total,
+                item_name: `Electronic Safety File - ${data.serviceTier}`,
+                email_address: data.email,
+                return_url: `${window.location.origin}/payment-success`,
+                cancel_url: `${window.location.origin}/payment-cancelled`,
+                notify_url: `${window.location.origin}/api/payfast-itn`,
+            };
+
+            const payfastResponse = await createPayfastPaymentIdentifier(payfastDetails);
+
+            if (payfastResponse.success && payfastResponse.uuid) {
+                if (window.payfast && window.payfast.onsite) {
+                    window.payfast.onsite.process({
+                        uuid: payfastResponse.uuid,
+                        onComplete: (uuid: string) => {
+                            // Payment completed, redirect to success page
+                            window.location.href = payfastDetails.return_url;
+                        },
+                        onCancel: () => {
+                            // Payment cancelled, redirect to cancel page
+                            window.location.href = payfastDetails.cancel_url;
+                        },
+                    });
+                } else {
+                    toast({
+                        title: "Error",
+                        description: "Payfast script not loaded. Please try again.",
+                        variant: "destructive",
+                    });
+                }
+            } else {
+                toast({
+                    title: "Payment Error",
+                    description: payfastResponse.message || "Failed to initiate payment with Payfast.",
+                    variant: "destructive",
+                });
+            }
+        } catch (payfastError: any) {
+            console.error("Payfast initiation error:", payfastError);
+            toast({
+                title: "Payment Error",
+                description: payfastError.message || "An unexpected error occurred during payment initiation.",
                 variant: "destructive",
             });
         }

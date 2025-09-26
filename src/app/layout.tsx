@@ -9,6 +9,7 @@ import { Inter } from 'next/font/google';
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider } from "@/context/auth-context";
+import { LoadingProvider } from "@/components/loading-provider";
 
 
 export const metadata: Metadata = {
@@ -76,12 +77,14 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <AuthProvider>
-            <div className="relative flex min-h-dvh flex-col bg-transparent">
-              <Header />
-              <main className="flex-1">{children}</main>
-              <Footer />
-            </div>
-            <Toaster />
+            <LoadingProvider>
+              <div className="relative flex min-h-dvh flex-col bg-transparent">
+                <Header />
+                <main className="flex-1">{children}</main>
+                <Footer />
+              </div>
+              <Toaster />
+            </LoadingProvider>
           </AuthProvider>
           <Script id="tawk-to-script" strategy="lazyOnload">
             {`

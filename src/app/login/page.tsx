@@ -1,7 +1,8 @@
 
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import { signInWithEmail } from "@/lib/firebase/auth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -55,7 +56,7 @@ function GoogleSignInButton() {
 }
 
 export default function LoginPage() {
-  const [state, formAction] = useFormState(signInWithEmail, initialState);
+  const [state, formAction] = useActionState(signInWithEmail, initialState);
   const router = useRouter();
   const { user } = useAuth();
 
