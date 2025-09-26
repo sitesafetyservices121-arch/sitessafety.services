@@ -44,7 +44,8 @@ export async function signOut() {
   try {
     await firebaseSignOut(auth);
   } catch (error: any) {
-    return { message: error.message };
+    console.error("Error signing out:", error);
+    throw error; // Re-throw the error to be handled by the form or a higher-level error boundary
   }
   redirect('/');
 }

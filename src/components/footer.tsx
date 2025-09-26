@@ -1,10 +1,35 @@
+"use client";
 
 import Link from "next/link";
 import { Twitter, Facebook, Linkedin } from "lucide-react";
 import { Logo } from "./logo";
 import { ProudlySaLogo } from "./proudly-sa-logo";
+import { useEffect, useState } from "react";
+
+interface SocialMediaLinks {
+  twitter: string;
+  facebook: string;
+  linkedin: string;
+}
 
 export function Footer() {
+  const [socialLinks, setSocialLinks] = useState<SocialMediaLinks | null>(null);
+
+  useEffect(() => {
+    const fetchSocialLinks = async () => {
+      try {
+        const response = await fetch("/api/admin/social-media");
+        if (response.ok) {
+          const data = await response.json();
+          setSocialLinks(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch social media links:", error);
+      }
+    };
+    fetchSocialLinks();
+  }, []);
+
   return (
     <footer className="bg-secondary text-secondary-foreground border-t-4 border-primary">
       <div className="container mx-auto max-w-7xl px-8 py-16">
@@ -18,15 +43,21 @@ export function Footer() {
                   Modern Safety Solutions for a Complex World.
                 </p>
                 <div className="flex gap-4 mt-6">
-                  <a href="#" aria-label="Twitter" target="_blank" rel="noopener noreferrer" className="text-secondary-foreground/70 hover:text-primary transition-colors">
-                    <Twitter className="h-5 w-5" />
-                  </a>
-                  <a href="https://www.facebook.com/share/p/1W3cmvZK6o/" aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="text-secondary-foreground/70 hover:text-primary transition-colors">
-                    <Facebook className="h-5 w-5" />
-                  </a>
-                  <a href="https://www.linkedin.com/in/ruan-koen-93b774386" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="text-secondary-foreground/70 hover:text-primary transition-colors">
-                    <Linkedin className="h-5 w-5" />
-                  </a>
+                  {socialLinks?.twitter && socialLinks.twitter !== "#" && (
+                    <a href={socialLinks.twitter} aria-label="Twitter" target="_blank" rel="noopener noreferrer" className="text-secondary-foreground/70 hover:text-primary transition-colors">
+                      <Twitter className="h-5 w-5" />
+                    </a>
+                  )}
+                  {socialLinks?.facebook && socialLinks.facebook !== "#" && (
+                    <a href={socialLinks.facebook} aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="text-secondary-foreground/70 hover:text-primary transition-colors">
+                      <Facebook className="h-5 w-5" />
+                    </a>
+                  )}
+                  {socialLinks?.linkedin && socialLinks.linkedin !== "#" && (
+                    <a href={socialLinks.linkedin} aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="text-secondary-foreground/70 hover:text-primary transition-colors">
+                      <Linkedin className="h-5 w-5" />
+                    </a>
+                  )}
                 </div>
             </div>
           

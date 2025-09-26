@@ -6,8 +6,16 @@ import { User, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '@/lib/firebase/firebase';
 import { TopLoader } from '@/components/top-loader';
 
+interface SerializableUser {
+  uid: string;
+  email: string | null;
+  displayName: string | null;
+  photoURL: string | null;
+  emailVerified: boolean;
+}
+
 interface AuthContextType {
-  user: User | null;
+  user: SerializableUser | null;
   loading: boolean;
 }
 
@@ -23,12 +31,23 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<SerializableUser | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) {
+        const serializableUser: SerializableUser = {
+          uid: firebaseUser.uid,
+          email: firebaseUser.email,
+          displayName: firebaseUser.displayName,
+          photoURL: firebaseUser.photoURL,
+          emailVerified: firebaseUser.emailVerified,
+        };
+        setUser(serializableUser);
+      } else {
+        setUser(null);
+      }
       setLoading(false);
     });
 

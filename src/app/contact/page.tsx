@@ -25,7 +25,7 @@ export default function ContactPage() {
             Get in Touch
           </h1>
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            We're here to help with all your safety questions and needs. Reach out today and let's make your worksite safer, together.
+            We&apos;re here to help with all your safety questions and needs. Reach out today and let&apos;s make your worksite safer, together.
           </p>
         </div>
       </section>

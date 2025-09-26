@@ -2,30 +2,24 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export function TopLoader() {
   const [progress, setProgress] = useState(0);
+  const pathname = usePathname();
 
   useEffect(() => {
-    let animationFrameId: number;
+    setProgress(0); // Reset progress on route change
 
-    const animate = () => {
-      setProgress((prev) => {
-        if (prev >= 95) {
-          cancelAnimationFrame(animationFrameId);
-          return 95; // Stop just before 100%
-        }
-        return prev + 1;
-      });
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    animationFrameId = requestAnimationFrame(animate);
+    const timer = setTimeout(() => {
+      setProgress(70); // Simulate progress
+    }, 100);
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      clearTimeout(timer);
+      setProgress(100); // Complete progress on unmount or route change
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <div className="fixed top-0 left-0 w-full h-1 z-[100]">

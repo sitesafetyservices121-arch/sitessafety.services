@@ -10,6 +10,7 @@ import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider } from "@/context/auth-context";
 import { LoadingProvider } from "@/components/loading-provider";
+import { TopLoader } from "@/components/top-loader";
 
 
 export const metadata: Metadata = {
@@ -79,6 +80,7 @@ export default function RootLayout({
           <AuthProvider>
             <LoadingProvider>
               <div className="relative flex min-h-dvh flex-col bg-transparent">
+                <TopLoader />
                 <Header />
                 <main className="flex-1">{children}</main>
                 <Footer />

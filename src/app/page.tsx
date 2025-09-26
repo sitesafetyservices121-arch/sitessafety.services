@@ -8,7 +8,11 @@ import { ArrowRight, FileText, HardHat, ShieldCheck, Mail, Phone, Linkedin, Face
 import Image from "next/image";
 import { TestimonialCard } from "@/components/testimonial-card";
 import { InquiryForm } from "@/components/inquiry-form";
-import { VantaBackground } from "@/components/vanta-background";
+import dynamic from "next/dynamic";
+
+const VantaBackground = dynamic(() => import("@/components/vanta-background").then((mod) => mod.VantaBackground), {
+  ssr: false,
+});
 
 
 const projects = [
@@ -134,6 +138,7 @@ export default function Home() {
               data-ai-hint="male professional portrait"
               quality={100}
               priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
           <div className="space-y-6">

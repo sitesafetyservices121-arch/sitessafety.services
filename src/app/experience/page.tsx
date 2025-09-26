@@ -205,8 +205,8 @@ export default function ExperiencePage() {
       <section className="py-24">
         <div className="container mx-auto px-4">
             <div className="bg-gradient-to-r from-primary to-orange-400 rounded-2xl p-10 md:p-16 text-center shadow-lg">
-                <h2 className="text-3xl md:text-4xl font-extrabold text-primary-foreground">Ready to Elevate Your Site's Safety?</h2>
-                <p className="mt-4 max-w-2xl mx-auto text-primary-foreground/90 text-lg">Let's collaborate to build a safer, more compliant, and more productive work environment. Contact us today for a complimentary consultation.</p>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-primary-foreground">Ready to Elevate Your Site&apos;s Safety?</h2>
+                <p className="mt-4 max-w-2xl mx-auto text-primary-foreground/90 text-lg">Let&apos;s collaborate to build a safer, more compliant, and more productive work environment. Contact us today for a complimentary consultation.</p>
                 <Button asChild size="lg" className="mt-8 bg-background text-primary hover:bg-background/90">
                   <Link href="/e-safety-file">
                       Request a Free Quote <ArrowRight className="ml-2 h-5 w-5" />
