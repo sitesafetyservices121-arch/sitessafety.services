@@ -45,7 +45,9 @@ function GoogleSignInButton() {
     const provider = new GoogleAuthProvider();
     try {
       await signInWithPopup(auth, provider);
-      router.push("/account");
+      const searchParams = new URLSearchParams(window.location.search);
+      const redirectUrl = searchParams.get("redirect") || "/account";
+      router.push(redirectUrl);
     } catch (error: any) {
       console.error("Google Sign-in Error:", error);
     } finally {
@@ -98,7 +100,7 @@ export default function LoginPage() {
       const redirectUrl = searchParams.get("redirect") || "/account";
       router.push(redirectUrl);
     }
-  }, [state, user, router]);
+  }, [state, user]);
 
   return (
     <div className="container py-24">
