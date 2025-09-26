@@ -39,8 +39,6 @@ function SubmitButton() {
 
 function GoogleSignInButton() {
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
-  const searchParams = useSearchParams();
 
   const handleGoogleSignIn = async () => {
     setLoading(true);
@@ -97,21 +95,22 @@ export default function LoginPage() {
   const redirectUrl = searchParams.get("redirect") || "/account";
 
   useEffect(() => {
+    // If auth is not loading and user is logged in, redirect.
     if (!loading && user) {
       router.push(redirectUrl);
     }
-  }, [user, loading, router, redirectUrl]);
-  
-  useEffect(() => {
+    // If form submission was successful, redirect.
     if (state.user) {
        router.push(redirectUrl);
     }
-  }, [state.user, router, redirectUrl]);
-
+  }, [user, loading, state.user, redirectUrl, router]);
+  
+  // While loading or if user is logged in (and redirect is imminent), show a loading state.
   if (loading || user) {
     return <div className="container py-24 text-center">Loading...</div>;
   }
 
+  // Only render the form if the user is not logged in and auth state is resolved.
   return (
     <div className="container py-24">
       <Card className="max-w-lg mx-auto">
