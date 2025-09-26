@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/context/auth-context";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -32,6 +32,7 @@ function SubmitButton() {
 
 function GoogleSignInButton() {
     const router = useRouter();
+    const searchParams = useSearchParams();
     const [loading, setLoading] = useState(false);
     
     const handleGoogleSignIn = async () => {
@@ -39,7 +40,8 @@ function GoogleSignInButton() {
         const provider = new GoogleAuthProvider();
         try {
             await signInWithPopup(auth, provider);
-            router.push("/account");
+            const redirectUrl = searchParams.get("redirect") || "/account";
+            router.push(redirectUrl);
         } catch (error: any) {
             console.error("Google Sign-in Error:", error);
         } finally {
@@ -63,13 +65,28 @@ function GoogleSignInButton() {
 export default function SignUpPage() {
   const [state, formAction] = useActionState(signUpWithEmail, initialState);
   const router = useRouter();
-  const { user } = useAuth();
+  const searchParams = useSearchParams();
+  const { user, loading } = useAuth();
 
+  // Redirect if user is already logged in
   useEffect(() => {
-    if (state.user || user) {
-      router.push("/account");
+    if (!loading && user) {
+      const redirectUrl = searchParams.get("redirect") || "/account";
+      router.push(redirectUrl);
     }
-  }, [state, user]);
+  }, [user, loading, router, searchParams]);
+
+  // Redirect after successful form action
+  useEffect(() => {
+    if (state.user) {
+      const redirectUrl = searchParams.get("redirect") || "/account";
+      router.push(redirectUrl);
+    }
+  }, [state.user, router, searchParams]);
+
+  if (loading || user) {
+    return <div className="container py-24 text-center">Loading...</div>;
+  }
 
   return (
     <div className="container py-24">
