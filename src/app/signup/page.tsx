@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useActionState } from "react";
@@ -40,8 +41,7 @@ function GoogleSignInButton() {
         const provider = new GoogleAuthProvider();
         try {
             await signInWithPopup(auth, provider);
-            const redirectUrl = searchParams.get("redirect") || "/account";
-            router.push(redirectUrl);
+            // This will trigger the useEffect in the main component
         } catch (error: any) {
             console.error("Google Sign-in Error:", error);
         } finally {
@@ -68,21 +68,14 @@ export default function SignUpPage() {
   const searchParams = useSearchParams();
   const { user, loading } = useAuth();
 
-  // Redirect if user is already logged in
   useEffect(() => {
-    if (!loading && user) {
+    // Redirect if user is authenticated (either from hook or form action)
+    const authenticatedUser = user || state.user;
+    if (!loading && authenticatedUser) {
       const redirectUrl = searchParams.get("redirect") || "/account";
       router.push(redirectUrl);
     }
-  }, [user, loading, router, searchParams]);
-
-  // Redirect after successful form action
-  useEffect(() => {
-    if (state.user) {
-      const redirectUrl = searchParams.get("redirect") || "/account";
-      router.push(redirectUrl);
-    }
-  }, [state.user, router, searchParams]);
+  }, [user, state.user, loading, router, searchParams]);
 
   if (loading || user) {
     return <div className="container py-24 text-center">Loading...</div>;
