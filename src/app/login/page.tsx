@@ -38,16 +38,16 @@ function SubmitButton() {
 }
 
 function GoogleSignInButton() {
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [loading, setLoading] = useState(false);
 
   const handleGoogleSignIn = async () => {
     setLoading(true);
     const provider = new GoogleAuthProvider();
     try {
-      const result = await signInWithPopup(auth, provider);
-      // This will trigger the useEffect in the main component
+      await signInWithPopup(auth, provider);
+      // Auth state change will be caught by useAuth and trigger redirect in main component
     } catch (error: any) {
       console.error("Google Sign-in Error:", error);
     } finally {
@@ -94,15 +94,19 @@ export default function LoginPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { user, loading } = useAuth();
+  const redirectUrl = searchParams.get("redirect") || "/account";
 
   useEffect(() => {
-    // Redirect if user is authenticated (either from hook or form action)
-    const authenticatedUser = user || state.user;
-    if (!loading && authenticatedUser) {
-      const redirectUrl = searchParams.get("redirect") || "/account";
+    if (!loading && user) {
       router.push(redirectUrl);
     }
-  }, [user, state.user, loading, router, searchParams]);
+  }, [user, loading, router, redirectUrl]);
+  
+  useEffect(() => {
+    if (state.user) {
+       router.push(redirectUrl);
+    }
+  }, [state.user, router, redirectUrl]);
 
   if (loading || user) {
     return <div className="container py-24 text-center">Loading...</div>;

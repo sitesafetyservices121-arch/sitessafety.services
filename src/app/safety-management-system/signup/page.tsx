@@ -1,3 +1,4 @@
+
 "use client";
 
 import { SmsSignupForm } from "@/components/sms-signup-form";
@@ -5,13 +6,17 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Bot, ShieldCheck, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/context/auth-context";
+import { usePathname } from "next/navigation";
 
-// export const metadata: Metadata = { // Metadata must be defined in a server component
-//   title: 'Sign Up for Safety Management System',
-//   description: 'Create your account to access the AI-Powered Safety Management System.',
-// };
 
 export default function SmsSignupPage() {
+  const { user, loading } = useAuth();
+  const pathname = usePathname();
+
+  if (loading) {
+      return <div className="container py-24 text-center">Loading...</div>;
+  }
 
   return (
     <div className="bg-background text-foreground">
@@ -51,7 +56,16 @@ export default function SmsSignupPage() {
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                <SmsSignupForm />
+               {user ? (
+                  <SmsSignupForm />
+               ) : (
+                  <div className="text-center p-8">
+                      <p className="text-muted-foreground mb-6">Please log in or sign up to continue.</p>
+                       <Button asChild>
+                          <Link href={`/login?redirect=${pathname}`}>Log In or Sign Up</Link>
+                      </Button>
+                  </div>
+               )}
             </CardContent>
           </Card>
         </div>
