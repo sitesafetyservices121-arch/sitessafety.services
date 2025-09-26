@@ -4,8 +4,6 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
   signOut as firebaseSignOut,
 } from "firebase/auth";
 import { auth } from "./firebase";
@@ -40,17 +38,6 @@ export async function signInWithEmail(prevState: any, formData: FormData) {
   } catch (error: any) {
     return { message: error.message, user: null };
   }
-}
-
-export async function signInWithGoogle() {
-  const provider = new GoogleAuthProvider();
-  try {
-    await signInWithPopup(auth, provider);
-  } catch (error: any) {
-    console.error("Google Sign-in Error:", error);
-    return { message: error.message };
-  }
-  redirect('/account');
 }
 
 export async function signOut() {
