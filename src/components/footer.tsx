@@ -21,9 +21,9 @@ export function Footer() {
                   <Link href="#" aria-label="Twitter" className="text-secondary-foreground/70 hover:text-primary transition-colors">
                     <Twitter className="h-5 w-5" />
                   </Link>
-                  <Link href="#" aria-label="Facebook" className="text-secondary-foreground/70 hover:text-primary transition-colors">
+                  <a href="https://www.facebook.com/share/p/1W3cmvZK6o/" aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="text-secondary-foreground/70 hover:text-primary transition-colors">
                     <Facebook className="h-5 w-5" />
-                  </Link>
+                  </a>
                   <Link href="#" aria-label="LinkedIn" className="text-secondary-foreground/70 hover:text-primary transition-colors">
                     <Linkedin className="h-5 w-5" />
                   </Link>

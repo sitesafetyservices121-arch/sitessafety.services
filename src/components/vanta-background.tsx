@@ -34,7 +34,7 @@ export const VantaBackground = () => {
                     minWidth: 200.00,
                     scale: 1.00,
                     scaleMobile: 1.00,
-                    color: 0x8c8c8c,
+                    color: 0xFFA500,
                     backgroundColor: 0x0,
                     points: 10.00,
                     maxDistance: 25.00,
@@ -67,13 +67,9 @@ export const VantaBackground = () => {
 
         return () => {
             isMounted = false;
-            // We don't destroy the effect to keep it running across pages
-            try {
-                if (vantaScript.parentNode) {
-                    vantaScript.parentNode.removeChild(vantaScript);
-                }
-            } catch (e) {
-                // ignore
+            if (vantaEffect) {
+                vantaEffect.destroy();
+                vantaEffect = null;
             }
         };
     }, []);
