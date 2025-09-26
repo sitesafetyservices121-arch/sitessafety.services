@@ -18,15 +18,15 @@ export function Footer() {
                   Modern Safety Solutions for a Complex World.
                 </p>
                 <div className="flex gap-4 mt-6">
-                  <Link href="#" aria-label="Twitter" className="text-secondary-foreground/70 hover:text-primary transition-colors">
+                  <a href="#" aria-label="Twitter" target="_blank" rel="noopener noreferrer" className="text-secondary-foreground/70 hover:text-primary transition-colors">
                     <Twitter className="h-5 w-5" />
-                  </Link>
+                  </a>
                   <a href="https://www.facebook.com/share/p/1W3cmvZK6o/" aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="text-secondary-foreground/70 hover:text-primary transition-colors">
                     <Facebook className="h-5 w-5" />
                   </a>
-                  <Link href="#" aria-label="LinkedIn" className="text-secondary-foreground/70 hover:text-primary transition-colors">
+                  <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="text-secondary-foreground/70 hover:text-primary transition-colors">
                     <Linkedin className="h-5 w-5" />
-                  </Link>
+                  </a>
                 </div>
             </div>
           

@@ -261,15 +261,15 @@ export default function Home() {
             <div className="text-center mt-12">
                 <h3 className="text-xl font-bold text-foreground mb-4">Follow Us</h3>
                 <div className="flex justify-center gap-6">
-                    <Link href="#" aria-label="Twitter" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a href="#" aria-label="Twitter" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                         <Twitter className="h-7 w-7" />
-                    </Link>
-                    <Link href="#" aria-label="Facebook" className="text-muted-foreground hover:text-primary transition-colors">
+                    </a>
+                    <a href="https://www.facebook.com/share/p/1W3cmvZK6o/" aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                         <Facebook className="h-7 w-7" />
-                    </Link>
-                    <Link href="#" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colsors">
+                    </a>
+                    <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                         <Linkedin className="h-7 w-7" />
-                    </Link>
+                    </a>
                 </div>
             </div>
         </div>
