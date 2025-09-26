@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.sitesafety.services
+
+# Sitemaps
+Sitemap: https://www.sitesafety.services/sitemap.xml
