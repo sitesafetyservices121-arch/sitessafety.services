@@ -3,11 +3,12 @@
 
 import { SmsSignupForm } from "@/components/sms-signup-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Bot, ShieldCheck, ArrowRight } from "lucide-react";
+import { ShieldCheck, ArrowRight, User } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/auth-context";
 import { usePathname } from "next/navigation";
+import { TopLoader } from "@/components/top-loader";
 
 
 export default function SmsSignupPage() {
@@ -15,7 +16,7 @@ export default function SmsSignupPage() {
   const pathname = usePathname();
 
   if (loading) {
-      return <div className="container py-24 text-center">Loading...</div>;
+      return <TopLoader />;
   }
 
   return (
@@ -59,11 +60,13 @@ export default function SmsSignupPage() {
                {user ? (
                   <SmsSignupForm />
                ) : (
-                  <div className="text-center p-8">
-                      <p className="text-muted-foreground mb-6">Please log in or sign up to continue.</p>
-                       <Button asChild>
-                          <Link href={`/login?redirect=${pathname}`}>Log In or Sign Up</Link>
-                      </Button>
+                  <div className="text-center p-8 bg-secondary rounded-lg border">
+                    <User className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                    <h3 className="text-2xl font-bold text-foreground mb-2">Please Log In</h3>
+                    <p className="text-muted-foreground mb-6">You need to be logged in to sign up for the Safety Management System.</p>
+                    <Button asChild>
+                        <Link href={`/login?redirect=${pathname}`}>Log In or Sign Up</Link>
+                    </Button>
                   </div>
                )}
             </CardContent>

@@ -20,11 +20,12 @@ export default function AccountPage() {
     }
   }, [user, loading, router]);
 
-  // If auth is loading, or there's no user, show a loader to prevent content flash
+  // If auth is loading, or there's no user (and we're about to redirect), show a loader to prevent content flash
   if (loading || !user) {
     return <TopLoader />;
   }
   
+  // Only render the account details if the user is logged in
   return (
     <div className="container py-24">
       <Card className="max-w-lg mx-auto">

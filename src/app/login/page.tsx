@@ -96,7 +96,7 @@ export default function LoginPage() {
   const redirectUrl = searchParams.get("redirect") || "/account";
 
   useEffect(() => {
-    // Redirect if user is already logged in
+    // Redirect if user is already logged in, after auth state is confirmed
     if (!loading && user) {
       router.push(redirectUrl);
     }
@@ -106,11 +106,12 @@ export default function LoginPage() {
     }
   }, [user, loading, state.user, redirectUrl, router]);
 
-  // If loading or user exists, show loader to prevent form flash and loops
+  // If loading or user exists (and we're about to redirect), show loader to prevent form flash and loops
   if (loading || user) {
     return <TopLoader />;
   }
 
+  // Only render the form if the user is not logged in and auth state is loaded
   return (
     <div className="container py-24">
       <Card className="max-w-lg mx-auto">
