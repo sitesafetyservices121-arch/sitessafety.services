@@ -57,6 +57,32 @@ const inter = Inter({
   display: 'swap',
 });
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "RAK-Site Safety Services",
+  "url": "https://www.sitesafety.services",
+  "logo": "https://iili.io/KnOi1Og.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+27-71-611-5429",
+    "contactType": "Customer Service",
+    "email": "info@sitesafety.services",
+    "areaServed": "ZA"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Three Rivers East",
+    "addressLocality": "Vereeniging",
+    "addressRegion": "Gauteng",
+    "addressCountry": "ZA"
+  },
+  "sameAs": [
+    "https://www.facebook.com/share/p/1W3cmvZK6o/",
+    "https://www.linkedin.com/in/ruan-koen-93b774386"
+  ]
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -65,6 +91,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <Script
+            id="organization-schema"
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(organizationSchema),
+            }}
+        />
         <Script
             src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
             strategy="beforeInteractive"
@@ -106,5 +139,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-    
