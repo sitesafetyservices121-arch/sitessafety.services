@@ -1,4 +1,5 @@
 
+"use client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Shield, Target, Handshake, CheckCircle, HardHat, Bot, FileDigit, Users, Cpu, ArrowRight, Zap } from "lucide-react";
@@ -7,12 +8,18 @@ import Image from "next/image";
 import { CheckIconCard } from "@/components/ui/check-icon-card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 
 
-export const metadata: Metadata = {
-  title: 'About Our Mission',
-  description: 'Learn about the story, mission, and values that drive RAK-Site Safety Services to be a leader in occupational safety services.',
-};
+const VantaBackground = dynamic(() => import("@/components/vanta-background"), {
+  ssr: false,
+});
+
+
+// export const metadata: Metadata = { // This needs to be moved to a Server Component or removed from client component
+//   title: 'About Our Mission',
+//   description: 'Learn about the story, mission, and values that drive RAK-Site Safety Services to be a leader in occupational safety services.',
+// };
 
 const teamMembers = [
   { name: "John Doe", role: "Founder & Lead Safety Consultant", avatar: "https://iili.io/JADeLp1.png", initials: "JD", hint: "male professional portrait" },
@@ -68,10 +75,11 @@ export default function AboutPage() {
   return (
     <div className="bg-transparent text-foreground">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-card/50 border-b">
-        <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-foreground">Achieving Perfection in Compliance Where AI Meets Human Expertise.</h1>
-            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+       <section className="relative py-40 md:py-60 border-b bg-transparent">
+        <VantaBackground />
+        <div className="container px-4 md:px-6 relative z-10 text-center">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-white">Achieving Perfection in Compliance Where AI Meets Human Expertise.</h1>
+            <p className="mt-6 text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
                 When safety and compliance aren’t optional, guesswork isn’t either. RAK-Site Safety Services combines certified experts with purpose-built AI to deliver audit-ready documentation, faster approvals, and real savings nationwide. We don’t just promise compliance. We engineer it.
             </p>
         </div>
