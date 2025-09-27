@@ -84,9 +84,15 @@ export default function SafetyManagementSystemPage() {
       <section className="py-24 bg-card border-y">
         <div className="container max-w-7xl mx-auto px-4">
             <div className="text-center">
-                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">A Fully-Loaded, AI-Driven Safety Platform</h2>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Total Control. Zero Guesswork.</h2>
                 <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                    Our system integrates powerful AI tools for automated compliance with robust management features for total operational control. Plus, get access to a full specialised AI consultant and a 600+ document library.
+                    Our platform combines intelligent automation with hands-on control. You get powerful AI tools that handle compliance in real time—flagging risks, generating reports, and keeping your operation audit-ready 24/7. On top of that, our advanced management features give you full visibility and control across every site, team, and document.
+                </p>
+                <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+                    Need expert guidance? You’ll have access to a dedicated AI compliance consultant plus an exclusive library of over 600+ pre-built, audit-tested safety documents—ready to deploy, customize, and use immediately.
+                </p>
+                <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+                    With RAK-Site Safety Services, compliance isn’t just easier. It’s unstoppable.
                 </p>
             </div>
             <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
