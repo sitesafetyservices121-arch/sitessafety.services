@@ -1,5 +1,12 @@
 
+"use client";
+
+import dynamic from "next/dynamic";
 import { ElectronicFileForm } from "@/components/electronic-file-form";
+
+const VantaBackground = dynamic(() => import("@/components/vanta-background"), {
+  ssr: false,
+});
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Zap, ShieldCheck, FileText, Cloud, Download, Upload, Construction, KeyRound, FolderDown, ArrowRight, Eye } from "lucide-react";
 import type { Metadata } from 'next';
@@ -47,8 +54,9 @@ export default function ElectronicallyDeliveredSafetyFilesPage() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-card border-b">
-        <div className="container mx-auto px-4">
+      <section className="relative py-20 md:py-32 bg-transparent border-b">
+        <VantaBackground />
+        <div className="container relative z-10 mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div className="text-center lg:text-left">
                     <h1 className="text-4xl md:text-6xl font-extrabold text-foreground">
