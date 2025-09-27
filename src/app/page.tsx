@@ -21,7 +21,7 @@ const projects = [
     title: "Rent a Safety Officer",
     description: "Deploy elite, certified safety officers for on-demand risk mitigation and unparalleled on-site expertise.",
     link: "/rent-a-safety-officer",
-    image: "https://i.ibb.co/ks6sd9m/image-4.jpg",
+    image: "https://picsum.photos/seed/service1/600/400",
     hint: "construction site safety"
   },
   {
@@ -29,7 +29,7 @@ const projects = [
     title: "E-Safety File Website & Hosting",
     description: "A fully-digitized, cloud-based safety file solution, ensuring you are always audit-proof and compliant.",
     link: "/e-safety-file",
-    image: "https://i.ibb.co/Y46T4bc/image-19.jpg",
+    image: "https://picsum.photos/seed/service2/600/400",
     hint: "digital document management"
   },
   {
@@ -37,7 +37,7 @@ const projects = [
     title: "AI-Powered Safety System",
     description: "A revolutionary platform to command your entire safety operation and build a zero-incident culture.",
     link: "/safety-management-system",
-    image: "https://i.ibb.co/TM3NSPD/image-10.jpg",
+    image: "https://picsum.photos/seed/service3/600/400",
     hint: "safety dashboard analytics"
   },
   {
@@ -45,7 +45,7 @@ const projects = [
     title: "Download Print-Ready Safety Files",
     description: "Instantly get your compliant, print-ready safety documents delivered electronically within hours.",
     link: "/print-ready-safety-files",
-    image: "https://i.ibb.co/rR17WKM/image-14.jpg",
+    image: "https://picsum.photos/seed/service4/600/400",
     hint: "digital file download"
   },
 ];
@@ -131,7 +131,7 @@ export default function Home() {
         <div className="container grid items-center justify-center gap-12 px-4 text-center md:px-6 lg:grid-cols-2 lg:text-left lg:gap-20">
           <div className="relative h-96 lg:h-[500px] w-full overflow-hidden rounded-xl shadow-xl">
             <Image
-              src="https://i.ibb.co/5pHLV4D/image-27.jpg"
+              src="https://picsum.photos/seed/founder/600/800"
               alt="Portrait of the founder"
               fill
               style={{objectFit:"cover", objectPosition: "center"}}
@@ -286,3 +286,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
