@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useAuth } from '@/context/auth-context';
@@ -5,8 +6,8 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { TopLoader } from '@/components/top-loader';
 
-// Temporary list of admin UIDs
-const ADMIN_UIDS = ['admin-user-uid', 'ADMIN_USER_UID_2']; // Replace with actual admin UIDs
+// This component now reads admin UIDs from a server-side environment variable.
+const ADMIN_UIDS = (process.env.NEXT_PUBLIC_ADMIN_UIDS || '').split(',').filter(Boolean);
 
 export default function withAdminAuth<P extends object>(WrappedComponent: React.ComponentType<P>) {
   const WithAdminAuth = (props: P) => {
