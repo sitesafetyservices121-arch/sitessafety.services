@@ -7,44 +7,65 @@ export const metadata: Metadata = {
 };
 
 export default function TermsPage() {
-  const currentDate = new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' });
+  const lastUpdatedDate = "27 September 2025";
   
   return (
     <div className="bg-background text-foreground">
       <div className="container max-w-4xl mx-auto py-24 md:py-32 px-4">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-extrabold text-primary-dark font-headline tracking-tight">Terms and Conditions</h1>
-          <p className="mt-4 text-lg text-muted-foreground font-body">Last updated: {currentDate}</p>
+          <p className="mt-4 text-lg text-muted-foreground font-body">Last Updated: {lastUpdatedDate}</p>
         </div>
 
         <div className="prose prose-lg max-w-none font-body text-muted-foreground prose-h2:font-headline prose-h2:text-primary-dark prose-h2:text-2xl prose-h2:border-b-2 prose-h2:border-secondary prose-h2:pb-3 prose-headings:font-headline prose-a:text-primary hover:prose-a:text-primary/80 prose-strong:text-foreground">
-          <p>Please read these terms and conditions carefully before using Our Service.</p>
+          <p>Please read these Terms and Conditions carefully before using our website or engaging our services.</p>
 
-          <h2>1. Interpretation and Definitions</h2>
-          <p>The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+          <h2>1. Definitions</h2>
+          <p>The following terms shall have the meanings described below, whether they appear in singular or plural form:</p>
+          <ul>
+            <li><strong>"Company", "We", "Us", or "Our"</strong> refers to RAK-Site Safety Services.</li>
+            <li><strong>"You" or "User"</strong> refers to the individual or entity accessing or using our services.</li>
+            <li><strong>"Service"</strong> refers to all services and features offered by RAK-Site Safety Services, including but not limited to “Rent a Safety Officer,” “E Safety File,” and “Safety Management System.”</li>
+            <li><strong>"SLA"</strong> means a formal Service Level Agreement entered into between You and the Company, outlining specific deliverables, pricing, and terms.</li>
+          </ul>
 
-          <h2>2. Acknowledgment</h2>
-          <p>These are the Terms and Conditions governing the use of this Service and the agreement that operates between You and the Company. These Terms and Conditions set out the rights and obligations of all users regarding the use of the Service.</p>
-          <p>Your access to and use of the Service is conditioned on Your acceptance of and compliance with these Terms and Conditions. These Terms and Conditions apply to all visitors, users and others who access or use the Service. By accessing or using the Service You agree to be bound by these Terms and Conditions. If You disagree with any part of these Terms and Conditions then You may not access the Service.</p>
+          <h2>2. Acceptance of Terms</h2>
+          <p>By accessing or using our website or services, You agree to be bound by these Terms and Conditions. If You do not agree to these Terms, You may not use the Service.</p>
+          <p>These Terms apply to all visitors, customers, and users. Additional agreements—such as individual SLAs—may apply for specific services and will take precedence in case of conflict.</p>
 
-          <h2>3. Service Provision</h2>
-          <p>Our services, including "Rent a Safety Officer," "E Safety File," and "Safety Management System," are provided as described on their respective pages on our website. Specific terms, deliverables, and pricing for any engaged services will be formally outlined in a separate Service Level Agreement (SLA) which must be signed by both parties before the commencement of work.</p>
+          <h2>3. Scope of Services</h2>
+          <p>Our core services are provided as described on our website. These include, but are not limited to:</p>
+          <ul>
+            <li>Rent a Safety Officer</li>
+            <li>E Safety File</li>
+            <li>Safety Management System</li>
+          </ul>
+          <p>Details such as scope, timelines, pricing, and service deliverables will be defined in a separate SLA, which must be signed by both parties before work begins.</p>
           
           <h2>4. Payments and Fees</h2>
-          <p>Fees for services are due as specified in the service description or the governing Service Level Agreement. We utilize secure, industry-standard third-party payment processors. By making a payment, you acknowledge and agree to the terms and conditions of our payment partners. All prices are listed in South African Rand (ZAR) unless otherwise stated.</p>
+          <p>All fees and charges are payable as specified in your Service Level Agreement or on the relevant service page of our website. Unless stated otherwise, all prices are in South African Rand (ZAR).</p>
+          <p>Payments are processed securely through trusted third-party providers. By making a payment, You agree to comply with the terms and conditions of our payment partners.</p>
 
           <h2>5. Limitation of Liability</h2>
-          <p>While RAK-Site Safety Services endeavors to provide the highest quality of service and expertise, our liability is limited. Notwithstanding any damages that You might incur, the entire liability of the Company and any of its suppliers under any provision of these Terms and Your exclusive remedy for all of the foregoing shall be limited to the amount actually paid by You for the specific Service in question.</p>
-          <p>RAK-Site Safety Services is not liable for indirect, incidental, or consequential damages resulting from the use of our services.</p>
+          <p>We provide our services with diligence and professional care. However, our liability is strictly limited.</p>
+          <p>To the maximum extent permitted by law, RAK-Site Safety Services and its affiliates shall not be liable for:</p>
+            <ul>
+                <li>Any indirect, incidental, special, or consequential damages</li>
+                <li>Loss of profits, data, or business opportunities</li>
+                <li>Any amount exceeding the total fees You paid to Us for the specific service that gave rise to the claim</li>
+            </ul>
 
           <h2>6. Governing Law</h2>
-          <p>The laws of the Republic of South Africa, excluding its conflicts of law rules, shall govern these Terms and Your use of the Service. Your use of the Application may also be subject to other local, state, national, or international laws.</p>
+          <p>These Terms are governed by the laws of the Republic of South Africa, without regard to its conflict of law provisions. You agree that any disputes will be subject to the exclusive jurisdiction of South African courts.</p>
           
-          <h2>7. Changes to These Terms and Conditions</h2>
-          <p>We reserve the right, at Our sole discretion, to modify or replace these Terms at any time. If a revision is material We will make reasonable efforts to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at Our sole discretion. Continued use of our Service after any such changes shall constitute your consent to such changes.</p>
+          <h2>7. Changes to Terms</h2>
+          <p>We may update these Terms and Conditions at our discretion. If changes are material, We will provide reasonable notice—typically at least 30 days—via email or through a notice on our website.</p>
+          <p>Your continued use of the Service after such updates constitutes acceptance of the revised Terms.</p>
           
-          <h2>8. Contact Us</h2>
-          <p>If you have any questions about these Terms and Conditions, You can contact us through the inquiry and booking forms provided on our website, or by emailing us directly at <a href="mailto:info@sitesafety.services">info@sitesafety.services</a>.</p>
+          <h2>8. Contact Information</h2>
+          <p>For any questions, concerns, or formal inquiries regarding these Terms and Conditions, you can reach us at:</p>
+          <p>📧 Email: <a href="mailto:info@sitesafety.services">info@sitesafety.services</a></p>
+          <p>📄 Contact Form: Available on our website</p>
         </div>
       </div>
     </div>
