@@ -15,6 +15,7 @@ import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "@/lib/firebase/firebase";
+import { TopLoader } from "@/components/top-loader";
 
 const initialState = {
   message: "",
@@ -68,13 +69,19 @@ export default function SignUpPage() {
   const redirectUrl = searchParams.get("redirect") || "/account";
 
   useEffect(() => {
-    if (user) {
+    if (!loading && user) {
       router.push(redirectUrl);
     }
-  }, [user, redirectUrl, router]);
+  }, [user, loading, redirectUrl, router]);
+
+  useEffect(() => {
+    if (!loading && state.user) {
+        router.push(redirectUrl);
+    }
+  }, [state, loading, redirectUrl, router]);
   
   if (loading || user) {
-    return <div className="container py-24 text-center">Loading...</div>;
+    return <TopLoader />;
   }
 
   return (

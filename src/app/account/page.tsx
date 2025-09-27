@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { signOut } from "@/lib/firebase/auth";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { TopLoader } from "@/components/top-loader";
 
 export default function AccountPage() {
   const { user, loading } = useAuth();
@@ -20,7 +21,7 @@ export default function AccountPage() {
   }, [user, loading, router]);
 
   if (loading || !user) {
-    return <div className="container py-24 text-center">Loading...</div>;
+    return <TopLoader />;
   }
   
   return (
