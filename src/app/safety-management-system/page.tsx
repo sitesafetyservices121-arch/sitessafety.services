@@ -38,7 +38,7 @@ export default function SafetyManagementSystemPage() {
             Your AI-Powered Safety Command Center
           </h1>
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            A revolutionary platform that combines powerful management tools with specialized AI to streamline protocols, ensure compliance, and build a world-class safety culture.
+            A safety platform built to dominate risk, not just manage it. RAK-Site Safety Services fuses advanced AI with precision-built management tools to automate compliance, enforce protocols, and embed a safety culture that doesn’t just meet the standard ,it sets it.
           </p>
         </div>
       </section>
