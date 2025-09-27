@@ -7,250 +7,248 @@ export const metadata: Metadata = {
 };
 
 export default function PopiaPage() {
-  const currentDate = new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' });
+  const effectiveDate = "27 September 2025";
 
   return (
     <div className="bg-background text-foreground">
       <div className="container max-w-4xl mx-auto py-24 md:py-32 px-4">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-primary-dark font-headline tracking-tight">Privacy Policy - RAK-Site Safety Services</h1>
-          <p className="mt-4 text-lg text-muted-foreground font-body">Effective Date: {currentDate}</p>
-          <p className="mt-1 text-lg text-muted-foreground font-body">Last Updated: {currentDate}</p>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-primary-dark font-headline tracking-tight">Privacy Policy</h1>
+          <p className="mt-4 text-lg text-muted-foreground font-body">Effective Date: {effectiveDate}</p>
+          <p className="mt-1 text-lg text-muted-foreground font-body">Last Updated: {effectiveDate}</p>
         </div>
 
         <div className="prose prose-lg max-w-none font-body text-muted-foreground prose-h2:font-headline prose-h2:text-primary-dark prose-h2:text-2xl prose-h2:border-b-2 prose-h2:border-secondary prose-h2:pb-3 prose-headings:font-headline prose-a:text-primary hover:prose-a:text-primary/80 prose-strong:text-foreground">
           
           <h2>1. Introduction</h2>
-          <p>RAK-Site Safety Services ("we," "us," or "our") is committed to protecting your privacy and personal information in accordance with the Protection of Personal Information Act 4 of 2013 (POPIA) and other applicable data protection laws.</p>
+          <p>RAK-Site Safety Services ("we", "us", or "our") is committed to safeguarding your personal information in accordance with the Protection of Personal Information Act 4 of 2013 (POPIA) and other applicable privacy laws in South Africa.</p>
+          <p>This policy explains what data we collect, how we use it, your rights, and how we keep it secure.</p>
           <p><strong>Company Details:</strong></p>
           <ul>
             <li><strong>Business Name:</strong> RAK-Site Safety Services</li>
             <li><strong>Location:</strong> Three Rivers East, Vereeniging, South Africa</li>
-            <li><strong>Services:</strong> Rent-a-Safety Officer services, AI-driven online safety management systems, custom e-safety file submission and auditing websites, and custom safety file creation</li>
+            <li><strong>Services:</strong>
+              <ul>
+                <li>Rent-a-Safety Officer services</li>
+                <li>AI-powered safety management systems</li>
+                <li>Custom e-safety file creation and auditing platforms</li>
+              </ul>
+            </li>
           </ul>
 
           <h2>2. Information Officer</h2>
-          <p>Our designated Information Officer responsible for POPIA compliance is:</p>
+          <p>Our appointed Information Officer oversees compliance with this policy and POPIA.</p>
           <ul>
-              <li><strong>Name:</strong> [Insert Name]</li>
-              <li><strong>Position:</strong> [Insert Position]</li>
-              <li><strong>Contact:</strong> [Insert Email] | [Insert Phone Number]</li>
-              <li><strong>Address:</strong> Three Rivers East, Vereeniging, South Africa</li>
+              <li><strong>Agnesha De Caires</strong></li>
+              <li>Head of client service</li>
+              <li>📧 <a href="mailto:info@sitesafety.services">info@sitesafety.services</a> | 📞 0716115429</li>
+              <li>📍 Three Rivers East, Vereeniging, South Africa</li>
           </ul>
 
           <h2>3. Personal Information We Collect</h2>
-          <p>We collect personal information necessary to provide our safety services across South Africa:</p>
-          <h3>3.1 Client Information</h3>
+          <h3>3.1 Clients</h3>
           <ul>
-            <li>Business registration details and contact information</li>
-            <li>Authorized representative details (names, positions, contact details)</li>
+            <li>Business registration and contact details</li>
+            <li>Representative names, positions, and contact info</li>
             <li>Billing and payment information</li>
-            <li>Project specifications and location data</li>
+            <li>Project and site specifications</li>
           </ul>
-          <h3>3.2 Safety Officer Information</h3>
+          <h3>3.2 Safety Officers</h3>
           <ul>
-            <li>Personal identification details</li>
-            <li>Professional qualifications and certifications</li>
-            <li>Employment history and references</li>
-            <li>Safety training records and competency assessments</li>
-            <li>Location and availability data for deployment</li>
+            <li>ID and personal details</li>
+            <li>Professional qualifications and certificates</li>
+            <li>Work history and references</li>
+            <li>Safety training records and availability</li>
           </ul>
           <h3>3.3 System Users</h3>
           <ul>
-            <li>Login credentials and user profiles</li>
-            <li>Activity logs and system usage data</li>
-            <li>Safety file submissions and audit trail information</li>
-            <li>Communication records within our platforms</li>
+            <li>Login details and user profiles</li>
+            <li>System usage logs and audit trails</li>
+            <li>Safety file submissions</li>
+            <li>Communication records within our platform</li>
           </ul>
           <h3>3.4 Website Visitors</h3>
           <ul>
-            <li>IP addresses and device information</li>
-            <li>Browser type and usage patterns</li>
+            <li>IP address and device type</li>
+            <li>Browser and usage data</li>
             <li>Cookies and similar tracking technologies (with consent)</li>
           </ul>
 
           <h2>4. How We Collect Information</h2>
-          <p>We collect personal information through:</p>
+          <p>We collect data through:</p>
           <ul>
-            <li>Direct submission via our website forms and registration processes</li>
-            <li>Client communications and service agreements</li>
-            <li>Our AI-driven safety management system</li>
-            <li>Custom e-safety file submission platforms</li>
-            <li>Safety file uploads and document submissions</li>
-            <li>Email, phone, and in-person communications</li>
+            <li>Website forms and registrations</li>
+            <li>Client communication and agreements</li>
+            <li>Our AI-driven platforms and systems</li>
+            <li>Document submissions and uploads</li>
+            <li>Phone calls, emails, and in-person meetings</li>
           </ul>
 
           <h2>5. Purpose of Processing</h2>
-          <p>We process personal information for the following lawful purposes:</p>
           <h3>5.1 Service Delivery</h3>
           <ul>
-            <li>Providing rent-a-safety officer services across South Africa</li>
-            <li>Operating our AI-driven online safety management system</li>
-            <li>Building and maintaining custom e-safety platforms</li>
-            <li>Creating and managing safety files and e-safety files</li>
+            <li>Provide safety officer services</li>
+            <li>Operate our safety management systems</li>
+            <li>Create and manage safety files</li>
           </ul>
           <h3>5.2 Business Operations</h3>
           <ul>
-            <li>Client relationship management</li>
-            <li>Billing and payment processing</li>
-            <li>Quality assurance and service improvement</li>
+            <li>Client relationship and project management</li>
+            <li>Invoicing and payments</li>
+            <li>Service improvement and quality control</li>
             <li>Legal and regulatory compliance</li>
           </ul>
-          <h3>5.3 System Administration</h3>
+          <h3>5.3 System Management</h3>
           <ul>
-            <li>User authentication and access control</li>
-            <li>System security and fraud prevention</li>
-            <li>Technical support and troubleshooting</li>
-            <li>Data backup and recovery</li>
+            <li>User authentication</li>
+            <li>Fraud prevention and security monitoring</li>
+            <li>Technical support</li>
+            <li>Backup and disaster recovery</li>
           </ul>
 
-          <h2>6. Legal Basis for Processing</h2>
-          <p>Our processing activities are based on:</p>
+          <h2>6. Legal Grounds for Processing</h2>
+          <p>We rely on the following lawful bases:</p>
           <ul>
-            <li><strong>Contractual necessity</strong> for service delivery and client obligations</li>
-            <li><strong>Legitimate interests</strong> for business operations and system security</li>
-            <li><strong>Legal compliance</strong> with workplace safety regulations</li>
-            <li><strong>Consent</strong> where specifically obtained (e.g., marketing communications)</li>
+            <li><strong>Contractual necessity:</strong> To provide services and fulfil agreements</li>
+            <li><strong>Legitimate interests:</strong> For business operations and security</li>
+            <li><strong>Legal obligations:</strong> For compliance with safety and labour laws</li>
+            <li><strong>Consent:</strong> Where explicitly obtained, such as for marketing</li>
           </ul>
 
           <h2>7. Information Sharing and Disclosure</h2>
-          <p><strong>We do not sell, rent, or share your personal information with third parties</strong> except in the following limited circumstances:</p>
+          <p>We do not sell or trade your personal information. We may share data with:</p>
           <h3>7.1 Service Providers</h3>
           <ul>
-            <li>Authorized safety officers for service delivery</li>
-            <li>Technical service providers for system maintenance (under strict confidentiality agreements)</li>
-            <li>Payment processors for billing purposes</li>
+            <li>Authorised safety officers</li>
+            <li>System maintenance and IT partners (under confidentiality agreements)</li>
+            <li>Payment processors</li>
           </ul>
-          <h3>7.2 Legal Requirements</h3>
+          <h3>7.2 Legal Obligations</h3>
           <ul>
-            <li>Compliance with court orders or legal processes</li>
-            <li>Regulatory reporting requirements</li>
-            <li>Protection of our legal rights and property</li>
+            <li>Government authorities, courts, or regulators</li>
+            <li>As required to protect our rights or comply with legal obligations</li>
           </ul>
-          <h3>7.3 Business Transfers</h3>
+          <h3>7.3 Business Changes</h3>
           <ul>
-            <li>In the event of merger, acquisition, or business sale (with appropriate safeguards)</li>
+            <li>In the case of a sale, merger, or restructuring (with proper safeguards)</li>
           </ul>
 
           <h2>8. Data Security</h2>
-          <p>We implement comprehensive security measures including:</p>
+          <p>We apply robust security measures to protect your data, including:</p>
           <ul>
-            <li>Encryption of data in transit and at rest</li>
-            <li>Access controls and user authentication</li>
-            <li>Regular security audits and vulnerability assessments</li>
-            <li>Secure data backup and recovery procedures</li>
-            <li>Staff training on data protection principles</li>
+            <li>Encryption (in transit and at rest)</li>
+            <li>User access controls</li>
+            <li>Routine security audits</li>
+            <li>Secure backups</li>
+            <li>Staff training on data privacy</li>
           </ul>
 
           <h2>9. Data Retention</h2>
-          <p>We retain personal information only as long as necessary for:</p>
-          <ul>
-            <li>Fulfilling the purposes for which it was collected</li>
-            <li>Complying with legal and regulatory requirements</li>
-            <li>Resolving disputes and enforcing agreements</li>
-          </ul>
-          <p><strong>Retention Periods:</strong></p>
-          <ul>
-            <li>Client data: Duration of service agreement plus 7 years</li>
-            <li>Safety officer records: Duration of engagement plus 5 years</li>
-            <li>System logs: 3 years unless required for legal proceedings</li>
-            <li>Financial records: 5 years as required by law</li>
-          </ul>
+          <p>We only retain personal data as long as necessary for legal and operational reasons:</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Data Type</th>
+                <th>Retention Period</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Client information</td>
+                <td>Agreement term + 7 years</td>
+              </tr>
+              <tr>
+                <td>Safety officer records</td>
+                <td>Engagement period + 5 years</td>
+              </tr>
+              <tr>
+                <td>System logs</td>
+                <td>3 years (unless legally required longer)</td>
+              </tr>
+              <tr>
+                <td>Financial records</td>
+                <td>5 years (as per tax law)</td>
+              </tr>
+            </tbody>
+          </table>
 
           <h2>10. Your Rights Under POPIA</h2>
           <p>You have the right to:</p>
           <h3>10.1 Access</h3>
           <ul>
-            <li>Request confirmation of whether we hold your personal information</li>
-            <li>Obtain a copy of your personal information and processing details</li>
+            <li>Confirm whether we hold your data</li>
+            <li>Request a copy of your personal information</li>
           </ul>
           <h3>10.2 Correction</h3>
           <ul>
-            <li>Request correction of inaccurate or incomplete information</li>
-            <li>Update your profile and contact details</li>
+            <li>Update incorrect or incomplete information</li>
           </ul>
           <h3>10.3 Deletion</h3>
           <ul>
-            <li>Request deletion of your personal information (subject to legal requirements)</li>
-            <li>Account deactivation and data removal</li>
+            <li>Request removal of your data (subject to legal retention obligations)</li>
           </ul>
-          <h3>10.4 Processing Restrictions</h3>
+          <h3>10.4 Objection and Restriction</h3>
           <ul>
-            <li>Object to or restrict certain processing activities</li>
-            <li>Withdraw consent where processing is based on consent</li>
+            <li>Object to certain processing activities</li>
+            <li>Withdraw consent at any time</li>
           </ul>
           <h3>10.5 Data Portability</h3>
           <ul>
-            <li>Request your data in a commonly used format</li>
-            <li>Transfer data to another service provider where technically feasible</li>
+            <li>Request your data in a portable format</li>
+            <li>Transfer it to another provider if feasible</li>
           </ul>
 
           <h2>11. Age Restrictions</h2>
-          <p><strong>Our services are not available to individuals under 18 years of age.</strong> We do not knowingly collect personal information from minors. If we become aware that we have collected information from someone under 18, we will delete it immediately.</p>
+          <p>Our services are intended for users 18 years or older. We do not knowingly collect information from minors. If we become aware of such data, it will be deleted promptly.</p>
 
-          <h2>12. Cross-Border Data Transfers</h2>
-          <p>When transferring personal information outside South Africa, we ensure:</p>
+          <h2>12. Cross-Border Transfers</h2>
+          <p>When personal information is transferred outside South Africa, we ensure:</p>
           <ul>
-            <li>Adequate protection through approved mechanisms</li>
-            <li>Contractual safeguards with international service providers</li>
-            <li>Compliance with POPIA's transborder flow provisions</li>
+            <li>Transfers are governed by POPIA-compliant contracts</li>
+            <li>The recipient country offers adequate data protection</li>
           </ul>
 
           <h2>13. Cookies and Tracking</h2>
-          <p>Our website uses cookies and similar technologies to:</p>
+          <p>Our website uses cookies to:</p>
           <ul>
-            <li>Ensure proper website functionality</li>
-            <li>Analyze usage patterns and improve user experience</li>
-            <li>Remember your preferences and login status</li>
+            <li>Ensure proper functionality</li>
+            <li>Improve user experience</li>
+            <li>Analyze traffic patterns</li>
           </ul>
-          <p>You can control cookie settings through your browser preferences.</p>
+          <p>You may manage cookie preferences via your browser settings.</p>
 
-          <h2>14. Contact and Complaints</h2>
-          <h3>14.1 Privacy Inquiries</h3>
-          <p>For questions about this policy or your privacy rights, contact our Information Officer:</p>
+          <h2>14. Contact & Complaints</h2>
+          <h3>14.1 Contact Us</h3>
+          <p>For questions or concerns, contact our Information Officer:</p>
           <ul>
-            <li><strong>Email:</strong> [Insert Email]</li>
-            <li><strong>Phone:</strong> [Insert Phone Number]</li>
-            <li><strong>Address:</strong> RAK-Site Safety Services, Three Rivers East, Vereeniging, South Africa</li>
+              <li>📧 <a href="mailto:info@sitesafety.services">info@sitesafety.services</a></li>
+              <li>📞 0716115429</li>
+              <li>📍 Three Rivers East, Vereeniging, South Africa</li>
           </ul>
-          <h3>14.2 Complaints Process</h3>
-          <p>If you have concerns about our handling of your personal information:</p>
+          <h3>14.2 Complaints</h3>
+          <p>If you believe your data is being misused:</p>
           <ol>
-            <li>Contact our Information Officer directly</li>
-            <li>We will acknowledge your complaint within 5 business days</li>
-            <li>Investigation and response within 30 days</li>
-            <li>If unsatisfied, you may lodge a complaint with the Information Regulator</li>
+            <li>Contact us directly—complaints are acknowledged within 5 business days</li>
+            <li>We aim to resolve issues within 30 days</li>
+            <li>If unresolved, you may contact the Information Regulator:</li>
           </ol>
-          <h3>14.3 Information Regulator</h3>
           <ul>
-            <li><strong>Information Regulator South Africa</strong></li>
-            <li><strong>Website:</strong> www.justice.gov.za/inforeg</li>
-            <li><strong>Email:</strong> inforeg@justice.gov.za</li>
-            <li><strong>Phone:</strong> +27 12 406 4818</li>
+            <li><strong>Information Regulator (South Africa)</strong></li>
+            <li>🌐 <a href="https://www.justice.gov.za/inforeg" target="_blank" rel="noopener noreferrer">www.justice.gov.za/inforeg</a></li>
+            <li>📧 inforeg@justice.gov.za</li>
+            <li>📞 +27 12 406 4818</li>
           </ul>
 
           <h2>15. Policy Updates</h2>
-          <p>We may update this privacy policy to reflect:</p>
+          <p>We may update this policy to reflect changes in our services, law, or best practices. Material updates will be communicated through:</p>
           <ul>
-            <li>Changes in our services or business practices</li>
-            <li>Legal or regulatory requirements</li>
-            <li>Best practice developments</li>
-          </ul>
-          <p>We will notify you of material changes through:</p>
-          <ul>
-            <li>Email notifications to registered users</li>
-            <li>Website announcements</li>
-            <li>System notifications within our platforms</li>
+            <li>Email notices</li>
+            <li>Website banners</li>
+            <li>In-platform announcements</li>
           </ul>
 
           <h2>16. Governing Law</h2>
-          <p>This privacy policy is governed by South African law, including POPIA and other applicable privacy regulations.</p>
-          
-          <hr />
-
-          <p><strong>Acknowledgment:</strong> By using our services, you acknowledge that you have read, understood, and agree to this privacy policy.</p>
-          <p><strong>RAK-Site Safety Services</strong><br/>Three Rivers East, Vereeniging, South Africa<br/>{currentDate}</p>
-
+          <p>This policy is governed by the laws of South Africa, including POPIA and other applicable data protection regulations.</p>
         </div>
       </div>
     </div>
