@@ -69,7 +69,7 @@ export default function SafetyManagementSystemPage() {
                   </CardContent>
                   <CardFooter>
                     <Button asChild className="w-full" size="lg">
-                        <Link href="/safety-management-system/signup">
+                        <Link href="https://raksms.services/signup">
                             Get Started Now <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
                     </Button>
@@ -139,7 +139,7 @@ export default function SafetyManagementSystemPage() {
                 </CardHeader>
                 <CardFooter className="justify-center">
                     <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
-                        <Link href="/safety-management-system/signup">Sign Up for a Demo</Link>
+                        <Link href="https://raksms.services/signup">Sign Up for a Demo</Link>
                     </Button>
                 </CardFooter>
             </Card>
@@ -148,5 +148,3 @@ export default function SafetyManagementSystemPage() {
     </div>
   );
 }
-
-    

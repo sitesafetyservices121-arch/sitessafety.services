@@ -37,8 +37,8 @@ export default function SmsSignupPage() {
                     <p>3. <span className="font-semibold text-foreground">Gain Access:</span> Once payment is confirmed, you will receive full access to the AI Safety Management System within 15 minutes.</p>
                      <div className="pt-4">
                         <Button asChild variant="outline">
-                            <Link href="https://www.sitesafety.services" target="_blank" rel="noopener noreferrer">
-                                Visit www.sitesafety.services <ArrowRight className="ml-2 h-4 w-4" />
+                            <Link href="https://raksms.services" target="_blank" rel="noopener noreferrer">
+                                Visit raksms.services <ArrowRight className="ml-2 h-4 w-4" />
                             </Link>
                         </Button>
                     </div>
