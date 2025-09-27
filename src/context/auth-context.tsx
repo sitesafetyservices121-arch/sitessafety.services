@@ -4,7 +4,6 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { User, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '@/lib/firebase/firebase';
-import { TopLoader } from '@/components/top-loader';
 
 interface SerializableUser {
   uid: string;
@@ -12,6 +11,7 @@ interface SerializableUser {
   displayName: string | null;
   photoURL: string | null;
   emailVerified: boolean;
+  providerData: any[]; // Store provider data
 }
 
 interface AuthContextType {
@@ -43,6 +43,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
           displayName: firebaseUser.displayName,
           photoURL: firebaseUser.photoURL,
           emailVerified: firebaseUser.emailVerified,
+          providerData: firebaseUser.providerData,
         };
         setUser(serializableUser);
       } else {
@@ -56,7 +57,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   return (
     <AuthContext.Provider value={{ user, loading }}>
-      {loading ? <TopLoader /> : children}
+      {children}
     </AuthContext.Provider>
   );
 };
