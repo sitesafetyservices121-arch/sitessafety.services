@@ -167,18 +167,18 @@ export default function Home() {
               We engineered the future of safety. Explore our pioneering services, built to deliver unprecedented compliance and efficiency.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {projects.map((project) => (
-              <Card key={project.title} className="bg-transparent flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border">
+              <Card key={project.title} className="bg-card flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-xl border">
                 <CardContent className="p-0">
-                  <div className="relative h-56 w-full">
+                  <div className="relative h-64 w-full">
                     <Image src={project.image} alt={project.title} fill style={{objectFit:"cover"}} data-ai-hint={project.hint} quality={100} className="transition-transform duration-500 group-hover:scale-105" />
                   </div>
                 </CardContent>
                 <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold text-foreground mb-2">{project.title}</h3>
+                  <h3 className="text-2xl font-bold text-foreground mb-3">{project.title}</h3>
                   <p className="text-muted-foreground mb-6 flex-grow">{project.description}</p>
-                  <Link href={project.link} className="font-body font-semibold text-primary hover:underline flex items-center group">
+                  <Link href={project.link} className="font-body font-semibold text-primary hover:underline flex items-center group self-start">
                     Learn More <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
