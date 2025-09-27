@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { LoadingSpinner } from './ui/loading-spinner';
 
-export function LoadingProvider({ children }: { children: React.ReactNode }) {
+function LoadingIndicator() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
@@ -31,6 +31,16 @@ export function LoadingProvider({ children }: { children: React.ReactNode }) {
           <LoadingSpinner size="large" color="border-blue-500 border-t-blue-500" />
         </div>
       )}
+    </>
+  );
+}
+
+export function LoadingProvider({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <Suspense fallback={null}>
+        <LoadingIndicator />
+      </Suspense>
       {children}
     </>
   );
