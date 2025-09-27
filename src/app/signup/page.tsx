@@ -72,17 +72,14 @@ export default function SignUpPage() {
     if (!loading && user) {
       router.push(redirectUrl);
     }
-  }, [user, loading, router, redirectUrl]);
-
-  useEffect(() => {
-    // Redirect on successful form submission
+    // Also redirect on successful form submission
     if (state.user) {
        router.push(redirectUrl);
     }
-  }, [state.user, router, redirectUrl]);
+  }, [user, loading, router, redirectUrl, state.user]);
   
-  // While auth is loading or if the user is logged in (and about to be redirected),
-  // show a loading state to prevent the form from flashing and causing loops.
+  // While auth is loading or if the user is already logged in (and about to be redirected),
+  // show a loading state to prevent the form from flashing.
   if (loading || user) {
     return <div className="container py-24 text-center">Loading...</div>;
   }
