@@ -12,6 +12,7 @@ import { AuthProvider } from "@/context/auth-context";
 import { LoadingProvider } from "@/components/loading-provider";
 import { TopLoader } from "@/components/top-loader";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import imageData from "@/app/lib/placeholder-images.json";
 
 
@@ -138,6 +139,7 @@ export default function RootLayout({
           </Script>
         </ThemeProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
