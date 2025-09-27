@@ -31,8 +31,10 @@ const plans = [
         features: [
             "Auto-Assistant AI Auditor",
             "Proactive Non-Compliance Alerts",
+            "Role-Based Logins for Managers",
+            "Incident & Accident Reporting Workflow",
             "2TB Secure Online Storage",
-            "Incident & Accident Reporting Flow",
+            "Hosting, Support & Built-In Training",
         ],
         icon: <Bot className="h-8 w-8 text-primary"/>,
         cta: "Choose Large Enterprise"
