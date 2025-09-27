@@ -68,15 +68,12 @@ export default function SignUpPage() {
   const redirectUrl = searchParams.get("redirect") || "/account";
 
   useEffect(() => {
-    // If auth is not loading and a user exists, or if form submission was successful, redirect.
-    if ((!loading && user) || state.user) {
+    if (user) {
       router.push(redirectUrl);
     }
-  }, [user, loading, state.user, router, redirectUrl]);
+  }, [user, redirectUrl, router]);
   
-  // While auth is loading or if a user object exists (and redirect is imminent),
-  // show a loading state to prevent the form from flashing.
-  if (loading || user || state.user) {
+  if (loading || user) {
     return <div className="container py-24 text-center">Loading...</div>;
   }
 

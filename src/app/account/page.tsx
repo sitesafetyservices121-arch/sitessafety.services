@@ -14,13 +14,11 @@ export default function AccountPage() {
   const router = useRouter();
 
   useEffect(() => {
-    // If auth is not loading and there's no user, redirect to login.
     if (!loading && !user) {
       router.push('/login');
     }
   }, [user, loading, router]);
 
-  // While loading or if there's no user (and redirect is imminent), show a loading state.
   if (loading || !user) {
     return <div className="container py-24 text-center">Loading...</div>;
   }
