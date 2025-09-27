@@ -145,7 +145,7 @@ export default function AboutPage() {
                 <div className="text-center border-t border-dashed pt-16">
                      <h3 className="text-3xl font-extrabold text-foreground">The Promise</h3>
                      <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                        Perfection in compliance isn’t luck. It’s a system. With RAK-Site Safety Services, AI does the heavy lifting, and registered professionals sign it off. That’s how you reduce risk, cut costs, and pass audits, consistently.
+                        Compliance done right isn’t chance—it’s design. At RAK-Site Safety Services, AI handles the complexity, and certified professionals ensure it's airtight. The result? Lower risk, leaner costs, and audits passed the first time, every time.
                      </p>
                      <p className="mt-8 text-2xl font-bold text-primary">Ready to make compliance inevitable?</p>
                      <p className="mt-2 text-muted-foreground">Let’s build your file, deploy your officer, and put your legal proof in writing.</p>
@@ -204,5 +204,7 @@ export default function AboutPage() {
     </div>
   );
 }
+
+    
 
     
