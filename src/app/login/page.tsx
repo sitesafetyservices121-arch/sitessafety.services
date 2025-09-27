@@ -96,17 +96,17 @@ export default function LoginPage() {
   const redirectUrl = searchParams.get("redirect") || "/account";
 
   useEffect(() => {
+    // Redirect if user is already logged in
     if (!loading && user) {
       router.push(redirectUrl);
     }
-  }, [user, loading, redirectUrl, router]);
-  
-  useEffect(() => {
-    if (!loading && state.user) {
+    // Redirect on successful form submission
+    if (state.user) {
         router.push(redirectUrl);
     }
-  }, [state, loading, redirectUrl, router]);
+  }, [user, loading, state.user, redirectUrl, router]);
 
+  // If loading or user exists, show loader to prevent form flash and loops
   if (loading || user) {
     return <TopLoader />;
   }

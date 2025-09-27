@@ -20,6 +20,7 @@ export default function AccountPage() {
     }
   }, [user, loading, router]);
 
+  // If auth is loading, or there's no user, show a loader to prevent content flash
   if (loading || !user) {
     return <TopLoader />;
   }
