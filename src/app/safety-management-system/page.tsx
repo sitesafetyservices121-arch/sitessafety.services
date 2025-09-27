@@ -29,7 +29,7 @@ const aiTools = [
 
 const managementTools = [
     { icon: <HardHat className="h-6 w-6 text-primary" />, title: "PPE Issue Tracker", description: "Manage and track the issuance of Personal Protective Equipment." },
-    { icon: <UserCog className="h-6 w-6 text-primary" />, title: "Employee Training Tracker", description: "Keep records of all employee training and certifications." },
+    { icon: <UserCog className="h-6 w-6 text-primary" />, title: "Employee Training Tracker", description: "Keep records of all employee training and certifications. You also receive emails before expiry and can be set up the employee receives the emails as well upon his training expiring." },
     { icon: <ShieldCheck className="h-6 w-6 text-primary" />, title: "Site & Resource Tracker", description: "Monitor resources and personnel across multiple sites." },
     { icon: <Car className="h-6 w-6 text-primary" />, title: "Vehicle Inspection & Damage Reports", description: "Log and manage vehicle checks and report any damage instantly." },
     { icon: <Box className="h-6 w-6 text-primary" />, title: "Storeroom Management", description: "Efficiently track and manage your storeroom inventory." },
