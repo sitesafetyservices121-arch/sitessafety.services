@@ -44,7 +44,7 @@ export default function RentASafetyOfficerPage() {
   return (
     <div className="bg-background text-foreground">
       {/* Header Section */}
-      <section className="relative py-20 md:py-32 border-b text-white">
+      <section className="relative py-20 md:py-32 border-b text-white bg-transparent">
         <VantaBackground />
         <div className="container mx-auto px-4 text-center relative z-10">
             <h1 className="text-4xl md:text-6xl font-extrabold">
