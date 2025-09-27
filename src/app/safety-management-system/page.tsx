@@ -58,7 +58,7 @@ export default function SafetyManagementSystemPage() {
           <div className="grid lg:grid-cols-5 gap-12 md:gap-16 items-center">
             {/* Image */}
             <div className="lg:col-span-3 relative h-[500px] w-full rounded-2xl overflow-hidden border shadow-xl">
-                <Image src="https://iili.io/JADbWWp.png" alt="AI-driven safety management system dashboard" fill style={{objectFit: 'cover'}} data-ai-hint="data dashboard interface" quality={100} priority/>
+                <Image src="https://picsum.photos/seed/dashboard2/1200/800" alt="AI-driven safety management system dashboard" fill style={{objectFit: 'cover'}} data-ai-hint="data dashboard interface" quality={100} priority/>
             </div>
 
             {/* Pricing Card */}

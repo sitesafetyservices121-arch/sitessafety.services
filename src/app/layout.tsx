@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: 'RAK-Site Safety Services',
     images: [
       {
-        url: 'https://iili.io/JADbWWp.png', // Main dashboard/system image
+        url: 'https://picsum.photos/seed/dashboard/1200/630', // Main dashboard/system image
         width: 1200,
         height: 630,
         alt: 'AI-Powered Safety Management System Dashboard',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'RAK-Site Safety Services - Next-Gen Safety & Compliance',
     description: 'RAK-Site Safety Services delivers next-generation safety solutions for complex industries, ensuring compliance, efficiency, and a secure work environment.',
-    images: ['https://iili.io/JADbWWp.png'],
+    images: ['https://picsum.photos/seed/dashboard/1200/630'],
   },
   icons: {
     icon: "https://iili.io/KnOi1Og.png",
