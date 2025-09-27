@@ -11,6 +11,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider } from "@/context/auth-context";
 import { LoadingProvider } from "@/components/loading-provider";
 import { TopLoader } from "@/components/top-loader";
+import { Analytics } from "@vercel/analytics/next";
 
 
 export const metadata: Metadata = {
@@ -135,6 +136,7 @@ export default function RootLayout({
             `}
           </Script>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
