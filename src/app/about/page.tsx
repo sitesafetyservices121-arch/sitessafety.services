@@ -72,7 +72,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-6xl font-extrabold text-foreground">Achieving Perfection in Compliance Where AI Meets Human Expertise.</h1>
             <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-                When safety and legality are non-negotiable, you need more than promises. You need a system that makes compliance inevitable. RAK-Site Safety Services blends certified professionals with purpose-built AI to deliver audit-ready documentation, faster decisions, and measurable cost savings across South Africa.
+                When safety and compliance aren’t optional, guesswork isn’t either. RAK-Site Safety Services combines certified experts with purpose-built AI to deliver audit-ready documentation, faster approvals, and real savings nationwide. We don’t just promise compliance. We engineer it.
             </p>
         </div>
       </section>
