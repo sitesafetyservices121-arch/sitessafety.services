@@ -5,6 +5,12 @@ import { BookingForm } from "@/components/booking-form";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Shield, Clock, Phone, UserCheck, CalendarDays } from "lucide-react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const VantaBackground = dynamic(() => import("@/components/vanta-background"), {
+  ssr: false,
+});
+
 
 // export const metadata: Metadata = { // Metadata must be defined in a server component
 //   title: 'Book a Certified Safety Officer',
@@ -39,18 +45,7 @@ export default function RentASafetyOfficerPage() {
     <div className="bg-background text-foreground">
       {/* Header Section */}
       <section className="relative py-20 md:py-32 border-b text-white">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="https://i.ibb.co/5pHLV4D/image-27.jpg"
-            alt="Safety officer on site"
-            fill
-            style={{ objectFit: 'cover' }}
-            data-ai-hint="male professional portrait"
-            priority
-            quality={100}
-          />
-          <div className="absolute inset-0 bg-black/60" />
-        </div>
+        <VantaBackground />
         <div className="container mx-auto px-4 text-center relative z-10">
             <h1 className="text-4xl md:text-6xl font-extrabold">
               Book Your On-Demand Safety Officer
