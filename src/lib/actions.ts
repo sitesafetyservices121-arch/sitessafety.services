@@ -138,6 +138,7 @@ export async function submitBooking(data: unknown) {
         
         const formData = new FormData();
         formData.append("subject", "New Booking Request");
+        formData.append("heading", "Payments");
         formData.append("Booking Type", isEmergency ? 'EMERGENCY' : 'Standard');
         formData.append("Service", service);
         formData.append("Name", name);
@@ -148,7 +149,7 @@ export async function submitBooking(data: unknown) {
         formData.append("Dates", `${format(dates.from, 'PPP')} to ${format(dates.to, 'PPP')}`);
         formData.append("Estimated Total", `R${total.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`);
 
-        const result = await sendWeb3Form(WEB3FORMS_INFO_ACCESS_KEY!, formData);
+        const result = await sendWeb3Form(WEB3FORMS_RUAN_ACCESS_KEY!, formData);
         
         return { success: true, message: result.message };
     } catch (error) {
@@ -220,6 +221,7 @@ export async function submitSmsSignup(data: unknown) {
 
         const formData = new FormData();
         formData.append("subject", "New Safety Management System Signup");
+        formData.append("heading", "Onboarding");
         formData.append("Name", `${firstName} ${surname}`);
         formData.append("Company", company);
         formData.append("Email", email);
@@ -299,7 +301,8 @@ export async function submitElectronicFileOrder(data: unknown) {
         const { name, surname, company, email, phone, companyLogo, fileIndex, serviceTier, total } = validatedData;
         
         const formData = new FormData();
-        formData.append("subject", "New Electronically Delivered Safety File Order");
+        formData.append("subject", "Printable Safety File Payment");
+        formData.append("heading", "Payments");
         formData.append("Service Tier", serviceTier);
         formData.append("Total Paid", `R${total.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`);
         formData.append("Uploaded Company Logo", companyLogo);
@@ -307,9 +310,7 @@ export async function submitElectronicFileOrder(data: unknown) {
         formData.append("Name", `${name} ${surname}`);
         formData.append("Company", company);
         formData.append("Email", email);
-        formData.append("Phone", phone);
-
-        const result = await sendWeb3Form(WEB3FORMS_INFO_ACCESS_KEY!, formData);
+        const result = await sendWeb3Form(WEB3FORMS_RUAN_ACCESS_KEY!, formData);
 
         return { success: true, message: result.message };
     } catch (error) {        

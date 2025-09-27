@@ -7,8 +7,9 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
+import withAdminAuth from '@/components/with-admin-auth';
 
-export default function AdminPaymentsPage() {
+function AdminPaymentsPage() {
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
 
@@ -79,3 +80,5 @@ export default function AdminPaymentsPage() {
     </Card>
   );
 }
+
+export default withAdminAuth(AdminPaymentsPage);

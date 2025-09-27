@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
+import withAdminAuth from '@/components/with-admin-auth';
 
 interface SocialMediaLinks {
   twitter: string;
@@ -14,7 +15,7 @@ interface SocialMediaLinks {
   linkedin: string;
 }
 
-export default function AdminSocialMediaPage() {
+function AdminSocialMediaPage() {
   const [links, setLinks] = useState<SocialMediaLinks>({ twitter: "", facebook: "", linkedin: "" });
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
@@ -130,3 +131,5 @@ export default function AdminSocialMediaPage() {
     </Card>
   );
 }
+
+export default withAdminAuth(AdminSocialMediaPage);

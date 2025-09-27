@@ -1,4 +1,3 @@
-
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
@@ -36,11 +35,13 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       }
     ],
+    qualities: [75, 100],
   },
   // This is required to allow the Next.js dev server to be accessed from
   // the IDX preview window.
   allowedDevOrigins: ['https://*.googleusercontent.com', 'https://*.cloudworkstations.dev'],
   experimental: {
+    serverActions: true,
   },
 };
 

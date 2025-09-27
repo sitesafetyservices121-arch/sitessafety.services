@@ -6,8 +6,9 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
+import withAdminAuth from '@/components/with-admin-auth';
 
-export default function AdminPicturesPage() {
+function AdminPicturesPage() {
   const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -90,3 +91,5 @@ export default function AdminPicturesPage() {
     </Card>
   );
 }
+
+export default withAdminAuth(AdminPicturesPage);
