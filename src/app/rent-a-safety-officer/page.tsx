@@ -44,10 +44,10 @@ export default function RentASafetyOfficerPage() {
   return (
     <div className="bg-background text-foreground">
       {/* Header Section */}
-      <section className="relative py-20 md:py-32 border-b text-white bg-transparent">
+      <section className="relative py-20 md:py-32 border-b bg-transparent">
         <VantaBackground />
         <div className="container mx-auto px-4 text-center relative z-10">
-            <h1 className="text-4xl md:text-6xl font-extrabold">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-white">
               Book Your On-Demand Safety Officer
             </h1>
             <p className="mt-6 text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
