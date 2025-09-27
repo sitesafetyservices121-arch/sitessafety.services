@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import imageData from "@/app/lib/placeholder-images.json";
 
 const VantaBackground = dynamic(() => import("@/components/vanta-background"), {
   ssr: false,
@@ -58,7 +59,7 @@ export default function SafetyManagementSystemPage() {
           <div className="grid lg:grid-cols-5 gap-12 md:gap-16 items-center">
             {/* Image */}
             <div className="lg:col-span-3 relative h-[500px] w-full rounded-2xl overflow-hidden border shadow-xl">
-                <Image src="https://picsum.photos/seed/dashboard2/1200/800" alt="AI-driven safety management system dashboard" fill style={{objectFit: 'cover'}} data-ai-hint="data dashboard interface" quality={100} priority/>
+                <Image src={imageData.safety_system_dashboard.url} alt="AI-driven safety management system dashboard" fill style={{objectFit: 'cover'}} data-ai-hint={imageData.safety_system_dashboard.hint} quality={100} priority/>
             </div>
 
             {/* Pricing Card */}

@@ -9,6 +9,7 @@ import { CheckIconCard } from "@/components/ui/check-icon-card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import imageData from "@/app/lib/placeholder-images.json";
 
 
 const VantaBackground = dynamic(() => import("@/components/vanta-background"), {
@@ -22,9 +23,9 @@ const VantaBackground = dynamic(() => import("@/components/vanta-background"), {
 // };
 
 const teamMembers = [
-  { name: "John Doe", role: "Founder & Lead Safety Consultant", avatar: "https://iili.io/JADeLp1.png", initials: "JD", hint: "male professional portrait" },
-  { name: "Jane Smith", role: "Operations Manager", avatar: "https://iili.io/JADe4mB.png", initials: "JS", hint: "female professional portrait" },
-  { name: "Mike Johnson", role: "Senior Safety Officer", avatar: "https://iili.io/JADesol.png", initials: "MJ", hint: "male expert portrait" },
+  { name: "John Doe", role: "Founder & Lead Safety Consultant", avatar: imageData.leadership_john_doe.url, initials: "JD", hint: imageData.leadership_john_doe.hint },
+  { name: "Jane Smith", role: "Operations Manager", avatar: imageData.leadership_jane_smith.url, initials: "JS", hint: imageData.leadership_jane_smith.hint },
+  { name: "Mike Johnson", role: "Senior Safety Officer", avatar: imageData.leadership_mike_johnson.url, initials: "MJ", hint: imageData.leadership_mike_johnson.hint },
 ];
 
 const values = [

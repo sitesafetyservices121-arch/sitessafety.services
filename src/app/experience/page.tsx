@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, Award, Building2, HardHat, ShieldCheck, Factory, Truck, Wrench, DollarSign, Users, CheckCircle, Mountain, Flame, Store, Tractor, Wind, TowerControl, Utensils, Plane, Cpu, Handshake } from "lucide-react";
 import dynamic from "next/dynamic";
+import imageData from "@/app/lib/placeholder-images.json";
 
 const VantaBackground = dynamic(() => import("@/components/vanta-background"), {
   ssr: false,
@@ -20,22 +21,22 @@ const VantaBackground = dynamic(() => import("@/components/vanta-background"), {
 // };
 
 const testimonials = [
-  { name: "Lerato Khumalo", title: "Project Manager", company: "ConstructCo", testimonial: "RAK's safety officers were professional, knowledgeable, and integrated seamlessly with our team. Their proactive approach prevented numerous issues. Highly recommended for any large-scale project!", rating: 5, image: "https://iili.io/JADe4mB.png", hint: "professional black woman" },
-  { name: "Pieter van der Merwe", title: "CEO", company: "BuildRight Inc.", testimonial: "The E-Safety File service saved us countless hours and ensured we were fully compliant for a critical audit. The process was smooth, efficient, and professional.", rating: 5, image: "https://iili.io/JADeLp1.png", hint: "professional white man" },
-  { name: "Anika Patel", title: "Ops Director", company: "InfraGroup", testimonial: "Implementing their Safety Management System has transformed our safety culture for the better. We've seen a measurable reduction in incidents and a huge boost in employee engagement.", rating: 5, image: "https://iili.io/JADeZuG.png", hint: "professional indian woman" },
-  { name: "Bongani Zulu", title: "Site Foreman", company: "Gold One Mining", testimonial: "The electronically delivered safety file was a lifesaver. We got our compliant, print-ready documents in less than a day, which kept our project on schedule. The process was incredibly fast and easy.", rating: 5, image: "https://iili.io/JADesol.png", hint: "male construction worker" },
-  { name: "Fatima Allie", title: "Compliance Officer", company: "Omnia Foods", testimonial: "RAK's AI-powered Safety Management System is revolutionary. The built-in consultant helps us identify risks we hadn't even considered. It's an essential tool for maintaining our safety standards.", rating: 5, image: "https://iili.io/JADeYXv.png", hint: "professional coloured woman" },
-  { name: "Jaco Jacobs", title: "Small Business Owner", company: "JJ Engineering", testimonial: "As a smaller operation, we don't have a dedicated safety department. The instant Legal Document Generator is invaluable for creating compliant HIRAs and method statements quickly and affordably.", rating: 5, image: "https://iili.io/JADejnJ.png", hint: "male engineer" },
-  { name: "Sipho Ndlovu", title: "Logistics Manager", company: "Cape Gate Logistics", testimonial: "We rented a safety officer for a complex warehouse setup. The expertise provided was top-notch. They helped us establish safe operating procedures that we still use today. A fantastic service.", rating: 5, image: "https://iili.io/JADe5X7.png", hint: "male logistics manager" },
-  { name: "Naledi Ramphele", title: "Head of Operations", company: "Aviation Giants", testimonial: "The thoroughness of the compliance audit RAK-Site Safety Services performed was exceptional. They prepared us for our ISO certification and identified critical areas for improvement. Highly professional.", rating: 5, image: "https://iili.io/JADeKGs.png", hint: "female executive" },
-  { name: "Chris Botha", title: "Factory Manager", company: "Sasol Polymers", testimonial: "The Specialised Risk Assessment identified key vulnerabilities in our production line. The detailed report and actionable recommendations have been instrumental in enhancing our operational safety.", rating: 5, image: "https://iili.io/JADeGvF.png", hint: "male factory manager" },
+  { name: "Lerato Khumalo", title: "Project Manager", company: "ConstructCo", testimonial: "RAK's safety officers were professional, knowledgeable, and integrated seamlessly with our team. Their proactive approach prevented numerous issues. Highly recommended for any large-scale project!", rating: 5, image: imageData.testimonial_lerato_khumalo.url, hint: imageData.testimonial_lerato_khumalo.hint },
+  { name: "Pieter van der Merwe", title: "CEO", company: "BuildRight Inc.", testimonial: "The E-Safety File service saved us countless hours and ensured we were fully compliant for a critical audit. The process was smooth, efficient, and professional.", rating: 5, image: imageData.testimonial_pieter_van_der_merwe.url, hint: imageData.testimonial_pieter_van_der_merwe.hint },
+  { name: "Anika Patel", title: "Ops Director", company: "InfraGroup", testimonial: "Implementing their Safety Management System has transformed our safety culture for the better. We've seen a measurable reduction in incidents and a huge boost in employee engagement.", rating: 5, image: imageData.testimonial_anika_patel.url, hint: imageData.testimonial_anika_patel.hint },
+  { name: "Bongani Zulu", title: "Site Foreman", company: "Gold One Mining", testimonial: "The electronically delivered safety file was a lifesaver. We got our compliant, print-ready documents in less than a day, which kept our project on schedule. The process was incredibly fast and easy.", rating: 5, image: imageData.testimonial_bongani_zulu.url, hint: imageData.testimonial_bongani_zulu.hint },
+  { name: "Fatima Allie", title: "Compliance Officer", company: "Omnia Foods", testimonial: "RAK's AI-powered Safety Management System is revolutionary. The built-in consultant helps us identify risks we hadn't even considered. It's an essential tool for maintaining our safety standards.", rating: 5, image: imageData.testimonial_fatima_allie.url, hint: imageData.testimonial_fatima_allie.hint },
+  { name: "Jaco Jacobs", title: "Small Business Owner", company: "JJ Engineering", testimonial: "As a smaller operation, we don't have a dedicated safety department. The instant Legal Document Generator is invaluable for creating compliant HIRAs and method statements quickly and affordably.", rating: 5, image: imageData.testimonial_jaco_jacobs.url, hint: imageData.testimonial_jaco_jacobs.hint },
+  { name: "Sipho Ndlovu", title: "Logistics Manager", company: "Cape Gate Logistics", testimonial: "We rented a safety officer for a complex warehouse setup. The expertise provided was top-notch. They helped us establish safe operating procedures that we still use today. A fantastic service.", rating: 5, image: imageData.testimonial_sipho_ndlovu.url, hint: imageData.testimonial_sipho_ndlovu.hint },
+  { name: "Naledi Ramphele", title: "Head of Operations", company: "Aviation Giants", testimonial: "The thoroughness of the compliance audit RAK-Site Safety Services performed was exceptional. They prepared us for our ISO certification and identified critical areas for improvement. Highly professional.", rating: 5, image: imageData.testimonial_naledi_ramphele.url, hint: imageData.testimonial_naledi_ramphele.hint },
+  { name: "Chris Botha", title: "Factory Manager", company: "Sasol Polymers", testimonial: "The Specialised Risk Assessment identified key vulnerabilities in our production line. The detailed report and actionable recommendations have been instrumental in enhancing our operational safety.", rating: 5, image: imageData.testimonial_chris_botha.url, hint: imageData.testimonial_chris_botha.hint },
 ];
 
 const portfolio = [
-    { title: "High-Rise Commercial Tower", image: "https://i.ibb.co/rKv0KSNP/image-29.jpg", hint: "skyscraper construction" },
-    { title: "Industrial Manufacturing Plant", image: "https://i.ibb.co/4wkRjkxL/image-32.jpg", hint: "industrial plant" },
-    { title: "Metropolitan Subway Expansion", image: "https://i.ibb.co/FbCcN8Nq/image-36.jpg", hint: "tunnel construction site" },
-    { title: "Renewable Energy Wind Farm", image: "https://i.ibb.co/Y4HJxm8w/image-38.jpg", hint: "wind turbines field" },
+    { title: "High-Rise Commercial Tower", image: imageData.portfolio_high_rise.url, hint: imageData.portfolio_high_rise.hint },
+    { title: "Industrial Manufacturing Plant", image: imageData.portfolio_industrial_plant.url, hint: imageData.portfolio_industrial_plant.hint },
+    { title: "Metropolitan Subway Expansion", image: imageData.portfolio_subway.url, hint: imageData.portfolio_subway.hint },
+    { title: "Renewable Energy Wind Farm", image: imageData.portfolio_wind_farm.url, hint: imageData.portfolio_wind_farm.hint },
 ];
 
 const stats = [
