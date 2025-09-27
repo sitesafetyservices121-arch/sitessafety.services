@@ -144,7 +144,10 @@ export default function Home() {
           <div className="space-y-6">
             <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">A Commitment to Uncompromising Safety</h2>
             <p className="text-muted-foreground text-lg md:text-xl/relaxed">
-              For over a decade, RAK-Site Safety Services has been at the forefront of the safety industry. We blend deep field experience with cutting-edge, AI-powered technology to offer a level of protection and efficiency previously unimaginable. Our mission is to safeguard your people and assets, ensuring you don't just meet regulatory requirements—you exceed them. Partner with us to transform your workplace into a model of modern safety and operational excellence.
+              For over a decade, we've led the way in workplace safety across South Africa. Combining hands-on experience with advanced AI-powered systems, we deliver smart, scalable solutions that go beyond compliance. Our mission is simple: protect your people, your assets, and your reputation.
+            </p>
+            <p className="text-muted-foreground text-lg md:text-xl/relaxed">
+              Whether you're managing a high-risk site or streamlining your safety files, we’ll help you turn safety into a strength not a checkbox.
             </p>
             <div className="flex justify-center lg:justify-start pt-4">
               <Button asChild size="lg" variant="outline">
