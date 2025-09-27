@@ -84,6 +84,7 @@ export function Footer() {
                 <Link href="/privacy" className="text-base text-secondary-foreground/70 hover:text-primary font-body">Privacy Policy</Link>
                 <Link href="/popia" className="text-base text-secondary-foreground/70 hover:text-primary font-body">POPIA Policy</Link>
                 <Link href="/acceptable-use-policy" className="text-base text-secondary-foreground/70 hover:text-primary font-body">Acceptable Use Policy</Link>
+                <Link href="/website-cookie-policy" className="text-base text-secondary-foreground/70 hover:text-primary font-body">Website & Cookie Policy</Link>
             </div>
         </div>
         <div className="mt-12 border-t border-secondary-foreground/20 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
