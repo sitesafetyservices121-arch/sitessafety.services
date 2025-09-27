@@ -14,6 +14,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CheckIconCard } from "@/components/ui/check-icon-card";
+import imageData from "@/app/lib/placeholder-images.json";
 
 export const metadata: Metadata = {
   title: 'Electronically Delivered Safety Files',
@@ -72,7 +73,7 @@ export default function ElectronicallyDeliveredSafetyFilesPage() {
                     </div>
                 </div>
                 <div className="relative h-80 lg:h-[400px] w-full">
-                    <Image src="https://iili.io/JADbLPS.png" fill style={{objectFit: 'contain'}} alt="A secure digital folder being downloaded to a computer screen" data-ai-hint="digital file download" quality={100} priority/>
+                    <Image src={imageData.print_ready_folder.url} fill style={{objectFit: 'contain'}} alt="A secure digital folder being downloaded to a computer screen" data-ai-hint={imageData.print_ready_folder.hint} quality={100} priority/>
                 </div>
             </div>
         </div>

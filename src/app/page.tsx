@@ -9,6 +9,7 @@ import Image from "next/image";
 import { TestimonialCard } from "@/components/testimonial-card";
 import { InquiryForm } from "@/components/inquiry-form";
 import dynamic from "next/dynamic";
+import imageData from "@/app/lib/placeholder-images.json";
 
 const VantaBackground = dynamic(() => import("@/components/vanta-background"), {
   ssr: false,
@@ -21,39 +22,39 @@ const projects = [
     title: "Rent a Safety Officer",
     description: "Deploy elite, certified safety officers for on-demand risk mitigation and unparalleled on-site expertise.",
     link: "/rent-a-safety-officer",
-    image: "https://picsum.photos/seed/service1/600/400",
-    hint: "construction site safety"
+    image: imageData.service_rent_officer.url,
+    hint: imageData.service_rent_officer.hint,
   },
   {
     icon: <FileText className="h-8 w-8 text-primary" />,
     title: "E-Safety File Website & Hosting",
     description: "A fully-digitized, cloud-based safety file solution, ensuring you are always audit-proof and compliant.",
     link: "/e-safety-file",
-    image: "https://picsum.photos/seed/service2/600/400",
-    hint: "digital document management"
+    image: imageData.service_esafety_file.url,
+    hint: imageData.service_esafety_file.hint,
   },
   {
     icon: <ShieldCheck className="h-8 w-8 text-primary" />,
     title: "AI-Powered Safety System",
     description: "A revolutionary platform to command your entire safety operation and build a zero-incident culture.",
     link: "/safety-management-system",
-    image: "https://picsum.photos/seed/service3/600/400",
-    hint: "safety dashboard analytics"
+    image: imageData.service_safety_system.url,
+    hint: imageData.service_safety_system.hint,
   },
   {
     icon: <Zap className="h-8 w-8 text-primary" />,
     title: "Download Print-Ready Safety Files",
     description: "Instantly get your compliant, print-ready safety documents delivered electronically within hours.",
     link: "/print-ready-safety-files",
-    image: "https://picsum.photos/seed/service4/600/400",
-    hint: "digital file download"
+    image: imageData.service_print_ready.url,
+    hint: imageData.service_print_ready.hint,
   },
 ];
 
 const testimonials = [
-  { name: "Lerato Khumalo", title: "Project Manager", company: "ConstructCo", testimonial: "RAK's safety officers were professional, knowledgeable, and integrated seamlessly with our team. Their proactive approach prevented numerous issues.", rating: 5, image: "https://iili.io/JADe4mB.png", hint: "professional black woman" },
-  { name: "Pieter van der Merwe", title: "CEO", company: "BuildRight Inc.", testimonial: "The E-Safety File service saved us countless hours and ensured we were fully compliant for a critical audit. The process was smooth and professional.", rating: 5, image: "https://iili.io/JADeLp1.png", hint: "professional white man" },
-  { name: "Anika Patel", title: "Ops Director", company: "InfraGroup", testimonial: "Implementing their Safety Management System has transformed our safety culture for the better. We've seen a measurable reduction in incidents.", rating: 5, image: "https://iili.io/JADeZuG.png", hint: "professional indian woman" },
+  { name: "Lerato Khumalo", title: "Project Manager", company: "ConstructCo", testimonial: "RAK's safety officers were professional, knowledgeable, and integrated seamlessly with our team. Their proactive approach prevented numerous issues.", rating: 5, image: imageData.testimonial_lerato_khumalo.url, hint: imageData.testimonial_lerato_khumalo.hint },
+  { name: "Pieter van der Merwe", title: "CEO", company: "BuildRight Inc.", testimonial: "The E-Safety File service saved us countless hours and ensured we were fully compliant for a critical audit. The process was smooth and professional.", rating: 5, image: imageData.testimonial_pieter_van_der_merwe.url, hint: imageData.testimonial_pieter_van_der_merwe.hint },
+  { name: "Anika Patel", title: "Ops Director", company: "InfraGroup", testimonial: "Implementing their Safety Management System has transformed our safety culture for the better. We've seen a measurable reduction in incidents.", rating: 5, image: imageData.testimonial_anika_patel.url, hint: imageData.testimonial_anika_patel.hint },
 ];
 
 const problems = [
@@ -131,11 +132,11 @@ export default function Home() {
         <div className="container grid items-center justify-center gap-12 px-4 text-center md:px-6 lg:grid-cols-2 lg:text-left lg:gap-20">
           <div className="relative h-96 lg:h-[500px] w-full overflow-hidden rounded-xl shadow-xl">
             <Image
-              src="https://picsum.photos/seed/founder/600/800"
+              src={imageData.founder_portrait.url}
               alt="Portrait of the founder"
               fill
               style={{objectFit:"cover", objectPosition: "center"}}
-              data-ai-hint="male professional portrait"
+              data-ai-hint={imageData.founder_portrait.hint}
               quality={100}
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"

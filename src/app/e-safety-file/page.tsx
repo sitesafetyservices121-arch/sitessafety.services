@@ -7,6 +7,7 @@ import { Bot, Users, Server, CheckCircle, ArrowRight, Eye } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import imageData from "@/app/lib/placeholder-images.json";
 
 const plans = [
     {
@@ -77,7 +78,7 @@ export default function ESafetyFilePage() {
                     </div>
                 </div>
                 <div className="relative h-80 lg:h-[400px] w-full">
-                    <Image src="https://i.ibb.co/TxGnCPhC/image-20.jpg" fill style={{objectFit: 'contain'}} alt="e-safety file on a laptop" data-ai-hint="saas dashboard laptop" quality={100} priority />
+                    <Image src={imageData.esafety_file_laptop.url} fill style={{objectFit: 'contain'}} alt="e-safety file on a laptop" data-ai-hint={imageData.esafety_file_laptop.hint} quality={100} priority />
                 </div>
             </div>
         </div>
