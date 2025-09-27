@@ -40,9 +40,7 @@ const nextConfig: NextConfig = {
   // This is required to allow the Next.js dev server to be accessed from
   // the IDX preview window.
   allowedDevOrigins: ['https://*.googleusercontent.com', 'https://*.cloudworkstations.dev'],
-  experimental: {
-    serverActions: true,
-  },
+  serverActions: true,
 };
 
 export default nextConfig;

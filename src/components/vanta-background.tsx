@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
@@ -13,7 +12,7 @@ declare global {
 
 let vantaEffect: any = null;
 
-export const VantaBackground = () => {
+const VantaBackground = () => {
     const vantaRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -78,3 +77,5 @@ export const VantaBackground = () => {
         <div ref={vantaRef} style={{ width: '100%', height: '100%', position: 'fixed', top: 0, left: 0, zIndex: -10 }} />
     );
 };
+
+export default VantaBackground;

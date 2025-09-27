@@ -10,7 +10,7 @@ import { TestimonialCard } from "@/components/testimonial-card";
 import { InquiryForm } from "@/components/inquiry-form";
 import dynamic from "next/dynamic";
 
-const VantaBackground = dynamic(() => import("@/components/vanta-background").then((mod) => mod.VantaBackground), {
+const VantaBackground = dynamic(() => import("@/components/vanta-background"), {
   ssr: false,
 });
 
