@@ -5,6 +5,7 @@ import type { ComplianceRequest, ComplianceResponse } from "@/ai/schemas";
 import { z } from 'zod';
 import { format } from 'date-fns';
 import { generateSignature } from './payfast';
+import { headers } from "next/headers";
 
 const WEB3FORMS_INFO_ACCESS_KEY = process.env.WEB3FORMS_INFO_ACCESS_KEY;
 const WEB3FORMS_RUAN_ACCESS_KEY = process.env.WEB3FORMS_RUAN_ACCESS_KEY;
@@ -12,7 +13,7 @@ const WEB3FORMS_RUAN_ACCESS_KEY = process.env.WEB3FORMS_RUAN_ACCESS_KEY;
 const PAYFAST_MERCHANT_ID = process.env.PAYFAST_MERCHANT_ID;
 const PAYFAST_MERCHANT_KEY = process.env.PAYFAST_MERCHANT_KEY;
 const PAYFAST_PASSPHRASE = process.env.PAYFAST_PASSPHRASE;
-const PAYFAST_ENV = process.env.PAYFAST_ENV || 'sandbox'; // Default to sandbox
+const PAYFAST_ENV = process.env.NEXT_PUBLIC_PAYFAST_ENV || 'sandbox'; // Default to sandbox
 
 const PAYFAST_ONSITE_PROCESS_URL = PAYFAST_ENV === 'live'
     ? 'https://www.payfast.co.za/onsite/process'
@@ -55,11 +56,13 @@ interface PayfastPaymentDetails {
     return_url: string;
     cancel_url: string;
     notify_url: string;
-    // Add any other required fields for Payfast here
+    name_first?: string;
+    name_last?: string;
+    m_payment_id?: string;
 }
 
 export async function createPayfastPaymentIdentifier(details: PayfastPaymentDetails): Promise<{ success: boolean; uuid?: string; message?: string }> {
-    if (!PAYFAST_MERCHANT_ID || !PAYFAST_MERCHANT_KEY || !PAYFAST_PASSPHRASE) {
+    if (!PAYFAST_MERCHANT_ID || !PAYFAST_MERCHANT_KEY) {
         console.error("❌ Missing Payfast environment variables.");
         return { success: false, message: "Payfast is not configured. Please check your .env file." };
     }
@@ -74,21 +77,19 @@ export async function createPayfastPaymentIdentifier(details: PayfastPaymentDeta
             cancel_url: details.cancel_url,
             notify_url: details.notify_url,
             email_address: details.email_address,
-            // Add other fields as needed, e.g., name_first, name_last, cell_number
+            name_first: details.name_first || '',
+            name_last: details.name_last || '',
+            m_payment_id: details.m_payment_id || '',
         };
 
-        // Sort the data alphabetically by key
-        const sortedData: Record<string, string | number> = {};
-        Object.keys(data).sort().forEach(key => {
-            sortedData[key] = data[key];
-        });
-
-        const signature = generateSignature(sortedData, PAYFAST_PASSPHRASE);
+        const signature = generateSignature(data, PAYFAST_PASSPHRASE);
         data.signature = signature; // Add signature to the data payload
 
         const formData = new URLSearchParams();
         for (const key in data) {
-            formData.append(key, String(data[key]));
+           if (data[key]) {
+             formData.append(key, String(data[key]));
+           }
         }
 
         const response = await fetch(PAYFAST_ONSITE_PROCESS_URL, {
@@ -106,7 +107,8 @@ export async function createPayfastPaymentIdentifier(details: PayfastPaymentDeta
             return { success: true, uuid: result.uuid };
         } else {
             console.error("❌ Payfast UUID generation error:", JSON.stringify(result, null, 2));
-            return { success: false, message: result.message || "Failed to generate Payfast payment identifier." };
+            const errorMessage = result.errors ? result.errors.join(', ') : 'Failed to generate Payfast payment identifier.';
+            return { success: false, message: errorMessage };
         }
     } catch (error: any) {
         console.error("❌ createPayfastPaymentIdentifier error:", error);
@@ -322,4 +324,44 @@ export async function submitElectronicFileOrder(data: unknown) {
     }
 }
 
-    
+const adHocPaymentSchema = z.object({
+  amount: z.number(),
+  item_name: z.string(),
+  email_address: z.string().email(),
+  name_first: z.string().optional(),
+  name_last: z.string().optional(),
+  m_payment_id: z.string().optional(),
+});
+
+
+export async function initiateAdHocPayment(data: unknown) {
+    try {
+        const validatedData = adHocPaymentSchema.parse(data);
+
+        const host = headers().get('host');
+        const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https';
+        const origin = `${protocol}://${host}`;
+
+        const details = {
+            ...validatedData,
+            return_url: `${origin}/payment-success`,
+            cancel_url: `${origin}/payment-cancelled`,
+            notify_url: `${origin}/api/payfast-itn`,
+        };
+        
+        const result = await createPayfastPaymentIdentifier(details);
+
+        if (result.success) {
+            return { ...result, ...details };
+        } else {
+            return { success: false, message: result.message || "Failed to get payment identifier." };
+        }
+
+    } catch (error) {
+        console.error("❌ Ad-hoc payment initiation error:", error);
+        if (error instanceof Error) {
+            return { success: false, message: error.message };
+        }
+        return { success: false, message: "An unexpected error occurred." };
+    }
+}

@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/e-safety-file',
     '/experience',
     '/login',
+    '/pay',
     '/popia',
     '/print-ready-safety-files',
     '/privacy',

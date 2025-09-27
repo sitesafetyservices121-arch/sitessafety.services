@@ -96,7 +96,10 @@ export function ElectronicFileForm() {
   // Dynamically load Payfast engine.js
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = "https://www.payfast.co.za/onsite/engine.js";
+    const payfastUrl = process.env.NEXT_PUBLIC_PAYFAST_ENV === 'live' 
+        ? "https://www.payfast.co.za/onsite/engine.js"
+        : "https://sandbox.payfast.co.za/onsite/engine.js";
+    script.src = payfastUrl;
     script.async = true;
     document.body.appendChild(script);
 
@@ -133,6 +136,8 @@ export function ElectronicFileForm() {
                 amount: total,
                 item_name: `Electronic Safety File - ${data.serviceTier}`,
                 email_address: data.email,
+                name_first: data.name,
+                name_last: data.surname,
                 return_url: `${window.location.origin}/payment-success`,
                 cancel_url: `${window.location.origin}/payment-cancelled`,
                 notify_url: `${window.location.origin}/api/payfast-itn`,
