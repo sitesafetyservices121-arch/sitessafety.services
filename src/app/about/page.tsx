@@ -125,7 +125,7 @@ export default function AboutPage() {
                         <div className="md:col-span-2">
                             <h3 className="text-3xl font-extrabold text-foreground">Who We Serve</h3>
                             <p className="mt-4 text-lg text-muted-foreground">
-                                CEOs, Directors, Managers, Safety Officers, and Admin teams who want the certainty of full compliance without the overhead. We are trusted across Construction, Engineering, Manufacturing, Logistics, Mining, Events, any operation where safety and legality must be proven, not guessed.
+                                We work with CEOs, Directors, Safety Officers, Managers, and Admin teams who need rock-solid compliance without the burden. Trusted across Construction, Engineering, Manufacturing, Logistics, Mining, and Events any industry where safety and legality must be proven, not assumed.
                             </p>
                         </div>
                      </div>
@@ -151,6 +151,7 @@ export default function AboutPage() {
                      <p className="mt-2 text-muted-foreground">Let’s build your file, deploy your officer, and put your legal proof in writing.</p>
                      <Button asChild size="lg" className="mt-8">
                          <Link href="/contact">Contact Us Today <ArrowRight className="ml-2 h-5 w-5" /></Link>
+
                      </Button>
                 </div>
             </div>
