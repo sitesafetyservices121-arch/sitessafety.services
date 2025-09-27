@@ -25,7 +25,6 @@ export default function AccountPage() {
     return <div className="container py-24 text-center">Loading...</div>;
   }
   
-  // Only render the account details if the user is logged in and auth state is resolved.
   return (
     <div className="container py-24">
       <Card className="max-w-lg mx-auto">

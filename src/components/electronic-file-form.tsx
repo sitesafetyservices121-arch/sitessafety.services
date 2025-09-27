@@ -65,27 +65,27 @@ export function ElectronicFileForm() {
   const form = useForm<ElectronicFileFormValues>({
     resolver: zodResolver(electronicFileFormSchema),
     defaultValues: {
-      name: "",
-      surname: "",
-      company: "",
-      email: "",
-      phone: "",
       serviceTier: "Standard",
     },
   });
-
-  const watchCompanyLogo = form.watch("companyLogo");
-  const watchFileIndex = form.watch("fileIndex");
-  const watchServiceTier = form.watch("serviceTier");
   
   useEffect(() => {
     if (user) {
         const nameParts = user.displayName?.split(' ') || [];
-        form.setValue('name', nameParts[0] || '');
-        form.setValue('surname', nameParts.slice(1).join(' ') || '');
-        form.setValue('email', user.email || '');
+        form.reset({
+          name: nameParts[0] || "",
+          surname: nameParts.slice(1).join(' ') || "",
+          email: user.email || "",
+          company: "",
+          phone: "",
+          serviceTier: "Standard",
+        });
     }
   }, [user, form]);
+
+  const watchCompanyLogo = form.watch("companyLogo");
+  const watchFileIndex = form.watch("fileIndex");
+  const watchServiceTier = form.watch("serviceTier");
 
   useEffect(() => {
     if (watchServiceTier) {
@@ -245,8 +245,8 @@ export function ElectronicFileForm() {
         <div>
             <Label className="text-lg font-bold">2. Your Details</Label>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-                <FormField control={form.control} name="name" render={({ field }) => ( <FormItem> <FormLabel>First Name</FormLabel> <FormControl><Input placeholder="John" {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
-                <FormField control={form.control} name="surname" render={({ field }) => ( <FormItem> <FormLabel>Surname</FormLabel> <FormControl><Input placeholder="Doe" {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
+                <FormField control={form.control} name="name" render={({ field }) => ( <FormItem> <FormLabel>First Name</FormLabel> <FormControl><Input placeholder="John" {...field} readOnly /></FormControl> <FormMessage /> </FormItem> )}/>
+                <FormField control={form.control} name="surname" render={({ field }) => ( <FormItem> <FormLabel>Surname</FormLabel> <FormControl><Input placeholder="Doe" {...field} readOnly /></FormControl> <FormMessage /> </FormItem> )}/>
                 <FormField control={form.control} name="company" render={({ field }) => ( <FormItem> <FormLabel>Company Name</FormLabel> <FormControl><Input placeholder="Your Company Inc." {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
                 <FormField control={form.control} name="email" render={({ field }) => ( <FormItem> <FormLabel>Email Address</FormLabel> <FormControl><Input placeholder="you@company.com" {...field} type="email" readOnly /></FormControl> <FormMessage /> </FormItem> )}/>
                 <FormField control={form.control} name="phone" render={({ field }) => ( <FormItem> <FormLabel>Contact Number</FormLabel> <FormControl><Input placeholder="082 123 4567" {...field} type="tel"/></FormControl> <FormMessage /> </FormItem> )}/>

@@ -97,28 +97,26 @@ export function BookingForm() {
   const form = useForm<BookingFormValues>({
     resolver: zodResolver(bookingFormSchema),
     defaultValues: {
-      name: "",
-      company: "",
-      email: "",
-      phone: "",
-      siteAddress: "",
       isEmergency: false,
     },
   });
+  
+  useEffect(() => {
+    if (user) {
+        form.reset({
+          name: user.displayName || "",
+          email: user.email || "",
+          company: "",
+          phone: "",
+          siteAddress: "",
+          isEmergency: false,
+        });
+    }
+  }, [user, form]);
 
   const watchService = form.watch("service");
   const watchDates = form.watch("dates");
   const watchIsEmergency = form.watch("isEmergency");
-
-  useEffect(() => {
-    if (user) {
-        form.reset({
-          ...form.getValues(),
-          name: user.displayName || "",
-          email: user.email || "",
-        });
-    }
-  }, [user, form]);
 
   useEffect(() => {
     let newTotal = 0;
@@ -357,9 +355,9 @@ export function BookingForm() {
         <div>
             <Label className="text-lg font-bold">3. Your Details</Label>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-              <FormField control={form.control} name="name" render={({ field }) => ( <FormItem> <FormLabel>Full Name</FormLabel> <FormControl><Input placeholder="John Doe" {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
+              <FormField control={form.control} name="name" render={({ field }) => ( <FormItem> <FormLabel>Full Name</FormLabel> <FormControl><Input placeholder="John Doe" {...field} readOnly /></FormControl> <FormMessage /> </FormItem> )}/>
               <FormField control={form.control} name="company" render={({ field }) => ( <FormItem> <FormLabel>Company Name</FormLabel> <FormControl><Input placeholder="Your Company Inc." {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
-              <FormField control={form.control} name="email" render={({ field }) => ( <FormItem> <FormLabel>Email Address</FormLabel> <FormControl><Input placeholder="you@company.com" {...field} type="email" /></FormControl> <FormMessage /> </FormItem> )}/>
+              <FormField control={form.control} name="email" render={({ field }) => ( <FormItem> <FormLabel>Email Address</FormLabel> <FormControl><Input placeholder="you@company.com" {...field} type="email" readOnly /></FormControl> <FormMessage /> </FormItem> )}/>
               <FormField control={form.control} name="phone" render={({ field }) => ( <FormItem> <FormLabel>Phone Number</FormLabel> <FormControl><Input placeholder="082 123 4567" {...field} type="tel"/></FormControl> <FormMessage /> </FormItem> )}/>
             </div>
              <div className="mt-6">
@@ -385,5 +383,3 @@ export function BookingForm() {
     </Form>
   );
 }
-
-    

@@ -57,19 +57,20 @@ export function ConsultationForm() {
   const form = useForm<ConsultationFormValues>({
     resolver: zodResolver(consultationFormSchema),
     defaultValues: {
-        name: user?.displayName ?? "",
-        email: user?.email ?? "",
-        phone: "",
-        companyName: "",
-        domainName: "",
         desiredLogins: 1,
     },
   });
 
   useEffect(() => {
     if (user) {
-        form.setValue('name', user.displayName || '');
-        form.setValue('email', user.email || '');
+        form.reset({
+          name: user.displayName || "",
+          email: user.email || "",
+          phone: "",
+          companyName: "",
+          domainName: "",
+          desiredLogins: 1,
+        });
     }
   }, [user, form]);
 
@@ -167,8 +168,8 @@ export function ConsultationForm() {
         <div>
             <Label className="text-lg font-bold">3. Your Contact Details</Label>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-              <FormField control={form.control} name="name" render={({ field }) => ( <FormItem> <FormLabel>Full Name</FormLabel> <FormControl><Input placeholder="John Doe" {...field} /></FormControl> <FormMessage /> </FormItem> )}/>
-              <FormField control={form.control} name="email" render={({ field }) => ( <FormItem> <FormLabel>Email Address</FormLabel> <FormControl><Input placeholder="you@company.com" {...field} type="email" /></FormControl> <FormMessage /> </FormItem> )}/>
+              <FormField control={form.control} name="name" render={({ field }) => ( <FormItem> <FormLabel>Full Name</FormLabel> <FormControl><Input placeholder="John Doe" {...field} readOnly /></FormControl> <FormMessage /> </FormItem> )}/>
+              <FormField control={form.control} name="email" render={({ field }) => ( <FormItem> <FormLabel>Email Address</FormLabel> <FormControl><Input placeholder="you@company.com" {...field} type="email" readOnly /></FormControl> <FormMessage /> </FormItem> )}/>
               <FormField control={form.control} name="phone" render={({ field }) => ( <FormItem> <FormLabel>Phone Number</FormLabel> <FormControl><Input placeholder="082 123 4567" {...field} type="tel"/></FormControl> <FormMessage /> </FormItem> )}/>
             </div>
         </div>
@@ -266,5 +267,3 @@ export function ConsultationForm() {
     </Form>
   );
 }
-
-    

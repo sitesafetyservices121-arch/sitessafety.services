@@ -68,26 +68,25 @@ export default function SignUpPage() {
   const redirectUrl = searchParams.get("redirect") || "/account";
 
   useEffect(() => {
-    // If auth state is not loading and a user is logged in, redirect them.
+    // Redirect if user is logged in
     if (!loading && user) {
       router.push(redirectUrl);
     }
   }, [user, loading, router, redirectUrl]);
 
   useEffect(() => {
-    // If the form submission was successful (state.user is populated), redirect.
+    // Redirect on successful form submission
     if (state.user) {
        router.push(redirectUrl);
     }
   }, [state.user, router, redirectUrl]);
   
-  // While auth is loading, or if the user is logged in (and about to be redirected), 
-  // show a loading state to prevent the form from flashing.
+  // While auth is loading or if the user is logged in (and about to be redirected),
+  // show a loading state to prevent the form from flashing and causing loops.
   if (loading || user) {
     return <div className="container py-24 text-center">Loading...</div>;
   }
 
-  // Only render the form if the user is not logged in and auth state is resolved.
   return (
     <div className="container py-24">
       <Card className="max-w-lg mx-auto">
