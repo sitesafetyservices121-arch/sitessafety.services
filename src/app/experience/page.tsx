@@ -1,4 +1,6 @@
 
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TestimonialCard } from "@/components/testimonial-card";
 import Image from "next/image";
@@ -6,11 +8,16 @@ import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, Award, Building2, HardHat, ShieldCheck, Factory, Truck, Wrench, DollarSign, Users, CheckCircle, Mountain, Flame, Store, Tractor, Wind, TowerControl, Utensils, Plane, Cpu, Handshake } from "lucide-react";
+import dynamic from "next/dynamic";
 
-export const metadata: Metadata = {
-  title: 'Proven Experience & Client Success',
-  description: 'Explore our portfolio of successful projects and read testimonials from satisfied clients across various industries.',
-};
+const VantaBackground = dynamic(() => import("@/components/vanta-background"), {
+  ssr: false,
+});
+
+// export const metadata: Metadata = { // This needs to be moved to a Server Component or removed from client component
+//   title: 'Proven Experience & Client Success',
+//   description: 'Explore our portfolio of successful projects and read testimonials from satisfied clients across various industries.',
+// };
 
 const testimonials = [
   { name: "Lerato Khumalo", title: "Project Manager", company: "ConstructCo", testimonial: "RAK's safety officers were professional, knowledgeable, and integrated seamlessly with our team. Their proactive approach prevented numerous issues. Highly recommended for any large-scale project!", rating: 5, image: "https://iili.io/JADe4mB.png", hint: "professional black woman" },
@@ -84,12 +91,13 @@ export default function ExperiencePage() {
   return (
     <div className="bg-transparent text-foreground">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-card border-b">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-foreground">
+      <section className="relative py-20 md:py-32 bg-card border-b">
+        <VantaBackground />
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white">
             Trusted Nationwide for Safety & Compliance
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="mt-6 text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
             Our track record speaks for itself. We deliver reliable, expert safety solutions that protect your people, projects, and reputation.
           </p>
         </div>
