@@ -90,7 +90,7 @@ export default function SafetyManagementSystemPage() {
       </section>
       
       {/* Features Section */}
-      <section className="py-24 bg-card border-y">
+      <section className="py-24 bg-transparent border-y">
         <div className="container max-w-7xl mx-auto px-4">
             <div className="text-center">
                 <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Total Control. Zero Guesswork.</h2>
@@ -109,7 +109,7 @@ export default function SafetyManagementSystemPage() {
                     <h3 className="text-2xl font-bold flex items-center gap-3 text-foreground mb-6"><Cpu className="h-7 w-7 text-primary" />5 Powerful AI Tools</h3>
                     <div className="space-y-6">
                         {aiTools.map((feature) => (
-                            <div key={feature.title} className="flex items-start gap-4 p-4 rounded-lg hover:bg-background transition-colors">
+                            <div key={feature.title} className="flex items-start gap-4 p-4 rounded-lg hover:bg-black/10 dark:hover:bg-white/5 transition-colors">
                                 <div className="flex-shrink-0 mt-1">
                                 {feature.icon}
                                 </div>
@@ -125,7 +125,7 @@ export default function SafetyManagementSystemPage() {
                     <h3 className="text-2xl font-bold flex items-center gap-3 text-foreground mb-6"><ClipboardCheck className="h-7 w-7 text-primary" />5 Essential Management Tools</h3>
                     <div className="space-y-6">
                         {managementTools.map((feature) => (
-                           <div key={feature.title} className="flex items-start gap-4 p-4 rounded-lg hover:bg-background transition-colors">
+                           <div key={feature.title} className="flex items-start gap-4 p-4 rounded-lg hover:bg-black/10 dark:hover:bg-white/5 transition-colors">
                                 <div className="flex-shrink-0 mt-1">
                                 {feature.icon}
                                 </div>
