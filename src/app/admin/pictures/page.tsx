@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -49,12 +50,13 @@ function AdminPicturesPage() {
       const data = await response.json();
       setImageUrl(data.url);
       toast({
-        title: "Upload successful",
+        title: "Upload Successful",
         description: "Image uploaded successfully!",
+        variant: "success",
       });
     } catch (error: any) {
       toast({
-        title: "Upload failed",
+        title: "Upload Failed",
         description: error.message,
         variant: "destructive",
       });
