@@ -1,49 +1,50 @@
 
 "use client";
+import { useEffect, useRef } from "react";
 
-import { useState, useEffect, useRef } from 'react';
-
-// Extend the Window interface to include VANTA
 declare global {
     interface Window {
         VANTA: any;
     }
 }
 
-const VantaBackground = () => {
-    const [vantaEffect, setVantaEffect] = useState<any>(null);
-    const vantaRef = useRef<HTMLDivElement>(null);
+export default function VantaBackground() {
+  const vantaRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        if (window.VANTA && !vantaEffect && vantaRef.current) {
-            const effect = window.VANTA.NET({
-                el: vantaRef.current,
-                mouseControls: true,
-                touchControls: true,
-                gyroControls: false,
-                minHeight: 200.00,
-                minWidth: 200.00,
-                scale: 1.00,
-                scaleMobile: 1.00,
-                color: 0xff9b50,
-                backgroundColor: 0x101010,
-                points: 10.00,
-                maxDistance: 25.00,
-                spacing: 20.00
-            });
-            setVantaEffect(effect);
-        }
+  useEffect(() => {
+    let vantaEffect: any;
+    if (window.VANTA && vantaRef.current) {
+      vantaEffect = window.VANTA.NET({
+        el: vantaRef.current,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        scale: 1.0,
+        scaleMobile: 1.0,
+        color: 0xc72f1f,
+        backgroundColor: 0x0e0e10,
+        points: 14.0,
+        spacing: 12.0,
+      });
+    }
+    return () => {
+      if (vantaEffect) vantaEffect.destroy();
+    };
+  }, []);
 
-        return () => {
-            if (vantaEffect) {
-                vantaEffect.destroy();
-            }
-        };
-    }, [vantaEffect]);
-
-    return (
-        <div ref={vantaRef} style={{ width: '100%', height: '100%', position: 'fixed', top: 0, left: 0, zIndex: -10 }} />
-    );
-};
-
-export default VantaBackground;
+  return (
+    <div
+      ref={vantaRef}
+      style={{
+        width: "100%",
+        height: "100%",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        zIndex: -10,
+      }}
+    />
+  );
+}
