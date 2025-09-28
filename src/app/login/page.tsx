@@ -1,9 +1,18 @@
-
+// src/app/login/page.tsx
 "use client";
 
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
+import { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { Loader2 } from "lucide-react";
+
 import { signInWithEmail } from "@/lib/firebase/auth";
+import { auth } from "@/lib/firebase/firebase"; // fixed typo
+import { useAuth } from "@/context/auth-context";
+import { TopLoader } from "@/components/top-loader";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -14,18 +23,10 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useEffect, useState } from "react";
-import { useAuth } from "@/context/auth-context";
-import { useRouter, useSearchParams } from "next/navigation";
-import { Loader2 } from "lucide-react";
-import Link from "next/link";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "@/lib/firebase/firebase";
-import { TopLoader } from "@/components/top-loader";
 
 const initialState = {
   message: "",
-  user: null,
+  user: null as unknown as { uid: string } | null,
 };
 
 function SubmitButton() {
@@ -46,7 +47,7 @@ function GoogleSignInButton() {
     const provider = new GoogleAuthProvider();
     try {
       await signInWithPopup(auth, provider);
-      // Auth state change will be caught by useAuth and trigger redirect in main component
+      // useAuth listener handles redirect
     } catch (error: any) {
       console.error("Google Sign-in Error:", error);
     } finally {
@@ -90,28 +91,25 @@ function GoogleSignInButton() {
 
 export default function LoginPage() {
   const [state, formAction] = useActionState(signInWithEmail, initialState);
+  const { user, loading } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { user, loading } = useAuth();
   const redirectUrl = searchParams.get("redirect") || "/account";
 
   useEffect(() => {
-    // Redirect if user is already logged in, after auth state is confirmed
+    // why: avoid double-render infinite loops; only push after auth known
     if (!loading && user) {
       router.push(redirectUrl);
     }
-    // Redirect on successful form submission
     if (state.user) {
-        router.push(redirectUrl);
+      router.push(redirectUrl);
     }
   }, [user, loading, state.user, redirectUrl, router]);
 
-  // If loading or user exists (and we're about to redirect), show loader to prevent form flash and loops
   if (loading || user) {
     return <TopLoader />;
   }
 
-  // Only render the form if the user is not logged in and auth state is loaded
   return (
     <div className="container py-24">
       <Card className="max-w-lg mx-auto">
@@ -146,6 +144,7 @@ export default function LoginPage() {
               )}
             </div>
           </form>
+
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
               <span className="w-full border-t" />
@@ -156,13 +155,12 @@ export default function LoginPage() {
               </span>
             </div>
           </div>
+
           <GoogleSignInButton />
+
           <div className="mt-6 text-center text-sm">
             Don&apos;t have an account?{" "}
-            <Link
-              href="/signup"
-              className="underline font-semibold text-primary"
-            >
+            <Link href="/signup" className="underline font-semibold text-primary">
               Sign up
             </Link>
           </div>
