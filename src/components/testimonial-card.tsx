@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
-import imageData from "@/app/lib/placeholder-images.json";
 
 type TestimonialCardProps = {
   name: string;
@@ -39,4 +38,3 @@ export function TestimonialCard({ name, title, company, testimonial, rating, ima
     </Card>
   );
 }
-
