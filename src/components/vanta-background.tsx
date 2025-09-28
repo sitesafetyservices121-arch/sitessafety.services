@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
@@ -17,9 +18,6 @@ const VantaBackground = () => {
 
     useEffect(() => {
         let isMounted = true;
-        const vantaScript = document.createElement('script');
-        vantaScript.src = '/vanta.net.min.js';
-        vantaScript.async = true;
         
         const initVanta = () => {
             if (isMounted && window.VANTA && window.THREE && vantaRef.current && !vantaEffect) {
@@ -42,24 +40,27 @@ const VantaBackground = () => {
             }
         };
 
-        const loadAndInit = () => {
+        const loadVantaScript = () => {
             if (window.VANTA) {
                  initVanta();
-            } else {
-                document.body.appendChild(vantaScript);
-                vantaScript.onload = initVanta;
+                 return;
             }
+            const vantaScript = document.createElement('script');
+            vantaScript.src = '/vanta.net.min.js'; // Loading from /public directory
+            vantaScript.async = true;
+            document.body.appendChild(vantaScript);
+            vantaScript.onload = initVanta;
         };
 
         // Check if three.js is already loaded
         if (window.THREE) {
-           loadAndInit();
+           loadVantaScript();
         } else {
             // Wait for the three.js script from the layout to load
             const checkThree = setInterval(() => {
                 if (window.THREE) {
                     clearInterval(checkThree);
-                    loadAndInit();
+                    loadVantaScript();
                 }
             }, 100);
         }
