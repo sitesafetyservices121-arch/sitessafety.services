@@ -1,83 +1,100 @@
-// src/context/auth-context.tsx
-"use client";
+// src/context/auth-context.tsx - Updated with proper types
+'use client'
 
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  ReactNode,
-} from "react";
-import { User, onAuthStateChanged } from "firebase/auth";
-import { auth } from "@/lib/firebase/firebase";
+import { createContext, useContext, useEffect, useState } from 'react'
+import { User } from 'firebase/auth'
+import { auth } from '@/lib/firebase/firebase'
+import { onAuthStateChanged } from 'firebase/auth'
 
+// Enhanced SerializableUser interface to include all Firebase User properties
 interface SerializableUser {
-  uid: string;
-  email: string | null;
-  displayName: string | null;
-  photoURL: string | null;
-  emailVerified: boolean;
-  providerData: {
-    providerId: string;
-    uid: string;
-    displayName?: string | null;
-    email?: string | null;
-    phoneNumber?: string | null;
-    photoURL?: string | null;
-  }[];
+  uid: string
+  email: string | null
+  displayName: string | null
+  photoURL: string | null
+  phoneNumber: string | null
+  emailVerified: boolean
+  isAnonymous: boolean
+  metadata: {
+    creationTime?: string
+    lastSignInTime?: string
+  }
+  providerData: Array<{
+    providerId: string
+    uid: string
+    displayName: string | null
+    email: string | null
+    phoneNumber: string | null
+    photoURL: string | null
+  }>
+  providerId: string
+  tenantId: string | null
 }
 
 interface AuthContextType {
-  user: SerializableUser | null;
-  loading: boolean;
+  user: SerializableUser | null
+  loading: boolean
 }
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
   loading: true,
-});
+})
 
-export const useAuth = () => useContext(AuthContext);
-
-interface AuthProviderProps {
-  children: ReactNode;
+function serializeUser(user: User): SerializableUser {
+  return {
+    uid: user.uid,
+    email: user.email,
+    displayName: user.displayName,
+    photoURL: user.photoURL,
+    phoneNumber: user.phoneNumber,
+    emailVerified: user.emailVerified,
+    isAnonymous: user.isAnonymous,
+    metadata: {
+      creationTime: user.metadata.creationTime,
+      lastSignInTime: user.metadata.lastSignInTime,
+    },
+    providerData: user.providerData.map((provider) => ({
+      providerId: provider.providerId,
+      uid: provider.uid,
+      displayName: provider.displayName,
+      email: provider.email,
+      phoneNumber: provider.phoneNumber,
+      photoURL: provider.photoURL,
+    })),
+    providerId: user.providerId,
+    tenantId: user.tenantId,
+  }
 }
 
-export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState<SerializableUser | null>(null);
-  const [loading, setLoading] = useState(true);
+export function AuthProvider({ children }: { children: React.ReactNode }) {
+  const [user, setUser] = useState<SerializableUser | null>(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser: User | null) => {
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
-        const serializableUser: SerializableUser = {
-          uid: firebaseUser.uid,
-          email: firebaseUser.email,
-          displayName: firebaseUser.displayName,
-          photoURL: firebaseUser.photoURL,
-          emailVerified: firebaseUser.emailVerified,
-          providerData: firebaseUser.providerData.map((p) => ({
-            providerId: p.providerId,
-            uid: p.uid,
-            displayName: p.displayName,
-            email: p.email,
-            phoneNumber: p.phoneNumber,
-            photoURL: p.photoURL,
-          })),
-        };
-        setUser(serializableUser);
+        setUser(serializeUser(firebaseUser))
       } else {
-        setUser(null);
+        setUser(null)
       }
-      setLoading(false);
-    });
+      setLoading(false)
+    })
 
-    return () => unsubscribe();
-  }, []);
+    return () => unsubscribe()
+  }, [])
 
   return (
     <AuthContext.Provider value={{ user, loading }}>
       {children}
     </AuthContext.Provider>
-  );
-};
+  )
+}
+
+export const useAuth = () => {
+  const context = useContext(AuthContext)
+  if (context === undefined) {
+    throw new Error('useAuth must be used within an AuthProvider')
+  }
+  return context
+}
