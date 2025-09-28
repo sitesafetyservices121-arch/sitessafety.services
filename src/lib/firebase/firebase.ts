@@ -1,42 +1,108 @@
-
 // lib/firebase.ts
-import { initializeApp, getApps, getApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
-import { getFunctions } from "firebase/functions";
-import { getAnalytics } from "firebase/analytics";
+import { initializeApp, getApps, getApp, type FirebaseApp } from "firebase/app";
+import { getAuth, type Auth } from "firebase/auth";
+import { getFirestore, type Firestore } from "firebase/firestore";
+import { getStorage, type FirebaseStorage } from "firebase/storage";
+import { getFunctions, type Functions } from "firebase/functions";
+import { getAnalytics, type Analytics, isSupported } from "firebase/analytics";
 
-// 🔑 Firebase config (loaded from .env.local)
-const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
-};
+// 🔑 Firebase config validation and loading
+function getFirebaseConfig() {
+  const config = {
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+    measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+  };
 
-// 🔥 Initialize app (only once, safe for hot reload)
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+  // Validate required config
+  const requiredFields = ['apiKey', 'authDomain', 'projectId', 'appId'] as const;
+  const missingFields = requiredFields.filter(field => !config[field]);
 
-// 🔐 Auth
-const auth = getAuth(app);
+  if (missingFields.length > 0) {
+    throw new Error(
+      `Missing required Firebase configuration: ${missingFields.join(', ')}. ` +
+      `Please check your environment variables.`
+    );
+  }
 
-// 📦 Firestore DB
-const db = getFirestore(app);
-
-// 📂 Storage
-const storage = getStorage(app);
-
-// ⚙️ Cloud Functions (region: us-central1, change if needed)
-const functions = getFunctions(app, "us-central1");
-
-// 📊 Analytics (only works in browser)
-let analytics;
-if (typeof window !== "undefined") {
-  analytics = getAnalytics(app);
+  return config;
 }
 
-export { app, auth, db, storage, functions, analytics };
+// 🔥 Initialize Firebase app (safe for hot reload and SSR)
+let app: FirebaseApp;
+
+try {
+  const firebaseConfig = getFirebaseConfig();
+  app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+} catch (error) {
+  console.error('Firebase initialization failed:', error);
+  throw error;
+}
+
+// 🔐 Initialize Auth
+export const auth: Auth = getAuth(app);
+
+// 📦 Initialize Firestore
+export const db: Firestore = getFirestore(app);
+
+// 📂 Initialize Storage
+export const storage: FirebaseStorage = getStorage(app);
+
+// ⚙️ Initialize Cloud Functions
+// You can change the region here if needed
+export const functions: Functions = getFunctions(app, "us-central1");
+
+// 📊 Initialize Analytics (browser-only, with proper support check)
+let analytics: Analytics | null = null;
+
+if (typeof window !== "undefined") {
+  // Check if analytics is supported before initializing
+  isSupported()
+    .then((supported) => {
+      if (supported && process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID) {
+        analytics = getAnalytics(app);
+      }
+    })
+    .catch((error) => {
+      console.warn('Firebase Analytics initialization failed:', error);
+    });
+}
+
+// Helper function to safely get analytics
+export const getAnalyticsInstance = (): Analytics | null => analytics;
+
+// Export the app instance
+export { app };
+
+// Export types for use in other files
+export type {
+  FirebaseApp,
+  Auth,
+  Firestore,
+  FirebaseStorage,
+  Functions,
+  Analytics
+};
+
+// Helper functions for common checks
+export const isClientSide = (): boolean => typeof window !== "undefined";
+export const isAnalyticsAvailable = (): boolean => analytics !== null;
+
+// Configuration getter (useful for debugging)
+export const getProjectId = (): string | undefined => {
+  return process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
+};
+
+// Development helper to log configuration status
+if (process.env.NODE_ENV === 'development') {
+  console.log('🔥 Firebase initialized:', {
+    projectId: getProjectId(),
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    hasAnalytics: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID ? 'Yes' : 'No',
+    isClientSide: isClientSide(),
+  });
+}
