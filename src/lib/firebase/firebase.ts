@@ -5,10 +5,9 @@ import { getAuth } from 'firebase/auth';
 const firebaseConfig = {
   projectId: "rak-site-safety-services-vn21z",
   appId: "1:1048163634498:web:fd0469340bdeb36aa00cdb",
-  storageBucket: "rak-site-safety-services-vn21z.firebasestorage.app",
-  apiKey: "AIzaSyBIWqnQLELz_wOemo-mc7HV6mYeuh6FQJM",
+  storageBucket: "rak-site-safety-services-vn21z.appspot.com",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: "rak-site-safety-services-vn21z.firebaseapp.com",
-  measurementId: "",
   messagingSenderId: "1048163634498"
 };
 
