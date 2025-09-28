@@ -46,4 +46,48 @@ test.describe('Login Flow', () => {
     await expect(errorMessage).toBeVisible();
     await expect(errorMessage).toContainText('auth/invalid-credential');
   });
+
+  test('should show an error for signing up with an existing email', async ({ page }) => {
+    // First, sign up a user
+    await page.goto('/signup');
+    const email = `existing_user_${Date.now()}@example.com`;
+    const password = 'password123';
+    await page.fill('#email', email);
+    await page.fill('#password', password);
+    await page.click('button[type="submit"]');
+    await page.waitForURL('/login'); // Assuming it redirects to login after successful signup
+
+    // Now, try to sign up again with the same email
+    await page.goto('/signup');
+    await page.fill('#email', email);
+    await page.fill('#password', password);
+    await page.click('button[type="submit"]');
+
+    // Check for the error message indicating email already in use
+    const errorMessage = await page.locator('.text-destructive');
+    await expect(errorMessage).toBeVisible();
+    await expect(errorMessage).toContainText('auth/email-already-in-use');
+  });
+
+  test('should initiate Google sign-in flow from signup page', async ({ page }) => {
+    await page.goto('/signup');
+    const [popup] = await Promise.all([
+      page.waitForEvent('popup'),
+      page.click('button:has-text("Sign up with Google")'),
+    ]);
+    // Verify that the popup URL is a Google authentication URL
+    expect(popup.url()).toMatch(/accounts\.google\.com/);
+    await popup.close();
+  });
+
+  test('should initiate Google sign-in flow from login page', async ({ page }) => {
+    await page.goto('/login');
+    const [popup] = await Promise.all([
+      page.waitForEvent('popup'),
+      page.click('button:has-text("Sign in with Google")'),
+    ]);
+    // Verify that the popup URL is a Google authentication URL
+    expect(popup.url()).toMatch(/accounts\.google\.com/);
+    await popup.close();
+  });
 });
