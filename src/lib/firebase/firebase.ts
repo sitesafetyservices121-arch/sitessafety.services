@@ -3,12 +3,12 @@ import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-  projectId: "rak-site-safety-services-vn21z",
-  appId: "1:1048163634498:web:fd0469340bdeb36aa00cdb",
-  storageBucket: "rak-site-safety-services-vn21z.appspot.com",
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: "rak-site-safety-services-vn21z.firebaseapp.com",
-  messagingSenderId: "1048163634498"
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID",
 };
 
 // Initialize Firebase
