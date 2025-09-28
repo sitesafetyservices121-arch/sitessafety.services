@@ -6,8 +6,9 @@ import {
   signInWithEmailAndPassword,
   signOut as firebaseSignOut,
 } from "firebase/auth";
-import { auth } from "./firebase";
+import { auth, db } from "./firebase";
 import { redirect } from 'next/navigation';
+import { doc, setDoc } from "firebase/firestore";
 
 export async function signUpWithEmail(prevState: any, formData: FormData) {
   const email = formData.get("email") as string;
@@ -15,12 +16,27 @@ export async function signUpWithEmail(prevState: any, formData: FormData) {
 
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    // Create a document in the 'users' collection in Firestore
+    await setDoc(doc(db, "users", user.uid), {
+      email: user.email,
+      createdAt: new Date(),
+      isAdmin: false, // Default role
+    });
+    
     return {
-      message: `User signed up successfully.`,
-      user: userCredential.user,
+      message: `User signed up and data stored successfully.`,
+      user: user,
     };
   } catch (error: any) {
-    return { message: error.message, user: null };
+    // Firebase provides structured error codes, which are more reliable
+    // to check than the message string.
+    if (error.code === 'auth/email-already-in-use') {
+        return { message: "This email address is already in use.", user: null };
+    }
+    // Return a generic error for other issues
+    return { message: "An unexpected error occurred. Please try again.", user: null };
   }
 }
 
@@ -36,7 +52,10 @@ export async function signInWithEmail(prevState: any, formData: FormData) {
       user: userCredential.user,
     };
   } catch (error: any) {
-    return { message: error.message, user: null };
+    if (error.code === 'auth/invalid-credential') {
+        return { message: "Invalid email or password. Please try again.", user: null };
+    }
+    return { message: "An unexpected error occurred. Please try again.", user: null };
   }
 }
 
