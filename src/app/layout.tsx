@@ -105,6 +105,10 @@ export default function RootLayout({
             src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
             strategy="beforeInteractive"
         />
+        <Script 
+            src="/vanta.net.min.js" 
+            strategy="lazyOnload" 
+        />
       </head>
       <body className={cn("min-h-screen bg-background font-body antialiased", inter.variable)}>
         <ThemeProvider
