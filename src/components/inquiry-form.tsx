@@ -50,12 +50,7 @@ export function InquiryForm() {
         const result = await submitInquiry(data);
         if (result.success) {
             toast({
-                title: (
-                  <div className="flex items-center gap-2 font-bold">
-                    <CheckCircle className="h-5 w-5 text-success-foreground" />
-                    <span>Inquiry Sent!</span>
-                  </div>
-                ),
+                title: "Inquiry Sent!",
                 description: result.message,
                 variant: 'success',
             });

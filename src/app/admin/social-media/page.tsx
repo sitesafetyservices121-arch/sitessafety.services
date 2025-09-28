@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -69,6 +70,7 @@ function AdminSocialMediaPage() {
       toast({
         title: "Success",
         description: "Social media links updated successfully!",
+        variant: "success",
       });
     } catch (error: any) {
       toast({
