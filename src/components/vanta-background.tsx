@@ -10,14 +10,13 @@ declare global {
     }
 }
 
-let vantaEffect: any = null;
-
 const VantaBackground = () => {
+    const [vantaEffect, setVantaEffect] = useState<any>(null);
     const vantaRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (window.VANTA && !vantaEffect && vantaRef.current) {
-            vantaEffect = window.VANTA.NET({
+            const effect = window.VANTA.NET({
                 el: vantaRef.current,
                 mouseControls: true,
                 touchControls: true,
@@ -32,15 +31,15 @@ const VantaBackground = () => {
                 maxDistance: 25.00,
                 spacing: 20.00
             });
+            setVantaEffect(effect);
         }
 
         return () => {
             if (vantaEffect) {
                 vantaEffect.destroy();
-                vantaEffect = null;
             }
         };
-    }, []);
+    }, [vantaEffect]);
 
     return (
         <div ref={vantaRef} style={{ width: '100%', height: '100%', position: 'fixed', top: 0, left: 0, zIndex: -10 }} />
