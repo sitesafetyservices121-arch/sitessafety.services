@@ -36,7 +36,7 @@ export default function AccountPage() {
         <CardContent className="space-y-6">
           <div className="flex items-center gap-4">
              <Avatar className="h-16 w-16">
-              <AvatarImage src={user.photoURL ?? ''} />
+              <AvatarImage src={user.photoURL ?? undefined} />
               <AvatarFallback>{user.email?.[0].toUpperCase() ?? 'U'}</AvatarFallback>
             </Avatar>
             <div className="grid gap-1">
