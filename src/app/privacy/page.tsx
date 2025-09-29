@@ -1,32 +1,26 @@
 
-"use client";
-
 import type { Metadata } from 'next';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 
-// export const metadata: Metadata = { // This needs to be moved to a Server Component or removed from client component
-//   title: 'Privacy Policy',
-// };
+export const metadata: Metadata = {
+  title: 'Privacy Policy',
+};
 
 export default function PrivacyPage() {
-  const [currentDate, setCurrentDate] = useState('');
-
-  useEffect(() => {
-    setCurrentDate(new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' }));
-  }, []);
+  const currentDate = new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' });
 
   return (
     <div className="bg-background text-foreground">
       <div className="container max-w-4xl mx-auto py-24 md:py-32 px-4">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-primary-dark font-headline tracking-tight">Privacy Policy</h1>
-          {currentDate && <p className="mt-4 text-lg text-muted-foreground font-body">Last updated: {currentDate}</p>}
+          <h1 className="text-4xl md:text-5xl font-extrabold text-foreground tracking-tight">Privacy Policy</h1>
+          {currentDate && <p className="mt-4 text-lg text-muted-foreground">Last updated: {currentDate}</p>}
         </div>
 
         <Card>
           <CardContent className="p-6 md:p-8">
-            <div className="prose prose-lg max-w-none font-body text-muted-foreground prose-h2:font-headline prose-h2:text-primary-dark prose-h2:text-2xl prose-h2:border-b-2 prose-h2:border-secondary prose-h2:pb-3 prose-headings:font-headline prose-a:text-primary hover:prose-a:text-primary/80 prose-strong:text-foreground">
+            <div className="prose prose-lg max-w-none text-muted-foreground prose-h2:font-bold prose-h2:text-foreground prose-h2:text-2xl prose-h2:border-b-2 prose-h2:border-secondary prose-h2:pb-3 prose-headings:font-bold prose-a:text-primary hover:prose-a:text-primary/80 prose-strong:text-foreground">
               <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
 
               <h2>1. Information We Collect</h2>
