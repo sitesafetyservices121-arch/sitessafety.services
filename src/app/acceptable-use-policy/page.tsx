@@ -1,13 +1,21 @@
 
-import type { Metadata } from 'next';
-import React from 'react';
+"use client";
 
-export const metadata: Metadata = {
-  title: 'Acceptable Use Policy',
-};
+import type { Metadata } from 'next';
+import React, { useState, useEffect } from 'react';
+
+// export const metadata: Metadata = {
+//   title: 'Acceptable Use Policy',
+// };
 
 export default function AcceptableUsePolicyPage() {
-  const effectiveDate = "27 September 2025";
+  const [effectiveDate, setEffectiveDate] = useState("27 September 2025");
+  
+  useEffect(() => {
+    // This is just an example. If the date is static, it doesn't need a state.
+    // If it were dynamic, this would be the correct approach to avoid hydration errors.
+  }, []);
+
 
   return (
     <div className="bg-background text-foreground">
