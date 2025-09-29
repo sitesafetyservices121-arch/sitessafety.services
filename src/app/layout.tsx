@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: 'RAK-Site Safety Services',
     images: [
       {
-        url: imageData.og_image_dashboard.url,
+        url: imageData.meta.og_image_dashboard.url,
         width: 1200,
         height: 630,
         alt: 'AI-Powered Safety Management System Dashboard',
@@ -44,12 +44,12 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'RAK-Site Safety Services - Next-Gen Safety & Compliance',
     description: 'RAK-Site Safety Services delivers next-generation safety solutions for complex industries, ensuring compliance, efficiency, and a secure work environment.',
-    images: [imageData.og_image_dashboard.url],
+    images: [imageData.meta.og_image_dashboard.url],
   },
   icons: {
-    icon: imageData.favicon.url,
-    shortcut: imageData.favicon.url,
-    apple: imageData.favicon.url,
+    icon: imageData.meta.favicon.url,
+    shortcut: imageData.meta.favicon.url,
+    apple: imageData.meta.favicon.url,
   }
 };
 
@@ -65,7 +65,7 @@ const organizationSchema = {
   "@type": "Organization",
   "name": "RAK-Site Safety Services",
   "url": "https://www.sitesafety.services",
-  "logo": imageData.favicon.url,
+  "logo": imageData.meta.favicon.url,
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+27-71-611-5429",

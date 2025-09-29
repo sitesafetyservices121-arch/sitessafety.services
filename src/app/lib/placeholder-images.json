@@ -1,106 +1,72 @@
 {
-  "founder_portrait": {
-    "url": "https://iili.io/JADeLp1.png",
-    "hint": "male professional portrait"
+  "founder": {
+    "portrait": {
+      "url": "https://iili.io/JADeLp1.png",
+      "hint": "male professional portrait"
+    }
   },
-  "service_rent_officer": {
-    "url": "https://picsum.photos/seed/service1/600/400",
-    "hint": "construction site safety"
+  "services": {
+    "rent_officer": {
+      "url": "https://picsum.photos/seed/service1/600/400",
+      "hint": "construction site safety"
+    },
+    "esafety_file": {
+      "url": "https://picsum.photos/seed/service2/600/400",
+      "hint": "digital document management"
+    },
+    "safety_system": {
+      "url": "https://picsum.photos/seed/service3/600/400",
+      "hint": "safety dashboard analytics"
+    },
+    "print_ready": {
+      "url": "https://iili.io/JADbLPS.png",
+      "hint": "digital file download"
+    }
   },
-  "service_esafety_file": {
-    "url": "https://picsum.photos/seed/service2/600/400",
-    "hint": "digital document management"
+  "testimonials": [
+    { "name": "Lerato Khumalo", "image": { "url": "https://iili.io/JADe4mB.png", "hint": "professional black woman" } },
+    { "name": "Pieter van der Merwe", "image": { "url": "https://iili.io/JADeLp1.png", "hint": "professional white man" } },
+    { "name": "Anika Patel", "image": { "url": "https://iili.io/JADeZuG.png", "hint": "professional indian woman" } },
+    { "name": "Bongani Zulu", "image": { "url": "https://iili.io/JADesol.png", "hint": "male construction worker" } },
+    { "name": "Fatima Allie", "image": { "url": "https://iili.io/JADeYXv.png", "hint": "professional coloured woman" } },
+    { "name": "Jaco Jacobs", "image": { "url": "https://iili.io/JADejnJ.png", "hint": "male engineer" } },
+    { "name": "Sipho Ndlovu", "image": { "url": "https://iili.io/JADe5X7.png", "hint": "male logistics manager" } },
+    { "name": "Naledi Ramphele", "image": { "url": "https://iili.io/JADeKGs.png", "hint": "female executive" } },
+    { "name": "Chris Botha", "image": { "url": "https://iili.io/JADeGvF.png", "hint": "male factory manager" } }
+  ],
+  "leadership": [
+    { "name": "John Doe", "image": { "url": "https://iili.io/JADeLp1.png", "hint": "male professional portrait" }, "initials": "JD" },
+    { "name": "Jane Smith", "image": { "url": "https://iili.io/JADe4mB.png", "hint": "female professional portrait" }, "initials": "JS" },
+    { "name": "Mike Johnson", "image": { "url": "https://iili.io/JADesol.png", "hint": "male expert portrait" }, "initials": "MJ" }
+  ],
+  "portfolio": [
+    { "title": "High-Rise Commercial Tower", "image": { "url": "https://i.ibb.co/rKv0KSNP/image-29.jpg", "hint": "skyscraper construction" } },
+    { "title": "Industrial Manufacturing Plant", "image": { "url": "https://i.ibb.co/4wkRjkxL/image-32.jpg", "hint": "industrial plant" } },
+    { "title": "Metropolitan Subway Expansion", "image": { "url": "https://i.ibb.co/FbCcN8Nq/image-36.jpg", "hint": "tunnel construction site" } },
+    { "title": "Renewable Energy Wind Farm", "image": { "url": "https://i.ibb.co/Y4HJxm8w/image-38.jpg", "hint": "wind turbines field" } }
+  ],
+  "ui": {
+    "esafety_file_laptop": {
+      "url": "https://i.ibb.co/TxGnCPhC/image-20.jpg",
+      "hint": "saas dashboard laptop"
+    },
+    "print_ready_folder": {
+      "url": "https://iili.io/JADbLPS.png",
+      "hint": "digital file download"
+    },
+    "safety_system_dashboard": {
+      "url": "https://picsum.photos/seed/dashboard2/1200/800",
+      "hint": "data dashboard interface"
+    }
   },
-  "service_safety_system": {
-    "url": "https://picsum.photos/seed/service3/600/400",
-    "hint": "safety dashboard analytics"
-  },
-  "service_print_ready": {
-    "url": "https://iili.io/JADbLPS.png",
-    "hint": "digital file download"
-  },
-  "testimonial_lerato_khumalo": {
-    "url": "https://iili.io/JADe4mB.png",
-    "hint": "professional black woman"
-  },
-  "testimonial_pieter_van_der_merwe": {
-    "url": "https://iili.io/JADeLp1.png",
-    "hint": "professional white man"
-  },
-  "testimonial_anika_patel": {
-    "url": "https://iili.io/JADeZuG.png",
-    "hint": "professional indian woman"
-  },
-  "testimonial_bongani_zulu": {
-    "url": "https://iili.io/JADesol.png",
-    "hint": "male construction worker"
-  },
-  "testimonial_fatima_allie": {
-    "url": "https://iili.io/JADeYXv.png",
-    "hint": "professional coloured woman"
-  },
-  "testimonial_jaco_jacobs": {
-    "url": "https://iili.io/JADejnJ.png",
-    "hint": "male engineer"
-  },
-  "testimonial_sipho_ndlovu": {
-    "url": "https://iili.io/JADe5X7.png",
-    "hint": "male logistics manager"
-  },
-  "testimonial_naledi_ramphele": {
-    "url": "https://iili.io/JADeKGs.png",
-    "hint": "female executive"
-  },
-  "testimonial_chris_botha": {
-    "url": "https://iili.io/JADeGvF.png",
-    "hint": "male factory manager"
-  },
-  "leadership_john_doe": {
-    "url": "https://iili.io/JADeLp1.png",
-    "hint": "male professional portrait"
-  },
-  "leadership_jane_smith": {
-    "url": "https://iili.io/JADe4mB.png",
-    "hint": "female professional portrait"
-  },
-  "leadership_mike_johnson": {
-    "url": "https://iili.io/JADesol.png",
-    "hint": "male expert portrait"
-  },
-  "portfolio_high_rise": {
-    "url": "https://i.ibb.co/rKv0KSNP/image-29.jpg",
-    "hint": "skyscraper construction"
-  },
-  "portfolio_industrial_plant": {
-    "url": "https://i.ibb.co/4wkRjkxL/image-32.jpg",
-    "hint": "industrial plant"
-  },
-  "portfolio_subway": {
-    "url": "https://i.ibb.co/FbCcN8Nq/image-36.jpg",
-    "hint": "tunnel construction site"
-  },
-  "portfolio_wind_farm": {
-    "url": "https://i.ibb.co/Y4HJxm8w/image-38.jpg",
-    "hint": "wind turbines field"
-  },
-  "esafety_file_laptop": {
-    "url": "https://i.ibb.co/TxGnCPhC/image-20.jpg",
-    "hint": "saas dashboard laptop"
-  },
-  "print_ready_folder": {
-    "url": "https://iili.io/JADbLPS.png",
-    "hint": "digital file download"
-  },
-  "safety_system_dashboard": {
-    "url": "https://picsum.photos/seed/dashboard2/1200/800",
-    "hint": "data dashboard interface"
-  },
-  "og_image_dashboard": {
-    "url": "https://picsum.photos/seed/dashboard/1200/630",
-    "hint": "ai dashboard"
-  },
-  "favicon": {
-    "url": "https://iili.io/KnOi1Og.png",
-    "hint": "company logo"
+  "meta": {
+    "og_image_dashboard": {
+      "url": "https://picsum.photos/seed/dashboard/1200/630",
+      "hint": "ai dashboard"
+    },
+    "favicon": {
+      "url": "https://iili.io/KnOi1Og.png",
+      "hint": "company logo"
+    }
   }
 }
