@@ -55,8 +55,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               __html: JSON.stringify(organizationSchema),
             }}
         />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.net.min.js"></script>
       </head>
       <body className={cn("min-h-screen bg-background font-body antialiased", inter.variable)}>
         <ClientLayout>{children}</ClientLayout>
