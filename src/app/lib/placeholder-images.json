@@ -5,6 +5,12 @@
       "hint": "male professional portrait"
     }
   },
+  "home_page": {
+    "commitment_collage": {
+      "url": "https://iili.io/Kudh5p2.jpg",
+      "hint": "safety gear collage"
+    }
+  },
   "services": {
     "rent_officer": {
       "url": "https://picsum.photos/seed/service1/600/400",

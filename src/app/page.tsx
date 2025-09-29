@@ -122,6 +122,24 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Image collage */}
+      <section className="py-12 bg-background">
+        <div className="container">
+          <div className="relative h-60 md:h-80 w-full overflow-hidden rounded-2xl shadow-lg">
+             <Image
+                src={imageData.home_page.commitment_collage.url}
+                alt="A collage of safety equipment and workers"
+                fill
+                style={{objectFit:"cover"}}
+                data-ai-hint={imageData.home_page.commitment_collage.hint}
+                quality={100}
+                sizes="(max-width: 768px) 100vw, 1200px"
+              />
+          </div>
+        </div>
+      </section>
+
+
       {/* Introduction Section */}
       <section className="py-24 md:py-32">
         <div className="container grid items-center justify-center gap-12 px-4 text-center md:px-6 lg:grid-cols-2 lg:text-left lg:gap-20">
