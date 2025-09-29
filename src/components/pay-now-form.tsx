@@ -33,7 +33,7 @@ const payNowFormSchema = z.object({
   name: z.string().min(2, "Name is required."),
   email: z.string().email("A valid email is required."),
   amount: z.coerce.number().min(1, "Amount must be greater than 0."),
-  invoiceReference: z.string().min(3, "An invoice reference is required."),
+  invoiceReference: z.string().min(3, "An invoice or quote reference is required."),
 });
 
 type PayNowFormValues = z.infer<typeof payNowFormSchema>;
@@ -65,7 +65,6 @@ export function PayNowForm() {
   // Dynamically load Payfast engine.js
   useEffect(() => {
     const script = document.createElement('script');
-    // Use the sandbox URL for testing or live URL for production based on an environment variable
     const payfastUrl = process.env.NEXT_PUBLIC_PAYFAST_ENV === 'live' 
         ? "https://www.payfast.co.za/onsite/engine.js"
         : "https://sandbox.payfast.co.za/onsite/engine.js";
@@ -83,7 +82,7 @@ export function PayNowForm() {
       try {
         const payfastDetails = {
           amount: data.amount,
-          item_name: `Payment for Invoice: ${data.invoiceReference}`,
+          item_name: `Payment for Invoice/Quote: ${data.invoiceReference}`,
           email_address: data.email,
           name_first: data.name.split(' ')[0],
           name_last: data.name.split(' ').slice(1).join(' '),
@@ -97,10 +96,10 @@ export function PayNowForm() {
             window.payfast.onsite.process({
               uuid: response.uuid,
               onComplete: () => {
-                window.location.href = response.return_url || '/payment-success';
+                window.location.href = response.return_url || '/payment/success';
               },
               onCancel: () => {
-                window.location.href = response.cancel_url || '/payment-cancelled';
+                window.location.href = response.cancel_url || '/payment/cancel';
               },
               onError: (errorData: any) => {
                 toast({

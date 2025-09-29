@@ -17,7 +17,7 @@ export default function PayNowPage() {
                     </div>
                     <CardTitle className="text-3xl text-foreground font-bold">Make a Payment</CardTitle>
                     <CardDescription className="text-center text-base">
-                        Please enter the details below to complete your payment.
+                        Please enter the details below to complete your payment for an existing invoice or quote.
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
