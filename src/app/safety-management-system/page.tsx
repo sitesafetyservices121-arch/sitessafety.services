@@ -16,11 +16,11 @@ import imageData from "@/app/lib/placeholder-images.json";
 // };
 
 const aiTools = [
-    { icon: <Cpu className="h-6 w-6 text-primary" />, title: "HIRA Generator", description: "Automatically generate Hazard Identification and Risk Assessments." },
-    { icon: <FileText className="h-6 w-6 text-primary" />, title: "Safe Work Procedure Generator", description: "Create site-specific, compliant safe work procedures in minutes." },
-    { icon: <SlidersHorizontal className="h-6 w-6 text-primary" />, title: "Method Statement Generator", description: "Develop comprehensive method statements with AI assistance." },
-    { icon: <AlertTriangle className="h-6 w-6 text-primary" />, title: "Incident Reporting & Statements", description: "Streamline incident reporting and generate initial statements." },
-    { icon: <BarChart className="h-6 w-6 text-primary" />, title: "LTIR Tracker", description: "Monitor your Lost Time Injury Rate with automated tracking." },
+    { icon: <Cpu className="h-6 w-6 text-primary" />, title: "HIRA Generator", description: "Automatically generate detailed Hazard Identification and Risk Assessments tailored to your operations, helping you stay proactive in identifying and mitigating workplace risks." },
+    { icon: <FileText className="h-6 w-6 text-primary" />, title: "Safe Work Procedure Generator", description: "Quickly create site-specific, fully compliant Safe Work Procedures in minutes, ensuring your teams have clear, actionable guidance for safe operations." },
+    { icon: <SlidersHorizontal className="h-6 w-6 text-primary" />, title: "Method Statement Generator", description: "Develop comprehensive, structured Method Statements with AI assistance, streamlining planning while meeting industry and regulatory standards." },
+    { icon: <AlertTriangle className="h-6 w-6 text-primary" />, title: "Incident Reporting & Statements", description: "Simplify the entire incident reporting process by capturing critical details instantly and generating clear, professional initial statements for investigations." },
+    { icon: <BarChart className="h-6 w-6 text-primary" />, title: "LTIR Tracker", description: "Monitor and track your Lost Time Injury Rate with automated precision, providing real-time insights that help improve safety performance and reduce risks." },
 ];
 
 const managementTools = [
@@ -124,7 +124,7 @@ export default function SafetyManagementSystemPage() {
                     <h3 className="text-2xl font-bold flex items-center gap-3 text-foreground mb-6"><ClipboardCheck className="h-7 w-7 text-primary" />5 Essential Management Tools</h3>
                     <div className="space-y-6">
                         {managementTools.map((feature) => (
-                           <div key={feature.title} className="flex items-start gap-4 p-4 rounded-lg hover:bg-black/10 dark:hover:bg-white/5 transition-colors">
+                           <div key={feature.title} className="flex items-start gap-4 p-4 rounded-lg hover:bg-black/10 dark:hover    :bg-white/5 transition-colors">
                                 <div className="flex-shrink-0 mt-1">
                                 {feature.icon}
                                 </div>
