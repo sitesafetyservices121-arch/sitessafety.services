@@ -45,12 +45,10 @@ function GoogleSignInButton() {
         },
       });
 
-      console.log("Login response status:", res.status);
       if (res.ok) {
         window.location.href = redirectUrl;
       } else {
         const data = await res.json();
-        console.error("Login API response error:", data);
         toast({
           title: "Login Failed",
           description: data.message || "An unexpected error occurred.",
@@ -58,7 +56,6 @@ function GoogleSignInButton() {
         });
       }
     } catch (error: any) {
-      console.error("Google Sign-in Error:", error);
       toast({
         title: "Sign-in Error",
         description: "Could not sign in with Google. Please try again.",
@@ -138,16 +135,13 @@ export default function SignUpPage() {
         },
       });
       
-      console.log("Login response status:", response.status);
       if (response.ok) {
         window.location.href = redirectUrl;
       } else {
         const data = await response.json();
-        console.error("Login API response error:", data);
         setError(data.message || 'An unexpected error occurred.');
       }
     } catch (error: any) {
-      console.error("Signup error:", error);
       if (error.code === 'auth/email-already-in-use') {
         setError("This email address is already in use.");
       } else if (error.code === 'auth/weak-password') {

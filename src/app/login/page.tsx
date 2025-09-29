@@ -45,12 +45,10 @@ function GoogleSignInButton() {
         },
       });
 
-      console.log("Login response status:", res.status);
       if (res.ok) {
         window.location.href = redirectUrl;
       } else {
         const data = await res.json();
-        console.error("Login API response error:", data);
         toast({
           title: "Login Failed",
           description: data.message || "An unexpected error occurred.",
@@ -58,7 +56,6 @@ function GoogleSignInButton() {
         });
       }
     } catch (error: any) {
-      console.error("Google Sign-in Error:", error);
       toast({
         title: "Sign-in Error",
         description: "Could not sign in with Google. Please try again.",
@@ -137,16 +134,13 @@ export default function LoginPage() {
         },
       });
 
-      console.log("Login response status:", response.status);
       if (response.ok) {
         window.location.href = redirectUrl;
       } else {
         const data = await response.json();
-        console.error("Login API response error:", data);
         setError(data.message || 'An unexpected error occurred.');
       }
     } catch (error: any) {
-      console.error("Login error:", error);
       if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found') {
         setError("Invalid email or password. Please try again.");
       } else if (error.code === 'auth/too-many-requests') {
