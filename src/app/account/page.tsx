@@ -1,3 +1,4 @@
+
 // src/app/account/page.tsx
 "use client";
 
@@ -63,3 +64,4 @@ export default function AccountPage() {
     </div>
   );
 }
+
