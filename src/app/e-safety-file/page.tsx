@@ -78,7 +78,7 @@ export default function ESafetyFilePage() {
                     </div>
                 </div>
                 <div className="relative h-80 lg:h-[400px] w-full">
-                    <Image src={imageData.esafety_file_laptop.url} fill style={{objectFit: 'contain'}} alt="e-safety file on a laptop" data-ai-hint={imageData.esafety_file_laptop.hint} quality={100} priority />
+                    <Image src={imageData.ui.esafety_file_laptop.url} fill style={{objectFit: 'contain'}} alt="e-safety file on a laptop" data-ai-hint={imageData.ui.esafety_file_laptop.hint} quality={100} priority />
                 </div>
             </div>
         </div>

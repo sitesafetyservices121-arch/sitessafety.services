@@ -22,39 +22,39 @@ const projects = [
     title: "Rent a Safety Officer",
     description: "Deploy elite, certified safety officers for on-demand risk mitigation and unparalleled on-site expertise.",
     link: "/rent-a-safety-officer",
-    image: imageData.service_rent_officer.url,
-    hint: imageData.service_rent_officer.hint,
+    image: imageData.services.rent_officer.url,
+    hint: imageData.services.rent_officer.hint,
   },
   {
     icon: <FileText className="h-8 w-8 text-primary" />,
     title: "E-Safety File Website & Hosting",
     description: "A fully-digitized, cloud-based safety file solution, ensuring you are always audit-proof and compliant.",
     link: "/e-safety-file",
-    image: imageData.service_esafety_file.url,
-    hint: imageData.service_esafety_file.hint,
+    image: imageData.services.esafety_file.url,
+    hint: imageData.services.esafety_file.hint,
   },
   {
     icon: <ShieldCheck className="h-8 w-8 text-primary" />,
     title: "AI-Powered Safety System",
     description: "A revolutionary platform to command your entire safety operation and build a zero-incident culture.",
     link: "/safety-management-system",
-    image: imageData.service_safety_system.url,
-    hint: imageData.service_safety_system.hint,
+    image: imageData.services.safety_system.url,
+    hint: imageData.services.safety_system.hint,
   },
   {
     icon: <Zap className="h-8 w-8 text-primary" />,
     title: "Download Print-Ready Safety Files",
     description: "Instantly get your compliant, print-ready safety documents delivered electronically within hours.",
     link: "/print-ready-safety-files",
-    image: imageData.service_print_ready.url,
-    hint: imageData.service_print_ready.hint,
+    image: imageData.services.print_ready.url,
+    hint: imageData.services.print_ready.hint,
   },
 ];
 
 const testimonials = [
-  { name: "Lerato Khumalo", title: "Project Manager", company: "ConstructCo", testimonial: "RAK's safety officers were professional, knowledgeable, and integrated seamlessly with our team. Their proactive approach prevented numerous issues.", rating: 5, image: imageData.testimonial_lerato_khumalo },
-  { name: "Pieter van der Merwe", title: "CEO", company: "BuildRight Inc.", testimonial: "The E-Safety File service saved us countless hours and ensured we were fully compliant for a critical audit. The process was smooth and professional.", rating: 5, image: imageData.testimonial_pieter_van_der_merwe },
-  { name: "Anika Patel", title: "Ops Director", company: "InfraGroup", testimonial: "Implementing their Safety Management System has transformed our safety culture for the better. We've seen a measurable reduction in incidents.", rating: 5, image: imageData.testimonial_anika_patel },
+  { name: "Lerato Khumalo", title: "Project Manager", company: "ConstructCo", testimonial: "RAK's safety officers were professional, knowledgeable, and integrated seamlessly with our team. Their proactive approach prevented numerous issues.", rating: 5, image: imageData.testimonials[0].image },
+  { name: "Pieter van der Merwe", title: "CEO", company: "BuildRight Inc.", testimonial: "The E-Safety File service saved us countless hours and ensured we were fully compliant for a critical audit. The process was smooth and professional.", rating: 5, image: imageData.testimonials[1].image },
+  { name: "Anika Patel", title: "Ops Director", company: "InfraGroup", testimonial: "Implementing their Safety Management System has transformed our safety culture for the better. We've seen a measurable reduction in incidents.", rating: 5, image: imageData.testimonials[2].image },
 ];
 
 const problems = [
@@ -132,11 +132,11 @@ export default function Home() {
         <div className="container grid items-center justify-center gap-12 px-4 text-center md:px-6 lg:grid-cols-2 lg:text-left lg:gap-20">
           <div className="relative h-96 lg:h-[500px] w-full overflow-hidden rounded-xl shadow-xl">
             <Image
-              src={imageData.founder_portrait.url}
+              src={imageData.founder.portrait.url}
               alt="Portrait of the founder"
               fill
               style={{objectFit:"cover", objectPosition: "center"}}
-              data-ai-hint={imageData.founder_portrait.hint}
+              data-ai-hint={imageData.founder.portrait.hint}
               quality={100}
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -249,7 +249,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-extrabold text-center text-foreground mb-16">What Our Clients Say</h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {testimonials.map((t) => (
-              <TestimonialCard key={t.name} name={t.name} title={t.title} company={t.company} testimonial={t.testimonial} rating={t.rating} image={{ url: t.image.url, hint: t.image.hint }} />
+              <TestimonialCard key={t.name} name={t.name} title={t.title} company={t.company} testimonial={t.testimonial} rating={t.rating} image={t.image} />
             ))}
           </div>
         </div>

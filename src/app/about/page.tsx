@@ -22,11 +22,7 @@ const VantaBackground = dynamic(() => import("@/components/vanta-background"), {
 //   description: 'Learn about the story, mission, and values that drive RAK-Site Safety Services to be a leader in occupational safety services.',
 // };
 
-const teamMembers = [
-  { name: "John Doe", role: "Founder & Lead Safety Consultant", avatar: imageData.leadership_john_doe.url, initials: "JD", hint: imageData.leadership_john_doe.hint },
-  { name: "Jane Smith", role: "Operations Manager", avatar: imageData.leadership_jane_smith.url, initials: "JS", hint: imageData.leadership_jane_smith.hint },
-  { name: "Mike Johnson", role: "Senior Safety Officer", avatar: imageData.leadership_mike_johnson.url, initials: "MJ", hint: imageData.leadership_mike_johnson.hint },
-];
+const teamMembers = imageData.leadership.map(member => ({ ...member, avatar: member.image.url, hint: member.image.hint }));
 
 const values = [
     { icon: <Shield className="h-8 w-8 text-primary" />, title: "Integrity", description: "Upholding the highest standards of honesty and ethical behavior in all our operations." },
