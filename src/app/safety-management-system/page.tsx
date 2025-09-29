@@ -91,13 +91,16 @@ export default function SafetyManagementSystemPage() {
             <div className="text-center">
                 <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Total Control. Zero Guesswork.</h2>
                 <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                    Our platform combines intelligent automation with hands-on control. You get powerful AI tools that handle compliance in real time—flagging risks, generating reports, and keeping your operation audit-ready 24/7. On top of that, our advanced management features give you full visibility and control across every site, team, and document.
+                    RAK-Site Safety Services gives you the best of both worlds: intelligent automation and complete control. Our AI engine works around the clock—monitoring compliance in real time, flagging risks instantly, generating reports, and ensuring your operation is always audit-ready.
                 </p>
                 <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                    Need expert guidance? You’ll have access to a dedicated AI compliance consultant plus an exclusive library of over 600+ pre-built, audit-tested safety documents—ready to deploy, customize, and use immediately.
+                    But we don’t stop at automation. Our advanced management platform gives you full visibility across every site, team, and document—so you stay in control while scaling compliance with confidence.
                 </p>
                 <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                    With RAK-Site Safety Services, compliance isn’t just easier. It’s unstoppable.
+                    And when you need expert support, you’ll have direct access to a dedicated AI compliance consultant plus an exclusive library of 600+ pre-built, audit-tested safety documents. Ready to deploy, customize, and implement immediately, they make compliance faster, easier, and bulletproof.
+                </p>
+                <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+                    With RAK-Site Safety Services, compliance isn’t just simplified. It’s unstoppable.
                 </p>
             </div>
             <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -159,3 +162,5 @@ export default function SafetyManagementSystemPage() {
     </div>
   );
 }
+
+    
