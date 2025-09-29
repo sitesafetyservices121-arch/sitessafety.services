@@ -104,13 +104,23 @@ export default function Home() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="relative py-40 md:py-60 border-b">
-        
-        <div className="container px-4 md:px-6 relative z-10 text-center">
-            <h1 className="text-4xl font-extrabold sm:text-5xl md:text-7xl text-foreground">
+      <section className="relative py-40 md:py-60 border-b flex items-center justify-center text-center text-white overflow-hidden">
+        <div className="absolute inset-0">
+            <Image
+                src={imageData.home_page.hero.url}
+                alt="Construction site at dusk"
+                fill
+                priority
+                style={{objectFit: 'cover'}}
+                data-ai-hint={imageData.home_page.hero.hint}
+            />
+            <div className="absolute inset-0 bg-black/60" />
+        </div>
+        <div className="container px-4 md:px-6 relative z-10">
+            <h1 className="text-4xl font-extrabold sm:text-5xl md:text-7xl">
               Building Safer Tomorrows
             </h1>
-            <p className="max-w-2xl mx-auto mt-6 text-lg md:text-xl text-muted-foreground">
+            <p className="max-w-2xl mx-auto mt-6 text-lg md:text-xl text-white/90">
               We provide expert safety solutions that protect your people, ensure compliance, and drive operational excellence.
             </p>
             <div className="mt-10">

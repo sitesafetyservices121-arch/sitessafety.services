@@ -1,3 +1,4 @@
+
 {
   "founder": {
     "portrait": {
@@ -6,6 +7,10 @@
     }
   },
   "home_page": {
+    "hero": {
+      "url": "https://iili.io/Kudh5p2.jpg",
+      "hint": "construction site sunset"
+    },
     "commitment_collage": {
       "url": "https://iili.io/Kudh5p2.jpg",
       "hint": "safety gear collage"
