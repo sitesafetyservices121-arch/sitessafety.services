@@ -1,9 +1,21 @@
+
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
-import NET from 'vanta/dist/vanta.net.min.js';
-import * as THREE from 'three';
 import { useTheme } from 'next-themes';
+
+// Dynamically import Vanta and THREE to ensure they only run on the client
+let NET: any = null;
+let THREE: any = null;
+
+if (typeof window !== 'undefined') {
+  import('vanta/dist/vanta.net.min.js').then((vanta) => {
+    NET = vanta.default;
+  });
+  import('three').then((three) => {
+    THREE = three;
+  });
+}
 
 export const VantaBackground = () => {
   const [vantaEffect, setVantaEffect] = useState<any>(null);
@@ -11,7 +23,7 @@ export const VantaBackground = () => {
   const { resolvedTheme } = useTheme();
 
   useEffect(() => {
-    if (!vantaEffect) {
+    if (!vantaEffect && NET && THREE) {
       setVantaEffect(
         NET({
           el: vantaRef.current,
@@ -33,23 +45,13 @@ export const VantaBackground = () => {
 
   useEffect(() => {
     if (vantaEffect) {
-      if (resolvedTheme === 'dark') {
-        vantaEffect.setOptions({
-          color: 0xff8800,
-          backgroundColor: 0x11111d,
-          points: 10.00,
-          maxDistance: 20.00,
-          spacing: 15.00
-        });
-      } else {
-        vantaEffect.setOptions({
-          color: 0xff8800,
-          backgroundColor: 0xfafafa,
-          points: 10.00,
-          maxDistance: 20.00,
-          spacing: 15.00
-        });
-      }
+      vantaEffect.setOptions({
+        color: resolvedTheme === 'dark' ? 0xff8800 : 0xff8800,
+        backgroundColor: resolvedTheme === 'dark' ? 0x11111d : 0xfafafa,
+        points: 10.00,
+        maxDistance: 20.00,
+        spacing: 15.00
+      });
     }
   }, [vantaEffect, resolvedTheme]);
 
