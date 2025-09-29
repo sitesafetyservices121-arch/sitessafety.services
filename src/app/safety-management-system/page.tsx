@@ -53,13 +53,13 @@ export default function SafetyManagementSystemPage() {
         <div className="container max-w-6xl mx-auto px-4">
           <div className="grid lg:grid-cols-5 gap-12 md:gap-16 items-center">
             {/* Image */}
-            <div className="lg:col-span-3 relative h-[500px] w-full rounded-2xl overflow-hidden border shadow-xl">
+            <div className="lg:col-span-3 relative h-[500px] w-full rounded-2xl overflow-hidden border shadow-xl" style={{ animation: 'pulse-blue-neon 4s infinite' }}>
                 <Image src={imageData.ui.safety_system_dashboard.url} alt="AI-driven safety management system dashboard" fill style={{objectFit: 'cover'}} data-ai-hint={imageData.ui.safety_system_dashboard.hint} priority sizes="(max-width: 1024px) 100vw, 60vw"/>
             </div>
 
             {/* Pricing Card */}
             <div className="lg:col-span-2 space-y-8">
-                <Card className="border bg-card shadow-lg">
+                <Card className="border bg-card shadow-lg" style={{ animation: 'pulse-blue-neon 4s infinite' }}>
                   <CardHeader className="items-center text-center">
                       <div className="p-4 bg-primary/10 rounded-full">
                         <Bot className="h-10 w-10 text-primary"/>
