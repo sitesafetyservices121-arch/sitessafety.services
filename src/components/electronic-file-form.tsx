@@ -57,7 +57,6 @@ type ElectronicFileFormValues = z.infer<typeof electronicFileFormSchema>;
 export function ElectronicFileForm() {
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
-  const [showThankYou, setShowThankYou] = useState(false);
   const [total, setTotal] = useState(0);
   const { user, loading } = useAuth();
   const pathname = usePathname();
@@ -111,34 +110,38 @@ export function ElectronicFileForm() {
 
   function onSubmit(data: ElectronicFileFormValues) {
     startTransition(async () => {
+        // Step 1: Submit order details to your backend (e.g., via a server action)
+        // This step is important to log the order before payment.
         const submissionData = {
             ...data,
             total: serviceTiers[data.serviceTier].price,
             companyLogo: data.companyLogo[0]?.name,
             fileIndex: data.fileIndex[0]?.name,
         };
-
+        
         const orderResult = await submitElectronicFileOrder(submissionData);
 
         if (!orderResult.success) {
             toast({
-                title: "Error",
-                description: orderResult.message,
+                title: "Order Submission Failed",
+                description: orderResult.message || "Could not save your order details. Please try again.",
                 variant: "destructive",
             });
             return;
         }
 
+        // Step 2: If order submission is successful, initiate payment
         try {
+            const origin = window.location.origin;
             const payfastDetails = {
                 amount: total,
                 item_name: `Electronic Safety File - ${data.serviceTier}`,
                 email_address: data.email,
                 name_first: data.name,
                 name_last: data.surname,
-                return_url: `${window.location.origin}/payment/success`,
-                cancel_url: `${window.location.origin}/payment/cancel`,
-                notify_url: `${window.location.origin}/api/payfast-itn`,
+                return_url: `${origin}/payment/success`,
+                cancel_url: `${origin}/payment/cancel`,
+                notify_url: `${origin}/api/payfast-itn`,
             };
 
             const payfastResponse = await createPayfastPaymentIdentifier(payfastDetails);
@@ -148,31 +151,39 @@ export function ElectronicFileForm() {
                     window.payfast.onsite.process({
                         uuid: payfastResponse.uuid,
                         onComplete: () => {
+                            // Redirect to your success page
                             window.location.href = payfastDetails.return_url;
                         },
                         onCancel: () => {
+                            // Redirect to your cancellation page
                             window.location.href = payfastDetails.cancel_url;
                         },
+                        onError: (errorData: any) => {
+                            toast({
+                                title: "Payment Modal Error",
+                                description: errorData?.error_message || "An error occurred with the payment modal.",
+                                variant: "destructive",
+                            });
+                        }
                     });
                 } else {
                     toast({
-                        title: "Error",
-                        description: "Payfast script not loaded. Please try again.",
+                        title: "Payment Error",
+                        description: "Payfast payment module could not be loaded. Please refresh the page.",
                         variant: "destructive",
                     });
                 }
             } else {
                 toast({
-                    title: "Payment Error",
-                    description: payfastResponse.message || "Failed to initiate payment with Payfast.",
+                    title: "Payment Initialization Failed",
+                    description: payfastResponse.message || "Could not prepare your transaction. Please try again.",
                     variant: "destructive",
                 });
             }
-        } catch (payfastError: any) {
-            console.error("Payfast initiation error:", payfastError);
+        } catch (paymentError: any) {
             toast({
                 title: "Payment Error",
-                description: payfastError.message || "An unexpected error occurred during payment initiation.",
+                description: paymentError.message || "An unexpected error occurred during payment setup.",
                 variant: "destructive",
             });
         }
@@ -180,7 +191,7 @@ export function ElectronicFileForm() {
   }
   
   if (loading) {
-    return <div className="text-center p-8">Loading...</div>
+    return <div className="text-center p-8"><Loader2 className="mx-auto h-8 w-8 animate-spin" /></div>;
   }
 
   if (!user) {
@@ -192,16 +203,6 @@ export function ElectronicFileForm() {
             <Button asChild>
                 <Link href={`/login?redirect=${pathname}#order-form`}>Log In or Sign Up</Link>
             </Button>
-        </div>
-    )
-  }
-
-  if (showThankYou) {
-    return (
-        <div className="text-center p-8 bg-success/10 rounded-lg border border-success/20">
-            <CheckCircle className="h-12 w-12 text-success mx-auto mb-4" />
-            <h3 className="text-2xl font-bold text-success mb-2">Thank You For Your Order!</h3>
-            <p className="text-muted-foreground">Your payment was successful. You will receive a password and a redirect link via email shortly. An agent will also contact you to confirm the details.</p>
         </div>
     )
   }
