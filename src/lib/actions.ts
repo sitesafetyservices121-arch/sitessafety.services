@@ -204,7 +204,7 @@ const smsSignupSchema = z.object({
   surname: z.string().min(1, "Surname is required"),
   company: z.string().min(1, "Company is required"),
   email: z.string().email("Invalid email address"),
-  password: z.string().min(8, "Password must be at least 8 characters"),
+  password: z.string().min(8, "Password must be at least 8 characters").optional(),
   age: z.string().min(1, "Age is required"),
   cellNumber: z.string().min(1, "Cell number is required"),
 });
@@ -433,7 +433,7 @@ export async function initiateAdHocPayment(data: unknown) {
     const validatedData = adHocPaymentSchema.parse(data);
 
     const headersList = headers();
-    const host = (await headersList).get('host');
+    const host = (headersList).get('host');
     const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https';
     
     if (!host) {
