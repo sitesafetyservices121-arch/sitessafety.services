@@ -5,6 +5,7 @@ const PROTECTED_ROUTES = ['/account', '/admin'];
 const AUTH_ROUTES = ['/login', '/signup'];
 
 export function middleware(request: NextRequest) {
+  console.log("Cookies seen in middleware:", request.cookies.getAll());
   const { pathname } = request.nextUrl;
   const token = request.cookies.get('firebase-auth-token')?.value;
 
