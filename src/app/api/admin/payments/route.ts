@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { generateSignature } from '@/lib/payfast';
+import { generateSignature, createPayfastData, getPayfastUrl } from '@/lib/payfast';
 
 export async function POST(request: NextRequest) {
   try {
@@ -14,7 +14,6 @@ export async function POST(request: NextRequest) {
 
     const merchantId = process.env.PAYFAST_MERCHANT_ID;
     const merchantKey = process.env.PAYFAST_MERCHANT_KEY;
-    const passphrase = process.env.PAYFAST_PASSPHRASE || '';
 
     if (!merchantId || !merchantKey) {
       return NextResponse.json({ message: 'Payfast credentials not configured' }, { status: 500 });
@@ -24,23 +23,22 @@ export async function POST(request: NextRequest) {
     const cancelUrl = `${request.nextUrl.origin}/payment-cancelled`;
     const notifyUrl = `${request.nextUrl.origin}/api/payfast-itn`; // Assuming this is your ITN URL
 
-    const data = {
-      merchant_id: merchantId,
-      merchant_key: merchantKey,
-      return_url: returnUrl,
-      cancel_url: cancelUrl,
-      notify_url: notifyUrl,
-      amount: parseFloat(amount).toFixed(2), // Ensure 2 decimal places
-      item_name: itemName,
-      m_payment_id: orderId, // Unique order ID
-      // Add other necessary fields as per Payfast documentation
-    };
+    const paymentData = createPayfastData({
+        merchant_id: merchantId,
+        merchant_key: merchantKey,
+        return_url: returnUrl,
+        cancel_url: cancelUrl,
+        notify_url: notifyUrl,
+        amount: parseFloat(amount),
+        item_name: itemName,
+        m_payment_id: orderId,
+    });
 
-    const signature = generateSignature(data, passphrase);
-
-    const payfastUrl = new URL('https://www.payfast.co.za/eng/process'); // Use sandbox for testing
-    for (const key in data) {
-      payfastUrl.searchParams.append(key, String(data[key as keyof typeof data]));
+    const signature = generateSignature(paymentData, { passPhrase: process.env.PAYFAST_PASSPHRASE || '' });
+    
+    const payfastUrl = new URL(getPayfastUrl(process.env.NEXT_PUBLIC_PAYFAST_ENV === 'live'));
+    for (const key in paymentData) {
+        payfastUrl.searchParams.append(key, String(paymentData[key as keyof typeof paymentData]));
     }
     payfastUrl.searchParams.append('signature', signature);
 
