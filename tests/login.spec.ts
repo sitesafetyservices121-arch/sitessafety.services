@@ -12,22 +12,20 @@ test.describe('Login Flow', () => {
     await page.fill('#email', email);
     await page.fill('#password', password);
 
-    // Submit the form
-    await page.click('button[type="submit"]');
+    // Submit the form and wait for the hard navigation to complete
+    await Promise.all([
+      page.waitForNavigation({ waitUntil: 'networkidle' }),
+      page.click('button[type="submit"]'),
+    ]);
 
-    // Wait for navigation to the login page (or wherever the app redirects after signup)
-    await page.waitForURL('/login');
-
-    // Now, log in with the new credentials
-    await page.fill('#email', email);
-    await page.fill('#password', password);
-    await page.click('button[type="submit"]');
-
-    // Wait for successful login and redirection to the account page
+    // After signup and session creation, we should be on the account page
     await page.waitForURL('/account');
 
     // Check if the account page is displayed
-    expect(page.url()).toBe('http://localhost:3000/account');
+    expect(page.url()).toContain('/account');
+
+    // As an extra check, verify some content on the account page
+    await expect(page.locator(`text=${email}`)).toBeVisible();
   });
 
   test('should show an error for invalid login credentials', async ({ page }) => {
@@ -44,7 +42,7 @@ test.describe('Login Flow', () => {
     // Check for the error message
     const errorMessage = await page.locator('.text-destructive');
     await expect(errorMessage).toBeVisible();
-    await expect(errorMessage).toContainText('auth/invalid-credential');
+    await expect(errorMessage).toContainText('Invalid email or password');
   });
 
   test('should show an error for signing up with an existing email', async ({ page }) => {
@@ -54,8 +52,20 @@ test.describe('Login Flow', () => {
     const password = 'password123';
     await page.fill('#email', email);
     await page.fill('#password', password);
-    await page.click('button[type="submit"]');
-    await page.waitForURL('/login'); // Assuming it redirects to login after successful signup
+    
+    await Promise.all([
+        page.waitForNavigation({ waitUntil: 'networkidle' }),
+        page.click('button[type="submit"]'),
+    ]);
+    
+    // We should be on the account page, first log out before trying to sign up again
+    await page.goto('/account');
+    await Promise.all([
+        page.waitForNavigation({ waitUntil: 'networkidle' }),
+        page.click('button:has-text("Log Out")'),
+    ]);
+    await page.waitForURL('/');
+
 
     // Now, try to sign up again with the same email
     await page.goto('/signup');
@@ -66,7 +76,7 @@ test.describe('Login Flow', () => {
     // Check for the error message indicating email already in use
     const errorMessage = await page.locator('.text-destructive');
     await expect(errorMessage).toBeVisible();
-    await expect(errorMessage).toContainText('auth/email-already-in-use');
+    await expect(errorMessage).toContainText('This email address is already in use.');
   });
 
   test('should initiate Google sign-in flow from signup page', async ({ page }) => {
