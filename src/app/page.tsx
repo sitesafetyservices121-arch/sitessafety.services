@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -132,7 +133,7 @@ export default function Home() {
                 fill
                 style={{objectFit:"cover"}}
                 data-ai-hint={imageData.home_page.commitment_collage.hint}
-                quality={100}
+                
                 sizes="(max-width: 768px) 100vw, 1200px"
               />
           </div>
@@ -151,7 +152,7 @@ export default function Home() {
               sizes="(max-width: 1024px) 100vw, 50vw"
               style={{objectFit:"cover", objectPosition: "center"}}
               data-ai-hint={imageData.founder.portrait.hint}
-              quality={100}
+              
               priority
             />
           </div>
@@ -186,7 +187,7 @@ export default function Home() {
               <Card key={project.title} className="bg-card flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-xl border">
                 <CardContent className="p-0">
                   <div className="relative h-64 w-full">
-                    <Image src={project.image} alt={project.title} fill style={{objectFit:"cover"}} data-ai-hint={project.hint} quality={100} className="transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 50vw" />
+                    <Image src={project.image} alt={project.title} fill style={{objectFit:"cover"}} data-ai-hint={project.hint} className="transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 50vw" />
                   </div>
                 </CardContent>
                 <div className="p-6 flex flex-col flex-grow">
