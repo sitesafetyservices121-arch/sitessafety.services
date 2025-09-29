@@ -47,7 +47,7 @@ function GoogleSignInButton() {
 
       console.log("Login response status:", res.status);
       if (res.ok) {
-        router.push(redirectUrl);
+        window.location.href = redirectUrl;
       } else {
         const data = await res.json();
         console.error("Login API response error:", data);
@@ -117,7 +117,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (!authLoading && user) {
-      router.push(redirectUrl);
+      window.location.href = redirectUrl;
     }
   }, [user, authLoading, redirectUrl, router]);
 
@@ -139,7 +139,7 @@ export default function LoginPage() {
 
       console.log("Login response status:", response.status);
       if (response.ok) {
-        router.push(redirectUrl);
+        window.location.href = redirectUrl;
       } else {
         const data = await response.json();
         console.error("Login API response error:", data);
