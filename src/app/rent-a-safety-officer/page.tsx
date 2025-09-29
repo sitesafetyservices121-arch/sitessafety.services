@@ -1,3 +1,4 @@
+
 "use client";
 
 import { BookingForm } from "@/components/booking-form";
@@ -38,13 +39,23 @@ export default function RentASafetyOfficerPage() {
   return (
     <div className="bg-background text-foreground">
       {/* Header Section */}
-      <section className="relative py-20 md:py-32 border-b">
-        
+      <section className="relative py-20 md:py-32 border-b text-white">
+        <div className="absolute inset-0">
+            <Image
+                src="https://iili.io/KudhXpV.jpg"
+                alt="A lighthouse at night, symbolizing guidance and safety."
+                fill
+                priority
+                style={{objectFit: 'cover'}}
+                data-ai-hint="lighthouse night"
+            />
+            <div className="absolute inset-0 bg-black/60" />
+        </div>
         <div className="container mx-auto px-4 text-center relative z-10">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-foreground">
+            <h1 className="text-4xl md:text-6xl font-extrabold">
               Book Your On-Demand Safety Officer
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="mt-6 text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
               Get an instant quote and book a certified safety professional for your specific project needs. Fast, transparent, and compliant.
             </p>
         </div>
