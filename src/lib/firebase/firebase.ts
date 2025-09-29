@@ -18,7 +18,7 @@ function getFirebaseConfig() {
     measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
   };
 
-  // Validate required config
+  // Validate required config for core services
   const requiredFields = ['apiKey', 'authDomain', 'projectId', 'appId'] as const;
   const missingFields = requiredFields.filter(field => !config[field]);
 
@@ -34,14 +34,15 @@ function getFirebaseConfig() {
 
 // 🔥 Initialize Firebase app (safe for hot reload and SSR)
 let app: FirebaseApp;
+let firebaseConfig: ReturnType<typeof getFirebaseConfig>;
 
 try {
-  const firebaseConfig = getFirebaseConfig();
+  firebaseConfig = getFirebaseConfig();
   app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 } catch (error) {
   console.error('Firebase initialization failed:', error);
   // We don't re-throw here to allow the app to run in environments
-  // where client-side firebase is not needed.
+  // where client-side firebase is not needed, but we should handle this gracefully.
 }
 
 // 🔐 Initialize Auth
@@ -61,15 +62,15 @@ export const functions: Functions = getFunctions(app, "us-central1");
 let analytics: Analytics | null = null;
 
 if (typeof window !== "undefined") {
-  // Check if analytics is supported before initializing
+  // Check if analytics is supported and measurementId is available
   isSupported()
     .then((supported) => {
-      if (supported && process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID) {
+      if (supported && firebaseConfig.measurementId) {
         analytics = getAnalytics(app);
       }
     })
     .catch((error) => {
-      console.warn('Firebase Analytics initialization failed:', error);
+      console.warn('Firebase Analytics initialization check failed:', error);
     });
 }
 

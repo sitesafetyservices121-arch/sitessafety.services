@@ -15,7 +15,15 @@ export default function AccountPage() {
   const { user, loading } = useAuth();
   const router = useRouter();
 
-  // why: ensure users come back here after login
+  // All hooks must be called unconditionally at the top of the component.
+  const displayName = useMemo(() => user?.displayName || "No display name", [user]);
+  const email = useMemo(() => user?.email || "", [user]);
+  const avatarInitial = useMemo(() => {
+    const fromName = displayName?.trim()?.[0];
+    const fromEmail = email?.trim()?.[0];
+    return (fromName || fromEmail || "U").toUpperCase();
+  }, [displayName, email]);
+  
   useEffect(() => {
     if (!loading && !user) {
       router.push(`/login?redirect=${encodeURIComponent("/account")}`);
@@ -25,14 +33,6 @@ export default function AccountPage() {
   if (loading || !user) {
     return <TopLoader />;
   }
-
-  const displayName = user.displayName || "No display name";
-  const email = user.email || "";
-  const avatarInitial = useMemo(() => {
-    const fromName = displayName?.trim()?.[0];
-    const fromEmail = email?.trim()?.[0];
-    return (fromName || fromEmail || "U").toUpperCase();
-  }, [displayName, email]);
 
   return (
     <div className="container py-24">
