@@ -14,13 +14,13 @@ export default function PopiaPage() {
     <div className="bg-background text-foreground">
       <div className="container max-w-4xl mx-auto py-24 md:py-32 px-4">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-primary-dark font-headline tracking-tight">Privacy Policy</h1>
-          <p className="mt-4 text-lg text-muted-foreground font-body">Effective Date: {effectiveDate}</p>
-          <p className="mt-1 text-lg text-muted-foreground font-body">Last Updated: {effectiveDate}</p>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-foreground tracking-tight">Privacy Policy</h1>
+          <p className="mt-4 text-lg text-muted-foreground">Effective Date: {effectiveDate}</p>
+          <p className="mt-1 text-lg text-muted-foreground">Last Updated: {effectiveDate}</p>
         </div>
         <Card>
           <CardContent className="p-6 md:p-8">
-            <div className="prose prose-lg max-w-none font-body text-muted-foreground prose-h2:font-headline prose-h2:text-primary-dark prose-h2:text-2xl prose-h2:border-b-2 prose-h2:border-secondary prose-h2:pb-3 prose-headings:font-headline prose-a:text-primary hover:prose-a:text-primary/80 prose-strong:text-foreground">
+            <div className="prose prose-lg max-w-none text-muted-foreground prose-h2:font-bold prose-h2:text-foreground prose-h2:text-2xl prose-h2:border-b-2 prose-h2:border-secondary prose-h2:pb-3 prose-headings:font-bold prose-a:text-primary hover:prose-a:text-primary/80 prose-strong:text-foreground">
               
               <h2>1. Introduction</h2>
               <p>RAK-Site Safety Services ("we", "us", or "our") is committed to safeguarding your personal information in accordance with the Protection of Personal Information Act 4 of 2013 (POPIA) and other applicable privacy laws in South Africa.</p>

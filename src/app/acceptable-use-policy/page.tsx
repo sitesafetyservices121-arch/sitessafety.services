@@ -1,34 +1,26 @@
 
-"use client";
-
 import type { Metadata } from 'next';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 
-// export const metadata: Metadata = {
-//   title: 'Acceptable Use Policy',
-// };
+export const metadata: Metadata = {
+  title: 'Acceptable Use Policy',
+};
 
 export default function AcceptableUsePolicyPage() {
-  const [effectiveDate, setEffectiveDate] = useState("27 September 2025");
+  const effectiveDate = "27 September 2025";
   
-  useEffect(() => {
-    // This is just an example. If the date is static, it doesn't need a state.
-    // If it were dynamic, this would be the correct approach to avoid hydration errors.
-  }, []);
-
-
   return (
     <div className="bg-background text-foreground">
       <div className="container max-w-4xl mx-auto py-24 md:py-32 px-4">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-primary-dark font-headline tracking-tight">Acceptable Use Policy (AUP)</h1>
-          <p className="mt-4 text-lg text-muted-foreground font-body">Effective Date: {effectiveDate}</p>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-foreground tracking-tight">Acceptable Use Policy (AUP)</h1>
+          <p className="mt-4 text-lg text-muted-foreground">Effective Date: {effectiveDate}</p>
         </div>
 
         <Card>
           <CardContent className="p-6 md:p-8">
-            <div className="prose prose-lg max-w-none font-body text-muted-foreground prose-h2:font-headline prose-h2:text-primary-dark prose-h2:text-2xl prose-h2:border-b-2 prose-h2:border-secondary prose-h2:pb-3 prose-headings:font-headline prose-a:text-primary hover:prose-a:text-primary/80 prose-strong:text-foreground">
+            <div className="prose prose-lg max-w-none text-muted-foreground prose-h2:font-bold prose-h2:text-foreground prose-h2:text-2xl prose-h2:border-b-2 prose-h2:border-secondary prose-h2:pb-3 prose-headings:font-bold prose-a:text-primary hover:prose-a:text-primary/80 prose-strong:text-foreground">
               
               <p><strong>Applies To:</strong> All users of the RAK-Site Safety Services online safety management system</p>
               
