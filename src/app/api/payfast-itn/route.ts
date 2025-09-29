@@ -1,15 +1,60 @@
+
 import { NextRequest, NextResponse } from 'next/server';
 import { isValidSignature } from '@/lib/payfast';
+import { headers } from 'next/headers';
 
+// --- PayFast Configuration ---
 const PAYFAST_MERCHANT_ID = process.env.PAYFAST_MERCHANT_ID;
-const PAYFAST_MERCHANT_KEY = process.env.PAYFAST_MERCHANT_KEY;
 const PAYFAST_PASSPHRASE = process.env.PAYFAST_PASSPHRASE;
+const IS_PRODUCTION = process.env.NEXT_PUBLIC_PAYFAST_ENV === 'live';
+
+const PAYFAST_VALIDATE_URL = IS_PRODUCTION 
+  ? 'https://www.payfast.co.za/eng/query/validate'
+  : 'https://sandbox.payfast.co.za/eng/query/validate';
+
+// PayFast IP ranges for security validation
+const PAYFAST_IP_RANGES = [
+    '197.97.182.224/27', // PayFast IP range
+    '196.33.227.224/27', // PayFast IP range
+    '127.0.0.1',         // Allow localhost for development
+];
+
+// --- IP Validation Helper ---
+function isIpInRange(ip: string, cidr: string): boolean {
+    if (ip === cidr) return true;
+    if (!cidr.includes('/')) return false;
+
+    const [range, bits] = cidr.split('/');
+    const mask = ~(2 ** (32 - parseInt(bits, 10)) - 1);
+
+    const ipNum = ip.split('.').reduce((acc, octet) => (acc << 8) + parseInt(octet, 10), 0);
+    const rangeNum = range.split('.').reduce((acc, octet) => (acc << 8) + parseInt(octet, 10), 0);
+
+    return (ipNum & mask) === (rangeNum & mask);
+}
+
+function isPayfastIp(ip: string | undefined): boolean {
+    if (!ip) return false;
+    // In development, allow all connections
+    if (!IS_PRODUCTION) return true; 
+    return PAYFAST_IP_RANGES.some(range => isIpInRange(ip, range));
+}
 
 export async function POST(req: NextRequest) {
-  console.log("Received Payfast ITN callback.");
+  const reqIdentifier = `[ITN-${Date.now()}]`;
+  console.log(`${reqIdentifier} Received Payfast ITN callback.`);
 
-  if (!PAYFAST_MERCHANT_ID || !PAYFAST_MERCHANT_KEY || !PAYFAST_PASSPHRASE) {
-    console.error("❌ Missing Payfast environment variables for ITN.");
+  // --- 1. IP Address Validation ---
+  const requestIp = req.ip || headers().get('X-Forwarded-For')?.split(',')[0].trim();
+  if (!isPayfastIp(requestIp)) {
+    console.warn(`⚠️ ${reqIdentifier} Payfast ITN: Denied access from untrusted IP: ${requestIp}`);
+    return NextResponse.json({ error: "Unauthorized IP address." }, { status: 403 });
+  }
+  console.log(`✅ ${reqIdentifier} IP address ${requestIp} is trusted.`);
+
+  // --- 2. Configuration Check ---
+  if (!PAYFAST_MERCHANT_ID || !PAYFAST_PASSPHRASE) {
+    console.error(`❌ ${reqIdentifier} Missing Payfast environment variables for ITN.`);
     return NextResponse.json({ error: "Payfast not configured on server." }, { status: 500 });
   }
 
@@ -20,77 +65,62 @@ export async function POST(req: NextRequest) {
       data[key] = value.toString();
     });
 
-    const pf_signature = data.signature;
-    delete data.signature; // Remove signature before verification
+    console.log(`ℹ️ ${reqIdentifier} Received data for transaction: ${data.pf_payment_id}`);
 
-    // Sort the data alphabetically by key for signature verification
-    const sortedData: Record<string, string> = {};
-    Object.keys(data).sort().forEach(key => {
-        sortedData[key] = data[key];
-    });
-
-    if (!isValidSignature(sortedData, pf_signature, PAYFAST_PASSPHRASE)) {
-      console.warn("⚠️ Payfast ITN: Invalid signature.");
+    // --- 3. Signature Verification ---
+    if (!isValidSignature(data, data.signature, { passPhrase: PAYFAST_PASSPHRASE })) {
+      console.warn(`⚠️ ${reqIdentifier} Payfast ITN: Invalid signature for transaction ${data.pf_payment_id}.`);
       return NextResponse.json({ error: "Invalid signature." }, { status: 400 });
     }
+    console.log(`✅ ${reqIdentifier} Signature is valid.`);
 
-    // Verify merchant ID and key (optional, but good practice)
-    if (data.merchant_id !== PAYFAST_MERCHANT_ID || data.m_key !== PAYFAST_MERCHANT_KEY) {
-        console.warn("⚠️ Payfast ITN: Merchant ID or Key mismatch.");
-        return NextResponse.json({ error: "Merchant ID or Key mismatch." }, { status: 400 });
+    // --- 4. Postback Validation ---
+    const validateData = new URLSearchParams(data).toString();
+    const validateResponse = await fetch(PAYFAST_VALIDATE_URL, {
+        method: 'POST',
+        body: validateData,
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    });
+
+    const validationResult = await validateResponse.text();
+
+    if (validationResult !== 'VALID') {
+        console.error(`❌ ${reqIdentifier} Payfast ITN: Postback validation failed. Response: ${validationResult}`);
+        return NextResponse.json({ error: "Transaction validation failed." }, { status: 400 });
     }
+    console.log(`✅ ${reqIdentifier} Postback validation successful.`);
 
-    // Verify payment status
-    if (data.payment_status === 'COMPLETE') {
-      console.log(`✅ Payfast ITN: Payment COMPLETE for transaction ${data.pf_payment_id}.`);
+
+    // --- 5. Process Payment Status (Source of Truth) ---
+    const { payment_status, pf_payment_id, m_payment_id, amount_gross } = data;
+    
+    // IMPORTANT: Idempotency Check
+    // Before processing, check your database to see if this `pf_payment_id` has already been processed.
+    // e.g., const order = await db.orders.findByPayfastId(pf_payment_id);
+    // if (order && order.status === 'paid') {
+    //   console.log(`ℹ️ ${reqIdentifier} Transaction ${pf_payment_id} already processed. Skipping.`);
+    //   return NextResponse.json({ message: "Already processed." }, { status: 200 });
+    // }
+
+    if (payment_status === 'COMPLETE') {
+      console.log(`✅ ${reqIdentifier} Payment COMPLETE for order: ${m_payment_id}, amount: ${amount_gross}.`);
       
-      // --- START: User-specific database integration area ---
-      // IMPORTANT: This is where you would typically update your order status in your database.
-      // You need to implement your database logic here.
-      //
-      // 1. Retrieve the order from your database using a unique identifier.
-      //    Payfast often sends custom fields like `custom_str1`, `custom_int1`, `item_name`.
-      //    You might have passed an order ID in one of these fields when creating the payment identifier.
-      //    Example: const orderId = data.custom_int1; // Or data.item_name, etc.
-      //
-      // 2. Verify the amount paid matches your expected amount for the order.
-      //    Example: if (parseFloat(data.amount_gross) !== expectedOrderAmount) { /* handle mismatch */ }
-      //
-      // 3. Update the order status to 'paid' or 'completed'.
-      //    Example: await db.orders.update(orderId, { status: 'paid', payfast_id: data.pf_payment_id });
-      //
-      // 4. Fulfill the order (e.g., send digital files, activate service).
-      //    Example: await sendElectronicFilesToCustomer(orderId, data.email_address);
-      //
-      // 5. Handle idempotency: Ensure this ITN is processed only once to prevent double fulfillment.
-      //    Check if the order is already marked as paid for this `pf_payment_id`.
-      // --- END: User-specific database integration area ---
-
-      // Respond with 200 OK to Payfast
-      return NextResponse.json({ message: "ITN processed successfully." }, { status: 200 });
-    } else if (data.payment_status === 'FAILED') {
-      console.warn(`❌ Payfast ITN: Payment FAILED for transaction ${data.pf_payment_id}.`);
+      // BUSINESS LOGIC:
+      // 1. Find the order in your database using `m_payment_id`.
+      // 2. Verify `amount_gross` matches the expected order total.
+      // 3. Update the order status to 'paid'.
+      // 4. Fulfill the order (e.g., grant access, send email).
       
-      // --- START: User-specific database integration area ---
-      // IMPORTANT: This is where you would typically update your order status to 'failed' in your database.
-      // Example: const orderId = data.custom_int1;
-      // Example: await db.orders.update(orderId, { status: 'failed', payfast_id: data.pf_payment_id });
-      // --- END: User-specific database integration area ---
-
-      return NextResponse.json({ message: "ITN processed (payment failed)." }, { status: 200 });
     } else {
-      console.log(`ℹ️ Payfast ITN: Payment status ${data.payment_status} for transaction ${data.pf_payment_id}.`);
-      
-      // --- START: User-specific database integration area ---
-      // IMPORTANT: Handle other payment statuses (e.g., PENDING, CANCELLED, AWAITING_PAYMENT).
-      // You might update the order status accordingly.
-      // --- END: User-specific database integration area ---
-
-      return NextResponse.json({ message: "ITN processed (other status)." }, { status: 200 });
+      console.warn(`ℹ️ ${reqIdentifier} Payment status is '${payment_status}' for order: ${m_payment_id}.`);
+      // BUSINESS LOGIC: Update order status to 'failed', 'pending', etc.
     }
+
+    // Respond with 200 OK to Payfast to acknowledge receipt.
+    return NextResponse.json({ message: "ITN processed successfully." }, { status: 200 });
 
   } catch (error: any) {
-    console.error("❌ Error processing Payfast ITN:", error);
+    console.error(`❌ ${reqIdentifier} Error processing Payfast ITN:`, error);
     return NextResponse.json({ error: error.message || "Internal server error." }, { status: 500 });
   }
 }
