@@ -8,7 +8,6 @@ import { CheckIconCard } from "@/components/ui/check-icon-card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import imageData from "@/app/lib/placeholder-images.json";
-import { VantaBackground } from "@/components/vanta-background";
 
 
 
@@ -65,8 +64,7 @@ const whyChooseUs = [
 
 export default function AboutPage() {
   return (
-    <div className="bg-transparent text-foreground">
-      <VantaBackground />
+    <div className="bg-background text-foreground">
       {/* Hero Section */}
        <section className="relative py-40 md:py-60 border-b">
         
