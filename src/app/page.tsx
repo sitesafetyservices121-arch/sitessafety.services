@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -10,6 +9,7 @@ import { TestimonialCard } from "@/components/testimonial-card";
 import { InquiryForm } from "@/components/inquiry-form";
 
 import imageData from "@/app/lib/placeholder-images.json";
+import { VantaBackground } from "@/components/vanta-background";
 
 
 const projects = [
@@ -103,8 +103,9 @@ const solutions = [
 export default function Home() {
   return (
     <div className="bg-transparent text-foreground">
+      <VantaBackground />
       {/* Hero Section */}
-      <section className="relative py-40 md:py-60 border-b bg-card">
+      <section className="relative py-40 md:py-60 border-b">
         
         <div className="container px-4 md:px-6 relative z-10 text-center">
             <h1 className="text-4xl font-extrabold sm:text-5xl md:text-7xl text-foreground">

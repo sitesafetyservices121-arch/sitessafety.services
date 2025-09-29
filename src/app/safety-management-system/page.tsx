@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
@@ -8,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import imageData from "@/app/lib/placeholder-images.json";
+import { VantaBackground } from "@/components/vanta-background";
 
 
 // export const metadata: Metadata = { // This needs to be moved to a Server Component or removed from client component
@@ -35,8 +35,9 @@ const managementTools = [
 export default function SafetyManagementSystemPage() {
   return (
     <div className="bg-background text-foreground">
+      <VantaBackground />
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 bg-card border-b">
+      <section className="relative py-20 md:py-32 border-b">
         
         <div className="container mx-auto px-4 text-center relative z-10">
           <h1 className="text-4xl md:text-6xl font-extrabold text-foreground">
