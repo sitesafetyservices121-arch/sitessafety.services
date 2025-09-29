@@ -1,3 +1,4 @@
+
 // src/app/signup/page.tsx
 "use client";
 
@@ -35,7 +36,7 @@ function GoogleSignInButton() {
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
-      const idToken = await result.user.getIdToken();
+      const idToken = await result.user.getIdToken(true);
 
       const res = await fetch("/api/auth/login", {
         method: "POST",
@@ -126,7 +127,7 @@ export default function SignUpPage() {
 
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const idToken = await userCredential.user.getIdToken();
+      const idToken = await userCredential.user.getIdToken(true);
 
       const response = await fetch('/api/auth/login', {
         method: 'POST',
