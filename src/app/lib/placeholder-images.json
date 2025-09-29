@@ -1,7 +1,7 @@
 {
   "founder": {
     "portrait": {
-      "url": "https://iili.io/JADeLp1.png",
+      "url": "https://picsum.photos/seed/founder/600/800",
       "hint": "male professional portrait"
     }
   },
@@ -19,39 +19,39 @@
       "hint": "safety dashboard analytics"
     },
     "print_ready": {
-      "url": "https://iili.io/JADbLPS.png",
+      "url": "https://picsum.photos/seed/service4/600/400",
       "hint": "digital file download"
     }
   },
   "testimonials": [
-    { "name": "Lerato Khumalo", "image": { "url": "https://iili.io/JADe4mB.png", "hint": "professional black woman" } },
-    { "name": "Pieter van der Merwe", "image": { "url": "https://iili.io/JADeLp1.png", "hint": "professional white man" } },
-    { "name": "Anika Patel", "image": { "url": "https://iili.io/JADeZuG.png", "hint": "professional indian woman" } },
-    { "name": "Bongani Zulu", "image": { "url": "https://iili.io/JADesol.png", "hint": "male construction worker" } },
-    { "name": "Fatima Allie", "image": { "url": "https://iili.io/JADeYXv.png", "hint": "professional coloured woman" } },
-    { "name": "Jaco Jacobs", "image": { "url": "https://iili.io/JADejnJ.png", "hint": "male engineer" } },
-    { "name": "Sipho Ndlovu", "image": { "url": "https://iili.io/JADe5X7.png", "hint": "male logistics manager" } },
-    { "name": "Naledi Ramphele", "image": { "url": "https://iili.io/JADeKGs.png", "hint": "female executive" } },
-    { "name": "Chris Botha", "image": { "url": "https://iili.io/JADeGvF.png", "hint": "male factory manager" } }
+    { "name": "Lerato Khumalo", "image": { "url": "https://picsum.photos/seed/testimonial1/100/100", "hint": "professional black woman" } },
+    { "name": "Pieter van der Merwe", "image": { "url": "https://picsum.photos/seed/testimonial2/100/100", "hint": "professional white man" } },
+    { "name": "Anika Patel", "image": { "url": "https://picsum.photos/seed/testimonial3/100/100", "hint": "professional indian woman" } },
+    { "name": "Bongani Zulu", "image": { "url": "https://picsum.photos/seed/testimonial4/100/100", "hint": "male construction worker" } },
+    { "name": "Fatima Allie", "image": { "url": "https://picsum.photos/seed/testimonial5/100/100", "hint": "professional coloured woman" } },
+    { "name": "Jaco Jacobs", "image": { "url": "https://picsum.photos/seed/testimonial6/100/100", "hint": "male engineer" } },
+    { "name": "Sipho Ndlovu", "image": { "url": "https://picsum.photos/seed/testimonial7/100/100", "hint": "male logistics manager" } },
+    { "name": "Naledi Ramphele", "image": { "url": "https://picsum.photos/seed/testimonial8/100/100", "hint": "female executive" } },
+    { "name": "Chris Botha", "image": { "url": "https://picsum.photos/seed/testimonial9/100/100", "hint": "male factory manager" } }
   ],
   "leadership": [
-    { "name": "John Doe", "image": { "url": "https://iili.io/JADeLp1.png", "hint": "male professional portrait" }, "initials": "JD" },
-    { "name": "Jane Smith", "image": { "url": "https://iili.io/JADe4mB.png", "hint": "female professional portrait" }, "initials": "JS" },
-    { "name": "Mike Johnson", "image": { "url": "https://iili.io/JADesol.png", "hint": "male expert portrait" }, "initials": "MJ" }
+    { "name": "John Doe", "role": "CEO & Founder", "initials": "JD", "image": { "url": "https://picsum.photos/seed/leader1/200/200", "hint": "male professional portrait" } },
+    { "name": "Jane Smith", "role": "Head of Operations", "initials": "JS", "image": { "url": "https://picsum.photos/seed/leader2/200/200", "hint": "female professional portrait" } },
+    { "name": "Mike Johnson", "role": "Lead Safety Consultant", "initials": "MJ", "image": { "url": "https://picsum.photos/seed/leader3/200/200", "hint": "male expert portrait" } }
   ],
   "portfolio": [
-    { "title": "High-Rise Commercial Tower", "image": { "url": "https://i.ibb.co/rKv0KSNP/image-29.jpg", "hint": "skyscraper construction" } },
-    { "title": "Industrial Manufacturing Plant", "image": { "url": "https://i.ibb.co/4wkRjkxL/image-32.jpg", "hint": "industrial plant" } },
-    { "title": "Metropolitan Subway Expansion", "image": { "url": "https://i.ibb.co/FbCcN8Nq/image-36.jpg", "hint": "tunnel construction site" } },
-    { "title": "Renewable Energy Wind Farm", "image": { "url": "https://i.ibb.co/Y4HJxm8w/image-38.jpg", "hint": "wind turbines field" } }
+    { "title": "High-Rise Commercial Tower", "image": { "url": "https://picsum.photos/seed/portfolio1/800/600", "hint": "skyscraper construction" } },
+    { "title": "Industrial Manufacturing Plant", "image": { "url": "https://picsum.photos/seed/portfolio2/800/600", "hint": "industrial plant" } },
+    { "title": "Metropolitan Subway Expansion", "image": { "url": "https://picsum.photos/seed/portfolio3/800/600", "hint": "tunnel construction site" } },
+    { "title": "Renewable Energy Wind Farm", "image": { "url": "https://picsum.photos/seed/portfolio4/800/600", "hint": "wind turbines field" } }
   ],
   "ui": {
     "esafety_file_laptop": {
-      "url": "https://i.ibb.co/TxGnCPhC/image-20.jpg",
+      "url": "https://picsum.photos/seed/laptop/1200/800",
       "hint": "saas dashboard laptop"
     },
     "print_ready_folder": {
-      "url": "https://iili.io/JADbLPS.png",
+      "url": "https://picsum.photos/seed/folder/600/400",
       "hint": "digital file download"
     },
     "safety_system_dashboard": {
@@ -65,7 +65,7 @@
       "hint": "ai dashboard"
     },
     "favicon": {
-      "url": "https://iili.io/KnOi1Og.png",
+      "url": "https://picsum.photos/seed/favicon/32/32",
       "hint": "company logo"
     }
   }
