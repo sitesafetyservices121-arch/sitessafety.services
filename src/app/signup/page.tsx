@@ -1,52 +1,71 @@
 // src/app/signup/page.tsx
 "use client";
 
-import { useActionState } from "react";
-import { useFormStatus } from "react-dom";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { Loader2 } from "lucide-react";
 
-import { signUpWithEmail } from "@/lib/firebase/auth";
 import { auth } from "@/lib/firebase/firebase";
 import { useAuth } from "@/context/auth-context";
 import { TopLoader } from "@/components/top-loader";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
 
-const initialState = {
-  message: "",
-  user: null,
-};
-
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  return (
-    <Button className="w-full" type="submit" disabled={pending} size="lg">
-      {pending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-      {pending ? "Signing Up..." : "Create an Account"}
-    </Button>
-  );
-}
 
 function GoogleSignInButton() {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectUrl = searchParams.get("redirect") || "/account";
+  const { toast } = useToast();
 
   const handleGoogleSignIn = async () => {
     setLoading(true);
     const provider = new GoogleAuthProvider();
     try {
-      await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, provider);
+      const idToken = await result.user.getIdToken();
+
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${idToken}`,
+        },
+      });
+
+      if (res.ok) {
+        router.push(redirectUrl);
+      } else {
+        const data = await res.json();
+        toast({
+          title: "Login Failed",
+          description: data.message || "An unexpected error occurred.",
+          variant: "destructive",
+        });
+      }
     } catch (error: any) {
       console.error("Google Sign-in Error:", error);
+      toast({
+        title: "Sign-in Error",
+        description: "Could not sign in with Google. Please try again.",
+        variant: "destructive",
+      });
     } finally {
       setLoading(false);
     }
   };
+
 
   return (
     <Button
@@ -83,22 +102,62 @@ function GoogleSignInButton() {
 }
 
 export default function SignUpPage() {
-  const [state, formAction] = useActionState(signUpWithEmail, initialState);
-  const { user, loading } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  const { user, loading: authLoading } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirectUrl = searchParams.get("redirect") || "/account";
+  const { toast } = useToast();
 
   useEffect(() => {
-    if (!loading && user) {
+    if (!authLoading && user) {
       router.push(redirectUrl);
     }
-    if (state.user) {
-      router.push(redirectUrl);
-    }
-  }, [user, loading, state.user, redirectUrl, router]);
+  }, [user, authLoading, redirectUrl, router]);
 
-  if (loading || user) {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError(null);
+    setLoading(true);
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const idToken = await userCredential.user.getIdToken();
+
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${idToken}`,
+        },
+      });
+      
+      if (response.ok) {
+        router.push(redirectUrl);
+      } else {
+        const data = await response.json();
+        setError(data.message || 'An unexpected error occurred.');
+      }
+    } catch (error: any) {
+      console.error("Signup error:", error);
+      if (error.code === 'auth/email-already-in-use') {
+        setError("This email address is already in use.");
+      } else if (error.code === 'auth/weak-password') {
+        setError("Password is too weak. Please choose a stronger one.");
+      } else if (error.code === 'auth/invalid-email') {
+        setError("Please enter a valid email address.");
+      } else {
+        setError("An unexpected error occurred. Please try again.");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (authLoading || user) {
     return <TopLoader />;
   }
 
@@ -110,19 +169,22 @@ export default function SignUpPage() {
           <CardDescription>Enter your email below to create your account</CardDescription>
         </CardHeader>
         <CardContent>
-          <form action={formAction}>
+          <form onSubmit={handleSubmit}>
             <div className="grid gap-4">
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" name="email" type="email" placeholder="m@example.com" required />
+                <Input id="email" name="email" type="email" placeholder="m@example.com" required value={email} onChange={(e) => setEmail(e.target.value)} />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="password">Password</Label>
-                <Input id="password" name="password" type="password" required />
+                <Input id="password" name="password" type="password" required value={password} onChange={(e) => setPassword(e.target.value)}/>
               </div>
-              <SubmitButton />
-              {state.message && (
-                <p className="text-sm text-destructive text-center">{state.message}</p>
+              <Button className="w-full" type="submit" disabled={loading} size="lg">
+                {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                {loading ? "Signing Up..." : "Create an Account"}
+              </Button>
+              {error && (
+                <p className="text-sm text-destructive text-center">{error}</p>
               )}
             </div>
           </form>
