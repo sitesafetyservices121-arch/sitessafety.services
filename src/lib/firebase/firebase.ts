@@ -15,7 +15,7 @@ function getFirebaseConfig() {
     storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
     messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-    measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+    // measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID, // Temporarily commented out
   };
 
   // Validate required config for core services
@@ -65,7 +65,7 @@ if (typeof window !== "undefined") {
   // Check if analytics is supported and measurementId is available
   isSupported()
     .then((supported) => {
-      if (supported && firebaseConfig.measurementId) {
+      if (supported) {
         analytics = getAnalytics(app);
       }
     })
@@ -105,7 +105,6 @@ if (process.env.NODE_ENV === 'development') {
     console.log('🔥 Firebase initialized:', {
       projectId: getProjectId(),
       authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-      hasAnalytics: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID ? 'Yes' : 'No',
       isClientSide: isClientSide(),
     });
   } catch (e) {
