@@ -1,4 +1,3 @@
-
 // src/app/signup/page.tsx
 "use client";
 
@@ -113,12 +112,6 @@ export default function SignUpPage() {
   const redirectUrl = searchParams.get("redirect") || "/account";
   const { toast } = useToast();
 
-  useEffect(() => {
-    if (!authLoading && user) {
-      window.location.href = redirectUrl;
-    }
-  }, [user, authLoading, redirectUrl, router]);
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
@@ -156,7 +149,7 @@ export default function SignUpPage() {
     }
   };
 
-  if (authLoading || user) {
+  if (authLoading) {
     return <TopLoader />;
   }
 

@@ -1,4 +1,3 @@
-
 // src/app/login/page.tsx
 "use client";
 
@@ -112,12 +111,6 @@ export default function LoginPage() {
   const redirectUrl = searchParams.get("redirect") || "/account";
   const { toast } = useToast();
 
-  useEffect(() => {
-    if (!authLoading && user) {
-      window.location.href = redirectUrl;
-    }
-  }, [user, authLoading, redirectUrl, router]);
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
@@ -153,7 +146,7 @@ export default function LoginPage() {
     }
   };
 
-  if (authLoading || user) {
+  if (authLoading) {
     return <TopLoader />;
   }
 
