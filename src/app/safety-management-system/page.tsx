@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import imageData from "@/app/lib/placeholder-images.json";
-import { VantaBackground } from "@/components/vanta-background";
 
 
 // export const metadata: Metadata = { // This needs to be moved to a Server Component or removed from client component
@@ -35,7 +34,6 @@ const managementTools = [
 export default function SafetyManagementSystemPage() {
   return (
     <div className="bg-background text-foreground">
-      <VantaBackground />
       {/* Hero Section */}
       <section className="relative py-20 md:py-32 border-b">
         
@@ -87,7 +85,7 @@ export default function SafetyManagementSystemPage() {
       </section>
       
       {/* Features Section */}
-      <section className="py-24 bg-transparent border-y">
+      <section className="py-24 bg-card border-y">
         <div className="container max-w-7xl mx-auto px-4">
             <div className="text-center">
                 <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Total Control. Zero Guesswork.</h2>

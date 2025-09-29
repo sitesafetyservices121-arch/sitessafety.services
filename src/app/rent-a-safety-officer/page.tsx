@@ -4,7 +4,6 @@ import { BookingForm } from "@/components/booking-form";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Shield, Clock, Phone, UserCheck, CalendarDays } from "lucide-react";
 import Image from "next/image";
-import { VantaBackground } from "@/components/vanta-background";
 
 
 // export const metadata: Metadata = { // Metadata must be defined in a server component
@@ -38,7 +37,6 @@ const howItWorksSteps = [
 export default function RentASafetyOfficerPage() {
   return (
     <div className="bg-background text-foreground">
-      <VantaBackground />
       {/* Header Section */}
       <section className="relative py-20 md:py-32 border-b">
         

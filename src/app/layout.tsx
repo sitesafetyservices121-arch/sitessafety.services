@@ -5,7 +5,6 @@ import { Inter } from 'next/font/google';
 import Script from "next/script";
 import imageData from "@/app/lib/placeholder-images.json";
 import { ClientLayout } from "@/components/client-layout";
-import { VantaBackground } from "@/components/vanta-background";
 
 const inter = Inter({ 
   subsets: ['latin'], 
@@ -61,7 +60,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className={cn("min-h-screen bg-background font-body antialiased", inter.variable)}>
-        <VantaBackground />
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
