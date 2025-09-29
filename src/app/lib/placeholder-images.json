@@ -18,19 +18,19 @@
   },
   "services": {
     "rent_officer": {
-      "url": "https://picsum.photos/seed/service1/600/400",
+      "url": "https://iili.io/Kudj2n9.jpg",
       "hint": "construction site safety"
     },
     "esafety_file": {
-      "url": "https://picsum.photos/seed/service2/600/400",
+      "url": "https://iili.io/Kudhmv4.jpg",
       "hint": "digital document management"
     },
     "safety_system": {
-      "url": "https://picsum.photos/seed/service3/600/400",
+      "url": "https://iili.io/KudhwhP.jpg",
       "hint": "safety dashboard analytics"
     },
     "print_ready": {
-      "url": "https://picsum.photos/seed/service4/600/400",
+      "url": "https://iili.io/Kudh0Be.jpg",
       "hint": "digital file download"
     }
   },
