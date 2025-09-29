@@ -8,12 +8,9 @@ import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, Award, Building2, HardHat, ShieldCheck, Factory, Truck, Wrench, DollarSign, Users, CheckCircle, Mountain, Flame, Store, Tractor, Wind, TowerControl, Utensils, Plane, Cpu, Handshake } from "lucide-react";
-import dynamic from "next/dynamic";
 import imageData from "@/app/lib/placeholder-images.json";
 
-const VantaBackground = dynamic(() => import("@/components/vanta-background"), {
-  ssr: false,
-});
+
 
 // export const metadata: Metadata = { // This needs to be moved to a Server Component or removed from client component
 //   title: 'Proven Experience & Client Success',
@@ -88,12 +85,12 @@ export default function ExperiencePage() {
     <div className="bg-transparent text-foreground">
       {/* Hero Section */}
       <section className="relative py-20 md:py-32 bg-card border-b">
-        <VantaBackground />
+        
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-foreground">
             Trusted Nationwide for Safety & Compliance
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
+          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Our track record speaks for itself. We deliver reliable, expert safety solutions that protect your people, projects, and reputation.
           </p>
         </div>

@@ -7,12 +7,7 @@ import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import imageData from "@/app/lib/placeholder-images.json";
-
-const VantaBackground = dynamic(() => import("@/components/vanta-background"), {
-  ssr: false,
-});
 
 
 // export const metadata: Metadata = { // This needs to be moved to a Server Component or removed from client component
@@ -41,13 +36,13 @@ export default function SafetyManagementSystemPage() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 bg-transparent border-b">
-        <VantaBackground />
+      <section className="relative py-20 md:py-32 bg-card border-b">
+        
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-foreground">
             Your AI-Powered Safety Command Center
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
+          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             A safety platform built to dominate risk, not just manage it. RAK-Site Safety Services fuses advanced AI with precision-built management tools to automate compliance, enforce protocols, and embed a safety culture that doesn’t just meet the standard ,it sets it.
           </p>
         </div>

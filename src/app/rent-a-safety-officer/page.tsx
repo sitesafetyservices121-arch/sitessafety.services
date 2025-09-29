@@ -5,11 +5,6 @@ import { BookingForm } from "@/components/booking-form";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Shield, Clock, Phone, UserCheck, CalendarDays } from "lucide-react";
 import Image from "next/image";
-import dynamic from "next/dynamic";
-
-const VantaBackground = dynamic(() => import("@/components/vanta-background"), {
-  ssr: false,
-});
 
 
 // export const metadata: Metadata = { // Metadata must be defined in a server component
@@ -44,13 +39,13 @@ export default function RentASafetyOfficerPage() {
   return (
     <div className="bg-background text-foreground">
       {/* Header Section */}
-      <section className="relative py-20 md:py-32 border-b bg-transparent">
-        <VantaBackground />
+      <section className="relative py-20 md:py-32 border-b bg-card">
+        
         <div className="container mx-auto px-4 text-center relative z-10">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-white">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-foreground">
               Book Your On-Demand Safety Officer
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
               Get an instant quote and book a certified safety professional for your specific project needs. Fast, transparent, and compliant.
             </p>
         </div>
