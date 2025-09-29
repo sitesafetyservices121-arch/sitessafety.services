@@ -21,15 +21,15 @@ const VantaBackground = dynamic(() => import("@/components/vanta-background"), {
 // };
 
 const testimonials = [
-  { name: "Lerato Khumalo", title: "Project Manager", company: "ConstructCo", testimonial: "RAK's safety officers were professional, knowledgeable, and integrated seamlessly with our team. Their proactive approach prevented numerous issues. Highly recommended for any large-scale project!", rating: 5, image: imageData.testimonial_lerato_khumalo.url, hint: imageData.testimonial_lerato_khumalo.hint },
-  { name: "Pieter van der Merwe", title: "CEO", company: "BuildRight Inc.", testimonial: "The E-Safety File service saved us countless hours and ensured we were fully compliant for a critical audit. The process was smooth, efficient, and professional.", rating: 5, image: imageData.testimonial_pieter_van_der_merwe.url, hint: imageData.testimonial_pieter_van_der_merwe.hint },
-  { name: "Anika Patel", title: "Ops Director", company: "InfraGroup", testimonial: "Implementing their Safety Management System has transformed our safety culture for the better. We've seen a measurable reduction in incidents and a huge boost in employee engagement.", rating: 5, image: imageData.testimonial_anika_patel.url, hint: imageData.testimonial_anika_patel.hint },
-  { name: "Bongani Zulu", title: "Site Foreman", company: "Gold One Mining", testimonial: "The electronically delivered safety file was a lifesaver. We got our compliant, print-ready documents in less than a day, which kept our project on schedule. The process was incredibly fast and easy.", rating: 5, image: imageData.testimonial_bongani_zulu.url, hint: imageData.testimonial_bongani_zulu.hint },
-  { name: "Fatima Allie", title: "Compliance Officer", company: "Omnia Foods", testimonial: "RAK's AI-powered Safety Management System is revolutionary. The built-in consultant helps us identify risks we hadn't even considered. It's an essential tool for maintaining our safety standards.", rating: 5, image: imageData.testimonial_fatima_allie.url, hint: imageData.testimonial_fatima_allie.hint },
-  { name: "Jaco Jacobs", title: "Small Business Owner", company: "JJ Engineering", testimonial: "As a smaller operation, we don't have a dedicated safety department. The instant Legal Document Generator is invaluable for creating compliant HIRAs and method statements quickly and affordably.", rating: 5, image: imageData.testimonial_jaco_jacobs.url, hint: imageData.testimonial_jaco_jacobs.hint },
-  { name: "Sipho Ndlovu", title: "Logistics Manager", company: "Cape Gate Logistics", testimonial: "We rented a safety officer for a complex warehouse setup. The expertise provided was top-notch. They helped us establish safe operating procedures that we still use today. A fantastic service.", rating: 5, image: imageData.testimonial_sipho_ndlovu.url, hint: imageData.testimonial_sipho_ndlovu.hint },
-  { name: "Naledi Ramphele", title: "Head of Operations", company: "Aviation Giants", testimonial: "The thoroughness of the compliance audit RAK-Site Safety Services performed was exceptional. They prepared us for our ISO certification and identified critical areas for improvement. Highly professional.", rating: 5, image: imageData.testimonial_naledi_ramphele.url, hint: imageData.testimonial_naledi_ramphele.hint },
-  { name: "Chris Botha", title: "Factory Manager", company: "Sasol Polymers", testimonial: "The Specialised Risk Assessment identified key vulnerabilities in our production line. The detailed report and actionable recommendations have been instrumental in enhancing our operational safety.", rating: 5, image: imageData.testimonial_chris_botha.url, hint: imageData.testimonial_chris_botha.hint },
+  { name: "Lerato Khumalo", title: "Project Manager", company: "ConstructCo", testimonial: "RAK's safety officers were professional, knowledgeable, and integrated seamlessly with our team. Their proactive approach prevented numerous issues. Highly recommended for any large-scale project!", rating: 5, image: imageData.testimonial_lerato_khumalo },
+  { name: "Pieter van der Merwe", title: "CEO", company: "BuildRight Inc.", testimonial: "The E-Safety File service saved us countless hours and ensured we were fully compliant for a critical audit. The process was smooth, efficient, and professional.", rating: 5, image: imageData.testimonial_pieter_van_der_merwe },
+  { name: "Anika Patel", title: "Ops Director", company: "InfraGroup", testimonial: "Implementing their Safety Management System has transformed our safety culture for the better. We've seen a measurable reduction in incidents and a huge boost in employee engagement.", rating: 5, image: imageData.testimonial_anika_patel },
+  { name: "Bongani Zulu", title: "Site Foreman", company: "Gold One Mining", testimonial: "The electronically delivered safety file was a lifesaver. We got our compliant, print-ready documents in less than a day, which kept our project on schedule. The process was incredibly fast and easy.", rating: 5, image: imageData.testimonial_bongani_zulu },
+  { name: "Fatima Allie", title: "Compliance Officer", company: "Omnia Foods", testimonial: "RAK's AI-powered Safety Management System is revolutionary. The built-in consultant helps us identify risks we hadn't even considered. It's an essential tool for maintaining our safety standards.", rating: 5, image: imageData.testimonial_fatima_allie },
+  { name: "Jaco Jacobs", title: "Small Business Owner", company: "JJ Engineering", testimonial: "As a smaller operation, we don't have a dedicated safety department. The instant Legal Document Generator is invaluable for creating compliant HIRAs and method statements quickly and affordably.", rating: 5, image: imageData.testimonial_jaco_jacobs },
+  { name: "Sipho Ndlovu", title: "Logistics Manager", company: "Cape Gate Logistics", testimonial: "We rented a safety officer for a complex warehouse setup. The expertise provided was top-notch. They helped us establish safe operating procedures that we still use today. A fantastic service.", rating: 5, image: imageData.testimonial_sipho_ndlovu },
+  { name: "Naledi Ramphele", title: "Head of Operations", company: "Aviation Giants", testimonial: "The thoroughness of the compliance audit RAK-Site Safety Services performed was exceptional. They prepared us for our ISO certification and identified critical areas for improvement. Highly professional.", rating: 5, image: imageData.testimonial_naledi_ramphele },
+  { name: "Chris Botha", title: "Factory Manager", company: "Sasol Polymers", testimonial: "The Specialised Risk Assessment identified key vulnerabilities in our production line. The detailed report and actionable recommendations have been instrumental in enhancing our operational safety.", rating: 5, image: imageData.testimonial_chris_botha },
 ];
 
 const portfolio = [
@@ -187,7 +187,7 @@ export default function ExperiencePage() {
           <h2 className="text-3xl md:text-4xl font-extrabold text-center text-foreground mb-16">What Our Clients Say</h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {testimonials.map((t) => (
-              <TestimonialCard key={t.name} {...t} />
+              <TestimonialCard key={t.name} name={t.name} title={t.title} company={t.company} testimonial={t.testimonial} rating={t.rating} image={{ url: t.image.url, hint: t.image.hint }} />
             ))}
           </div>
         </div>
@@ -214,8 +214,8 @@ export default function ExperiencePage() {
       <section className="py-24">
         <div className="container mx-auto px-4">
             <div className="bg-gradient-to-r from-primary to-orange-400 rounded-2xl p-10 md:p-16 text-center shadow-lg">
-                <h2 className="text-3xl md:text-4xl font-extrabold text-primary-foreground">Ready to Elevate Your Site&apos;s Safety?</h2>
-                <p className="mt-4 max-w-2xl mx-auto text-primary-foreground/90 text-lg">Let&apos;s collaborate to build a safer, more compliant, and more productive work environment. Contact us today for a complimentary consultation.</p>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-primary-foreground">Ready to Elevate Your Site's Safety?</h2>
+                <p className="mt-4 max-w-2xl mx-auto text-primary-foreground/90 text-lg">Let's collaborate to build a safer, more compliant, and more productive work environment. Contact us today for a complimentary consultation.</p>
                 <Button asChild size="lg" className="mt-8 bg-background text-primary hover:bg-background/90">
                   <Link href="/e-safety-file">
                       Request a Free Quote <ArrowRight className="ml-2 h-5 w-5" />

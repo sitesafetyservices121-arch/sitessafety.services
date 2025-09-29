@@ -52,9 +52,9 @@ const projects = [
 ];
 
 const testimonials = [
-  { name: "Lerato Khumalo", title: "Project Manager", company: "ConstructCo", testimonial: "RAK's safety officers were professional, knowledgeable, and integrated seamlessly with our team. Their proactive approach prevented numerous issues.", rating: 5, image: imageData.testimonial_lerato_khumalo.url, hint: imageData.testimonial_lerato_khumalo.hint },
-  { name: "Pieter van der Merwe", title: "CEO", company: "BuildRight Inc.", testimonial: "The E-Safety File service saved us countless hours and ensured we were fully compliant for a critical audit. The process was smooth and professional.", rating: 5, image: imageData.testimonial_pieter_van_der_merwe.url, hint: imageData.testimonial_pieter_van_der_merwe.hint },
-  { name: "Anika Patel", title: "Ops Director", company: "InfraGroup", testimonial: "Implementing their Safety Management System has transformed our safety culture for the better. We've seen a measurable reduction in incidents.", rating: 5, image: imageData.testimonial_anika_patel.url, hint: imageData.testimonial_anika_patel.hint },
+  { name: "Lerato Khumalo", title: "Project Manager", company: "ConstructCo", testimonial: "RAK's safety officers were professional, knowledgeable, and integrated seamlessly with our team. Their proactive approach prevented numerous issues.", rating: 5, image: imageData.testimonial_lerato_khumalo },
+  { name: "Pieter van der Merwe", title: "CEO", company: "BuildRight Inc.", testimonial: "The E-Safety File service saved us countless hours and ensured we were fully compliant for a critical audit. The process was smooth and professional.", rating: 5, image: imageData.testimonial_pieter_van_der_merwe },
+  { name: "Anika Patel", title: "Ops Director", company: "InfraGroup", testimonial: "Implementing their Safety Management System has transformed our safety culture for the better. We've seen a measurable reduction in incidents.", rating: 5, image: imageData.testimonial_anika_patel },
 ];
 
 const problems = [
@@ -249,7 +249,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-extrabold text-center text-foreground mb-16">What Our Clients Say</h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {testimonials.map((t) => (
-              <TestimonialCard key={t.name} {...t} />
+              <TestimonialCard key={t.name} name={t.name} title={t.title} company={t.company} testimonial={t.testimonial} rating={t.rating} image={{ url: t.image.url, hint: t.image.hint }} />
             ))}
           </div>
         </div>
