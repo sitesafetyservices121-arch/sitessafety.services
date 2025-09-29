@@ -24,11 +24,11 @@ const aiTools = [
 ];
 
 const managementTools = [
-    { icon: <HardHat className="h-6 w-6 text-primary" />, title: "PPE Issue Tracker", description: "Manage and track the issuance of Personal Protective Equipment." },
-    { icon: <UserCog className="h-6 w-6 text-primary" />, title: "Employee Training Tracker", description: "Keep records of all employee training and certifications. You also receive emails before expiry and can be set up the employee receives the emails as well upon his training expiring." },
-    { icon: <ShieldCheck className="h-6 w-6 text-primary" />, title: "Site & Resource Tracker", description: "Monitor resources and personnel across multiple sites." },
-    { icon: <Car className="h-6 w-6 text-primary" />, title: "Vehicle Inspection & Damage Reports", description: "Log and manage vehicle checks and report any damage instantly." },
-    { icon: <Box className="h-6 w-6 text-primary" />, title: "Storeroom Management", description: "Efficiently track and manage your storeroom inventory." },
+    { icon: <HardHat className="h-6 w-6 text-primary" />, title: "PPE Issue Tracker", description: "Easily manage and track the issuance of Personal Protective Equipment, ensuring every worker has the right gear at the right time to stay safe and compliant." },
+    { icon: <UserCog className="h-6 w-6 text-primary" />, title: "Employee Training Tracker", description: "Maintain complete records of all employee training and certifications, with automated email reminders before expiry—plus the option for employees to be notified directly when their training needs renewal." },
+    { icon: <ShieldCheck className="h-6 w-6 text-primary" />, title: "Site & Resource Tracker", description: "Gain full oversight of resources, equipment, and personnel across multiple sites, enabling smarter allocation, accountability, and operational efficiency." },
+    { icon: <Car className="h-6 w-6 text-primary" />, title: "Vehicle Inspection & Damage Reports", description: "Log and manage vehicle inspections in real time, instantly recording and reporting any damage to keep your fleet safe, compliant, and road-ready." },
+    { icon: <Box className="h-6 w-6 text-primary" />, title: "Storeroom Management", description: "Streamline your storeroom operations by efficiently tracking, managing, and optimizing inventory, reducing waste while ensuring critical supplies are always available." },
 ]
 
 
@@ -91,7 +91,7 @@ export default function SafetyManagementSystemPage() {
             <div className="text-center">
                 <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Total Control. Zero Guesswork.</h2>
                 <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                    RAK-Site Safety Services delivers the ultimate balance of intelligent automation and hands-on control. Our AI engine operates 24/7—continuously monitoring compliance, flagging risks in real time, generating audit-ready reports, and ensuring your operations never fall behind.
+                    RAK-Site Safety Services delivers the ultimate balance of intelligent automation and hands-on control. Our AI engine operates 24/7 continuously monitoring compliance, flagging risks in real time, generating audit-ready reports, and ensuring your operations never fall behind.
                 </p>
                 <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
                     Beyond automation, our advanced management platform provides complete visibility and control across every site, team, and document. You maintain command while seamlessly scaling compliance across your entire organization.
@@ -100,7 +100,7 @@ export default function SafetyManagementSystemPage() {
                     And when expertise matters most, you’re backed by a dedicated AI compliance consultant plus instant access to a library of 600+ pre-built, audit-tested safety documents. Deploy them immediately, tailor them to your needs, and implement with confidence.
                 </p>
                 <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                    With RAK-Site Safety Services, compliance isn’t just simplified—it’s unstoppable.
+                    With RAK-Site Safety Services, compliance isn’t just simplified it’s unstoppable.
                 </p>
             </div>
             <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
