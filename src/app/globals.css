@@ -87,3 +87,12 @@
     @apply font-bold;
   }
 }
+
+@keyframes pulse-blue-neon {
+  0%, 100% {
+    box-shadow: 0 0 5px #00aaff, 0 0 10px #00aaff, 0 0 20px #00aaff, 0 0 40px #00aaff;
+  }
+  50% {
+    box-shadow: 0 0 10px #00aaff, 0 0 20px #00aaff, 0 0 40px #00aaff, 0 0 80px #00aaff;
+  }
+}
