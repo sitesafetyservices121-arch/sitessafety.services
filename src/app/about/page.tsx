@@ -8,13 +8,8 @@ import Image from "next/image";
 import { CheckIconCard } from "@/components/ui/check-icon-card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import imageData from "@/app/lib/placeholder-images.json";
 
-
-const VantaBackground = dynamic(() => import("@/components/vanta-background"), {
-  ssr: false,
-});
 
 
 // export const metadata: Metadata = { // This needs to be moved to a Server Component or removed from client component
@@ -72,11 +67,11 @@ export default function AboutPage() {
   return (
     <div className="bg-transparent text-foreground">
       {/* Hero Section */}
-       <section className="relative py-40 md:py-60 border-b bg-transparent">
-        <VantaBackground />
+       <section className="relative py-40 md:py-60 border-b bg-card">
+        
         <div className="container px-4 md:px-6 relative z-10 text-center">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-white">Achieving Perfection in Compliance Where AI Meets Human Expertise.</h1>
-            <p className="mt-6 text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-foreground">Achieving Perfection in Compliance Where AI Meets Human Expertise.</h1>
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
                 When safety and compliance aren’t optional, guesswork isn’t either. RAK-Site Safety Services combines certified experts with purpose-built AI to deliver audit-ready documentation, faster approvals, and real savings nationwide. We don’t just promise compliance. We engineer it.
             </p>
         </div>
@@ -209,7 +204,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
-    
-
-    

@@ -8,12 +8,8 @@ import { ArrowRight, FileText, HardHat, ShieldCheck, Mail, Phone, Linkedin, Face
 import Image from "next/image";
 import { TestimonialCard } from "@/components/testimonial-card";
 import { InquiryForm } from "@/components/inquiry-form";
-import dynamic from "next/dynamic";
-import imageData from "@/app/lib/placeholder-images.json";
 
-const VantaBackground = dynamic(() => import("@/components/vanta-background"), {
-  ssr: false,
-});
+import imageData from "@/app/lib/placeholder-images.json";
 
 
 const projects = [
@@ -108,13 +104,13 @@ export default function Home() {
   return (
     <div className="bg-transparent text-foreground">
       {/* Hero Section */}
-      <section className="relative py-40 md:py-60 border-b bg-transparent">
-        <VantaBackground />
+      <section className="relative py-40 md:py-60 border-b bg-card">
+        
         <div className="container px-4 md:px-6 relative z-10 text-center">
-            <h1 className="text-4xl font-extrabold sm:text-5xl md:text-7xl text-white">
+            <h1 className="text-4xl font-extrabold sm:text-5xl md:text-7xl text-foreground">
               Building Safer Tomorrows
             </h1>
-            <p className="max-w-2xl mx-auto mt-6 text-lg md:text-xl text-white/90">
+            <p className="max-w-2xl mx-auto mt-6 text-lg md:text-xl text-muted-foreground">
               We provide expert safety solutions that protect your people, ensure compliance, and drive operational excellence.
             </p>
             <div className="mt-10">
@@ -287,5 +283,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
