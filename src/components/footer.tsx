@@ -15,6 +15,7 @@ interface SocialMediaLinks {
 
 export function Footer() {
   const [socialLinks, setSocialLinks] = useState<SocialMediaLinks | null>(null);
+  const [year, setYear] = useState<number | null>(null);
 
   useEffect(() => {
     const fetchSocialLinks = async () => {
@@ -29,6 +30,7 @@ export function Footer() {
       }
     };
     fetchSocialLinks();
+    setYear(new Date().getFullYear());
   }, []);
 
   return (
@@ -89,7 +91,7 @@ export function Footer() {
         </div>
         <div className="mt-12 border-t border-secondary-foreground/20 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="text-center md:text-left text-sm text-secondary-foreground/70 font-body">
-                © {new Date().getFullYear()} RAK-Site Safety Services (Pty) Ltd. All rights reserved. with all designs and flows of ai is patent pending
+                © {year || new Date().getFullYear()} RAK-Site Safety Services (Pty) Ltd. All rights reserved. with all designs and flows of ai is patent pending
             </p>
             <div className="flex-shrink-0">
                 <ProudlySaLogo className="h-20" />

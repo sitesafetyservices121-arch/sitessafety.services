@@ -1,14 +1,21 @@
 
+"use client";
+
 import type { Metadata } from 'next';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
-  title: 'Website & Cookie Policy',
-};
+// export const metadata: Metadata = {
+//   title: 'Website & Cookie Policy',
+// };
 
 export default function WebsiteCookiePolicyPage() {
-  const effectiveDate = "27 September 2025";
+  const [effectiveDate, setEffectiveDate] = useState("27 September 2025");
+
+  useEffect(() => {
+    // This is just an example. If the date is static, it doesn't need a state.
+    // If it were dynamic, this would be the correct approach to avoid hydration errors.
+  }, []);
 
   return (
     <div className="bg-background text-foreground">

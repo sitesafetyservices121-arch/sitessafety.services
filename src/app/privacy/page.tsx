@@ -1,20 +1,26 @@
 
-import type { Metadata } from 'next';
-import React from 'react';
+"use client";
 
-export const metadata: Metadata = {
-  title: 'Privacy Policy',
-};
+import type { Metadata } from 'next';
+import React, { useEffect, useState } from 'react';
+
+// export const metadata: Metadata = { // This needs to be moved to a Server Component or removed from client component
+//   title: 'Privacy Policy',
+// };
 
 export default function PrivacyPage() {
-  const currentDate = new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' });
+  const [currentDate, setCurrentDate] = useState('');
+
+  useEffect(() => {
+    setCurrentDate(new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' }));
+  }, []);
 
   return (
     <div className="bg-background text-foreground">
       <div className="container max-w-4xl mx-auto py-24 md:py-32 px-4">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-extrabold text-primary-dark font-headline tracking-tight">Privacy Policy</h1>
-          <p className="mt-4 text-lg text-muted-foreground font-body">Last updated: {currentDate}</p>
+          {currentDate && <p className="mt-4 text-lg text-muted-foreground font-body">Last updated: {currentDate}</p>}
         </div>
 
         <div className="prose prose-lg max-w-none font-body text-muted-foreground prose-h2:font-headline prose-h2:text-primary-dark prose-h2:text-2xl prose-h2:border-b-2 prose-h2:border-secondary prose-h2:pb-3 prose-headings:font-headline prose-a:text-primary hover:prose-a:text-primary/80 prose-strong:text-foreground">

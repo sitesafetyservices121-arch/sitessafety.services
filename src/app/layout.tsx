@@ -1,4 +1,6 @@
 
+"use client";
+
 import type { Metadata } from "next";
 import "./globals.css";
 import { cn } from "@/lib/utils";
@@ -14,44 +16,12 @@ import { TopLoader } from "@/components/top-loader";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import imageData from "@/app/lib/placeholder-images.json";
+import { useEffect, useState } from "react";
 
 
-export const metadata: Metadata = {
-  metadataBase: new URL('https://www.sitesafety.services'),
-  title: {
-    default: "RAK-Site Safety Services | Modern Safety Solutions",
-    template: "%s | RAK-Site Safety Services",
-  },
-  description: "RAK-Site Safety Services delivers next-generation safety solutions for complex industries, ensuring compliance, efficiency, and a secure work environment.",
-  keywords: ["safety services", "occupational health and safety", "site safety", "safety officer", "e-safety file", "safety management system", "construction safety", "South Africa"],
-  openGraph: {
-    title: "RAK-Site Safety Services | Modern Safety Solutions",
-    description: "Expert safety solutions for construction, mining, and industrial sectors across South Africa. We blend human expertise with AI to ensure you are always compliant.",
-    url: 'https://www.sitesafety.services',
-    siteName: 'RAK-Site Safety Services',
-    images: [
-      {
-        url: imageData.meta.og_image_dashboard.url,
-        width: 1200,
-        height: 630,
-        alt: 'AI-Powered Safety Management System Dashboard',
-      },
-    ],
-    locale: 'en_ZA',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'RAK-Site Safety Services - Next-Gen Safety & Compliance',
-    description: 'RAK-Site Safety Services delivers next-generation safety solutions for complex industries, ensuring compliance, efficiency, and a secure work environment.',
-    images: [imageData.meta.og_image_dashboard.url],
-  },
-  icons: {
-    icon: imageData.meta.favicon.url,
-    shortcut: imageData.meta.favicon.url,
-    apple: imageData.meta.favicon.url,
-  }
-};
+// Metadata has to be defined in a Server Component, so we remove it from here.
+// We will create a new layout.tsx file to handle this.
+
 
 const inter = Inter({ 
   subsets: ['latin'], 
@@ -91,6 +61,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -117,7 +93,7 @@ export default function RootLayout({
                 <TopLoader />
                 <Header />
                 <main className="flex-1">{children}</main>
-                <Footer />
+                {isClient && <Footer />}
               </div>
               <Toaster />
             </LoadingProvider>
