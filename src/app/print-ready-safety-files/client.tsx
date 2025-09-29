@@ -53,7 +53,7 @@ export default function PrintReadySafetyFilesClient() {
                         Electronically Delivered Safety Files
                     </h1>
                     <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0">
-                        The modern solution for site compliance. Simply upload your client's required safety file index for clients like Mittal, Sasol, Omnia, Cape Gate, Coca-Cola, or Gold One. Choose your delivery speed, and download your complete, print-ready, and legally compliant safety file in a single ZIP folder.
+                        The Modern Solution for Effortless Site Compliance. Forget the hassle of building safety files from scratch. With RAK-Site Safety Services, simply upload your client’s required safety file index—whether for Mittal, Sasol, Omnia, Cape Gate, Coca-Cola, Gold One, or any other major client. Select your preferred delivery speed, and in minutes you’ll receive a complete, legally compliant, print-ready safety file neatly packaged in a single ZIP folder. Fast, simple, and audit-proof.
                     </p>
                     <div className="mt-8">
                         <Button asChild size="lg">
