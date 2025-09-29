@@ -160,7 +160,7 @@ export default function ExperiencePage() {
                   <Card key={item.title} className="overflow-hidden group border shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
                       <CardContent className="p-0">
                           <div className="relative h-80 w-full">
-                              <Image src={item.image.url} alt={item.title} fill style={{objectFit: 'cover'}} className="transition-transform duration-500 group-hover:scale-105" data-ai-hint={item.image.hint} quality={100} sizes="(max-width: 640px) 100vw, 50vw" />
+                              <Image src={item.image.url} alt={item.title} fill style={{objectFit: 'cover'}} className="transition-transform duration-500 group-hover:scale-105" data-ai-hint={item.image.hint} sizes="(max-width: 640px) 100vw, 50vw" />
                           </div>
                       </CardContent>
                   </Card>

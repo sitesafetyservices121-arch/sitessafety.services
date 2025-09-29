@@ -62,7 +62,7 @@ export default function PrintReadySafetyFilesClient() {
                     </div>
                 </div>
                 <div className="relative h-80 lg:h-[400px] w-full">
-                    <Image src={imageData.ui.print_ready_folder.url} fill style={{objectFit: 'contain'}} alt="A secure digital folder being downloaded to a computer screen" data-ai-hint={imageData.ui.print_ready_folder.hint} quality={100} priority sizes="(max-width: 1024px) 100vw, 50vw"/>
+                    <Image src={imageData.ui.print_ready_folder.url} fill style={{objectFit: 'contain'}} alt="A secure digital folder being downloaded to a computer screen" data-ai-hint={imageData.ui.print_ready_folder.hint} priority sizes="(max-width: 1024px) 100vw, 50vw"/>
                 </div>
             </div>
         </div>
