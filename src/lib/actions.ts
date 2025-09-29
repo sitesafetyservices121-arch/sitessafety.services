@@ -1,10 +1,11 @@
+
 "use server";
 
 import { checkCompliance } from "@/ai/flows/compliance-checker-flow";
 import type { ComplianceRequest, ComplianceResponse } from "@/ai/schemas";
 import { z } from 'zod';
 import { format } from 'date-fns';
-import { generateSignature, createPayfastData, getPayfastUrl } from './payfast';
+import { generateSignature, createPayfastData } from './payfast';
 import { headers } from "next/headers";
 
 // Environment variables validation
@@ -443,8 +444,8 @@ export async function initiateAdHocPayment(data: unknown) {
 
     const details = {
       ...validatedData,
-      return_url: `${origin}/payment-success`,
-      cancel_url: `${origin}/payment-cancelled`,
+      return_url: `${origin}/payment/success`,
+      cancel_url: `${origin}/payment/cancel`,
       notify_url: `${origin}/api/payfast-itn`,
     };
     

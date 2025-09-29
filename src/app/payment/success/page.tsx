@@ -14,7 +14,7 @@ export default function PaymentSuccessPage() {
                 </div>
                 <CardTitle className="text-2xl font-bold text-success">Payment Successful</CardTitle>
                 <CardDescription>
-                    Thank you for your payment. You will receive a confirmation email shortly.
+                    Thank you for your payment. You will receive a confirmation email shortly. If you have any questions, please contact support.
                 </CardDescription>
             </CardHeader>
             <CardContent>

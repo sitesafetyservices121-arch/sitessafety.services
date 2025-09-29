@@ -118,7 +118,6 @@ export function ElectronicFileForm() {
             fileIndex: data.fileIndex[0]?.name,
         };
 
-        // First, submit the order details via Web3Forms (email notification)
         const orderResult = await submitElectronicFileOrder(submissionData);
 
         if (!orderResult.success) {
@@ -130,7 +129,6 @@ export function ElectronicFileForm() {
             return;
         }
 
-        // Then, initiate Payfast payment
         try {
             const payfastDetails = {
                 amount: total,
@@ -138,8 +136,8 @@ export function ElectronicFileForm() {
                 email_address: data.email,
                 name_first: data.name,
                 name_last: data.surname,
-                return_url: `${window.location.origin}/payment-success`,
-                cancel_url: `${window.location.origin}/payment-cancelled`,
+                return_url: `${window.location.origin}/payment/success`,
+                cancel_url: `${window.location.origin}/payment/cancel`,
                 notify_url: `${window.location.origin}/api/payfast-itn`,
             };
 
@@ -149,12 +147,10 @@ export function ElectronicFileForm() {
                 if (window.payfast && window.payfast.onsite) {
                     window.payfast.onsite.process({
                         uuid: payfastResponse.uuid,
-                        onComplete: (uuid: string) => {
-                            // Payment completed, redirect to success page
+                        onComplete: () => {
                             window.location.href = payfastDetails.return_url;
                         },
                         onCancel: () => {
-                            // Payment cancelled, redirect to cancel page
                             window.location.href = payfastDetails.cancel_url;
                         },
                     });

@@ -14,10 +14,13 @@ export default function PaymentCancelPage() {
                 </div>
                 <CardTitle className="text-2xl font-bold text-destructive">Payment Cancelled</CardTitle>
                 <CardDescription>
-                    Your payment was cancelled. You can try again or contact us for assistance.
+                    Your payment was not completed. You can try again or contact us for assistance if you encountered an issue.
                 </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="flex justify-center gap-4">
+                <Button asChild variant="outline">
+                    <Link href="/pay">Try Again</Link>
+                </Button>
                 <Button asChild>
                     <Link href="/">Return Home</Link>
                 </Button>
