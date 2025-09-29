@@ -40,7 +40,8 @@ try {
   app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 } catch (error) {
   console.error('Firebase initialization failed:', error);
-  throw error;
+  // We don't re-throw here to allow the app to run in environments
+  // where client-side firebase is not needed.
 }
 
 // 🔐 Initialize Auth
@@ -99,10 +100,14 @@ export const getProjectId = (): string | undefined => {
 
 // Development helper to log configuration status
 if (process.env.NODE_ENV === 'development') {
-  console.log('🔥 Firebase initialized:', {
-    projectId: getProjectId(),
-    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-    hasAnalytics: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID ? 'Yes' : 'No',
-    isClientSide: isClientSide(),
-  });
+  try {
+    console.log('🔥 Firebase initialized:', {
+      projectId: getProjectId(),
+      authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+      hasAnalytics: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID ? 'Yes' : 'No',
+      isClientSide: isClientSide(),
+    });
+  } catch (e) {
+    console.error("Could not log Firebase initialization status.");
+  }
 }
