@@ -213,19 +213,10 @@ export function BookingForm() {
     });
   }
 
-  if (loading) return <div className="text-center p-8">Loading...</div>;
-
-  if (!user) {
+  if (loading) {
     return (
-      <div className="text-center p-8 bg-secondary rounded-lg border">
-        <User className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-        <h3 className="text-2xl font-bold text-foreground mb-2">Please Log In</h3>
-        <p className="text-muted-foreground mb-6">
-          You need to be logged in to make a booking.
-        </p>
-        <Button asChild>
-          <Link href={`/login?redirect=${pathname}#booking-form`}>Log In or Sign Up</Link>
-        </Button>
+      <div className="flex justify-center items-center p-8">
+        <Loader2 className="h-8 w-8 animate-spin" />
       </div>
     );
   }
@@ -244,10 +235,223 @@ export function BookingForm() {
     );
   }
 
+  if (!user) {
+    return (
+      <div className="text-center p-8 bg-secondary rounded-lg border">
+        <User className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+        <h3 className="text-2xl font-bold text-foreground mb-2">Please Log In</h3>
+        <p className="text-muted-foreground mb-6">
+          You need to be logged in to make a booking.
+        </p>
+        <Button asChild>
+          <Link href={`/login?redirect=${pathname}#booking-form`}>Log In or Sign Up</Link>
+        </Button>
+      </div>
+    );
+  }
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 font-body" id="booking-form">
-        {/* ... same JSX rendering as before (no changes needed) ... */}
+        <FormField
+          control={form.control}
+          name="service"
+          render={({ field }) => (
+            <FormItem className="space-y-3">
+              <FormLabel className="text-lg font-bold">1. Select Your Service</FormLabel>
+              <FormControl>
+                <RadioGroup
+                  onValueChange={(value: ServiceOptionKey) => handleServiceChange(value)}
+                  defaultValue={field.value}
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                >
+                  {Object.entries(serviceOptions).map(([key, value]) => (
+                    <FormItem key={key}>
+                      <Label className="flex flex-col items-start gap-2 cursor-pointer rounded-lg border p-4 has-[:checked]:bg-primary/10 has-[:checked]:border-primary transition-colors h-full">
+                        <div className="flex items-center gap-2">
+                          <FormControl>
+                            <RadioGroupItem value={key} />
+                          </FormControl>
+                          <span className="font-semibold text-foreground">{key}</span>
+                        </div>
+                        <p className="text-sm text-muted-foreground pl-6">{value.description}</p>
+                      </Label>
+                    </FormItem>
+                  ))}
+                </RadioGroup>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <FormField
+            control={form.control}
+            name="dates"
+            render={({ field }) => (
+              <FormItem className="flex flex-col">
+                <FormLabel className="text-lg font-bold">2. Select Your Dates</FormLabel>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <FormControl>
+                      <Button
+                        id="date"
+                        variant={"outline"}
+                        className={cn(
+                          "w-full justify-start text-left font-normal h-11 text-base",
+                          !field.value?.from && "text-muted-foreground"
+                        )}
+                      >
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        {field.value?.from ? (
+                          field.value.to ? (
+                            <>
+                              {format(field.value.from, "LLL dd, y")} -{" "}
+                              {format(field.value.to, "LLL dd, y")}
+                            </>
+                          ) : (
+                            format(field.value.from, "LLL dd, y")
+                          )
+                        ) : (
+                          <span>Pick a date range</span>
+                        )}
+                      </Button>
+                    </FormControl>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      initialFocus
+                      mode="range"
+                      defaultMonth={field.value?.from}
+                      selected={field.value}
+                      onSelect={field.onChange}
+                      numberOfMonths={1}
+                      disabled={(date) =>
+                        !watchIsEmergency && isBefore(date, addDays(startOfToday(), 3))
+                      }
+                    />
+                  </PopoverContent>
+                </Popover>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="isEmergency"
+            render={({ field }) => (
+              <FormItem className="flex items-center space-x-2 self-end pb-2">
+                <Checkbox
+                  id="isEmergency"
+                  checked={field.value}
+                  onCheckedChange={(checked) => handleEmergencyToggle(!!checked)}
+                />
+                <label
+                  htmlFor="isEmergency"
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Emergency Booking (+R{emergencyFee.toLocaleString('en-ZA')})
+                </label>
+              </FormItem>
+            )}
+          />
+        </div>
+
+        <div>
+          <Label className="text-lg font-bold">3. Provide Your Details</Label>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Full Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="John Doe" {...field} readOnly />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="company"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Company</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Your Company Inc." {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input placeholder="you@company.com" {...field} type="email" readOnly />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="phone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Phone</FormLabel>
+                  <FormControl>
+                    <Input placeholder="082 123 4567" {...field} type="tel" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="siteAddress"
+              render={({ field }) => (
+                <FormItem className="md:col-span-2">
+                  <FormLabel>Full Site Address</FormLabel>
+                  <FormControl>
+                    <Textarea placeholder="123 Main Street, Johannesburg, Gauteng" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+        </div>
+
+        <Alert variant="default" className="bg-primary/10 border-primary/20">
+          <Info className="h-4 w-4 text-primary" />
+          <AlertTitle className="font-bold text-primary">Instant Quote</AlertTitle>
+          <AlertDescription className="text-2xl font-extrabold text-foreground">
+            R{total.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+          </AlertDescription>
+        </Alert>
+
+        <p className="text-sm text-muted-foreground text-center">
+          An agent will call you within the hour to confirm details and finalize payment.
+        </p>
+
+        <div className="flex justify-center pt-4">
+          <Button type="submit" size="lg" disabled={isPending || total === 0}>
+            {isPending ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Submitting Request...
+              </>
+            ) : "Request Booking"}
+          </Button>
+        </div>
       </form>
     </Form>
   );
