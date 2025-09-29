@@ -51,10 +51,10 @@
     { "name": "Mike Johnson", "role": "Lead Safety Consultant", "initials": "MJ", "image": { "url": "https://picsum.photos/seed/leader3/200/200", "hint": "male expert portrait" } }
   ],
   "portfolio": [
-    { "title": "High-Rise Commercial Tower", "image": { "url": "https://picsum.photos/seed/portfolio1/800/600", "hint": "skyscraper construction" } },
-    { "title": "Industrial Manufacturing Plant", "image": { "url": "https://picsum.photos/seed/portfolio2/800/600", "hint": "industrial plant" } },
-    { "title": "Metropolitan Subway Expansion", "image": { "url": "https://picsum.photos/seed/portfolio3/800/600", "hint": "tunnel construction site" } },
-    { "title": "Renewable Energy Wind Farm", "image": { "url": "https://picsum.photos/seed/portfolio4/800/600", "hint": "wind turbines field" } }
+    { "title": "High-Rise Commercial Tower", "image": { "url": "https://iili.io/KudXQdx.jpg", "hint": "skyscraper construction" } },
+    { "title": "Industrial Manufacturing Plant", "image": { "url": "https://iili.io/KudXsgj.jpg", "hint": "industrial plant" } },
+    { "title": "Metropolitan Subway Expansion", "image": { "url": "https://iili.io/KudhF7R.jpg", "hint": "tunnel construction site" } },
+    { "title": "Renewable Energy Wind Farm", "image": { "url": "https://iili.io/KudXZ5Q.jpg", "hint": "wind turbines field" } }
   ],
   "ui": {
     "esafety_file_laptop": {
