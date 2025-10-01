@@ -80,16 +80,13 @@ function initializeFirebaseAdmin() {
       });
     }
 
-    throw new Error(
-      'Firebase Admin initialization failed. Please provide one of:\n' +
-      '1. FIREBASE_SERVICE_ACCOUNT_KEY_PATH (path to service account file)\n' +
-      '2. FIREBASE_SERVICE_ACCOUNT_KEY (JSON string of service account)\n' +
-      '3. Individual env vars: FIREBASE_PRIVATE_KEY, FIREBASE_CLIENT_EMAIL, FIREBASE_PROJECT_ID\n' +
-      '4. GOOGLE_APPLICATION_CREDENTIALS (for Google Cloud environments)'
-    );
-
+    return null;
   } catch (error) {
+    // In a build environment, we don't want to throw an error, but log it
     console.error('Firebase Admin initialization error:', error);
+    if (process.env.NODE_ENV === 'production') {
+        return null;
+    }
     throw error;
   }
 }
@@ -97,9 +94,9 @@ function initializeFirebaseAdmin() {
 // Initialize Firebase Admin
 const app = initializeFirebaseAdmin();
 
-// Export the services (handle potential null with undefined fallback)
-export const adminAuth = admin.auth(app || undefined);
-export const adminDb = admin.firestore(app || undefined);
+// Export the services, handling the possibility of null initialization
+export const adminAuth = app ? admin.auth(app) : null;
+export const adminDb = app ? admin.firestore(app) : null;
 
 // Export admin for additional usage
 export { admin };
