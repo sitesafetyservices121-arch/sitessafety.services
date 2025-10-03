@@ -21,7 +21,7 @@ import { Info, Loader2, Upload, CheckCircle, User } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
-import { useAuth } from "@/context/auth-context";
+import { useUser } from "@/firebase";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -58,7 +58,7 @@ export function ElectronicFileForm() {
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
   const [total, setTotal] = useState(0);
-  const { user, loading } = useAuth();
+  const { user, loading } = useUser();
   const pathname = usePathname();
 
   const form = useForm<ElectronicFileFormValues>({

@@ -33,8 +33,8 @@ function getFirebaseConfig() {
 }
 
 // 🔥 Initialize Firebase app (safe for hot reload and SSR)
-let app: FirebaseApp | null = null;
-let firebaseConfig: ReturnType<typeof getFirebaseConfig> | null = null;
+let app: FirebaseApp;
+let firebaseConfig: ReturnType<typeof getFirebaseConfig>;
 
 try {
   firebaseConfig = getFirebaseConfig();
@@ -43,25 +43,26 @@ try {
   console.error('Firebase initialization failed:', error);
   // We don't re-throw here to allow the app to run in environments
   // where client-side firebase is not needed, but we should handle this gracefully.
+  app = {} as FirebaseApp;
 }
 
 // 🔐 Initialize Auth
-export const auth: Auth = app ? getAuth(app) : ({} as Auth);
+const auth: Auth = getAuth(app);
 
 // 📦 Initialize Firestore
-export const db: Firestore = app ? getFirestore(app) : ({} as Firestore);
+const db: Firestore = getFirestore(app);
 
 // 📂 Initialize Storage
-export const storage: FirebaseStorage = app ? getStorage(app) : ({} as FirebaseStorage);
+const storage: FirebaseStorage = getStorage(app);
 
 // ⚙️ Initialize Cloud Functions
 // You can change the region here if needed
-export const functions: Functions = app ? getFunctions(app, "us-central1") : ({} as Functions);
+const functions: Functions = getFunctions(app, "us-central1");
 
 // 📊 Initialize Analytics (browser-only, with proper support check)
 let analytics: Analytics | null = null;
 
-if (typeof window !== "undefined" && app && firebaseConfig?.measurementId) {
+if (typeof window !== "undefined" && firebaseConfig?.measurementId) {
   // Check if analytics is supported and measurementId is available
   isSupported()
     .then((supported) => {
@@ -75,12 +76,25 @@ if (typeof window !== "undefined" && app && firebaseConfig?.measurementId) {
 }
 
 // Helper function to safely get analytics
-export const getAnalyticsInstance = (): Analytics | null => analytics;
+const getAnalyticsInstance = (): Analytics | null => analytics;
 
-// Export the app instance
-export { app };
+// Development helper to log configuration status
+if (process.env.NODE_ENV === 'development' && app?.options.projectId) {
+  try {
+    const projectId = app.options.projectId;
+    console.log('🔥 Firebase initialized:', {
+      projectId: projectId,
+      authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    });
+    if (projectId) {
+        console.log(`➡️ Your Authorized Redirect URI for Firebase is: https://${projectId}.firebaseapp.com/__/auth/handler`);
+    }
+  } catch (e) {
+    console.error("Could not log Firebase initialization status.");
+  }
+}
 
-// Export types for use in other files
+export { app, auth, db, storage, functions, getAnalyticsInstance };
 export type {
   FirebaseApp,
   Auth,
@@ -90,28 +104,12 @@ export type {
   Analytics
 };
 
-// Helper functions for common checks
-export const isClientSide = (): boolean => typeof window !== "undefined";
-export const isAnalyticsAvailable = (): boolean => analytics !== null;
-
-// Configuration getter (useful for debugging)
-export const getProjectId = (): string | undefined => {
-  return app?.options.projectId || process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
-};
-
-// Development helper to log configuration status
-if (process.env.NODE_ENV === 'development' && app) {
-  try {
-    const projectId = getProjectId();
-    console.log('🔥 Firebase initialized:', {
-      projectId: projectId,
-      authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-      isClientSide: isClientSide(),
-    });
-    if (projectId) {
-        console.log(`➡️ Your Authorized Redirect URI for Firebase is: https://${projectId}.firebaseapp.com/__/auth/handler`);
-    }
-  } catch (e) {
-    console.error("Could not log Firebase initialization status.");
-  }
+export function initializeFirebase() {
+    return {
+        app,
+        auth,
+        db,
+        storage,
+        functions,
+    };
 }

@@ -18,7 +18,7 @@ import { useToast } from "@/hooks/use-toast";
 import { submitSmsSignup } from "@/lib/actions";
 import { useTransition, useEffect, useState } from "react";
 import { Loader2, User, CheckCircle } from "lucide-react";
-import { useAuth } from "@/context/auth-context";
+import { useUser } from "@/firebase";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -41,7 +41,7 @@ export function SmsSignupForm() {
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
   const [showThankYou, setShowThankYou] = useState(false);
-  const { user, loading } = useAuth();
+  const { user, loading } = useUser();
   const pathname = usePathname();
 
   const isGoogleUser = user?.providerData.some(p => p.providerId === 'google.com');

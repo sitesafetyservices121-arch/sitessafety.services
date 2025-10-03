@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from "react";
 import { ThemeProvider } from "@/components/theme-provider";
-import { AuthProvider } from "@/context/auth-context";
+import { FirebaseClientProvider } from "@/firebase/client-provider";
 import { LoadingProvider } from "@/components/loading-provider";
 import { TopLoader } from "@/components/top-loader";
 import { Header } from "@/components/header";
@@ -27,7 +27,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
       enableSystem
       disableTransitionOnChange
     >
-      <AuthProvider>
+      <FirebaseClientProvider>
         <LoadingProvider>
           <div className="relative flex min-h-dvh flex-col bg-transparent">
             <TopLoader />
@@ -37,7 +37,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
           </div>
           <Toaster />
         </LoadingProvider>
-      </AuthProvider>
+      </FirebaseClientProvider>
       <Script id="tawk-to-script" strategy="lazyOnload">
         {`
           var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();

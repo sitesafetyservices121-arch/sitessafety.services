@@ -29,7 +29,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { useAuth } from "@/context/auth-context";
+import { useUser } from "@/firebase";
 
 import { CalendarIcon, Loader2, Info, CheckCircle, User } from "lucide-react";
 import type { DateRange } from "react-day-picker";
@@ -105,7 +105,7 @@ export function BookingForm() {
   const [isPending, startTransition] = useTransition();
   const [total, setTotal] = useState(0);
   const [showThankYou, setShowThankYou] = useState(false);
-  const { user, loading } = useAuth();
+  const { user, loading } = useUser();
   const pathname = usePathname();
 
   const form = useForm<BookingFormValues>({

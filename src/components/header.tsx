@@ -10,7 +10,7 @@ import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "./logo";
 import { ThemeToggle } from "./theme-toggle";
-import { useAuth } from "@/context/auth-context";
+import { useUser } from "@/firebase";
 import { signOut } from "@/lib/firebase/auth";
 
 import { Button } from "@/components/ui/button";
@@ -68,7 +68,7 @@ const services = [
 export function Header() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
-  const { user } = useAuth();
+  const { user } = useUser();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);

@@ -6,13 +6,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ShieldCheck, ArrowRight, User } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { useAuth } from "@/context/auth-context";
+import { useUser } from "@/firebase";
 import { usePathname } from "next/navigation";
 import { TopLoader } from "@/components/top-loader";
 
 
 export default function SmsSignupPage() {
-  const { user, loading } = useAuth();
+  const { user, loading } = useUser();
   const pathname = usePathname();
 
   if (loading) {
