@@ -25,7 +25,7 @@ import { submitConsultation } from "@/lib/actions";
 import { useState, useTransition, useEffect } from "react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { useAuth } from "@/context/auth-context";
+import { useUser } from "@/firebase";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -51,7 +51,7 @@ export function ConsultationForm() {
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
   const [showThankYou, setShowThankYou] = useState(false);
-  const { user, loading } = useAuth();
+  const { user, loading } = useUser();
   const pathname = usePathname();
 
   const form = useForm<ConsultationFormValues>({

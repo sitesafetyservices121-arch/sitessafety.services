@@ -8,7 +8,7 @@ import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithRedirect,
 import { Loader2 } from "lucide-react";
 
 import { auth } from "@/lib/firebase/firebase";
-import { useAuth } from "@/context/auth-context";
+import { useUser } from "@/firebase";
 import { TopLoader } from "@/components/top-loader";
 import { Button } from "@/components/ui/button";
 import {
@@ -26,7 +26,7 @@ import { useToast } from "@/hooks/use-toast";
 function GoogleSignInButton() {
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
-  const { user } = useAuth();
+  const { user } = useUser();
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirectUrl = searchParams.get("redirect") || "/account";
@@ -92,7 +92,7 @@ export default function SignUpPage() {
   const [loading, setLoading] = useState(false);
   const [isHandlingRedirect, setIsHandlingRedirect] = useState(true);
 
-  const { user, loading: authLoading } = useAuth();
+  const { user, loading: authLoading } = useUser();
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirectUrl = searchParams.get("redirect") || "/account";

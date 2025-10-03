@@ -5,7 +5,7 @@
 import { useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 
-import { useAuth } from "@/context/auth-context";
+import { useUser } from "@/firebase";
 import { TopLoader } from "@/components/top-loader";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -13,7 +13,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { signOut } from "@/lib/firebase/auth";
 
 export default function AccountPage() {
-  const { user, loading } = useAuth();
+  const { user, loading } = useUser();
   const router = useRouter();
 
   // All hooks must be called unconditionally at the top of the component.
@@ -64,4 +64,3 @@ export default function AccountPage() {
     </div>
   );
 }
-
