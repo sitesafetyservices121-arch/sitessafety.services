@@ -11,6 +11,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { signOut } from "@/lib/firebase/auth";
 
+export const dynamic = 'force-dynamic';
+
 export default function AccountPage() {
   const { user, loading } = useUser();
   const router = useRouter();
