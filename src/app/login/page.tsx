@@ -4,7 +4,7 @@
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithRedirect, getRedirectResult } from "firebase/auth";
 import { Loader2 } from "lucide-react";
 
 import { auth } from "@/lib/firebase/firebase";
@@ -25,42 +25,19 @@ import { useToast } from "@/hooks/use-toast";
 
 function GoogleSignInButton() {
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const redirectUrl = searchParams.get("redirect") || "/account";
   const { toast } = useToast();
 
   const handleGoogleSignIn = async () => {
     setLoading(true);
     const provider = new GoogleAuthProvider();
     try {
-      const result = await signInWithPopup(auth, provider);
-      const idToken = await result.user.getIdToken(true);
-
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${idToken}`,
-        },
-      });
-
-      if (res.ok) {
-        window.location.href = redirectUrl;
-      } else {
-        const data = await res.json();
-        toast({
-          title: "Login Failed",
-          description: data.message || "An unexpected error occurred.",
-          variant: "destructive",
-        });
-      }
+      await signInWithRedirect(auth, provider);
     } catch (error: any) {
       toast({
         title: "Sign-in Error",
-        description: "Could not sign in with Google. Please try again.",
+        description: "Could not initiate Google Sign-In. Please try again.",
         variant: "destructive",
       });
-    } finally {
       setLoading(false);
     }
   };
@@ -104,12 +81,51 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [isHandlingRedirect, setIsHandlingRedirect] = useState(true);
   
   const { user, loading: authLoading } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirectUrl = searchParams.get("redirect") || "/account";
   const { toast } = useToast();
+
+  useEffect(() => {
+    const handleRedirectResult = async () => {
+      try {
+        const result = await getRedirectResult(auth);
+        if (result && result.user) {
+          const idToken = await result.user.getIdToken(true);
+          const res = await fetch("/api/auth/login", {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${idToken}`,
+            },
+          });
+
+          if (res.ok) {
+            window.location.href = redirectUrl;
+          } else {
+            const data = await res.json();
+            toast({
+              title: "Login Failed",
+              description: data.message || "An unexpected error occurred.",
+              variant: "destructive",
+            });
+          }
+        }
+      } catch (error: any) {
+        toast({
+          title: "Sign-in Error",
+          description: "Could not complete sign-in. Please try again.",
+          variant: "destructive",
+        });
+      } finally {
+        setIsHandlingRedirect(false);
+      }
+    };
+    
+    handleRedirectResult();
+  }, [auth, redirectUrl, toast]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -146,7 +162,7 @@ export default function LoginPage() {
     }
   };
 
-  if (authLoading) {
+  if (authLoading || isHandlingRedirect) {
     return <TopLoader />;
   }
 
