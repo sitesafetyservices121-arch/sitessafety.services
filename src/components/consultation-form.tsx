@@ -100,7 +100,7 @@ export function ConsultationForm() {
   });
   
   if (loading) {
-    return <div className="text-center p-8">Loading...</div>
+    return <div className="text-center p-8"><Loader2 className="mx-auto h-8 w-8 animate-spin" /></div>
   }
 
   if (!user) {

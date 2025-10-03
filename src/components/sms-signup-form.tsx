@@ -16,8 +16,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { submitSmsSignup } from "@/lib/actions";
-import { useTransition, useEffect } from "react";
-import { Loader2, User } from "lucide-react";
+import { useTransition, useEffect, useState } from "react";
+import { Loader2, User, CheckCircle } from "lucide-react";
 import { useAuth } from "@/context/auth-context";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -31,14 +31,8 @@ const smsSignupFormSchema = z.object({
   age: z.string().refine((val) => !isNaN(parseInt(val, 10)) && parseInt(val, 10) > 0, { message: "Please enter a valid age." }),
   cellNumber: z.string().min(10, { message: "Please enter a valid cell number." }),
 }).refine(data => {
-    const isGoogleUser = data.email.endsWith('@gmail.com'); // Simplified check, see component logic
-    if (!isGoogleUser) {
-        return !!data.password;
-    }
+    // This logic is now handled inside the component based on provider.
     return true;
-}, {
-    message: "Password is required.",
-    path: ["password"],
 });
 
 type SmsSignupFormValues = z.infer<typeof smsSignupFormSchema>;
@@ -46,6 +40,7 @@ type SmsSignupFormValues = z.infer<typeof smsSignupFormSchema>;
 export function SmsSignupForm() {
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
+  const [showThankYou, setShowThankYou] = useState(false);
   const { user, loading } = useAuth();
   const pathname = usePathname();
 
@@ -77,12 +72,7 @@ export function SmsSignupForm() {
     startTransition(async () => {
         const result = await submitSmsSignup(data);
         if (result.success) {
-            toast({
-                title: "Signup Successful!",
-                description: result.message,
-                variant: 'success',
-            });
-            form.reset();
+            setShowThankYou(true);
         } else {
             toast({
                 title: "Error",
@@ -94,7 +84,7 @@ export function SmsSignupForm() {
   }
   
   if (loading) {
-    return <div className="text-center p-8">Loading...</div>
+    return <div className="text-center p-8"><Loader2 className="mx-auto h-8 w-8 animate-spin" /></div>
   }
 
   if (!user) {
@@ -110,6 +100,15 @@ export function SmsSignupForm() {
     )
   }
 
+  if (showThankYou) {
+    return (
+        <div className="text-center p-8 bg-success/10 rounded-lg border border-success/20">
+            <CheckCircle className="h-12 w-12 text-success mx-auto mb-4" />
+            <h3 className="text-2xl font-bold text-success mb-2">Signup Request Sent!</h3>
+            <p className="text-muted-foreground">An agent will contact you shortly to finalize your account setup and payment. You will receive access within 15 minutes of confirmation.</p>
+        </div>
+    )
+  }
 
   return (
     <Form {...form}>
@@ -176,7 +175,7 @@ export function SmsSignupForm() {
                 <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                    <Input placeholder="********" {...field} type="password" />
+                    <Input placeholder="********" {...field} type="password" required />
                 </FormControl>
                 <FormMessage />
                 </FormItem>
