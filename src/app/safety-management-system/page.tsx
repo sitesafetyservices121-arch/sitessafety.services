@@ -1,19 +1,11 @@
-
 "use client";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { ArrowRight, Bot, Library, Send, Warehouse, ClipboardCheck, AlertTriangle, Cpu, SlidersHorizontal, FileText, BarChart, HardHat, ShieldCheck, UserCog, Car, Box } from "lucide-react";
-import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import imageData from "@/app/lib/placeholder-images.json";
-
-
-// export const metadata: Metadata = { // This needs to be moved to a Server Component or removed from client component
-//   title: 'AI-Powered Safety Management System',
-//   description: 'A powerful, intuitive platform to streamline protocols, ensure compliance, and build a proactive safety culture with advanced AI tools.',
-// };
 
 const aiTools = [
     { icon: <Cpu className="h-6 w-6 text-primary" />, title: "HIRA Generator", description: "Automatically generate detailed Hazard Identification and Risk Assessments tailored to your operations, helping you stay proactive in identifying and mitigating workplace risks." },

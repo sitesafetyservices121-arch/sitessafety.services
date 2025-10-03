@@ -1,4 +1,3 @@
-
 "use client";
 
 import { ElectronicFileForm } from "@/components/electronic-file-form";
@@ -9,13 +8,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CheckIconCard } from "@/components/ui/check-icon-card";
 import imageData from "@/app/lib/placeholder-images.json";
-import type { Metadata } from 'next';
-
-// export const metadata: Metadata = { // Metadata should be defined in a server component or layout
-//   title: 'Electronically Delivered Safety Files',
-//   description: 'Receive your complete, print-ready safety file electronically. Fast, efficient, and compliant.',
-// };
-
 
 const benefits = [
     { title: "100% OHS Act Compliant", description: "All documents meet legal requirements." },

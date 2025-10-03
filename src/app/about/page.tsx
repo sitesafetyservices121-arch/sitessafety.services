@@ -2,19 +2,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Shield, Target, Handshake, CheckCircle, HardHat, Bot, FileDigit, Users, Cpu, ArrowRight, Zap } from "lucide-react";
-import type { Metadata } from 'next';
 import Image from "next/image";
 import { CheckIconCard } from "@/components/ui/check-icon-card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import imageData from "@/app/lib/placeholder-images.json";
-
-
-
-// export const metadata: Metadata = { // This needs to be moved to a Server Component or removed from client component
-//   title: 'About Our Mission',
-//   description: 'Learn about the story, mission, and values that drive RAK-Site Safety Services to be a leader in occupational safety services.',
-// };
 
 const teamMembers = imageData.leadership.map(member => ({ ...member, avatar: member.image.url, hint: member.image.hint }));
 

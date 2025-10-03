@@ -1,21 +1,12 @@
-
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TestimonialCard } from "@/components/testimonial-card";
 import Image from "next/image";
-import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, Award, Building2, HardHat, ShieldCheck, Factory, Truck, Wrench, DollarSign, Users, CheckCircle, Mountain, Flame, Store, Tractor, Wind, TowerControl, Utensils, Plane, Cpu, Handshake } from "lucide-react";
 import imageData from "@/app/lib/placeholder-images.json";
-
-
-
-// export const metadata: Metadata = { // This needs to be moved to a Server Component or removed from client component
-//   title: 'Proven Experience & Client Success',
-//   description: 'Explore our portfolio of successful projects and read testimonials from satisfied clients across various industries.',
-// };
 
 const testimonials = [
   { name: "Lerato Khumalo", title: "Project Manager", company: "ConstructCo", testimonial: "RAK's safety officers were professional, knowledgeable, and integrated seamlessly with our team. Their proactive approach prevented numerous issues. Highly recommended for any large-scale project!", rating: 5, image: imageData.testimonials[0].image },
