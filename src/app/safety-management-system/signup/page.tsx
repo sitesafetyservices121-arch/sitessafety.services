@@ -39,7 +39,7 @@ export default function SmsSignupPage() {
                      <div className="pt-4">
                         <Button asChild variant="outline">
                             <Link href="https://raksms.services" target="_blank" rel="noopener noreferrer">
-                                Visit raksms.services <ArrowRight className="ml-2 h-4 w-4" />
+                                Explore our AI Safety Management System here <ArrowRight className="ml-2 h-4 w-4" />
                             </Link>
                         </Button>
                     </div>

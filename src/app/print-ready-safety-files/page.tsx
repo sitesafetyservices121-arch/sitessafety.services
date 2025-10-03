@@ -43,7 +43,7 @@ const howItWorksSteps = [
     {
         icon: <FolderDown className="h-8 w-8 text-primary" />,
         title: "4. Download & Print",
-        description: "Log in to ecopyfile.services, download your folder, and print your site-ready safety file with instructions."
+        description: "Log in to ecopyfile.services, our dedicated portal, download your folder, and print your site-ready safety file."
     }
 ]
 
@@ -105,7 +105,7 @@ export default function PrintReadySafetyFilesPage() {
                     </div>
                     <CardTitle className="text-2xl font-bold text-foreground">See the File Portal</CardTitle>
                     <CardDescription className="text-base text-muted-foreground mt-2">
-                        Explore the portal where you'll access your files.
+                        Explore the ecopyfile.services portal where you'll access your files.
                     </CardDescription>
                     </CardHeader>
                     <CardContent className="p-0 mt-6">

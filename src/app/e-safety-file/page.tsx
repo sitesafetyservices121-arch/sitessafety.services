@@ -146,7 +146,7 @@ export default function ESafetyFilePage() {
             <CardContent>
               <Button asChild size="lg">
                 <Link href="https://www.esafetyfile.services/" target="_blank" rel="noopener noreferrer">
-                  Live Preview <ArrowRight className="ml-2 h-5 w-5" />
+                  Explore our E-Safety File platform here <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
             </CardContent>
