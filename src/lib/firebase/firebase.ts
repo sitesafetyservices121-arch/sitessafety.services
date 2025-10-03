@@ -15,7 +15,7 @@ function getFirebaseConfig() {
     storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
     messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-    // measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID, // Temporarily commented out
+    measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
   };
 
   // Validate required config for core services
@@ -46,22 +46,22 @@ try {
 }
 
 // 🔐 Initialize Auth
-export const auth: Auth | null = app ? getAuth(app) : null;
+export const auth: Auth = app ? getAuth(app) : ({} as Auth);
 
 // 📦 Initialize Firestore
-export const db: Firestore | null = app ? getFirestore(app) : null;
+export const db: Firestore = app ? getFirestore(app) : ({} as Firestore);
 
 // 📂 Initialize Storage
-export const storage: FirebaseStorage | null = app ? getStorage(app) : null;
+export const storage: FirebaseStorage = app ? getStorage(app) : ({} as FirebaseStorage);
 
 // ⚙️ Initialize Cloud Functions
 // You can change the region here if needed
-export const functions: Functions | null = app ? getFunctions(app, "us-central1") : null;
+export const functions: Functions = app ? getFunctions(app, "us-central1") : ({} as Functions);
 
 // 📊 Initialize Analytics (browser-only, with proper support check)
 let analytics: Analytics | null = null;
 
-if (typeof window !== "undefined" && app) {
+if (typeof window !== "undefined" && app && firebaseConfig?.measurementId) {
   // Check if analytics is supported and measurementId is available
   isSupported()
     .then((supported) => {
@@ -100,7 +100,7 @@ export const getProjectId = (): string | undefined => {
 };
 
 // Development helper to log configuration status
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'development' && app) {
   try {
     console.log('🔥 Firebase initialized:', {
       projectId: getProjectId(),

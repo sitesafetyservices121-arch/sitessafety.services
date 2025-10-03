@@ -472,5 +472,3 @@ export async function initiateAdHocPayment(data: unknown) {
     return { success: false, message: "An unexpected error occurred." };
   }
 }
-
-    
