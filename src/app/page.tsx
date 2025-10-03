@@ -118,10 +118,10 @@ export default function Home() {
         </div>
         <div className="container px-4 md:px-6 relative z-10">
             <h1 className="text-4xl font-extrabold sm:text-5xl md:text-7xl">
-              Building Safer Tomorrows
+              AI-Powered Safety Compliance. Expert Oversight. Faster Results.
             </h1>
             <p className="max-w-2xl mx-auto mt-6 text-lg md:text-xl text-white/90">
-              We provide expert safety solutions that protect your people, ensure compliance, and drive operational excellence.
+              RAK-Site Safety Services blends certified human safety officers with intelligent software for total compliance.
             </p>
             <div className="mt-10">
               <Button asChild size="lg" variant="default">
