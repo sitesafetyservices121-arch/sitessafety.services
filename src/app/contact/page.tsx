@@ -24,8 +24,9 @@ export default function ContactPage() {
           <h1 className="text-4xl md:text-6xl font-extrabold text-foreground">
             Get in Touch
           </h1>
+          {/* eslint-disable-next-line react/no-unescaped-entities */}
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            We&apos;re here to help with all your safety questions and needs. Reach out today and let&apos;s make your worksite safer, together.
+            We're here to help with all your safety questions and needs. Reach out today and let's make your worksite safer, together.
           </p>
         </div>
       </section>

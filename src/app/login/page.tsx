@@ -1,3 +1,4 @@
+
 // src/app/login/page.tsx
 "use client";
 
@@ -238,7 +239,8 @@ export default function LoginPage() {
           <GoogleSignInButton />
 
           <div className="mt-6 text-center text-sm">
-            Don&apos;t have an account?{" "}
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
+            Don't have an account?{" "}
             <Link href="/signup" className="underline font-semibold text-primary">
               Sign up
             </Link>

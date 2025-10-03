@@ -1,3 +1,4 @@
+
 // src/components/booking-form.tsx
 "use client";
 
@@ -352,6 +353,7 @@ export function BookingForm() {
                   htmlFor="isEmergency"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
+                  {/* eslint-disable-next-line react/no-unescaped-entities */}
                   Emergency Booking (+R{emergencyFee.toLocaleString('en-ZA')})
                 </label>
               </FormItem>
