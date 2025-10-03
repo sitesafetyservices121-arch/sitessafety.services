@@ -26,8 +26,16 @@ import { useToast } from "@/hooks/use-toast";
 function GoogleSignInButton() {
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+  const { user } = useAuth();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectUrl = searchParams.get("redirect") || "/account";
 
   const handleGoogleSignIn = async () => {
+    if (user) {
+      router.push(redirectUrl);
+      return;
+    }
     setLoading(true);
     const provider = new GoogleAuthProvider();
     try {
@@ -114,18 +122,20 @@ export default function LoginPage() {
           }
         }
       } catch (error: any) {
-        toast({
-          title: "Sign-in Error",
-          description: "Could not complete sign-in. Please try again.",
-          variant: "destructive",
-        });
+        if (error.code !== 'auth/redirect-cancelled-by-user') {
+            toast({
+              title: "Sign-in Error",
+              description: "Could not complete sign-in. Please try again.",
+              variant: "destructive",
+            });
+        }
       } finally {
         setIsHandlingRedirect(false);
       }
     };
     
     handleRedirectResult();
-  }, [auth, redirectUrl, toast]);
+  }, [redirectUrl, toast]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

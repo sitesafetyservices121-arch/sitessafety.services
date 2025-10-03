@@ -26,8 +26,16 @@ import { useToast } from "@/hooks/use-toast";
 function GoogleSignInButton() {
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+  const { user } = useAuth();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectUrl = searchParams.get("redirect") || "/account";
 
   const handleGoogleSignIn = async () => {
+    if (user) {
+      router.push(redirectUrl);
+      return;
+    }
     setLoading(true);
     const provider = new GoogleAuthProvider();
     try {
@@ -128,7 +136,7 @@ export default function SignUpPage() {
     };
 
     handleRedirectResult();
-  }, [auth, redirectUrl, toast]);
+  }, [redirectUrl, toast]);
 
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
