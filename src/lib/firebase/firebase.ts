@@ -33,8 +33,8 @@ function getFirebaseConfig() {
 }
 
 // 🔥 Initialize Firebase app (safe for hot reload and SSR)
-let app: FirebaseApp;
-let firebaseConfig: ReturnType<typeof getFirebaseConfig>;
+let app: FirebaseApp | null = null;
+let firebaseConfig: ReturnType<typeof getFirebaseConfig> | null = null;
 
 try {
   firebaseConfig = getFirebaseConfig();
@@ -46,22 +46,22 @@ try {
 }
 
 // 🔐 Initialize Auth
-export const auth: Auth = getAuth(app);
+export const auth: Auth | null = app ? getAuth(app) : null;
 
 // 📦 Initialize Firestore
-export const db: Firestore = getFirestore(app);
+export const db: Firestore | null = app ? getFirestore(app) : null;
 
 // 📂 Initialize Storage
-export const storage: FirebaseStorage = getStorage(app);
+export const storage: FirebaseStorage | null = app ? getStorage(app) : null;
 
 // ⚙️ Initialize Cloud Functions
 // You can change the region here if needed
-export const functions: Functions = getFunctions(app, "us-central1");
+export const functions: Functions | null = app ? getFunctions(app, "us-central1") : null;
 
 // 📊 Initialize Analytics (browser-only, with proper support check)
 let analytics: Analytics | null = null;
 
-if (typeof window !== "undefined") {
+if (typeof window !== "undefined" && app) {
   // Check if analytics is supported and measurementId is available
   isSupported()
     .then((supported) => {
@@ -96,7 +96,7 @@ export const isAnalyticsAvailable = (): boolean => analytics !== null;
 
 // Configuration getter (useful for debugging)
 export const getProjectId = (): string | undefined => {
-  return process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
+  return app?.options.projectId || process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
 };
 
 // Development helper to log configuration status
