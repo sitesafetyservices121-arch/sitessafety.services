@@ -17,8 +17,8 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { initiateAdHocPayment } from "@/lib/actions";
 import { useState, useTransition, useEffect } from "react";
-import { Loader2, Info, User, CheckCircle } from "lucide-react";
-import { useAuth } from "@/context/auth-context";
+import { Loader2, Info, User } from "lucide-react";
+import { useUser } from "@/firebase";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
@@ -41,7 +41,7 @@ type PayNowFormValues = z.infer<typeof payNowFormSchema>;
 export function PayNowForm() {
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
-  const { user, loading } = useAuth();
+  const { user, loading } = useUser();
   const pathname = usePathname();
 
   const form = useForm<PayNowFormValues>({
@@ -135,6 +135,19 @@ export function PayNowForm() {
   
   if (loading) {
     return <div className="text-center p-8"><Loader2 className="mx-auto h-8 w-8 animate-spin" /></div>;
+  }
+  
+  if (!user) {
+    return (
+        <div className="text-center p-8 bg-secondary rounded-lg border">
+            <User className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+            <h3 className="text-2xl font-bold text-foreground mb-2">Please Log In</h3>
+            <p className="text-muted-foreground mb-6">You need to be logged in to make a payment.</p>
+            <Button asChild>
+                <Link href={`/login?redirect=${pathname}`}>Log In to Pay</Link>
+            </Button>
+        </div>
+    )
   }
 
   return (
