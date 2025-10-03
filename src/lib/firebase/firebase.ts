@@ -102,11 +102,15 @@ export const getProjectId = (): string | undefined => {
 // Development helper to log configuration status
 if (process.env.NODE_ENV === 'development' && app) {
   try {
+    const projectId = getProjectId();
     console.log('🔥 Firebase initialized:', {
-      projectId: getProjectId(),
+      projectId: projectId,
       authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
       isClientSide: isClientSide(),
     });
+    if (projectId) {
+        console.log(`➡️ Your Authorized Redirect URI for Firebase is: https://${projectId}.firebaseapp.com/__/auth/handler`);
+    }
   } catch (e) {
     console.error("Could not log Firebase initialization status.");
   }
