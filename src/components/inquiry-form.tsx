@@ -130,6 +130,7 @@ export function InquiryForm() {
               <FormLabel>Message (Optional)</FormLabel>
               <FormControl>
                 <Textarea
+                  // eslint-disable-next-line react/no-unescaped-entities
                   placeholder="Tell us a little bit about your project needs"
                   className="resize-none"
                   rows={4}
