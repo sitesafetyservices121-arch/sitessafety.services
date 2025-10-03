@@ -1,3 +1,4 @@
+
 // src/components/header.tsx
 "use client";
 
@@ -35,8 +36,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/experience", label: "Projects" },
+  { href: "/about", label: "About Us" },
+  { href: "/experience", label: "Our Work" },
 ];
 
 const services = [
@@ -137,7 +138,7 @@ export function Header() {
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <NavLink href="/contact" label="Contact" />
+              <NavLink href="/contact" label="Contact Us" />
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
@@ -187,7 +188,7 @@ export function Header() {
                   href="/contact"
                   className="text-lg font-medium text-foreground/80 hover:text-primary pt-2"
                 >
-                  Contact
+                  Contact Us
                 </Link>
               </nav>
 
