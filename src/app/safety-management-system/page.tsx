@@ -91,7 +91,7 @@ export default function SafetyManagementSystemPage() {
             <div className="text-center">
                 <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Total Control. Zero Guesswork.</h2>
                 <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                    RAK-Site Safety Services delivers the ultimate balance of intelligent automation and hands-on control. Our AI engine operates 24/7 continuously monitoring compliance, flagging risks in real time, generating audit-ready reports, and ensuring your operations never fall behind.
+                    RAK-Site Safety Services delivers the ultimate balance of intelligent automation and hands-on control. Our AI engine, hosted on <Link href="https://raksms.services" target="_blank" rel="noopener noreferrer" className="font-bold text-primary hover:underline">raksms.services</Link>, operates 24/7—continuously monitoring compliance, flagging risks in real time, generating audit-ready reports, and ensuring your operations never fall behind.
                 </p>
                 <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
                     Beyond automation, our advanced management platform provides complete visibility and control across every site, team, and document. You maintain command while seamlessly scaling compliance across your entire organization.
