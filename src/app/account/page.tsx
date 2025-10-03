@@ -1,4 +1,3 @@
-
 // src/app/account/page.tsx
 "use client";
 
@@ -54,11 +53,9 @@ export default function AccountPage() {
             </div>
           </div>
 
-          <form action={signOut}>
-            <Button variant="outline" className="w-full" type="submit">
-              Log Out
-            </Button>
-          </form>
+          <Button variant="outline" className="w-full" onClick={() => signOut()}>
+            Log Out
+          </Button>
         </CardContent>
       </Card>
     </div>
