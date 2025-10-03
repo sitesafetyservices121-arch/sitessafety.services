@@ -22,8 +22,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/signup',
     '/terms',
     '/website-cookie-policy',
-    '/payment/success',
-    '/payment/cancel'
   ];
 
   return routes.map((route) => ({
