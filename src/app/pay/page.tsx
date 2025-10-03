@@ -4,8 +4,16 @@
 import { PayNowForm } from "@/components/pay-now-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CreditCard } from "lucide-react";
+import { useUser } from "@/firebase";
+import { TopLoader } from "@/components/top-loader";
 
 export default function PayNowPage() {
+  const { user, loading } = useUser();
+
+  if(loading) {
+    return <TopLoader />;
+  }
+
   return (
     <div className="bg-background text-foreground">
       <section className="py-24 md:py-32">

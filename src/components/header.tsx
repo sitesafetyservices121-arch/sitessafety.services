@@ -140,6 +140,11 @@ export function Header() {
             <NavigationMenuItem>
               <NavLink href="/contact" label="Contact Us" />
             </NavigationMenuItem>
+             {user && (
+              <NavigationMenuItem>
+                <NavLink href="/pay" label="Pay Now" />
+              </NavigationMenuItem>
+            )}
           </NavigationMenuList>
         </NavigationMenu>
 
@@ -190,6 +195,14 @@ export function Header() {
                 >
                   Contact Us
                 </Link>
+                 {user && (
+                  <Link
+                    href="/pay"
+                    className="text-lg font-medium text-foreground/80 hover:text-primary"
+                  >
+                    Pay Now
+                  </Link>
+                )}
               </nav>
 
               {/* Mobile User Menu */}
@@ -270,6 +283,11 @@ export function Header() {
                 <DropdownMenuItem asChild>
                   <Link href="/account">Account</Link>
                 </DropdownMenuItem>
+                {user.userProfile?.role === 'admin' && (
+                  <DropdownMenuItem asChild>
+                    <Link href="/admin">Admin</Link>
+                  </DropdownMenuItem>
+                )}
                 <DropdownMenuSeparator />
                 <form action={signOut}>
                   <DropdownMenuItem asChild>
