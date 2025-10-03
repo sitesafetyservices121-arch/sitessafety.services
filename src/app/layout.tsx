@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import "./globals.css";
 import { cn } from "@/lib/utils";
@@ -18,7 +19,7 @@ const organizationSchema = {
   "@type": "Organization",
   "name": "RAK-Site Safety Services",
   "url": "https://www.sitesafety.services",
-  "logo": imageData.meta.favicon.url,
+  "logo": "https://iili.io/KWCnTOb.png",
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+27-71-611-5429",
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
   title: "RAK-Site Safety Services",
   description: "Expert safety solutions for your business.",
   icons: {
-    icon: imageData.meta.favicon.url,
+    icon: "https://iili.io/KWCnTOb.png",
   }
 };
 
