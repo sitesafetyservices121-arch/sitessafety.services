@@ -1,4 +1,3 @@
-
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
@@ -59,7 +58,7 @@ export default function SmsSignupPage() {
             </CardHeader>
             <CardContent>
                {user ? (
-                  <SmsSignupForm />
+                  <SmsSignupForm source="Signup Form: Safety Management System" />
                ) : (
                   <div className="text-center p-8 bg-secondary rounded-lg border">
                     <User className="h-12 w-12 text-muted-foreground mx-auto mb-4" />

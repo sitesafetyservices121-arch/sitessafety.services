@@ -96,11 +96,12 @@ const bookingFormSchema = z.object({
     to: z.date({ required_error: "An end date is required." }),
   }),
   isEmergency: z.boolean().default(false),
+  source: z.string().optional(),
 });
 
 type BookingFormValues = z.infer<typeof bookingFormSchema>;
 
-export function BookingForm() {
+export function BookingForm({ source }: { source: string }) {
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
   const [total, setTotal] = useState(0);
@@ -110,7 +111,7 @@ export function BookingForm() {
 
   const form = useForm<BookingFormValues>({
     resolver: zodResolver(bookingFormSchema),
-    defaultValues: { isEmergency: false },
+    defaultValues: { isEmergency: false, source },
   });
 
   useEffect(() => {
@@ -122,9 +123,10 @@ export function BookingForm() {
         phone: "",
         siteAddress: "",
         isEmergency: false,
+        source: source,
       });
     }
-  }, [user, form]);
+  }, [user, form, source]);
 
   const watchService = form.watch("service");
   const watchDates = form.watch("dates");
@@ -199,7 +201,7 @@ export function BookingForm() {
 
   async function onSubmit(data: BookingFormValues) {
     startTransition(async () => {
-      const submissionData = { ...data, total };
+      const submissionData = { ...data, total, source };
       const result: { success: boolean; message?: string } = await submitBooking(submissionData);
       if (result.success) {
         setShowThankYou(true);

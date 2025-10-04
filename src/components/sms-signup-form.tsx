@@ -30,6 +30,7 @@ const smsSignupFormSchema = z.object({
   password: z.string().min(8, { message: "Password must be at least 8 characters." }).optional(),
   age: z.string().refine((val) => !isNaN(parseInt(val, 10)) && parseInt(val, 10) > 0, { message: "Please enter a valid age." }),
   cellNumber: z.string().min(10, { message: "Please enter a valid cell number." }),
+  source: z.string().optional(),
 }).refine(data => {
     // This logic is now handled inside the component based on provider.
     return true;
@@ -37,7 +38,7 @@ const smsSignupFormSchema = z.object({
 
 type SmsSignupFormValues = z.infer<typeof smsSignupFormSchema>;
 
-export function SmsSignupForm() {
+export function SmsSignupForm({ source }: { source: string }) {
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
   const [showThankYou, setShowThankYou] = useState(false);
@@ -56,6 +57,7 @@ export function SmsSignupForm() {
       password: "",
       age: "",
       cellNumber: "",
+      source: source,
     },
   });
 
@@ -65,8 +67,9 @@ export function SmsSignupForm() {
         const nameParts = user.displayName?.split(' ') || [];
         form.setValue('firstName', nameParts[0] || '');
         form.setValue('surname', nameParts.slice(1).join(' ') || '');
+        form.setValue('source', source);
     }
-  }, [user, form]);
+  }, [user, form, source]);
 
   function onSubmit(data: SmsSignupFormValues) {
     startTransition(async () => {

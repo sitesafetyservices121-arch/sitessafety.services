@@ -43,11 +43,12 @@ const consultationFormSchema = z.object({
   consultationDate: z.date({ required_error: "A consultation date is required."}),
   consultationTime: z.string({ required_error: "A consultation time is required."}),
   contactMethod: z.string({ required_error: "Please select a contact method."}),
+  source: z.string().optional(),
 });
 
 type ConsultationFormValues = z.infer<typeof consultationFormSchema>;
 
-export function ConsultationForm() {
+export function ConsultationForm({ source }: { source: string }) {
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
   const [showThankYou, setShowThankYou] = useState(false);
@@ -58,6 +59,7 @@ export function ConsultationForm() {
     resolver: zodResolver(consultationFormSchema),
     defaultValues: {
         desiredLogins: 1,
+        source: source,
     },
   });
 
@@ -70,9 +72,10 @@ export function ConsultationForm() {
           companyName: "",
           domainName: "",
           desiredLogins: 1,
+          source: source,
         });
     }
-  }, [user, form]);
+  }, [user, form, source]);
 
 
   function onSubmit(data: ConsultationFormValues) {

@@ -1,4 +1,3 @@
-
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
@@ -99,7 +98,7 @@ export default function RentASafetyOfficerPage() {
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                <BookingForm />
+                <BookingForm source="Booking Form: Rent a Safety Officer" />
             </CardContent>
             </Card>
         </div>

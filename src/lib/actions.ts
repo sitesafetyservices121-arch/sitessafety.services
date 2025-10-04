@@ -190,6 +190,7 @@ const bookingSchema = z.object({
   }),
   isEmergency: z.boolean(),
   total: z.number().positive("Total must be positive"),
+  source: z.string().optional(),
 });
 
 const inquirySchema = z.object({
@@ -198,6 +199,7 @@ const inquirySchema = z.object({
   email: z.string().email("Invalid email address"),
   phone: z.string().min(1, "Phone number is required"),
   message: z.string().optional(),
+  source: z.string().optional(),
 });
 
 const smsSignupSchema = z.object({
@@ -208,6 +210,7 @@ const smsSignupSchema = z.object({
   password: z.string().min(8, "Password must be at least 8 characters").optional(),
   age: z.string().min(1, "Age is required"),
   cellNumber: z.string().min(1, "Cell number is required"),
+  source: z.string().optional(),
 });
 
 const consultationSchema = z.object({
@@ -221,6 +224,7 @@ const consultationSchema = z.object({
   consultationDate: z.coerce.date(),
   consultationTime: z.string().min(1, "Time selection is required"),
   contactMethod: z.string().min(1, "Contact method is required"),
+  source: z.string().optional(),
 });
 
 const electronicFileOrderSchema = z.object({
@@ -234,6 +238,7 @@ const electronicFileOrderSchema = z.object({
   serviceTier: z.string().min(1, "Service tier is required"),
   total: z.number().positive("Total must be positive"),
   orderId: z.string().min(1, "Order reference is required"),
+  source: z.string().optional(),
 });
 
 const adHocPaymentSchema = z.object({
@@ -250,11 +255,12 @@ const adHocPaymentSchema = z.object({
 export async function submitBooking(data: unknown) {
   try {
     const validatedData = bookingSchema.parse(data);
-    const { name, company, email, phone, siteAddress, service, dates, total, isEmergency } = validatedData;
+    const { name, company, email, phone, siteAddress, service, dates, total, isEmergency, source } = validatedData;
     
     const formData = new FormData();
-    formData.append("subject", "New Booking Request");
+    formData.append("subject", `New Booking Request from ${source || 'Website'}`);
     formData.append("heading", "Payments");
+    formData.append("Source", source || "Unknown");
     formData.append("Booking Type", isEmergency ? 'EMERGENCY' : 'Standard');
     formData.append("Service", service);
     formData.append("Name", name);
@@ -285,10 +291,11 @@ export async function submitBooking(data: unknown) {
 export async function submitInquiry(data: unknown) {
   try {
     const validatedData = inquirySchema.parse(data);
-    const { name, company, email, phone, message } = validatedData;
+    const { name, company, email, phone, message, source } = validatedData;
 
     const formData = new FormData();
-    formData.append("subject", "New General Inquiry");
+    formData.append("subject", `New General Inquiry from ${source || 'Website'}`);
+    formData.append("Source", source || "Unknown");
     formData.append("Name", name);
     formData.append("Company", company);
     formData.append("Email", email);
@@ -333,11 +340,12 @@ export async function getComplianceAdvice(data: ComplianceRequest): Promise<{
 export async function submitSmsSignup(data: unknown) {
   try {
     const validatedData = smsSignupSchema.parse(data);
-    const { firstName, surname, company, email, age, cellNumber } = validatedData;
+    const { firstName, surname, company, email, age, cellNumber, source } = validatedData;
 
     const formData = new FormData();
-    formData.append("subject", "New Safety Management System Signup");
+    formData.append("subject", `New SMS Signup from ${source || 'Website'}`);
     formData.append("heading", "Onboarding");
+    formData.append("Source", source || "Unknown");
     formData.append("Name", `${firstName} ${surname}`);
     formData.append("Company", company);
     formData.append("Email", email);
@@ -364,10 +372,11 @@ export async function submitSmsSignup(data: unknown) {
 export async function submitConsultation(data: unknown) {
   try {
     const validatedData = consultationSchema.parse(data);
-    const { name, email, phone, companyName, domainName, desiredLogins, plan, consultationDate, consultationTime, contactMethod } = validatedData;
+    const { name, email, phone, companyName, domainName, desiredLogins, plan, consultationDate, consultationTime, contactMethod, source } = validatedData;
 
     const formData = new FormData();
-    formData.append("subject", "New E-Safety File Consultation Request");
+    formData.append("subject", `New E-Safety File Consultation from ${source || 'Website'}`);
+    formData.append("Source", source || "Unknown");
     formData.append("Selected Plan", plan);
     formData.append("Company Name", companyName);
     formData.append("Desired Domain", domainName || 'Not specified');
@@ -399,11 +408,12 @@ export async function submitConsultation(data: unknown) {
 export async function submitElectronicFileOrder(data: unknown) {
   try {
     const validatedData = electronicFileOrderSchema.parse(data);
-    const { name, surname, company, email, phone, companyLogo, fileIndex, serviceTier, total, orderId } = validatedData;
+    const { name, surname, company, email, phone, companyLogo, fileIndex, serviceTier, total, orderId, source } = validatedData;
     
     const formData = new FormData();
-    formData.append("subject", "Printable Safety File Payment");
+    formData.append("subject", `Printable Safety File Payment from ${source || 'Website'}`);
     formData.append("heading", "Payments");
+    formData.append("Source", source || "Unknown");
     formData.append("Service Tier", serviceTier);
     formData.append("Total Paid", `R${total.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`);
     formData.append("Uploaded Company Logo", companyLogo);

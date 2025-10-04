@@ -1,4 +1,3 @@
-
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
@@ -272,7 +271,7 @@ export default function Home() {
                 </p>
             </div>
             <Card className="p-8 shadow-xl border">
-                <InquiryForm />
+                <InquiryForm source="Home Page Inquiry" />
             </Card>
             <div className="text-center mt-12">
                 <h3 className="text-xl font-bold text-foreground mb-4">Follow Us</h3>

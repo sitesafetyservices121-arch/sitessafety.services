@@ -26,11 +26,12 @@ const inquiryFormSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address." }),
   phone: z.string().min(10, { message: "Please enter a valid phone number." }),
   message: z.string().optional(),
+  source: z.string().optional(),
 });
 
 type InquiryFormValues = z.infer<typeof inquiryFormSchema>;
 
-export function InquiryForm() {
+export function InquiryForm({ source }: { source: string }) {
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
 
@@ -42,6 +43,7 @@ export function InquiryForm() {
       email: "",
       phone: "",
       message: "",
+      source: source,
     },
   });
 

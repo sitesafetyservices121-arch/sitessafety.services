@@ -50,11 +50,12 @@ const electronicFileFormSchema = z.object({
   serviceTier: z.enum(Object.keys(serviceTiers) as [ServiceTierKey, ...ServiceTierKey[]], {
     required_error: "You must select a service tier.",
   }),
+  source: z.string().optional(),
 });
 
 type ElectronicFileFormValues = z.infer<typeof electronicFileFormSchema>;
 
-export function ElectronicFileForm() {
+export function ElectronicFileForm({ source }: { source: string }) {
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
   const [total, setTotal] = useState(0);
@@ -65,6 +66,7 @@ export function ElectronicFileForm() {
     resolver: zodResolver(electronicFileFormSchema),
     defaultValues: {
       serviceTier: "Standard",
+      source: source,
     },
   });
   
@@ -78,9 +80,10 @@ export function ElectronicFileForm() {
           company: "",
           phone: "",
           serviceTier: "Standard",
+          source: source,
         });
     }
-  }, [user, form]);
+  }, [user, form, source]);
 
   const watchCompanyLogo = form.watch("companyLogo");
   const watchFileIndex = form.watch("fileIndex");
@@ -122,6 +125,7 @@ export function ElectronicFileForm() {
             companyLogo: data.companyLogo[0]?.name,
             fileIndex: data.fileIndex[0]?.name,
             orderId: orderReference,
+            source,
         };
         
         const orderResult = await submitElectronicFileOrder(submissionData);

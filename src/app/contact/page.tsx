@@ -1,4 +1,3 @@
-
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
@@ -66,7 +65,7 @@ export default function ContactPage() {
                     <CardDescription className="text-center text-base">For general questions, please fill out the form below.</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <InquiryForm />
+                    <InquiryForm source="Contact Page Inquiry" />
                 </CardContent>
                 </Card>
             </div>
