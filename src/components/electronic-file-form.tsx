@@ -112,11 +112,16 @@ export function ElectronicFileForm() {
     startTransition(async () => {
         // Step 1: Submit order details to your backend (e.g., via a server action)
         // This step is important to log the order before payment.
+        const orderReference = typeof crypto !== "undefined" && "randomUUID" in crypto
+          ? crypto.randomUUID()
+          : `order-${Date.now()}`;
+
         const submissionData = {
             ...data,
             total: serviceTiers[data.serviceTier].price,
             companyLogo: data.companyLogo[0]?.name,
             fileIndex: data.fileIndex[0]?.name,
+            orderId: orderReference,
         };
         
         const orderResult = await submitElectronicFileOrder(submissionData);
@@ -142,6 +147,7 @@ export function ElectronicFileForm() {
                 return_url: `${origin}/payment/success`,
                 cancel_url: `${origin}/payment/cancel`,
                 notify_url: `${origin}/api/payfast-itn`,
+                m_payment_id: orderReference,
             };
 
             const payfastResponse = await createPayfastPaymentIdentifier(payfastDetails);

@@ -1,4 +1,3 @@
-
 // src/components/booking-form.tsx
 "use client";
 
@@ -371,7 +370,7 @@ export function BookingForm() {
                 <FormItem>
                   <FormLabel>Full Name</FormLabel>
                   <FormControl>
-                    <Input {...field} readOnly />
+                    <Input {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -397,7 +396,7 @@ export function BookingForm() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="you@company.com" {...field} type="email" readOnly />
+                    <Input placeholder="you@company.com" {...field} type="email" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -441,6 +440,7 @@ export function BookingForm() {
         </Alert>
 
         <p className="text-sm text-muted-foreground text-center">
+          {/* eslint-disable-next-line react/no-unescaped-entities */}
           An agent will call you within the hour to confirm details and finalize payment.
         </p>
 

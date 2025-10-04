@@ -92,7 +92,7 @@ interface PayfastPaymentDetails {
 
 export async function createPayfastPaymentIdentifier(
   details: PayfastPaymentDetails
-): Promise<{ success: boolean; uuid?: string; message?: string }> {
+): Promise<{ success: boolean; uuid?: string; message?: string; m_payment_id?: string }> {
   
   if (!requiredEnvVars.PAYFAST_MERCHANT_ID || !requiredEnvVars.PAYFAST_MERCHANT_KEY) {
     console.error("❌ Missing PayFast environment variables.");
@@ -158,7 +158,7 @@ export async function createPayfastPaymentIdentifier(
 
     if (result.uuid) {
       console.log("✅ PayFast UUID generated successfully");
-      return { success: true, uuid: result.uuid };
+      return { success: true, uuid: result.uuid, m_payment_id: details.m_payment_id };
     } else {
       console.error("❌ PayFast UUID generation failed:", result);
       const errorMessage = result.errors?.join(', ') || 'Failed to generate payment identifier.';
@@ -233,6 +233,7 @@ const electronicFileOrderSchema = z.object({
   fileIndex: z.string().min(1, "File index is required"),
   serviceTier: z.string().min(1, "Service tier is required"),
   total: z.number().positive("Total must be positive"),
+  orderId: z.string().min(1, "Order reference is required"),
 });
 
 const adHocPaymentSchema = z.object({
@@ -398,7 +399,7 @@ export async function submitConsultation(data: unknown) {
 export async function submitElectronicFileOrder(data: unknown) {
   try {
     const validatedData = electronicFileOrderSchema.parse(data);
-    const { name, surname, company, email, phone, companyLogo, fileIndex, serviceTier, total } = validatedData;
+    const { name, surname, company, email, phone, companyLogo, fileIndex, serviceTier, total, orderId } = validatedData;
     
     const formData = new FormData();
     formData.append("subject", "Printable Safety File Payment");
@@ -407,6 +408,7 @@ export async function submitElectronicFileOrder(data: unknown) {
     formData.append("Total Paid", `R${total.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`);
     formData.append("Uploaded Company Logo", companyLogo);
     formData.append("Uploaded File Index", fileIndex);
+    formData.append("Order Reference", orderId);
     formData.append("Name", `${name} ${surname}`);
     formData.append("Company", company);
     formData.append("Email", email);
@@ -445,6 +447,7 @@ export async function initiateAdHocPayment(data: unknown) {
 
     const details = {
       ...validatedData,
+      m_payment_id: validatedData.m_payment_id?.trim() || `adhoc-${Date.now()}`,
       return_url: `${origin}/payment/success`,
       cancel_url: `${origin}/payment/cancel`,
       notify_url: `${origin}/api/payfast-itn`,

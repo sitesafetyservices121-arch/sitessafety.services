@@ -80,13 +80,15 @@ export function PayNowForm() {
   function onSubmit(data: PayNowFormValues) {
     startTransition(async () => {
       try {
+        const invoiceRef = data.invoiceReference.trim();
+
         const payfastDetails = {
           amount: data.amount,
-          item_name: `Payment for Invoice/Quote: ${data.invoiceReference}`,
+          item_name: `Payment for Invoice/Quote: ${invoiceRef}`,
           email_address: data.email,
           name_first: data.name.split(' ')[0],
           name_last: data.name.split(' ').slice(1).join(' '),
-          m_payment_id: data.invoiceReference,
+          m_payment_id: invoiceRef || `invoice-${Date.now()}`,
         };
 
         const response = await initiateAdHocPayment(payfastDetails);

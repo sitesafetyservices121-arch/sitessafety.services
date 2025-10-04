@@ -2,10 +2,10 @@
 // src/app/signup/page.tsx
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { GoogleAuthProvider, signInWithRedirect, getRedirectResult, signInWithEmailAndPassword } from "firebase/auth";
+import { getRedirectResult, signInWithEmailAndPassword } from "firebase/auth";
 import { Loader2 } from "lucide-react";
 
 import { auth } from "@/lib/firebase/firebase";
@@ -22,70 +22,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { GoogleAuthButton } from "@/components/auth/google-auth-button";
+import { getSafeRedirect } from "@/lib/auth/redirect";
+import { exchangeIdTokenForSession } from "@/lib/auth/client";
 
 export const dynamic = 'force-dynamic';
-
-function GoogleSignInButton() {
-  const [loading, setLoading] = useState(false);
-  const { toast } = useToast();
-  const { user } = useUser();
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const redirectUrl = searchParams.get("redirect") || "/account";
-
-  const handleGoogleSignIn = async () => {
-    if (user) {
-      router.push(redirectUrl);
-      return;
-    }
-    setLoading(true);
-    const provider = new GoogleAuthProvider();
-    try {
-      await signInWithRedirect(auth, provider);
-    } catch (error: any) {
-      toast({
-        title: "Sign-up Error",
-        description: "Could not initiate Google Sign-Up. Please try again.",
-        variant: "destructive",
-      });
-      setLoading(false);
-    }
-  };
-
-
-  return (
-    <Button
-      variant="outline"
-      type="button"
-      onClick={handleGoogleSignIn}
-      disabled={loading}
-      className="w-full"
-      size="lg"
-    >
-      {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-      {!loading && (
-        <svg
-          className="mr-2 h-4 w-4"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 488 512"
-        >
-          <path
-            fill="currentColor"
-            d="M488 261.8C488 403.3 391.1 504 248 504 
-            110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 
-            126 23.4 172.9 61.9l-79.3 79.3C311.5 
-            118.8 281.5 108 248 108c-73.4 0-134.3 
-            59.8-134.3 134.3s60.9 134.3 134.3 
-            134.3c81.3 0 115.7-55.8 119.5-83.3H248v-97.2h239.5c1.4 
-            12.3 2.5 24.5 2.5 36.8z"
-          />
-        </svg>
-      )}
-      {loading ? "Signing up..." : "Sign up with Google"}
-    </Button>
-  );
-}
 
 export default function SignUpPage() {
   const [email, setEmail] = useState("");
@@ -94,10 +35,13 @@ export default function SignUpPage() {
   const [loading, setLoading] = useState(false);
   const [isHandlingRedirect, setIsHandlingRedirect] = useState(true);
 
-  const { user, loading: authLoading } = useUser();
-  const router = useRouter();
+  const { loading: authLoading } = useUser();
   const searchParams = useSearchParams();
-  const redirectUrl = searchParams.get("redirect") || "/account";
+  const redirectParam = searchParams.get("redirect");
+  const redirectUrl = useMemo(
+    () => getSafeRedirect(redirectParam),
+    [redirectParam]
+  );
   const { toast } = useToast();
 
   useEffect(() => {
@@ -107,32 +51,27 @@ export default function SignUpPage() {
         if (result && result.user) {
           const idToken = await result.user.getIdToken(true);
 
-          let responseOk = false;
-          for (let i = 0; i < 3; i++) {
-            const res = await fetch("/api/auth/login", {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${idToken}`,
-              },
-            });
+          let sessionError: string | null = null;
 
-            if (res.ok) {
-              responseOk = true;
-              break;
+          for (let attempt = 0; attempt < 3; attempt++) {
+            const sessionResult = await exchangeIdTokenForSession(idToken);
+            if (sessionResult.ok) {
+              window.location.href = redirectUrl;
+              return;
             }
 
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            sessionError = sessionResult.message || null;
+
+            if (attempt < 2) {
+              await new Promise(resolve => setTimeout(resolve, 1000));
+            }
           }
 
-          if (responseOk) {
-            window.location.href = redirectUrl;
-          } else {
-            toast({
-              title: "Login Failed",
-              description: "Could not log you in after multiple attempts. Please try again.",
-              variant: "destructive",
-            });
-          }
+          toast({
+            title: "Login Failed",
+            description: sessionError || "Could not log you in after multiple attempts. Please try again.",
+            variant: "destructive",
+          });
         }
       } catch (error: any) {
         if (error.code !== 'auth/redirect-cancelled-by-user') {
@@ -168,24 +107,18 @@ export default function SignUpPage() {
       if (!signupResponse.ok) {
         const data = await signupResponse.json();
         setError(data.message || 'An unexpected error occurred.');
-        setLoading(false);
         return;
       }
 
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const idToken = await userCredential.user.getIdToken(true);
 
-      const loginResponse = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${idToken}`,
-        },
-      });
+      const sessionResult = await exchangeIdTokenForSession(idToken);
 
-      if (loginResponse.ok) {
+      if (sessionResult.ok) {
         window.location.href = redirectUrl;
       } else {
-        setError('An unexpected error occurred during login.');
+        setError(sessionResult.message || 'An unexpected error occurred during login.');
       }
     } catch (error: any) {
       setError("An unexpected error occurred. Please try again.");
@@ -235,7 +168,7 @@ export default function SignUpPage() {
             </div>
           </div>
 
-          <GoogleSignInButton />
+          <GoogleAuthButton redirectUrl={redirectUrl} mode="signup" />
 
           <div className="mt-6 text-center text-sm">
             Already have an account?{" "}

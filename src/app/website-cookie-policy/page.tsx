@@ -1,4 +1,5 @@
 
+/* eslint-disable react/no-unescaped-entities */
 import type { Metadata } from 'next';
 import React from 'react';
 import Link from 'next/link';
