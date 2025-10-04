@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Package2, Settings, Image, CreditCard, Share2 } from "lucide-react";
+import { Package2, Settings, Image as ImageIcon, CreditCard, Share2 } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -16,7 +16,7 @@ const adminNavItems = [
   },
   {
     href: "/admin/pictures",
-    icon: <Image className="h-5 w-5" />,
+    icon: <ImageIcon className="h-5 w-5" />,
     label: "Pictures",
   },
   {
