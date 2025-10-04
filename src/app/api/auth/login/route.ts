@@ -1,7 +1,7 @@
 
 // src/app/api/auth/login/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { adminAuth } from '@/lib/firebase/admin';
+import { adminAuth, isAdminInitialized } from '@/lib/firebase/admin';
 
 // Set session cookie options
 const SESSION_COOKIE_OPTIONS = {
@@ -13,6 +13,14 @@ const SESSION_COOKIE_OPTIONS = {
 };
 
 export async function POST(request: NextRequest) {
+  // 1. Check if the Admin SDK is initialized
+  if (!isAdminInitialized() || !adminAuth) {
+    console.error("Firebase Admin SDK not initialized. Check server environment variables.");
+    return NextResponse.json({ 
+      message: "Firebase Admin SDK not initialized. The server is missing required configuration." 
+    }, { status: 500 });
+  }
+
   const authHeader = request.headers.get('Authorization');
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -22,7 +30,7 @@ export async function POST(request: NextRequest) {
   const idToken = authHeader.split('Bearer ')[1];
 
   try {
-    // Verify the ID token to ensure it's valid and from a trusted source
+    // 2. Verify the ID token
     await adminAuth.verifyIdToken(idToken);
     
     // The cookie name should be secure and preferably prefixed
@@ -30,7 +38,7 @@ export async function POST(request: NextRequest) {
 
     const response = NextResponse.json({ success: true, message: 'Login successful.' }, { status: 200 });
 
-    // Set the session cookie
+    // 3. Set the session cookie
     response.cookies.set(cookieName, idToken, SESSION_COOKIE_OPTIONS);
 
     return response;
