@@ -176,7 +176,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {projects.map((project) => (
-              <Card key={project.title} className="bg-card flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-xl border">
+              <Card key={project.title} className="bg-card/80 flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-xl border">
                 <CardContent className="p-0">
                   <div className="relative h-64 w-full">
                     <Image src={project.image} alt={project.title} fill sizes="(max-width: 768px) 100vw, 50vw" style={{objectFit:"cover"}} data-ai-hint={project.hint} className="transition-transform duration-500 group-hover:scale-105" />
@@ -233,7 +233,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {solutions.map((solution) => (
-              <Card key={solution.title} className="text-center p-6 border bg-card shadow-sm">
+              <Card key={solution.title} className="text-center p-6 border bg-card/80 shadow-sm">
                   <CardHeader className="items-center p-0 mb-4">
                       <div className="bg-primary/10 p-4 rounded-full">
                           {solution.icon}
@@ -270,7 +270,7 @@ export default function Home() {
                     Have a project in mind or need to discuss your safety requirements? We're here to help.
                 </p>
             </div>
-            <Card className="p-8 shadow-xl border">
+            <Card className="p-8 shadow-xl border bg-card/80">
                 <InquiryForm source="Home Page Inquiry" />
             </Card>
             <div className="text-center mt-12">

@@ -157,7 +157,7 @@ export default function AboutPage() {
             <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">The principles that guide our every action.</p>
             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
                 {values.map(v => (
-                    <Card key={v.title} className="text-center border-t-4 border-t-primary p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-card">
+                    <Card key={v.title} className="text-center border-t-4 border-t-primary p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-card/80">
                         <CardHeader className="items-center">
                             <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-4">
                             {v.icon}
