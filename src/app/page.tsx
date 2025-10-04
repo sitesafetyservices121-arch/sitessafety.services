@@ -111,6 +111,7 @@ export default function Home() {
                 alt="Construction site at dusk"
                 fill
                 priority
+                sizes="(max-width: 768px) 100vw, 50vw"
                 style={{objectFit: 'cover'}}
                 data-ai-hint={imageData.home_page.hero.hint}
             />
@@ -141,6 +142,7 @@ export default function Home() {
               src={imageData.home_page.commitment_collage.url}
               alt="A collage of safety equipment and compliant worksites"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               style={{objectFit:"cover", objectPosition: "center"}}
               data-ai-hint={imageData.home_page.commitment_collage.hint}
               priority
@@ -177,7 +179,7 @@ export default function Home() {
               <Card key={project.title} className="bg-card flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-xl border">
                 <CardContent className="p-0">
                   <div className="relative h-64 w-full">
-                    <Image src={project.image} alt={project.title} fill style={{objectFit:"cover"}} data-ai-hint={project.hint} className="transition-transform duration-500 group-hover:scale-105" />
+                    <Image src={project.image} alt={project.title} fill sizes="(max-width: 768px) 100vw, 50vw" style={{objectFit:"cover"}} data-ai-hint={project.hint} className="transition-transform duration-500 group-hover:scale-105" />
                   </div>
                 </CardContent>
                 <div className="p-6 flex flex-col flex-grow">
