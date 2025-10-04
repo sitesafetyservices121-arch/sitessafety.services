@@ -1,3 +1,4 @@
+
 // lib/firebase.ts
 import { initializeApp, getApps, getApp, type FirebaseApp } from "firebase/app";
 import { getAuth, type Auth } from "firebase/auth";
@@ -103,13 +104,3 @@ export type {
   Functions,
   Analytics
 };
-
-export function initializeFirebase() {
-    return {
-        app,
-        auth,
-        db,
-        storage,
-        functions,
-    };
-}
