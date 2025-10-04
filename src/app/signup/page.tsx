@@ -5,7 +5,7 @@
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithRedirect, getRedirectResult } from "firebase/auth";
+import { GoogleAuthProvider, signInWithRedirect, getRedirectResult, signInWithEmailAndPassword } from "firebase/auth";
 import { Loader2 } from "lucide-react";
 
 import { auth } from "@/lib/firebase/firebase";
@@ -106,20 +106,30 @@ export default function SignUpPage() {
         const result = await getRedirectResult(auth);
         if (result && result.user) {
           const idToken = await result.user.getIdToken(true);
-          const res = await fetch("/api/auth/login", {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${idToken}`,
-            },
-          });
 
-          if (res.ok) {
+          let responseOk = false;
+          for (let i = 0; i < 3; i++) {
+            const res = await fetch("/api/auth/login", {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${idToken}`,
+              },
+            });
+
+            if (res.ok) {
+              responseOk = true;
+              break;
+            }
+
+            await new Promise(resolve => setTimeout(resolve, 1000));
+          }
+
+          if (responseOk) {
             window.location.href = redirectUrl;
           } else {
-            const data = await res.json();
             toast({
               title: "Login Failed",
-              description: data.message || "An unexpected error occurred.",
+              description: "Could not log you in after multiple attempts. Please try again.",
               variant: "destructive",
             });
           }
@@ -147,32 +157,38 @@ export default function SignUpPage() {
     setLoading(true);
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const signupResponse = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!signupResponse.ok) {
+        const data = await signupResponse.json();
+        setError(data.message || 'An unexpected error occurred.');
+        setLoading(false);
+        return;
+      }
+
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const idToken = await userCredential.user.getIdToken(true);
 
-      const response = await fetch('/api/auth/login', {
+      const loginResponse = await fetch('/api/auth/login', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${idToken}`,
         },
       });
-      
-      if (response.ok) {
+
+      if (loginResponse.ok) {
         window.location.href = redirectUrl;
       } else {
-        const data = await response.json();
-        setError(data.message || 'An unexpected error occurred.');
+        setError('An unexpected error occurred during login.');
       }
     } catch (error: any) {
-      if (error.code === 'auth/email-already-in-use') {
-        setError("This email address is already in use.");
-      } else if (error.code === 'auth/weak-password') {
-        setError("Password is too weak. Please choose a stronger one.");
-      } else if (error.code === 'auth/invalid-email') {
-        setError("Please enter a valid email address.");
-      } else {
-        setError("An unexpected error occurred. Please try again.");
-      }
+      setError("An unexpected error occurred. Please try again.");
     } finally {
       setLoading(false);
     }

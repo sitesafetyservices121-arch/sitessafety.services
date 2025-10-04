@@ -1,3 +1,4 @@
+
 import * as admin from 'firebase-admin';
 import fs from 'fs';
 import path from 'path';
@@ -61,12 +62,13 @@ function initializeFirebaseAdmin() {
     const finalProjectId = projectId || process.env.FIREBASE_PROJECT_ID;
 
     if (privateKey && clientEmail && finalProjectId) {
+      const formattedPrivateKey = privateKey.replace(/\\n/g, '\n');
+
       return admin.initializeApp({
         credential: admin.credential.cert({
           projectId: finalProjectId,
           clientEmail: clientEmail,
-          // Replace escaped newlines in private key
-          privateKey: privateKey.replace(/\\n/g, '\n'),
+          privateKey: formattedPrivateKey,
         }),
         projectId: finalProjectId,
       });
