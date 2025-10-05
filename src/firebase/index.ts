@@ -1,17 +1,12 @@
 // src/firebase/index.ts
 'use client';
 
-import { FirebaseProvider, useFirebase, useFirebaseApp, useFirestore, useAuth, useUser } from './provider';
-import { FirebaseClientProvider } from './client-provider';
-import { useDoc } from './firestore/use-doc';
+// This is the main "barrel" file for all Firebase-related functionality.
+// It exports everything from the other files in this directory,
+// making it easy to import anything from Firebase with a single import statement.
 
-export {
-  FirebaseProvider,
-  FirebaseClientProvider,
-  useFirebase,
-  useFirebaseApp,
-  useFirestore,
-  useAuth,
-  useUser,
-  useDoc,
-};
+export * from './config';
+export * from './provider';
+export * from './client-provider';
+export * from './firestore/use-doc';
+export * from './auth/sign-out';

@@ -1,26 +1,38 @@
 // src/firebase/client-provider.tsx
 'use client';
-import { useMemo, type ReactNode } from 'react';
-import { FirebaseProvider } from './provider';
-import { initializeApp, getApps, getApp, type FirebaseApp } from 'firebase/app';
-import { getAuth, type Auth } from 'firebase/auth';
-import { getFirestore, type Firestore } from 'firebase/firestore';
+import { useState, useEffect, type ReactNode } from 'react';
+import { FirebaseProvider, type FirebaseContextValue } from './provider';
+import { initializeApp, getApps, getApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 import { firebaseConfig } from './config';
+import { TopLoader } from '@/components/top-loader';
 
-function initializeFirebase(): { app: FirebaseApp; auth: Auth; firestore: Firestore } {
-  if (typeof window === 'undefined') {
-    // This is a safeguard. This function should not be called on the server.
-    throw new Error("Firebase can only be initialized on the client.");
-  }
+function initializeFirebase(): FirebaseContextValue {
   const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
   const auth = getAuth(app);
   const firestore = getFirestore(app);
   return { app, auth, firestore };
 }
 
-
 export function FirebaseClientProvider({ children }: { children: ReactNode }) {
-  const value = useMemo(() => initializeFirebase(), []);
+  const [firebase, setFirebase] = useState<FirebaseContextValue | null>(null);
 
-  return <FirebaseProvider value={value}>{children}</FirebaseProvider>;
+  useEffect(() => {
+    // This effect runs only on the client, after the component has mounted.
+    // It initializes Firebase and sets the context value.
+    if (typeof window !== 'undefined' && !firebase) {
+      setFirebase(initializeFirebase());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (!firebase) {
+    // While initializing on the client, show a loader.
+    // This prevents any child components from trying to use Firebase
+    // before it's ready.
+    return <TopLoader />;
+  }
+
+  return <FirebaseProvider value={firebase}>{children}</FirebaseProvider>;
 }

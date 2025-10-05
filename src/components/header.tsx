@@ -1,4 +1,3 @@
-
 // src/components/header.tsx
 "use client";
 
@@ -10,8 +9,7 @@ import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "./logo";
 import { ThemeToggle } from "./theme-toggle";
-import { useUser } from "@/firebase";
-import { signOut } from "@/lib/firebase/auth";
+import { useUser, signOut } from "@/firebase";
 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -227,11 +225,9 @@ export function Header() {
                       </p>
                     </div>
                   </Link>
-                  <form action={signOut}>
-                    <Button variant="ghost" className="w-full justify-start">
-                      Logout
-                    </Button>
-                  </form>
+                  <Button variant="ghost" className="w-full justify-start" onClick={() => signOut()}>
+                    Logout
+                  </Button>
                 </div>
               ) : (
                 <div className="mt-8 grid grid-cols-2 gap-4">
@@ -289,13 +285,11 @@ export function Header() {
                   </DropdownMenuItem>
                 )}
                 <DropdownMenuSeparator />
-                <form action={signOut}>
-                  <DropdownMenuItem asChild>
-                    <button type="submit" className="w-full text-left">
-                      Log out
-                    </button>
-                  </DropdownMenuItem>
-                </form>
+                <DropdownMenuItem asChild>
+                  <button type="button" className="w-full text-left" onClick={() => signOut()}>
+                    Log out
+                  </button>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
