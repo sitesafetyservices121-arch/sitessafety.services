@@ -12,6 +12,15 @@ import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
+import { Inter } from 'next/font/google';
+import { cn } from "@/lib/utils";
+
+const inter = Inter({ 
+  subsets: ['latin'], 
+  weight: ['400', '500', '700', '900'], 
+  variable: '--font-body',
+  display: 'swap',
+});
 
 export function ClientLayout({ children }: { children: React.ReactNode }) {
   const [isClient, setIsClient] = useState(false);
@@ -29,7 +38,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
     >
       <FirebaseClientProvider>
         <LoadingProvider>
-          <div className="relative flex min-h-dvh flex-col bg-transparent">
+          <div className={cn("relative flex min-h-dvh flex-col bg-transparent font-body antialiased", inter.variable)}>
             <TopLoader />
             <Header />
             <main className="flex-1">{children}</main>

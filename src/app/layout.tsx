@@ -1,18 +1,7 @@
-
 import type { Metadata } from "next";
 import "./globals.css";
-import { cn } from "@/lib/utils";
-import { Inter } from 'next/font/google';
-import Script from "next/script";
-import imageData from "@/app/lib/placeholder-images.json";
 import { ClientLayout } from "@/components/client-layout";
-
-const inter = Inter({ 
-  subsets: ['latin'], 
-  weight: ['400', '500', '700', '900'], 
-  variable: '--font-body',
-  display: 'swap',
-});
+import Script from "next/script";
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -50,7 +39,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={cn("min-h-screen bg-background font-body antialiased", inter.variable)}>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <Script
             id="organization-schema"
@@ -59,9 +48,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               __html: JSON.stringify(organizationSchema),
             }}
         />
-        <meta name="description" content="SafetyFile is a comprehensive platform for managing safety files and ensuring compliance.">
+        <meta name="description" content="SafetyFile is a comprehensive platform for managing safety files and ensuring compliance."/>
         <script async src="//freeimage.host/sdk/pup.js" data-url="https://freeimage.host/upload"></script>
-      </head><body>
+        <Script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript" />
+      </head>
+      <body>
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
