@@ -7,7 +7,7 @@
  */
 export function getSafeRedirect(
   redirect: string | null | undefined,
-  fallback = '/account'
+  fallback = '/'
 ) {
   if (!redirect) {
     return fallback;

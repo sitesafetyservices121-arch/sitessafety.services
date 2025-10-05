@@ -1,4 +1,3 @@
-
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
@@ -17,9 +16,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // If user is logged in and tries to access login/signup page, redirect to account
+  // If user is logged in and tries to access login/signup page, redirect to home
   if (token && AUTH_ROUTES.includes(pathname)) {
-    return NextResponse.redirect(new URL('/account', request.url));
+    return NextResponse.redirect(new URL('/', request.url));
   }
 
   return NextResponse.next();
