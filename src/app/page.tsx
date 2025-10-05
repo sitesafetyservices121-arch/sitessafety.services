@@ -285,7 +285,7 @@ export default function Home() {
                     <a href="https://www.facebook.com/share/p/1W3cmvZK6o/" aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                         <Facebook className="h-7 w-7" />
                     </a>
-                    <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a href="https://www.linkedin.com/in/ruan-koen-93b774386" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                         <Linkedin className="h-7 w-7" />
                     </a>
                 </div>
