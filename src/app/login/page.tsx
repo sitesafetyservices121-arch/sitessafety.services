@@ -26,12 +26,14 @@ import { exchangeIdTokenForSession } from "@/lib/auth/client";
 
 export const dynamic = 'force-dynamic';
 
+let isHandlingRedirect = false;
+
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [isHandlingRedirect, setIsHandlingRedirect] = useState(true);
+  const [pageLoading, setPageLoading] = useState(true);
   
   const auth = useAuth();
   const { loading: authLoading } = useUser();
@@ -45,6 +47,9 @@ export default function LoginPage() {
 
   useEffect(() => {
     const handleRedirectResult = async () => {
+       if (isHandlingRedirect) return;
+       isHandlingRedirect = true;
+
       try {
         const result = await getRedirectResult(auth);
         if (result && result.user) {
@@ -70,7 +75,8 @@ export default function LoginPage() {
             });
         }
       } finally {
-        setIsHandlingRedirect(false);
+        setPageLoading(false);
+        isHandlingRedirect = false;
       }
     };
     
@@ -108,7 +114,7 @@ export default function LoginPage() {
     }
   };
 
-  if (authLoading || isHandlingRedirect) {
+  if (authLoading || pageLoading) {
     return <TopLoader />;
   }
 

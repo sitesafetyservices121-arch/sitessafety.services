@@ -9,7 +9,7 @@ import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "./logo";
 import { ThemeToggle } from "./theme-toggle";
-import { useUser, signOut } from "@/firebase";
+import { useUser, signOut, useAuth } from "@/firebase";
 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -67,6 +67,7 @@ export function Header() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const { user } = useUser();
+  const auth = useAuth();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -225,7 +226,7 @@ export function Header() {
                       </p>
                     </div>
                   </Link>
-                  <Button variant="ghost" className="w-full justify-start" onClick={() => signOut()}>
+                  <Button variant="ghost" className="w-full justify-start" onClick={() => signOut(auth)}>
                     Logout
                   </Button>
                 </div>
@@ -286,7 +287,7 @@ export function Header() {
                 )}
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
-                  <button type="button" className="w-full text-left" onClick={() => signOut()}>
+                  <button type="button" className="w-full text-left" onClick={() => signOut(auth)}>
                     Log out
                   </button>
                 </DropdownMenuItem>
