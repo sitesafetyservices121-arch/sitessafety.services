@@ -1,15 +1,17 @@
 
+"use client";
+
 /* eslint-disable react/no-unescaped-entities */
 import type { Metadata } from 'next';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 
-export const metadata: Metadata = {
-  title: 'Privacy Policy',
-};
-
 export default function PrivacyPage() {
-  const currentDate = new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' });
+  const [currentDate, setCurrentDate] = useState('');
+
+  useEffect(() => {
+    setCurrentDate(new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' }));
+  }, []);
 
   return (
     <div className="bg-background text-foreground">
