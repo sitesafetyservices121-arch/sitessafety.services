@@ -1,5 +1,4 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import { NextResponse, type NextRequest } from 'next/server'
 
 const PROTECTED_ROUTES = ['/account', '/admin'];
 const AUTH_ROUTES = ['/login', '/signup'];
@@ -7,12 +6,6 @@ const AUTH_ROUTES = ['/login', '/signup'];
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const token = request.cookies.get('firebase-auth-token')?.value;
-
-  const isUserNavigating = request.headers.get('Next-Router-State-Tree') || request.headers.get('Purpose') === 'prefetch';
-
-  if (!isUserNavigating) {
-    return NextResponse.next();
-  }
 
   // If user is trying to access a protected route without a token, redirect to login
   if (!token && PROTECTED_ROUTES.some(prefix => pathname.startsWith(prefix))) {
