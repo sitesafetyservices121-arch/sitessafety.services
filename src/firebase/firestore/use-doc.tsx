@@ -9,6 +9,7 @@ export function useDoc<T>(ref: DocumentReference<T> | null) {
 
   useEffect(() => {
     if (!ref) {
+      setData(null);
       setLoading(false);
       return;
     }
@@ -17,11 +18,13 @@ export function useDoc<T>(ref: DocumentReference<T> | null) {
       setLoading(false);
     }, (error) => {
         console.error("Error fetching document:", error);
+        setData(null);
         setLoading(false);
     });
 
     return () => unsubscribe();
-  }, [ref]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ref?.path]);
 
   return { data, loading };
 }

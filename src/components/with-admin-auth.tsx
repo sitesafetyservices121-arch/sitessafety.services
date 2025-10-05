@@ -5,7 +5,7 @@ import { useUser } from '@/firebase';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { TopLoader } from '@/components/top-loader';
-import { UserWithProfile } from '@/firebase/auth/use-user'; // Import the correct type
+import { UserWithProfile } from '@/firebase/provider';
 
 export default function withAdminAuth<P extends object>(WrappedComponent: React.ComponentType<P>) {
   const WithAdminAuth = (props: P) => {

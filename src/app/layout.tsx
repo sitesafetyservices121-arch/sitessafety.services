@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ClientLayout } from "@/components/client-layout";
 import Script from "next/script";
+import { FirebaseClientProvider } from "@/firebase";
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -53,7 +54,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript" />
       </head>
       <body>
-        <ClientLayout>{children}</ClientLayout>
+        <FirebaseClientProvider>
+          <ClientLayout>{children}</ClientLayout>
+        </FirebaseClientProvider>
       </body>
     </html>
   );
