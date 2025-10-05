@@ -444,15 +444,13 @@ export async function submitElectronicFileOrder(data: unknown) {
 export async function initiateAdHocPayment(data: unknown) {
   try {
     const validatedData = adHocPaymentSchema.parse(data);
-
     const headersList = headers();
-    const host = (headersList).get('host');
+    const host = headersList.get('host');
     const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https';
-    
-    if (!host) {
-      return { success: false, message: "Unable to determine host for payment URLs." };
-    }
 
+    if (!host) {
+        return { success: false, message: "Could not determine application host." };
+    }
     const origin = `${protocol}://${host}`;
 
     const details = {
