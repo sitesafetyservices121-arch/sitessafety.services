@@ -34,6 +34,7 @@ type InquiryFormValues = z.infer<typeof inquiryFormSchema>;
 export function InquiryForm({ source }: { source: string }) {
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
+  const [showThankYou, setShowThankYou] = useState(false);
 
   const form = useForm<InquiryFormValues>({
     resolver: zodResolver(inquiryFormSchema),
@@ -51,11 +52,7 @@ export function InquiryForm({ source }: { source: string }) {
     startTransition(async () => {
         const result = await submitInquiry(data);
         if (result.success) {
-            toast({
-                title: "Inquiry Sent!",
-                description: result.message,
-                variant: 'success',
-            });
+            setShowThankYou(true);
             form.reset();
         } else {
             toast({
@@ -65,6 +62,16 @@ export function InquiryForm({ source }: { source: string }) {
             });
         }
     });
+  }
+
+  if (showThankYou) {
+    return (
+        <div className="text-center p-8 bg-success/10 rounded-lg border border-success/20">
+            <CheckCircle className="h-12 w-12 text-success mx-auto mb-4" />
+            <h3 className="text-2xl font-bold text-success mb-2">Inquiry Sent!</h3>
+            <p className="text-muted-foreground">Thank you for your message. We will be in touch with you shortly.</p>
+        </div>
+    )
   }
 
   return (
