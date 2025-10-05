@@ -33,7 +33,7 @@ interface GoogleAuthButtonProps {
 export function GoogleAuthButton({ redirectUrl, mode }: GoogleAuthButtonProps) {
   const [loading, setLoading] = useState(false);
   const { user } = useUser();
-  const auth = useAuth();
+  const auth = useAuth(); // Use the hook to get auth from context
   const router = useRouter();
   const { toast } = useToast();
 
@@ -47,9 +47,13 @@ export function GoogleAuthButton({ redirectUrl, mode }: GoogleAuthButtonProps) {
 
     setLoading(true);
     try {
+      if (!auth) {
+        throw new Error("Firebase Auth is not initialized.");
+      }
       const provider = new GoogleAuthProvider();
       await signInWithRedirect(auth, provider);
     } catch (error: any) {
+      console.error("Google Auth Error:", error);
       toast({
         title: `${copy.toast} Error`,
         description: 'Could not initiate Google authentication. Please try again.',

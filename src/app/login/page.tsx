@@ -1,4 +1,3 @@
-
 // src/app/login/page.tsx
 "use client";
 
@@ -8,8 +7,7 @@ import Link from "next/link";
 import { signInWithEmailAndPassword, getRedirectResult } from "firebase/auth";
 import { Loader2 } from "lucide-react";
 
-import { auth } from "@/lib/firebase/firebase";
-import { useUser } from "@/firebase";
+import { useAuth, useUser } from "@/firebase";
 import { TopLoader } from "@/components/top-loader";
 import { Button } from "@/components/ui/button";
 import {
@@ -35,6 +33,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [isHandlingRedirect, setIsHandlingRedirect] = useState(true);
   
+  const auth = useAuth();
   const { loading: authLoading } = useUser();
   const searchParams = useSearchParams();
   const redirectParam = searchParams.get("redirect");
@@ -75,8 +74,10 @@ export default function LoginPage() {
       }
     };
     
-    handleRedirectResult();
-  }, [redirectUrl, toast]);
+    if (auth) {
+        handleRedirectResult();
+    }
+  }, [auth, redirectUrl, toast]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

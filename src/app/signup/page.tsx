@@ -1,4 +1,3 @@
-
 // src/app/signup/page.tsx
 "use client";
 
@@ -8,8 +7,7 @@ import Link from "next/link";
 import { getRedirectResult, signInWithEmailAndPassword } from "firebase/auth";
 import { Loader2 } from "lucide-react";
 
-import { auth } from "@/lib/firebase/firebase";
-import { useUser } from "@/firebase";
+import { useAuth, useUser } from "@/firebase";
 import { TopLoader } from "@/components/top-loader";
 import { Button } from "@/components/ui/button";
 import {
@@ -35,6 +33,7 @@ export default function SignUpPage() {
   const [loading, setLoading] = useState(false);
   const [isHandlingRedirect, setIsHandlingRedirect] = useState(true);
 
+  const auth = useAuth();
   const { loading: authLoading } = useUser();
   const searchParams = useSearchParams();
   const redirectParam = searchParams.get("redirect");
@@ -51,22 +50,21 @@ export default function SignUpPage() {
         if (result && result.user) {
           const idToken = await result.user.getIdToken(true);
 
+          // Retry mechanism for session exchange
           let sessionError: string | null = null;
-
           for (let attempt = 0; attempt < 3; attempt++) {
             const sessionResult = await exchangeIdTokenForSession(idToken);
             if (sessionResult.ok) {
               window.location.href = redirectUrl;
-              return;
+              return; // Success, exit the function
             }
-
             sessionError = sessionResult.message || null;
-
             if (attempt < 2) {
               await new Promise(resolve => setTimeout(resolve, 1000));
             }
           }
-
+          
+          // If all retries fail
           toast({
             title: "Login Failed",
             description: sessionError || "Could not log you in after multiple attempts. Please try again.",
@@ -86,8 +84,10 @@ export default function SignUpPage() {
       }
     };
 
-    handleRedirectResult();
-  }, [redirectUrl, toast]);
+    if (auth) {
+      handleRedirectResult();
+    }
+  }, [auth, redirectUrl, toast]);
 
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -107,6 +107,7 @@ export default function SignUpPage() {
       if (!signupResponse.ok) {
         const data = await signupResponse.json();
         setError(data.message || 'An unexpected error occurred.');
+        setLoading(false); // Stop loading on signup failure
         return;
       }
 
@@ -123,7 +124,9 @@ export default function SignUpPage() {
     } catch (error: any) {
       setError("An unexpected error occurred. Please try again.");
     } finally {
-      setLoading(false);
+      if (window.location.pathname.includes('/signup')) { // prevent setting loading to false on redirect
+        setLoading(false);
+      }
     }
   };
 

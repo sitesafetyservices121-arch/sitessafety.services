@@ -1,8 +1,12 @@
+// src/lib/firebase/auth.ts
 "use server";
 
 import { signOut as firebaseSignOut } from "firebase/auth";
-import { auth } from "./firebase";
+import { getAuth } from "firebase/auth"; // Changed import
+import { app } from "./firebase"; // Import app
 import { redirect } from "next/navigation";
+
+const auth = getAuth(app); // Get auth instance
 
 // 🚪 Sign out
 export async function signOut() {
