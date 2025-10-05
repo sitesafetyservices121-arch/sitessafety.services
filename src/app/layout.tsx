@@ -59,6 +59,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               __html: JSON.stringify(organizationSchema),
             }}
         />
+        <meta name="description" content="SafetyFile is a comprehensive platform for managing safety files and ensuring compliance.">
+        <script async src="//freeimage.host/sdk/pup.js" data-url="https://freeimage.host/upload"></script>
       </head>
       <body className={cn("min-h-screen bg-background font-body antialiased", inter.variable)}>
         <ClientLayout>{children}</ClientLayout>
