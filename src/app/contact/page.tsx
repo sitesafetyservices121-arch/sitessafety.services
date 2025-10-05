@@ -9,7 +9,7 @@ import { Mail, Phone, MapPin, MessageSquareText, MessageCircle } from "lucide-re
 const contactDetails = [
   { icon: <Mail className="h-6 w-6 text-primary" />, title: "General Inquiries", value: "info@sitesafety.services", href: "mailto:info@sitesafety.services" },
   { icon: <Mail className="h-6 w-6 text-primary" />, title: "Direct Contact", value: "ruan@sitesafety.services", href: "mailto:ruan@sitesafety.services" },
-  { icon: <Phone className="h-6 w-6 text-primary" />, title: "Phone", value: "079 461 3898", href: "tel:0794613898" },
+  { icon: <Phone className="h-6 w-6 text-primary" />, title: "Phone & WhatsApp", value: "079 461 3898", href: "https://wa.me/27794613898" },
   { icon: <MessageSquareText className="h-6 w-6 text-primary" />, title: "WhatsApp & Phone", value: "071 611 5429", href: "https://wa.me/27716115429" },
   { icon: <MessageCircle className="h-6 w-6 text-primary" />, title: "Live Chat", value: "Bottom right corner. Agents are always online.", href: "#" },
   { icon: <MapPin className="h-6 w-6 text-primary" />, title: "Find Us", value: "Three Rivers East, Vereeniging, Gauteng, South Africa", href: "https://www.google.com/maps/search/?api=1&query=Three+Rivers+East+Vereeniging+Gauteng+South+Africa" },
