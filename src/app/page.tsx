@@ -8,6 +8,7 @@ import { ArrowRight, FileText, HardHat, ShieldCheck, Mail, Phone, Linkedin, Face
 import Image from "next/image";
 import { TestimonialCard } from "@/components/testimonial-card";
 import { InquiryForm } from "@/components/inquiry-form";
+import { ClientOnly } from "@/components/client-only";
 
 import imageData from "@/app/lib/placeholder-images.json";
 
@@ -271,7 +272,9 @@ export default function Home() {
                 </p>
             </div>
             <Card className="p-8 shadow-xl border bg-card/80">
-                <InquiryForm source="Home Page Inquiry" />
+                <ClientOnly>
+                    <InquiryForm source="Home Page Inquiry" />
+                </ClientOnly>
             </Card>
             <div className="text-center mt-12">
                 <h3 className="text-xl font-bold text-foreground mb-4">Follow Us</h3>
