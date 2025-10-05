@@ -30,7 +30,7 @@ const nextConfig = {
   // the IDX preview window.
   allowedDevOrigins: [
     'https://*.googleusercontent.com',
-    'https://*.cloudworkstations.dev',
+    'https://*.cloudworkstations.dev'
   ],
 };
 

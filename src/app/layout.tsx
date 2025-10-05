@@ -50,7 +50,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={cn("min-h-screen bg-background font-body antialiased", inter.variable)}>
       <head>
         <Script
             id="organization-schema"
@@ -61,8 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <meta name="description" content="SafetyFile is a comprehensive platform for managing safety files and ensuring compliance.">
         <script async src="//freeimage.host/sdk/pup.js" data-url="https://freeimage.host/upload"></script>
-      </head>
-      <body className={cn("min-h-screen bg-background font-body antialiased", inter.variable)}>
+      </head><body>
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

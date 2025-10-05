@@ -7,25 +7,6 @@
   packages = [
     pkgs.nodejs_20
     pkgs.zulu
-    pkgs.glib
-    pkgs.nss
-    pkgs.dbus
-    pkgs.atk
-    pkgs.at-spi2-atk
-    pkgs.expat
-    pkgs.xorg.libX11
-    pkgs.xorg.libXcomposite
-    pkgs.xorg.libXdamage
-    pkgs.xorg.libXext
-    pkgs.xorg.libXfixes
-    pkgs.xorg.libXrandr
-    pkgs.mesa.drivers
-    pkgs.libxcb
-    pkgs.libxkbcommon
-    pkgs.udev
-    pkgs.alsa-lib
-    pkgs.chromium
-    pkgs.webkitgtk
   ];
   # Sets environment variables in the workspace
   env = {};
