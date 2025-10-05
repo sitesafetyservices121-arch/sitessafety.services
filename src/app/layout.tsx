@@ -50,8 +50,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }}
         />
         <meta name="description" content="SafetyFile is a comprehensive platform for managing safety files and ensuring compliance."/>
-        <script async src="//freeimage.host/sdk/pup.js" data-url="https://freeimage.host/upload"></script>
-        <Script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript" />
+        <Script src="//freeimage.host/sdk/pup.js" data-url="https://freeimage.host/upload" strategy="lazyOnload" />
+        <Script src="https://platform.linkedin.com/badges/js/profile.js" strategy="lazyOnload" />
       </head>
       <body>
         <FirebaseClientProvider>

@@ -1,12 +1,13 @@
+
 "use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Package2, Settings, Image as ImageIcon, CreditCard, Share2 } from "lucide-react";
+import { Package2, Settings, Image as ImageIcon, CreditCard, Share2, Search } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { Input } from "@/components/ui/input";
 
 const adminNavItems = [
   {
@@ -64,13 +65,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </div>
       </div>
       <div className="flex flex-col">
-        <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6 md:hidden">
+        <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
           <Sheet>
             <SheetTrigger asChild>
               <Button
                 variant="outline"
                 size="icon"
-                className="shrink-0"
+                className="shrink-0 md:hidden"
               >
                 <Package2 className="h-5 w-5" />
                 <span className="sr-only">Toggle navigation menu</span>
@@ -102,7 +103,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             </SheetContent>
           </Sheet>
           <div className="w-full flex-1">
-            {/* Search or other header content for mobile */}
+            <form>
+              <div className="relative">
+                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Input
+                  type="search"
+                  name="search"
+                  placeholder="Search products..."
+                  className="w-full appearance-none bg-background pl-8 shadow-none md:w-2/3 lg:w-1/3"
+                />
+              </div>
+            </form>
           </div>
         </header>
         <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">

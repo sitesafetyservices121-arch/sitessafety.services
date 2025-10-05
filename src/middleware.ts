@@ -1,5 +1,4 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import { NextResponse, type NextRequest } from 'next/server'
 
 const PROTECTED_ROUTES = ['/account', '/admin'];
 const AUTH_ROUTES = ['/login', '/signup'];
@@ -16,9 +15,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // If user is logged in and tries to access login/signup page, redirect to home
+  // If user is logged in and tries to access login/signup page, redirect to account
   if (token && AUTH_ROUTES.includes(pathname)) {
-    return NextResponse.redirect(new URL('/', request.url));
+    return NextResponse.redirect(new URL('/account', request.url));
   }
 
   return NextResponse.next();
