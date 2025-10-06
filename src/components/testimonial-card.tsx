@@ -17,12 +17,14 @@ type TestimonialCardProps = {
 
 export function TestimonialCard({ name, title, company, testimonial, rating, image }: TestimonialCardProps) {
   return (
-    <Card className="bg-card/80 border p-6 flex flex-col justify-between shadow-lg h-full">
+    <Card className="bg-card border p-6 flex flex-col justify-between shadow-lg h-full">
       <CardContent className="p-0">
         <div className="flex items-center mb-4">
-          <div className="relative h-16 w-16 rounded-full overflow-hidden mr-4">
-            {image?.url && <Image src={image.url} alt={name} fill style={{objectFit: "cover"}} data-ai-hint={image.hint} sizes="64px" />}
-          </div>
+          {image.url && (
+            <div className="relative h-16 w-16 rounded-full overflow-hidden mr-4">
+              <Image src={image.url} alt={name} fill style={{objectFit: "cover"}} data-ai-hint={image.hint} />
+            </div>
+          )}
           <div>
             <p className="font-bold text-foreground">{name}</p>
             <p className="text-sm text-muted-foreground">{title}, {company}</p>
